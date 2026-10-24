@@ -1,0 +1,29 @@
+{
+  "title": "الأعضاء",
+  "description": "الأشخاص الذين يمكنهم الوصول إلى مساحة العمل هذه.",
+  "columns": {
+    "member": "العضو",
+    "role": "الدور",
+    "joined": "تاريخ الانضمام"
+  },
+  "you": "أنت",
+  "changeRoleFor": "تغيير دور {name}",
+  "roleChanged": "تم تحديث الدور.",
+  "removeConfirm": "إزالة {name} من مساحة العمل؟",
+  "remove": "إزالة",
+  "searchPlaceholder": "ابحث بالاسم أو البريد",
+  "inviteButton": "دعوة عضو",
+  "invite": {
+    "title": "دعوة عضو",
+    "send": "إرسال الدعوة",
+    "sent": "تم إرسال الدعوة إلى {email}.",
+    "email": "البريد الإلكتروني",
+    "role": "الدور"
+  },
+  "pending": {
+    "title": "دعوات معلّقة",
+    "revokeConfirm": "إلغاء الدعوة المرسلة إلى {email}؟",
+    "revoke": "إلغاء",
+    "expires": "تنتهي في {date}"
+  }
+}

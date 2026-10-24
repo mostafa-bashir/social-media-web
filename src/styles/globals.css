@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/*
+ * Ant Design styles are unlayered, so they win over Tailwind's layered
+ * preflight. Use Tailwind for layout around antd components, and antd theme
+ * tokens (ThemeProvider) for component colors — never both on one element.
+ */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --app-bg: #f5f6fa;
+  --app-surface: #ffffff;
+  --app-border: #e5e7eb;
+  --app-text-muted: #6b7280;
+}
+
+:root[data-theme="dark"] {
+  --app-bg: #0f1115;
+  --app-surface: #171a21;
+  --app-border: #2a2f3a;
+  --app-text-muted: #9ca3af;
+}
+
+@theme inline {
+  --color-app-bg: var(--app-bg);
+  --color-app-surface: var(--app-surface);
+  --color-app-border: var(--app-border);
+  --color-app-muted: var(--app-text-muted);
+  --font-sans: var(--font-sans);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--app-bg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}

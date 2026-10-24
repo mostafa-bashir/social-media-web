@@ -1,0 +1,16 @@
+{
+  "title": "Settings",
+  "description": "Workspace details used across the app.",
+  "workspace": {
+    "saved": "Settings saved.",
+    "readOnly": "Only members with permission can change these settings.",
+    "name": "Workspace name",
+    "slug": "Workspace URL",
+    "slugHint": "The URL can't be changed.",
+    "timezone": "Time zone",
+    "timezoneHint": "Used for scheduling posts and reports.",
+    "locale": "Email language",
+    "localeHint": "Language of invitation emails sent from this workspace.",
+    "save": "Save changes"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Roles & permissions",
+  "description": "Control what each role can do in this workspace.",
+  "create": "New role",
+  "builtIn": "Built-in",
+  "edit": "Edit",
+  "delete": "Delete",
+  "deleteConfirm": "Delete the role \"{name}\"?",
+  "noDescription": "No description.",
+  "summary": "{members, plural, =0 {No members} one {# member} other {# members}} · {permissions, plural, one {# permission} other {# permissions}}",
+  "editor": {
+    "createTitle": "New role",
+    "editTitle": "Edit role",
+    "save": "Save",
+    "name": "Role name",
+    "description": "Description",
+    "permissions": "Permissions"
+  },
+  "groups": {
+    "workspace": "Workspace",
+    "team": "Team",
+    "monitoring": "Monitoring"
+  },
+  "permissions": {
+    "workspace_update": "Edit workspace settings",
+    "workspace_delete": "Delete the workspace",
+    "members_view": "View members",
+    "members_invite": "Invite members",
+    "members_update": "Change member roles",
+    "members_remove": "Remove members",
+    "roles_view": "View roles",
+    "roles_create": "Create roles",
+    "roles_update": "Edit roles",
+    "roles_delete": "Delete roles",
+    "audit_logs_view": "View the audit log"
+  },
+  "system": {
+    "owner": {
+      "name": "Owner",
+      "description": "Full access, including deleting the workspace."
+    },
+    "admin": {
+      "name": "Admin",
+      "description": "Manages the workspace, members and roles."
+    },
+    "member": {
+      "name": "Member",
+      "description": "Works in the workspace and can see the team."
+    }
+  }
+}

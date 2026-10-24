@@ -1,0 +1,14 @@
+{
+  "invalid": "This value is invalid.",
+  "required": "This field is required.",
+  "email": "Enter a valid email address.",
+  "passwordMin": "Use at least 8 characters.",
+  "passwordMax": "Use at most 128 characters.",
+  "passwordPattern": "Include at least one letter and one number.",
+  "nameMin": "Enter at least 2 characters.",
+  "nameMax": "Use at most 120 characters.",
+  "roleNameMax": "Use at most 64 characters.",
+  "codeFormat": "Enter the 6-digit code.",
+  "slugLength": "Use 3–48 characters.",
+  "slugFormat": "Use lowercase letters, numbers and single hyphens."
+}

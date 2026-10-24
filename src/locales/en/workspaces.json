@@ -1,0 +1,44 @@
+{
+  "create": {
+    "title": "Create a workspace",
+    "subtitle": "A workspace holds your team, clients and their social accounts.",
+    "name": "Workspace name",
+    "namePlaceholder": "Acme Agency",
+    "slug": "Workspace URL",
+    "slugHint": "Lowercase letters, numbers and hyphens. You can't change it later.",
+    "slugAvailable": "This URL is available.",
+    "slugUnavailable": {
+      "invalid": "Use 3–48 lowercase letters, numbers and single hyphens.",
+      "reserved": "This URL is reserved. Try another.",
+      "taken": "This URL is already taken."
+    },
+    "submit": "Create workspace"
+  },
+  "picker": {
+    "metaTitle": "Your workspaces",
+    "title": "Hi {name}",
+    "subtitle": "Choose a workspace to continue.",
+    "noAccess": "You don't have access to the workspace \"{slug}\".",
+    "empty": "You're not in any workspace yet.",
+    "open": "Open {name}",
+    "owner": "Owner",
+    "create": "Create a new workspace",
+    "signOut": "Sign out"
+  },
+  "switcher": {
+    "label": "Switch workspace",
+    "create": "Create workspace"
+  },
+  "invitation": {
+    "metaTitle": "Invitation",
+    "title": "Join {workspace}",
+    "subtitle": "{inviter} invited {email} to collaborate.",
+    "someone": "Someone",
+    "goHome": "Go to home",
+    "signInToAccept": "Sign in to accept",
+    "registerToAccept": "Create an account to accept",
+    "wrongAccount": "You're signed in as {current}, but this invitation is for {invited}.",
+    "switchAccount": "Sign in with another account",
+    "accept": "Accept invitation"
+  }
+}

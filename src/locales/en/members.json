@@ -1,0 +1,29 @@
+{
+  "title": "Members",
+  "description": "People who can access this workspace.",
+  "columns": {
+    "member": "Member",
+    "role": "Role",
+    "joined": "Joined"
+  },
+  "you": "You",
+  "changeRoleFor": "Change role for {name}",
+  "roleChanged": "Role updated.",
+  "removeConfirm": "Remove {name} from this workspace?",
+  "remove": "Remove",
+  "searchPlaceholder": "Search by name or email",
+  "inviteButton": "Invite member",
+  "invite": {
+    "title": "Invite a member",
+    "send": "Send invitation",
+    "sent": "Invitation sent to {email}.",
+    "email": "Email",
+    "role": "Role"
+  },
+  "pending": {
+    "title": "Pending invitations",
+    "revokeConfirm": "Revoke the invitation for {email}?",
+    "revoke": "Revoke",
+    "expires": "Expires {date}"
+  }
+}

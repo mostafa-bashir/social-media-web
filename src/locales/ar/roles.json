@@ -1,0 +1,51 @@
+{
+  "title": "الأدوار والصلاحيات",
+  "description": "تحكّم فيما يمكن لكل دور فعله في مساحة العمل.",
+  "create": "دور جديد",
+  "builtIn": "أساسي",
+  "edit": "تعديل",
+  "delete": "حذف",
+  "deleteConfirm": "حذف الدور \"{name}\"؟",
+  "noDescription": "لا يوجد وصف.",
+  "summary": "{members, plural, =0 {لا أعضاء} one {عضو واحد} two {عضوان} few {# أعضاء} many {# عضوًا} other {# عضو}} · {permissions, plural, one {صلاحية واحدة} two {صلاحيتان} few {# صلاحيات} many {# صلاحية} other {# صلاحية}}",
+  "editor": {
+    "createTitle": "دور جديد",
+    "editTitle": "تعديل الدور",
+    "save": "حفظ",
+    "name": "اسم الدور",
+    "description": "الوصف",
+    "permissions": "الصلاحيات"
+  },
+  "groups": {
+    "workspace": "مساحة العمل",
+    "team": "الفريق",
+    "monitoring": "المتابعة"
+  },
+  "permissions": {
+    "workspace_update": "تعديل إعدادات مساحة العمل",
+    "workspace_delete": "حذف مساحة العمل",
+    "members_view": "عرض الأعضاء",
+    "members_invite": "دعوة الأعضاء",
+    "members_update": "تغيير أدوار الأعضاء",
+    "members_remove": "إزالة الأعضاء",
+    "roles_view": "عرض الأدوار",
+    "roles_create": "إنشاء الأدوار",
+    "roles_update": "تعديل الأدوار",
+    "roles_delete": "حذف الأدوار",
+    "audit_logs_view": "عرض سجل النشاط"
+  },
+  "system": {
+    "owner": {
+      "name": "المالك",
+      "description": "صلاحيات كاملة بما فيها حذف مساحة العمل."
+    },
+    "admin": {
+      "name": "مسؤول",
+      "description": "يدير مساحة العمل والأعضاء والأدوار."
+    },
+    "member": {
+      "name": "عضو",
+      "description": "يعمل في مساحة العمل ويمكنه رؤية الفريق."
+    }
+  }
+}
