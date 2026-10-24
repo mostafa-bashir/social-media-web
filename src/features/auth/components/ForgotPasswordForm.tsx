@@ -8,11 +8,12 @@ import { useErrorMessage } from "@/hooks/use-error-message";
 import { Link } from "@/i18n/navigation";
 import { emailSchema } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
+import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { useForgotPassword } from "../api/auth-api";
-import { AuthHeader } from "./AuthHeader";
+import AuthHeader from "./AuthHeader";
 
-export function ForgotPasswordForm() {
+export default function ForgotPasswordForm() {
   const t = useTranslations("auth.forgotPassword");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
@@ -37,7 +38,7 @@ export function ForgotPasswordForm() {
           type="error"
           showIcon
           title={errorMessage(forgot.error)}
-          className="!mb-4"
+          className="mb-4!"
         />
       ) : null}
       <Form<{ email: string }>
@@ -55,6 +56,7 @@ export function ForgotPasswordForm() {
         <Button
           type="primary"
           htmlType="submit"
+          className={PRIMARY_PILL_BUTTON_CLASS}
           block
           loading={forgot.isPending}
         >

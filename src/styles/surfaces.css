@@ -1,0 +1,125 @@
+/**
+ * Two-layer surface pattern (from the fana reference) — MANDATORY for pages,
+ * forms, modals and tab bodies:
+ *
+ *   .surface-card     ← outer shell: tertiary gray, rounded, padded
+ *   └─ .surface-panel ← inner shell: surface (white / dark surface)
+ *        └─ content
+ *
+ * Variants:
+ *   .surface-card-raised  — outer shell with a soft shadow (page-level cards)
+ *   .surface-card-form    — compact outer shell for form modals; pair with
+ *                           antd Modal `classNames.body: "p-0"`
+ *   .surface-panel-flush  — inner panel without padding (child owns spacing)
+ *
+ * Listing pages use .listing-shell › .listing-shell-panel (+ toolbar / content),
+ * composed by components/ui/ListingShell.tsx.
+ *
+ * Never inline `rounded-2xl bg-…` for these layers — use the classes.
+ */
+
+@layer components {
+  .surface-card,
+  .surface-card-raised,
+  .surface-card-form,
+  .listing-shell {
+    border-radius: var(--radius-2xl);
+    background-color: var(--ds-bg-tertiary);
+  }
+
+  .surface-card,
+  .surface-card-raised {
+    padding: 0.5rem;
+  }
+
+  .surface-card-raised {
+    box-shadow: 0 1px 2px 0 rgb(15 23 42 / 0.06);
+  }
+
+  .surface-card-form {
+    padding: 0.75rem 0.5rem 0.5rem;
+  }
+
+  .surface-panel,
+  .surface-panel-flush,
+  .listing-shell-panel {
+    border-radius: calc(var(--radius-2xl) - 4px);
+    background-color: var(--ds-bg-surface);
+    border: 1px solid var(--ds-border-secondary);
+  }
+
+  .surface-panel {
+    padding: 1.25rem;
+  }
+
+  .listing-shell {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .listing-shell-panel {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Grid listings: cards sit directly on the gray shell. */
+  .listing-shell-panel--grid {
+    border: none;
+    background-color: transparent;
+  }
+
+  .listing-shell-toolbar {
+    border-bottom: 1px solid var(--ds-border-secondary);
+    padding: 1rem 1.5rem;
+  }
+
+  .listing-shell-panel--grid .listing-shell-toolbar {
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--ds-border-secondary);
+    border-radius: calc(var(--radius-2xl) - 4px);
+    background-color: var(--ds-bg-surface);
+  }
+
+  .listing-shell-content {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }
+
+  /* Listing table skin: uppercase headers, roomy rows, token borders. */
+  .listing-table .ant-table {
+    background: transparent;
+  }
+
+  .listing-table .ant-table-thead > tr > th {
+    border-bottom: 1px solid var(--ds-border-secondary) !important;
+    background: var(--ds-bg-subtle) !important;
+    padding: 0.75rem 1.5rem !important;
+    color: var(--ds-text-tertiary) !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .listing-table .ant-table-tbody > tr > td {
+    border-bottom: 1px solid var(--ds-border-secondary) !important;
+    padding: 0.875rem 1.5rem !important;
+  }
+
+  .listing-table .ant-table-tbody > tr:last-child > td {
+    border-bottom: none !important;
+  }
+
+  .listing-table .ant-pagination {
+    margin: 0 !important;
+    padding: 0.75rem 1.5rem;
+  }
+}

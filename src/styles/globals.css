@@ -1,33 +1,73 @@
 @import "tailwindcss";
+@import "./design-tokens.css";
+@import "./surfaces.css";
+@import "./shell.css";
 
 /*
+ * Colours come ONLY from `--ds-*` tokens (generated from
+ * src/design-system/colors.tokens.json). Components use the semantic Tailwind
+ * utilities below — never hex literals (enforced by ESLint).
+ *
  * Ant Design styles are unlayered, so they win over Tailwind's layered
- * preflight. Use Tailwind for layout around antd components, and antd theme
- * tokens (ThemeProvider) for component colors — never both on one element.
+ * preflight. Use Tailwind for layout around antd components and the antd
+ * theme (lib/antd-theme.ts, same tokens) for component colours.
  */
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-:root {
-  --app-bg: #f5f6fa;
-  --app-surface: #ffffff;
-  --app-border: #e5e7eb;
-  --app-text-muted: #6b7280;
-}
-
-:root[data-theme="dark"] {
-  --app-bg: #0f1115;
-  --app-surface: #171a21;
-  --app-border: #2a2f3a;
-  --app-text-muted: #9ca3af;
-}
-
 @theme inline {
-  --color-app-bg: var(--app-bg);
-  --color-app-surface: var(--app-surface);
-  --color-app-border: var(--app-border);
-  --color-app-muted: var(--app-text-muted);
   --font-sans: var(--font-sans);
+
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+
+  /* Surfaces */
+  --color-background: var(--ds-bg-canvas);
+  --color-background-tertiary: var(--ds-bg-tertiary);
+  --color-background-subtle: var(--ds-bg-subtle);
+  --color-surface: var(--ds-bg-surface);
+
+  /* Borders */
+  --color-border-default: var(--ds-border-default);
+  --color-border-secondary: var(--ds-border-secondary);
+
+  /* Text */
+  --color-text-primary: var(--ds-text-primary);
+  --color-text-secondary: var(--ds-text-secondary);
+  --color-text-tertiary: var(--ds-text-tertiary);
+  --color-text-placeholder: var(--ds-text-placeholder);
+  --color-text-on-color: var(--ds-text-on-color);
+
+  /* Brand — indigo */
+  --color-primary: var(--ds-brand-primary);
+  --color-primary-hover: var(--ds-brand-primary-hover);
+  --color-primary-subtle: var(--ds-brand-primary-subtle);
+  --color-primary-border: var(--ds-brand-primary-border);
+  --color-primary-text: var(--ds-brand-primary-text);
+
+  /* Growth — teal (positive trends, success) */
+  --color-growth: var(--ds-growth);
+  --color-growth-subtle: var(--ds-growth-subtle);
+  --color-growth-text: var(--ds-growth-text);
+
+  /* Accent — amber (attention, pending) */
+  --color-accent: var(--ds-accent);
+  --color-accent-subtle: var(--ds-accent-subtle);
+  --color-accent-text: var(--ds-accent-text);
+
+  /* Danger */
+  --color-danger: var(--ds-danger);
+  --color-danger-subtle: var(--ds-danger-subtle);
+  --color-danger-text: var(--ds-danger-text);
+
+  /* App shell (sidebar / canvas around the content card) */
+  --color-shell: var(--ds-shell-bg);
+  --color-shell-surface: var(--ds-shell-surface);
+  --color-shell-border: var(--ds-shell-border);
+  --color-shell-text: var(--ds-shell-text);
+  --color-shell-text-muted: var(--ds-shell-text-muted);
 }
 
 html,
@@ -36,6 +76,7 @@ body {
 }
 
 body {
-  background: var(--app-bg);
+  background: var(--ds-bg-canvas);
+  color: var(--ds-text-primary);
   font-family: var(--font-sans), system-ui, sans-serif;
 }

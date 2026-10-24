@@ -1,1 +1,1 @@
-export { InvitationLanding } from "./components/InvitationLanding";
+export { default as InvitationLanding } from "./components/InvitationLanding";

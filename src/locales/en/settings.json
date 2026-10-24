@@ -11,6 +11,16 @@
     "timezoneHint": "Used for scheduling posts and reports.",
     "locale": "Email language",
     "localeHint": "Language of invitation emails sent from this workspace.",
-    "save": "Save changes"
+    "save": "Save changes",
+    "sectionTitle": "Workspace details"
+  },
+  "dangerZone": {
+    "title": "Danger zone",
+    "deleteTitle": "Delete this workspace",
+    "deleteDescription": "Permanently deletes the workspace, its members’ access and all of its data.",
+    "deleteButton": "Delete workspace",
+    "confirmTitle": "Delete workspace",
+    "confirmWarning": "This can’t be undone. All data in this workspace will be permanently deleted.",
+    "typeToConfirm": "Type <slug></slug> to confirm."
   }
 }

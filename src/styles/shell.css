@@ -1,0 +1,94 @@
+/**
+ * App shell (fana pattern): the deep-indigo canvas spans the sidebar and the
+ * gutter around the content; pages sit in a rounded content card on top.
+ */
+
+@layer components {
+  .app-shell {
+    display: flex;
+    min-height: 100dvh;
+    background-color: var(--ds-shell-bg);
+  }
+
+  .app-shell-sider {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 100dvh;
+    width: 248px;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 0.75rem;
+    color: var(--ds-shell-text);
+  }
+
+  .app-shell-main {
+    display: flex;
+    min-width: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 992px) {
+    .app-shell-main {
+      padding-inline-start: 0;
+    }
+  }
+
+  .app-shell-content {
+    display: flex;
+    min-height: calc(100dvh - 1rem);
+    flex: 1 1 auto;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    background-color: var(--ds-bg-canvas);
+  }
+
+  .app-shell-header {
+    display: flex;
+    height: 3.5rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding-inline: 1.5rem;
+  }
+
+  .app-shell-body {
+    display: flex;
+    min-height: 0;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  /* Mobile top bar sits on the shell colour. */
+  .app-shell-mobile-bar {
+    display: flex;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+    color: var(--ds-shell-text);
+  }
+
+  /* Shell-coloured controls (switcher, menu toggles) on the dark canvas. */
+  .shell-control {
+    border-radius: var(--radius-lg);
+    color: var(--ds-shell-text) !important;
+    transition: background-color 150ms ease;
+  }
+
+  .shell-control:hover,
+  .shell-control:focus-visible {
+    background-color: var(--ds-shell-surface) !important;
+  }
+
+  .shell-divider {
+    height: 1px;
+    background-color: var(--ds-shell-border);
+  }
+}

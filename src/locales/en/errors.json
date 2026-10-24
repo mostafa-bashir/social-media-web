@@ -40,5 +40,6 @@
   "CANNOT_CHANGE_OWN_ROLE": "You can't change your own role.",
   "CANNOT_REMOVE_SELF": "You can't remove yourself.",
   "OWNER_CANNOT_LEAVE": "The owner can't leave the workspace.",
-  "MEMBER_NOT_FOUND": "This member no longer exists."
+  "MEMBER_NOT_FOUND": "This member no longer exists.",
+  "CONFIRMATION_MISMATCH": "Type the workspace URL exactly to confirm."
 }

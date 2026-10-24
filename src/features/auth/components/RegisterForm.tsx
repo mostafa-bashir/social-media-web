@@ -13,11 +13,12 @@ import {
   passwordSchema,
 } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
+import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { type RegisterInput, useRegister } from "../api/auth-api";
-import { AuthHeader } from "./AuthHeader";
+import AuthHeader from "./AuthHeader";
 
-export function RegisterForm() {
+export default function RegisterForm() {
   const t = useTranslations("auth.register");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
@@ -46,7 +47,7 @@ export function RegisterForm() {
           type="error"
           showIcon
           title={errorMessage(register.error)}
-          className="!mb-4"
+          className="mb-4!"
         />
       ) : null}
       <Form<RegisterInput>
@@ -80,6 +81,7 @@ export function RegisterForm() {
         <Button
           type="primary"
           htmlType="submit"
+          className={PRIMARY_PILL_BUTTON_CLASS}
           block
           loading={register.isPending}
         >

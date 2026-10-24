@@ -27,7 +27,8 @@
   },
   "switcher": {
     "label": "Switch workspace",
-    "create": "Create workspace"
+    "create": "Create workspace",
+    "current": "Current workspace"
   },
   "invitation": {
     "metaTitle": "Invitation",

@@ -11,12 +11,13 @@ import { useErrorMessage } from "@/hooks/use-error-message";
 import { Link } from "@/i18n/navigation";
 import { verificationCodeSchema } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
+import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { useResendVerification } from "../api/auth-api";
 import { safeCallbackUrl } from "../utils/safe-callback-url";
-import { AuthHeader } from "./AuthHeader";
+import AuthHeader from "./AuthHeader";
 
-export function VerifyEmailForm() {
+export default function VerifyEmailForm() {
   const t = useTranslations("auth.verifyEmail");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
@@ -31,7 +32,7 @@ export function VerifyEmailForm() {
 
   // Arriving from a login attempt with an unverified email: send a fresh code once.
   useEffect(() => {
-    if (searchParams.get("resend") === "1" && email && !autoResent.current) {
+    if (searchParams.get("resend") === "1" && email && autoResent.current!) {
       autoResent.current = true;
       resend.mutate(email);
     }
@@ -80,7 +81,7 @@ export function VerifyEmailForm() {
     <>
       <AuthHeader title={t("title")} subtitle={t("subtitle", { email })} />
       {error ? (
-        <Alert type="error" showIcon title={error} className="!mb-4" />
+        <Alert type="error" showIcon title={error} className="mb-4!" />
       ) : null}
       <Form<{ code: string }>
         layout="vertical"
@@ -94,7 +95,13 @@ export function VerifyEmailForm() {
         >
           <Input.OTP length={6} autoFocus />
         </Form.Item>
-        <Button type="primary" htmlType="submit" block loading={submitting}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className={PRIMARY_PILL_BUTTON_CLASS}
+          block
+          loading={submitting}
+        >
           {t("submit")}
         </Button>
       </Form>

@@ -5,9 +5,7 @@
   "builtIn": "Built-in",
   "edit": "Edit",
   "delete": "Delete",
-  "deleteConfirm": "Delete the role \"{name}\"?",
   "noDescription": "No description.",
-  "summary": "{members, plural, =0 {No members} one {# member} other {# members}} · {permissions, plural, one {# permission} other {# permissions}}",
   "editor": {
     "createTitle": "New role",
     "editTitle": "Edit role",
@@ -47,5 +45,11 @@
       "name": "Member",
       "description": "Works in the workspace and can see the team."
     }
-  }
+  },
+  "toolbarHint": "Built-in roles can’t be changed. Create custom roles for your team.",
+  "actionsFor": "Actions for {name}",
+  "deleteTitle": "Delete role",
+  "deleteWarning": "Only roles with no members can be deleted.",
+  "memberCount": "{count, plural, =0 {No members} one {# member} other {# members}}",
+  "permissionCount": "{count, plural, one {# permission} other {# permissions}}"
 }

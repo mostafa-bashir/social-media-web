@@ -9,7 +9,6 @@
   "you": "You",
   "changeRoleFor": "Change role for {name}",
   "roleChanged": "Role updated.",
-  "removeConfirm": "Remove {name} from this workspace?",
   "remove": "Remove",
   "searchPlaceholder": "Search by name or email",
   "inviteButton": "Invite member",
@@ -22,8 +21,19 @@
   },
   "pending": {
     "title": "Pending invitations",
-    "revokeConfirm": "Revoke the invitation for {email}?",
     "revoke": "Revoke",
-    "expires": "Expires {date}"
-  }
+    "expires": "Expires {date}",
+    "actionsFor": "Actions for {email}",
+    "revokeTitle": "Revoke invitation",
+    "revokeQuestion": "Revoke the invitation sent to {email}?"
+  },
+  "actionsFor": "Actions for {name}",
+  "removeTitle": "Remove member",
+  "removeWarning": "They lose access to this workspace immediately. You can invite them again later.",
+  "removed": "{name} was removed from the workspace.",
+  "empty": {
+    "title": "No members yet",
+    "filtered": "No members match your search."
+  },
+  "removeQuestion": "Remove “{name}” from this workspace?"
 }

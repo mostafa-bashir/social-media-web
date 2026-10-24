@@ -18,28 +18,57 @@ pnpm dev                        # http://localhost:3000
 | Lint / typecheck / format | `pnpm lint` · `pnpm type-check` · `pnpm format:check` |
 | Production build | `pnpm build` |
 
-## Structure
+## Structure (fana / Bulletproof React)
 
 ```
 src/
-  app/[locale]/(centered)/   auth pages, workspace picker/create, invite landing
+  app/[locale]/(auth-shell)/ auth pages, workspace picker/create, invite landing
   app/[locale]/[slug]/       the workspace app (dashboard, members, roles, settings)
-  features/<name>/           api/ components/ hooks/ — import other features only via their index.ts
-  components/                shared UI (shell, layout)
-  config/                    env (zod-validated), routes, sidebar navigation
-  lib/                       api client, auth helpers, forms, react-query
+  features/<name>/           api/ (get-*.ts, *-mutations.ts) components/ types/ utils/ index.ts
+  components/ui/             shared primitives: AppShell, ListingShell/Toolbar/Table/EmptyState,
+                             DeleteConfirmModal, RowActions, StatCard, StatusBadge, PageHeader…
+  hooks/                     shared hooks (permissions, active workspace, switch workspace…)
+  config/                    env (zod), routes, navigation, permissions
+  lib/                       api client, auth, forms, query keys, antd theme, listing classes
+  design-system/             colors.tokens.json — the brand palette (source of truth)
+  styles/                    design-tokens.css (generated), surfaces.css, shell.css, globals.css
   locales/{en,ar}/           messages — every key must exist in both
-  proxy.ts                   locale routing + sign-in / workspace gates
-  auth.ts                    Auth.js config
 ```
 
-## Conventions
+## Brand identity — Indigo & Teal
 
+| Role | Token | Light |
+| --- | --- | --- |
+| Primary (actions, active nav) | `brand-primary` | #4F46E5 |
+| Growth (positive trends, success) | `growth` | #14B8A6 |
+| Accent (pending, attention) | `accent` | #F59E0B |
+| Sidebar / shell canvas | `shell-bg` | #1E1B4B |
+| Page background | `bg-canvas` | #F8FAFC |
+
+Edit colours only in `src/design-system/colors.tokens.json` (light + dark), then run `pnpm tokens`.
+The antd theme (`lib/antd-theme.ts`) reads the same JSON, so CSS and components never drift.
+
+## UI rules (adapted from the fana reference)
+
+- **No hex in components** (ESLint-enforced). Use token utilities — `bg-primary`, `text-text-secondary`,
+  `bg-growth-subtle`, `border-border-default`, `bg-shell` … — or `var(--ds-*)`.
+- **Two-layer surfaces** for every page section, form and modal body:
+  `.surface-card` (gray) › `.surface-panel` (surface). Modal forms use `.surface-card-form`.
+- **Listings** use `ListingShell` + `ListingToolbar` (filters start, pill CTA end) + `ListingTable`
+  (shared skin + `ListingEmptyState`). Grids use `contentLayout="grid"`. No `scroll.x` unless required.
+- **Row actions**: `RowActions` (MoreOutlined + popover). **Destructive actions**: shared
+  `DeleteConfirmModal` only — never a per-feature confirm.
+- **Statuses**: `StatusBadge` tones — brand, growth, accent, danger, neutral. **KPIs**: `StatCard`.
+- **CTAs** are pills: `PRIMARY_PILL_BUTTON_CLASS` / `TOOLBAR_CREATE_BUTTON_CLASS` (`lib/listing-ui.ts`).
+- **Features never import other features** (ESLint-enforced). Shared code lives in
+  `hooks/`, `lib/`, `config/`, `components/ui/`. Data two features read shares a key in `lib/query-keys.ts`.
+- **Component files** default-export one component, stay under ~150 lines; barrels re-export.
+- **Route files are Server Components**: no `antd` or `@ant-design/icons` imports there (ESLint-enforced).
+- **Tailwind v4** important modifier is a suffix: `rounded-full!`, not `!rounded-full`.
 - **URLs** always carry the locale: `/{locale}/{workspaceSlug}/...`.
-- **Data fetching**: client components through TanStack Query hooks in `features/*/api`. Responses are validated with zod (`parseData` / `parsePaginated`). Workspace-scoped query keys start with `["workspace", slug]`.
-- **Errors**: the API returns `error.code`; show `useErrorMessage()(error)`, which translates via the `errors` namespace.
-- **Forms**: antd `Form` + `zodRule(schema, t)`; schema messages are `validation.*` keys.
-- **antd in route files**: not allowed (lint rule). `src/app` files are Server Components, where dot-components such as `Typography.Title` are undefined. Render antd inside a `"use client"` component.
+- **Data**: TanStack Query hooks in `features/*/api`, responses validated with zod (`parseData`).
+- **Errors**: show `useErrorMessage()(error)` — translated from the API's `error.code`.
+- **Forms**: antd `Form` + `zodRule(schema, t)`; messages are `validation.*` keys.
 - **Permissions**: `usePermissions().can(Permission.X)` hides UI only; the API enforces every check.
 - **Sidebar**: add items in `src/config/navigation.tsx`.
 

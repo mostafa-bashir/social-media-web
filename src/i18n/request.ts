@@ -12,6 +12,7 @@ const NAMESPACES = [
   "roles",
   "settings",
   "errors",
+  "dashboard",
   "validation",
 ] as const;
 

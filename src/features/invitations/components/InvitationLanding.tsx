@@ -6,7 +6,7 @@ import { signOut, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { routes } from "@/config/routes";
-import { useSwitchWorkspace } from "@/features/workspaces";
+import { useSwitchWorkspace } from "@/hooks/use-switch-workspace";
 import { useErrorMessage } from "@/hooks/use-error-message";
 import { Link } from "@/i18n/navigation";
 
@@ -15,7 +15,7 @@ import {
   useInvitationPreview,
 } from "../api/invitations-api";
 
-export function InvitationLanding({ token }: { token: string }) {
+export default function InvitationLanding({ token }: { token: string }) {
   const t = useTranslations("workspaces.invitation");
   const errorMessage = useErrorMessage();
   const locale = useLocale();
@@ -88,7 +88,7 @@ export function InvitationLanding({ token }: { token: string }) {
             current: session.user.email,
             invited: invitation.email,
           })}
-          className="!mb-4"
+          className="mb-4!"
         />
         <Button
           block
@@ -112,7 +112,7 @@ export function InvitationLanding({ token }: { token: string }) {
           type="error"
           showIcon
           title={errorMessage(accept.error)}
-          className="!mb-4"
+          className="mb-4!"
         />
       ) : null}
       <Button

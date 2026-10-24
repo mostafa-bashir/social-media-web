@@ -13,12 +13,12 @@ import { useEffect, useRef, useState } from "react";
 
 import { routes } from "@/config/routes";
 import { useErrorMessage } from "@/hooks/use-error-message";
+import { useSwitchWorkspace } from "@/hooks/use-switch-workspace";
 import { Link } from "@/i18n/navigation";
 
-import { useMe } from "../api/workspaces-api";
-import { useSwitchWorkspace } from "../hooks/use-switch-workspace";
+import { useMe } from "../api/get-me";
 
-export function WorkspacePicker() {
+export default function WorkspacePicker() {
   const t = useTranslations("workspaces.picker");
   const errorMessage = useErrorMessage();
   const locale = useLocale();
@@ -49,7 +49,7 @@ export function WorkspacePicker() {
 
   return (
     <>
-      <Typography.Title level={3} className="!mb-1">
+      <Typography.Title level={3} className="mb-1!">
         {t("title", { name: me.data?.user.name ?? "" })}
       </Typography.Title>
       <Typography.Paragraph type="secondary">
@@ -60,7 +60,7 @@ export function WorkspacePicker() {
           type="warning"
           showIcon
           title={t("noAccess", { slug: requestedSlug ?? "" })}
-          className="!mb-4"
+          className="mb-4!"
         />
       ) : null}
       {workspaces.length === 0 ? (
@@ -102,7 +102,7 @@ export function WorkspacePicker() {
         </ul>
       )}
       <Link href={routes.workspaces.create}>
-        <Button type="primary" icon={<PlusOutlined />} block className="!mt-4">
+        <Button type="primary" icon={<PlusOutlined />} block className="mt-4!">
           {t("create")}
         </Button>
       </Link>

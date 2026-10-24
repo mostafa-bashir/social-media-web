@@ -11,16 +11,17 @@ import { useErrorMessage } from "@/hooks/use-error-message";
 import { Link, useRouter } from "@/i18n/navigation";
 import { emailSchema } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
+import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { safeCallbackUrl } from "../utils/safe-callback-url";
-import { AuthHeader } from "./AuthHeader";
+import AuthHeader from "./AuthHeader";
 
 interface LoginValues {
   email: string;
   password: string;
 }
 
-export function LoginForm() {
+export default function LoginForm() {
   const t = useTranslations("auth.login");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
@@ -61,7 +62,7 @@ export function LoginForm() {
     <>
       <AuthHeader title={t("title")} subtitle={t("subtitle")} />
       {error ? (
-        <Alert type="error" showIcon title={error} className="!mb-4" />
+        <Alert type="error" showIcon title={error} className="mb-4!" />
       ) : null}
       <Form<LoginValues>
         layout="vertical"
@@ -86,7 +87,13 @@ export function LoginForm() {
         >
           <Input.Password autoComplete="current-password" />
         </Form.Item>
-        <Button type="primary" htmlType="submit" block loading={submitting}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          className={PRIMARY_PILL_BUTTON_CLASS}
+          block
+          loading={submitting}
+        >
           {t("submit")}
         </Button>
       </Form>

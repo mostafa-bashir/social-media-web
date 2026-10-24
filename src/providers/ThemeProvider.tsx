@@ -1,7 +1,7 @@
 "use client";
 
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { App, ConfigProvider, theme as antdTheme } from "antd";
+import { App, ConfigProvider } from "antd";
 import arEG from "antd/locale/ar_EG";
 import enUS from "antd/locale/en_US";
 import {
@@ -14,10 +14,8 @@ import {
 } from "react";
 
 import { directionFor } from "@/i18n/routing";
+import { createAntdTheme } from "@/lib/antd-theme";
 import { type ColorScheme, persistColorScheme } from "@/lib/color-scheme";
-
-/** Brand seed — antd derives hover/active/background shades from it. */
-const BRAND_PRIMARY = "#4f46e5";
 
 interface ColorSchemeContextValue {
   colorScheme: ColorScheme;
@@ -54,6 +52,7 @@ export function ThemeProvider({
     });
   }, []);
 
+  const antdTheme = useMemo(() => createAntdTheme(colorScheme), [colorScheme]);
   const contextValue = useMemo(
     () => ({ colorScheme, toggleColorScheme }),
     [colorScheme, toggleColorScheme],
@@ -65,17 +64,7 @@ export function ThemeProvider({
         <ConfigProvider
           direction={directionFor(locale)}
           locale={locale === "ar" ? arEG : enUS}
-          theme={{
-            algorithm:
-              colorScheme === "dark"
-                ? antdTheme.darkAlgorithm
-                : antdTheme.defaultAlgorithm,
-            token: {
-              colorPrimary: BRAND_PRIMARY,
-              borderRadius: 8,
-              fontFamily: "var(--font-sans)",
-            },
-          }}
+          theme={antdTheme}
         >
           <App>{children}</App>
         </ConfigProvider>

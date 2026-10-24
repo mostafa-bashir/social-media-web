@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { auth } from "@/auth";
-import { AppShell } from "@/components/shell/AppShell";
+import AppShell from "@/components/ui/AppShell";
+import { WorkspaceSwitcher } from "@/features/workspaces";
 
 /**
  * proxy.ts already redirects when the URL's workspace isn't the session's
@@ -20,5 +21,9 @@ export default async function WorkspaceLayout({
   if (session?.activeWorkspace?.slug !== slug) {
     notFound();
   }
-  return <AppShell slug={slug}>{children}</AppShell>;
+  return (
+    <AppShell slug={slug} sidebarTop={<WorkspaceSwitcher />}>
+      {children}
+    </AppShell>
+  );
 }

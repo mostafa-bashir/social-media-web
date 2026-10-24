@@ -40,5 +40,6 @@
   "CANNOT_CHANGE_OWN_ROLE": "لا يمكنك تغيير دورك.",
   "CANNOT_REMOVE_SELF": "لا يمكنك إزالة نفسك.",
   "OWNER_CANNOT_LEAVE": "لا يمكن للمالك مغادرة مساحة العمل.",
-  "MEMBER_NOT_FOUND": "هذا العضو لم يعد موجودًا."
+  "MEMBER_NOT_FOUND": "هذا العضو لم يعد موجودًا.",
+  "CONFIRMATION_MISMATCH": "اكتب رابط مساحة العمل بدقة للتأكيد."
 }

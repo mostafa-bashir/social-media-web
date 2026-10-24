@@ -1,0 +1,89 @@
+{
+  "$description": "Brand identity: Indigo & Teal. Single source of truth for colors. Edit here, then run `pnpm tokens` to regenerate src/styles/design-tokens.css. The antd theme reads this file directly.",
+  "light": {
+    "brand-primary": "#4F46E5",
+    "brand-primary-hover": "#4338CA",
+    "brand-primary-active": "#3730A3",
+    "brand-primary-subtle": "#EEF2FF",
+    "brand-primary-border": "#C7D2FE",
+    "brand-primary-text": "#4338CA",
+
+    "growth": "#14B8A6",
+    "growth-strong": "#0F766E",
+    "growth-subtle": "#CCFBF1",
+    "growth-text": "#0F766E",
+
+    "accent": "#F59E0B",
+    "accent-subtle": "#FEF3C7",
+    "accent-text": "#92400E",
+
+    "danger": "#DC2626",
+    "danger-hover": "#B91C1C",
+    "danger-subtle": "#FEE2E2",
+    "danger-text": "#B91C1C",
+
+    "shell-bg": "#1E1B4B",
+    "shell-surface": "#2A2766",
+    "shell-border": "#312E81",
+    "shell-text": "#EEF2FF",
+    "shell-text-muted": "#A5B4FC",
+    "shell-active": "#4F46E5",
+
+    "bg-canvas": "#F8FAFC",
+    "bg-surface": "#FFFFFF",
+    "bg-tertiary": "#F1F5F9",
+    "bg-subtle": "#F8FAFC",
+
+    "border-default": "#E2E8F0",
+    "border-secondary": "#EEF2F7",
+
+    "text-primary": "#0F172A",
+    "text-secondary": "#475569",
+    "text-tertiary": "#64748B",
+    "text-placeholder": "#94A3B8",
+    "text-on-color": "#FFFFFF"
+  },
+  "dark": {
+    "brand-primary": "#6366F1",
+    "brand-primary-hover": "#818CF8",
+    "brand-primary-active": "#4F46E5",
+    "brand-primary-subtle": "#1E1B4B",
+    "brand-primary-border": "#3730A3",
+    "brand-primary-text": "#A5B4FC",
+
+    "growth": "#2DD4BF",
+    "growth-strong": "#14B8A6",
+    "growth-subtle": "#042F2E",
+    "growth-text": "#5EEAD4",
+
+    "accent": "#FBBF24",
+    "accent-subtle": "#3B2405",
+    "accent-text": "#FCD34D",
+
+    "danger": "#F87171",
+    "danger-hover": "#EF4444",
+    "danger-subtle": "#3F0D0D",
+    "danger-text": "#FCA5A5",
+
+    "shell-bg": "#110F2E",
+    "shell-surface": "#1E1B4B",
+    "shell-border": "#2E2A6B",
+    "shell-text": "#E0E7FF",
+    "shell-text-muted": "#A5B4FC",
+    "shell-active": "#4F46E5",
+
+    "bg-canvas": "#0B0B19",
+    "bg-surface": "#15142E",
+    "bg-tertiary": "#1C1B3A",
+    "bg-subtle": "#121128",
+
+    "border-default": "#2C2A55",
+    "border-secondary": "#232149",
+
+    "text-primary": "#E2E8F0",
+    "text-secondary": "#94A3B8",
+    "text-tertiary": "#7C8AA0",
+    "text-placeholder": "#64748B",
+    "text-on-color": "#FFFFFF"
+  }
+}

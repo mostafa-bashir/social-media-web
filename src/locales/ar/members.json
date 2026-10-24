@@ -9,7 +9,6 @@
   "you": "أنت",
   "changeRoleFor": "تغيير دور {name}",
   "roleChanged": "تم تحديث الدور.",
-  "removeConfirm": "إزالة {name} من مساحة العمل؟",
   "remove": "إزالة",
   "searchPlaceholder": "ابحث بالاسم أو البريد",
   "inviteButton": "دعوة عضو",
@@ -22,8 +21,19 @@
   },
   "pending": {
     "title": "دعوات معلّقة",
-    "revokeConfirm": "إلغاء الدعوة المرسلة إلى {email}؟",
     "revoke": "إلغاء",
-    "expires": "تنتهي في {date}"
-  }
+    "expires": "تنتهي في {date}",
+    "actionsFor": "إجراءات {email}",
+    "revokeTitle": "إلغاء الدعوة",
+    "revokeQuestion": "إلغاء الدعوة المرسلة إلى {email}؟"
+  },
+  "actionsFor": "إجراءات {name}",
+  "removeTitle": "إزالة عضو",
+  "removeWarning": "سيفقد الوصول إلى مساحة العمل فورًا. يمكنك دعوته مرة أخرى لاحقًا.",
+  "removed": "تمت إزالة {name} من مساحة العمل.",
+  "empty": {
+    "title": "لا يوجد أعضاء بعد",
+    "filtered": "لا يوجد أعضاء يطابقون بحثك."
+  },
+  "removeQuestion": "إزالة «{name}» من مساحة العمل؟"
 }

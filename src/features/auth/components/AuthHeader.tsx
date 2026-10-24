@@ -1,6 +1,6 @@
 import { Typography } from "antd";
 
-export function AuthHeader({
+export default function AuthHeader({
   title,
   subtitle,
 }: {
@@ -9,7 +9,7 @@ export function AuthHeader({
 }) {
   return (
     <div className="mb-6">
-      <Typography.Title level={3} className="!mb-1">
+      <Typography.Title level={3} className="mb-1!">
         {title}
       </Typography.Title>
       {subtitle ? (

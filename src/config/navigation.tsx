@@ -6,7 +6,7 @@ import {
 } from "@ant-design/icons";
 import type { ReactNode } from "react";
 
-import { Permission, type PermissionSlug } from "@/features/workspaces";
+import { Permission, type PermissionSlug } from "./permissions";
 
 import { routes } from "./routes";
 

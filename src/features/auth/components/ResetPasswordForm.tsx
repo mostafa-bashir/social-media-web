@@ -9,11 +9,12 @@ import { useErrorMessage } from "@/hooks/use-error-message";
 import { Link } from "@/i18n/navigation";
 import { passwordSchema } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
+import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { useResetPassword } from "../api/auth-api";
-import { AuthHeader } from "./AuthHeader";
+import AuthHeader from "./AuthHeader";
 
-export function ResetPasswordForm() {
+export default function ResetPasswordForm() {
   const t = useTranslations("auth.resetPassword");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
@@ -51,7 +52,7 @@ export function ResetPasswordForm() {
           type="error"
           showIcon
           title={errorMessage(reset.error)}
-          className="!mb-4"
+          className="mb-4!"
         />
       ) : null}
       <Form<{ password: string }>
@@ -70,6 +71,7 @@ export function ResetPasswordForm() {
         <Button
           type="primary"
           htmlType="submit"
+          className={PRIMARY_PILL_BUTTON_CLASS}
           block
           loading={reset.isPending}
         >

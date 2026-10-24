@@ -1,0 +1,27 @@
+{
+  "title": "Dashboard",
+  "welcome": "Welcome, {name}",
+  "subtitle": "Here’s what’s happening in {workspace}.",
+  "stats": {
+    "members": "Team members",
+    "invitations": "Pending invitations",
+    "roles": "Roles",
+    "pendingBadge": "{count, plural, one {# pending approval} other {# pending approval}}"
+  },
+  "modules": {
+    "title": "Coming next",
+    "soon": "Soon",
+    "social": {
+      "title": "Social accounts",
+      "description": "Connect your clients’ social accounts and publish from one place."
+    },
+    "analytics": {
+      "title": "Analytics",
+      "description": "Compare reach and engagement across every platform and account."
+    },
+    "tasks": {
+      "title": "Team tasks",
+      "description": "Plan content work with your team, linked to posts."
+    }
+  }
+}

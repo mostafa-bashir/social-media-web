@@ -13,10 +13,24 @@ export default defineConfig([
         { ignoreRestSiblings: true },
       ],
       "no-console": ["error", { allow: ["error"] }],
+      // Colours come from design tokens only (src/design-system/colors.tokens.json).
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+          message:
+            "No hex colours in components — use token utilities (bg-primary, text-text-secondary…) or var(--ds-*).",
+        },
+        {
+          selector: "TemplateElement[value.raw=/#[0-9a-fA-F]{3,8}\\b/]",
+          message:
+            "No hex colours in components — use token utilities (bg-primary, text-text-secondary…) or var(--ds-*).",
+        },
+      ],
     },
   },
   {
-    // Features talk to each other only through their public index.
+    // Inside a feature use relative imports; other features are off-limits.
     files: ["src/features/**/*.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
@@ -24,8 +38,9 @@ export default defineConfig([
         {
           patterns: [
             {
-              group: ["@/features/*/*"],
-              message: "Import from the feature's index (@/features/<name>).",
+              group: ["@/features/**"],
+              message:
+                "Features never import other features (fana golden rule). Move shared code to src/hooks, src/lib, src/config or src/components/ui.",
             },
           ],
         },
@@ -46,6 +61,11 @@ export default defineConfig([
               name: "antd",
               message:
                 "Wrap antd in a client component under src/components or a feature.",
+            },
+            {
+              name: "@ant-design/icons",
+              message:
+                "Icons use React context — render them inside a client component.",
             },
           ],
         },

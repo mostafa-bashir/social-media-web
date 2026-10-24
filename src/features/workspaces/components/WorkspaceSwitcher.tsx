@@ -1,19 +1,20 @@
 "use client";
 
-import { CheckOutlined, DownOutlined, PlusOutlined } from "@ant-design/icons";
+import { CheckOutlined, PlusOutlined, SwapOutlined } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, type MenuProps } from "antd";
 import { useSession } from "next-auth/react";
 import { useTranslations } from "next-intl";
 
 import { routes } from "@/config/routes";
+import { useSwitchWorkspace } from "@/hooks/use-switch-workspace";
 import { useRouter } from "@/i18n/navigation";
 
-import { useMe } from "../api/workspaces-api";
-import { useSwitchWorkspace } from "../hooks/use-switch-workspace";
+import { useMe } from "../api/get-me";
 
 const CREATE_KEY = "__create__";
 
-export function WorkspaceSwitcher() {
+/** Active workspace + switch menu, styled for the indigo shell. */
+export default function WorkspaceSwitcher() {
   const t = useTranslations("workspaces.switcher");
   const active = useSession().data?.activeWorkspace;
   const { data } = useMe();
@@ -49,13 +50,24 @@ export function WorkspaceSwitcher() {
         type="text"
         loading={switchingTo !== null}
         aria-label={t("label")}
-        className="!flex !h-auto max-w-full !items-center !gap-2 !px-2 !py-1"
+        className="shell-control flex! h-auto! w-full! items-center! gap-3! border! border-shell-border! bg-shell-surface/40! px-3! py-2!"
       >
-        <Avatar shape="square" size="small" src={active?.logoUrl ?? undefined}>
+        <Avatar
+          shape="square"
+          src={active?.logoUrl ?? undefined}
+          className="shrink-0 bg-growth!"
+        >
           {active?.name.charAt(0).toUpperCase()}
         </Avatar>
-        <span className="truncate font-medium">{active?.name}</span>
-        <DownOutlined className="text-xs" />
+        <span className="min-w-0 flex-1 text-start">
+          <span className="block truncate text-sm font-semibold">
+            {active?.name}
+          </span>
+          <span className="block truncate text-xs text-shell-text-muted">
+            {t("current")}
+          </span>
+        </span>
+        <SwapOutlined className="text-shell-text-muted" />
       </Button>
     </Dropdown>
   );

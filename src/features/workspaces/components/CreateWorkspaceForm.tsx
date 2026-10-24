@@ -7,15 +7,16 @@ import { useState } from "react";
 
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { useErrorMessage } from "@/hooks/use-error-message";
+import { useSwitchWorkspace } from "@/hooks/use-switch-workspace";
 import { nameSchema, workspaceSlugSchema } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
+import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
+import { getSlugAvailabilityQueryOptions } from "../api/get-slug-availability";
 import {
   type CreateWorkspaceInput,
-  slugAvailabilityQuery,
   useCreateWorkspace,
-} from "../api/workspaces-api";
-import { useSwitchWorkspace } from "../hooks/use-switch-workspace";
+} from "../api/workspace-mutations";
 import { slugify } from "../utils/slugify";
 
 const SLUG_CHECK_DEBOUNCE_MS = 400;
@@ -24,7 +25,7 @@ function browserTimezone(): string {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }
 
-export function CreateWorkspaceForm() {
+export default function CreateWorkspaceForm() {
   const t = useTranslations("workspaces.create");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
@@ -38,7 +39,7 @@ export function CreateWorkspaceForm() {
   const debouncedSlug = useDebouncedValue(slug, SLUG_CHECK_DEBOUNCE_MS);
   const slugValid = workspaceSlugSchema.safeParse(debouncedSlug).success;
   const availability = useQuery({
-    ...slugAvailabilityQuery(debouncedSlug),
+    ...getSlugAvailabilityQueryOptions(debouncedSlug),
     enabled: slugValid,
   });
 
@@ -61,7 +62,7 @@ export function CreateWorkspaceForm() {
 
   return (
     <>
-      <Typography.Title level={3} className="!mb-1">
+      <Typography.Title level={3} className="mb-1!">
         {t("title")}
       </Typography.Title>
       <Typography.Paragraph type="secondary">
@@ -72,7 +73,7 @@ export function CreateWorkspaceForm() {
           type="error"
           showIcon
           title={errorMessage(create.error)}
-          className="!mb-4"
+          className="mb-4!"
         />
       ) : null}
       <Form<CreateWorkspaceInput>
@@ -112,6 +113,7 @@ export function CreateWorkspaceForm() {
         <Button
           type="primary"
           htmlType="submit"
+          className={PRIMARY_PILL_BUTTON_CLASS}
           block
           loading={create.isPending || create.isSuccess}
           disabled={availability.data?.available === false}
