@@ -41,5 +41,18 @@
   "CANNOT_REMOVE_SELF": "لا يمكنك إزالة نفسك.",
   "OWNER_CANNOT_LEAVE": "لا يمكن للمالك مغادرة مساحة العمل.",
   "MEMBER_NOT_FOUND": "هذا العضو لم يعد موجودًا.",
-  "CONFIRMATION_MISMATCH": "اكتب رابط مساحة العمل بدقة للتأكيد."
+  "CONFIRMATION_MISMATCH": "اكتب رابط مساحة العمل بدقة للتأكيد.",
+  "CLIENT_NAME_TAKEN": "يوجد عميل بهذا الاسم بالفعل.",
+  "CLIENT_NOT_FOUND": "هذا العميل لم يعد موجودًا.",
+  "CLIENT_ARCHIVED": "هذا العميل مؤرشف. استعده أولًا.",
+  "CLIENT_HAS_ACCOUNTS": "افصل الحسابات الاجتماعية لهذا العميل قبل أرشفته.",
+  "UNSUPPORTED_IMAGE": "ارفع صورة PNG أو JPEG أو WebP.",
+  "FILE_REQUIRED": "اختر ملفًا لرفعه.",
+  "PAYLOAD_TOO_LARGE": "حجم هذا الملف كبير جدًا.",
+  "PLATFORM_NOT_CONFIGURED": "هذه المنصة غير مُعدّة بعد. اطلب من المسؤول إضافة مفاتيح التطبيق.",
+  "SOCIAL_ACCOUNT_NOT_FOUND": "هذا الحساب لم يعد مربوطًا.",
+  "SELECTION_EXPIRED": "انتهت صلاحية هذا الربط. ابدأ الربط من جديد.",
+  "UNKNOWN_SELECTION_ACCOUNT": "بعض الحسابات المختارة ليست جزءًا من هذا الربط.",
+  "ACCOUNT_CONNECTED_TO_OTHER_CLIENT": "أحد هذه الحسابات مربوط بعميل آخر.",
+  "ACCOUNT_CONNECT_CONFLICT": "رُبط أحد هذه الحسابات للتو من قِبل شخص آخر. حدّث الصفحة وحاول مجددًا."
 }

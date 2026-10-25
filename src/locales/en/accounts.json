@@ -1,0 +1,76 @@
+{
+  "title": "Social accounts",
+  "description": "Pages, profiles and channels connected for your clients.",
+  "connectButton": "Connect account",
+  "reconnect": "Reconnect",
+  "disconnect": "Disconnect",
+  "reconnectHint": "The platform stopped accepting this connection. Reconnect to keep publishing.",
+  "actionsFor": "Actions for {name}",
+  "platforms": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube"
+  },
+  "status": {
+    "active": "Connected",
+    "reconnect_required": "Reconnect needed"
+  },
+  "filters": {
+    "client": "Filter by client",
+    "allClients": "All clients",
+    "platform": "Filter by platform",
+    "allPlatforms": "All platforms"
+  },
+  "columns": {
+    "account": "Account",
+    "platform": "Platform",
+    "client": "Client",
+    "status": "Status"
+  },
+  "empty": {
+    "title": "No accounts connected yet",
+    "description": "Connect a Facebook Page, Instagram account or YouTube channel for one of your clients.",
+    "filtered": "No accounts match these filters."
+  },
+  "disconnectTitle": "Disconnect account",
+  "disconnectQuestion": "Disconnect “{name}”?",
+  "disconnectWarning": "We’ll stop using this account and delete its saved access. You can connect it again later.",
+  "disconnected": "{name} disconnected.",
+  "connect": {
+    "title": "Connect a social account",
+    "continue": "Continue",
+    "client": "Client",
+    "clientPlaceholder": "Choose a client",
+    "platform": "Platform",
+    "notConfigured": "Not set up yet",
+    "noClients": "Create a client first — every account belongs to a client.",
+    "redirectHint": "You’ll sign in on the platform and choose what to share. We never see your password."
+  },
+  "connectErrors": {
+    "ACCESS_DENIED": "The connection was cancelled on the platform. Nothing was connected.",
+    "STATE_INVALID": "This connection attempt expired. Please start again.",
+    "NO_ACCOUNTS": "We didn’t find any Pages, profiles or channels on that login.",
+    "PLATFORM_ERROR": "The platform didn’t respond as expected. Please try again in a moment."
+  },
+  "selection": {
+    "title": "Choose accounts to connect",
+    "description": "Pick the Pages, profiles or channels to add.",
+    "forClient": "For {name}",
+    "alreadyConnected": "Already connected",
+    "otherClient": "Belongs to another client",
+    "cancel": "Cancel",
+    "confirm": "{count, plural, =0 {Connect} one {Connect # account} other {Connect # accounts}}",
+    "connected": "{count, plural, one {# account connected.} other {# accounts connected.}}",
+    "backToAccounts": "Back to accounts"
+  },
+  "oauthError": {
+    "title": "Connection expired",
+    "description": "We couldn’t finish connecting that account because the attempt expired or was already used. Go back to your workspace and try again.",
+    "back": "Back to my workspaces"
+  },
+  "callback": {
+    "title": "Connecting account",
+    "finishing": "Finishing the connection…",
+    "back": "Back to accounts"
+  }
+}

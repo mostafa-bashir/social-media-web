@@ -8,6 +8,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  // Lets the dev server hydrate pages opened through a Cloudflare quick tunnel.
+  allowedDevOrigins: ["*.trycloudflare.com"],
   // A stray lockfile higher up the tree would otherwise be picked as the root.
   turbopack: { root: path.join(__dirname) },
   experimental: {

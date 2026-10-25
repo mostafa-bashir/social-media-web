@@ -11,6 +11,10 @@ export const Permission = {
   RolesUpdate: "roles.update",
   RolesDelete: "roles.delete",
   AuditLogsView: "audit_logs.view",
+  ClientsView: "clients.view",
+  ClientsManage: "clients.manage",
+  AccountsView: "accounts.view",
+  AccountsManage: "accounts.manage",
 } as const;
 
 export type PermissionSlug = (typeof Permission)[keyof typeof Permission];

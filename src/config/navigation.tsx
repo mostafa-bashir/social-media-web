@@ -1,5 +1,7 @@
 import {
+  ApiOutlined,
   DashboardOutlined,
+  ShopOutlined,
   SafetyCertificateOutlined,
   SettingOutlined,
   TeamOutlined,
@@ -27,6 +29,20 @@ export const WORKSPACE_NAV: NavItem[] = [
     labelKey: "dashboard",
     icon: <DashboardOutlined />,
     href: (slug) => routes.workspace(slug).home,
+  },
+  {
+    key: "clients",
+    labelKey: "clients",
+    icon: <ShopOutlined />,
+    href: (slug) => routes.workspace(slug).clients,
+    permission: Permission.ClientsView,
+  },
+  {
+    key: "accounts",
+    labelKey: "accounts",
+    icon: <ApiOutlined />,
+    href: (slug) => routes.workspace(slug).accounts,
+    permission: Permission.AccountsView,
   },
   {
     key: "members",

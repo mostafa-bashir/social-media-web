@@ -1,0 +1,47 @@
+{
+  "title": "Clients",
+  "description": "The brands and businesses your team manages. Each client owns its social accounts.",
+  "create": "New client",
+  "edit": "Edit",
+  "archive": "Archive",
+  "restore": "Restore",
+  "searchPlaceholder": "Search clients",
+  "filters": {
+    "active": "Active",
+    "archived": "Archived"
+  },
+  "columns": {
+    "client": "Client",
+    "timezone": "Timezone",
+    "accounts": "Social accounts"
+  },
+  "accountCount": "{count, plural, =0 {No accounts} one {# account} other {# accounts}}",
+  "actionsFor": "Actions for {name}",
+  "empty": {
+    "title": "No clients yet",
+    "description": "Add your first client, then connect their social accounts.",
+    "filtered": "No clients match your search.",
+    "archived": "No archived clients."
+  },
+  "archiveTitle": "Archive client",
+  "archiveQuestion": "Archive “{name}”?",
+  "archiveWarning": "Archived clients are hidden from pickers. You can restore them any time. Disconnect their social accounts first.",
+  "archived": "{name} archived.",
+  "restored": "{name} restored.",
+  "form": {
+    "createTitle": "New client",
+    "editTitle": "Edit client",
+    "save": "Save",
+    "name": "Client name",
+    "timezone": "Timezone",
+    "timezoneHint": "Posts for this client are scheduled and shown in this timezone.",
+    "timezonePlaceholder": "Same as the workspace",
+    "color": "Label colour",
+    "notes": "Notes",
+    "uploadLogo": "Upload logo",
+    "logoHint": "PNG, JPEG or WebP, up to 2 MB.",
+    "logoType": "Use a PNG, JPEG or WebP image.",
+    "logoSize": "The logo must be 2 MB or smaller.",
+    "logoUpdated": "Logo updated."
+  }
+}

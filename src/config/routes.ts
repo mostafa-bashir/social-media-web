@@ -18,6 +18,8 @@ export const routes = {
   workspace: (slug: string) => ({
     home: `/${slug}/dashboard`,
     members: `/${slug}/members`,
+    clients: `/${slug}/clients`,
+    accounts: `/${slug}/accounts`,
     roles: `/${slug}/roles`,
     settings: `/${slug}/settings`,
   }),
@@ -28,4 +30,5 @@ export const NON_WORKSPACE_SEGMENTS: ReadonlySet<string> = new Set([
   "auth",
   "workspaces",
   "invite",
+  "oauth-error",
 ]);

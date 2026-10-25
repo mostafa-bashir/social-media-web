@@ -17,7 +17,8 @@
   "groups": {
     "workspace": "Workspace",
     "team": "Team",
-    "monitoring": "Monitoring"
+    "monitoring": "Monitoring",
+    "clients": "Clients & accounts"
   },
   "permissions": {
     "workspace_update": "Edit workspace settings",
@@ -30,7 +31,11 @@
     "roles_create": "Create roles",
     "roles_update": "Edit roles",
     "roles_delete": "Delete roles",
-    "audit_logs_view": "View the audit log"
+    "audit_logs_view": "View the audit log",
+    "clients_view": "View clients",
+    "clients_manage": "Create, edit and archive clients",
+    "accounts_view": "View connected social accounts",
+    "accounts_manage": "Connect and disconnect social accounts"
   },
   "system": {
     "owner": {

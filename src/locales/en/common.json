@@ -13,6 +13,8 @@
   },
   "nav": {
     "dashboard": "Dashboard",
+    "clients": "Clients",
+    "accounts": "Social accounts",
     "members": "Members",
     "roles": "Roles & permissions",
     "settings": "Settings",

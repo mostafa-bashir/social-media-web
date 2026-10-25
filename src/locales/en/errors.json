@@ -41,5 +41,18 @@
   "CANNOT_REMOVE_SELF": "You can't remove yourself.",
   "OWNER_CANNOT_LEAVE": "The owner can't leave the workspace.",
   "MEMBER_NOT_FOUND": "This member no longer exists.",
-  "CONFIRMATION_MISMATCH": "Type the workspace URL exactly to confirm."
+  "CONFIRMATION_MISMATCH": "Type the workspace URL exactly to confirm.",
+  "CLIENT_NAME_TAKEN": "A client with this name already exists.",
+  "CLIENT_NOT_FOUND": "This client no longer exists.",
+  "CLIENT_ARCHIVED": "This client is archived. Restore it first.",
+  "CLIENT_HAS_ACCOUNTS": "Disconnect this client’s social accounts before archiving it.",
+  "UNSUPPORTED_IMAGE": "Upload a PNG, JPEG or WebP image.",
+  "FILE_REQUIRED": "Choose a file to upload.",
+  "PAYLOAD_TOO_LARGE": "This file is too large.",
+  "PLATFORM_NOT_CONFIGURED": "This platform isn’t set up yet. Ask your administrator to add its app keys.",
+  "SOCIAL_ACCOUNT_NOT_FOUND": "This account is no longer connected.",
+  "SELECTION_EXPIRED": "This connection has expired. Start connecting again.",
+  "UNKNOWN_SELECTION_ACCOUNT": "Some selected accounts aren’t part of this connection.",
+  "ACCOUNT_CONNECTED_TO_OTHER_CLIENT": "One of these accounts is already connected to another client.",
+  "ACCOUNT_CONNECT_CONFLICT": "One of these accounts was just connected by someone else. Refresh and try again."
 }

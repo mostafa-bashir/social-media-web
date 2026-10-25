@@ -17,7 +17,8 @@
   "groups": {
     "workspace": "مساحة العمل",
     "team": "الفريق",
-    "monitoring": "المتابعة"
+    "monitoring": "المتابعة",
+    "clients": "العملاء والحسابات"
   },
   "permissions": {
     "workspace_update": "تعديل إعدادات مساحة العمل",
@@ -30,7 +31,11 @@
     "roles_create": "إنشاء الأدوار",
     "roles_update": "تعديل الأدوار",
     "roles_delete": "حذف الأدوار",
-    "audit_logs_view": "عرض سجل النشاط"
+    "audit_logs_view": "عرض سجل النشاط",
+    "clients_view": "عرض العملاء",
+    "clients_manage": "إنشاء العملاء وتعديلهم وأرشفتهم",
+    "accounts_view": "عرض الحسابات الاجتماعية المربوطة",
+    "accounts_manage": "ربط الحسابات الاجتماعية وفصلها"
   },
   "system": {
     "owner": {
