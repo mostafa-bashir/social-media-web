@@ -3,6 +3,7 @@
 import { BarChartOutlined } from "@ant-design/icons";
 import { Alert } from "antd";
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 
 import ListingEmptyState from "@/components/ui/ListingEmptyState";
 import { routes } from "@/config/routes";
@@ -12,26 +13,32 @@ import { useRouter } from "@/i18n/navigation";
 
 import { useAnalyticsOverview } from "../api/get-analytics";
 import { useAnalyticsFilters } from "../hooks/use-analytics-filters";
-import AccountsComparison from "./AccountsComparison";
+import { usePostDrawer } from "../hooks/use-post-drawer";
 import AnalyticsFiltersBar from "./AnalyticsFiltersBar";
-import AnalyticsKpis from "./AnalyticsKpis";
 import AnalyticsNotice from "./AnalyticsNotice";
-import AnalyticsTrendChart from "./AnalyticsTrendChart";
-import TopPostsTable from "./TopPostsTable";
+import AnalyticsTabs from "./AnalyticsTabs";
+import PostAnalyticsDrawer from "./PostAnalyticsDrawer";
 
-export default function AnalyticsPage() {
+/**
+ * Everything the analytics sections share: filters, section tabs, account
+ * notices and the post drawer. The overview query is the same one the
+ * Overview tab reads, so it is fetched once.
+ */
+export default function AnalyticsShell({ children }: { children: ReactNode }) {
   const t = useTranslations("analytics");
   const slug = useActiveWorkspaceSlug() ?? "";
   const router = useRouter();
   const errorMessage = useErrorMessage();
   const filters = useAnalyticsFilters();
-  const overview = useAnalyticsOverview(filters.scope);
+  const overview = useAnalyticsOverview(filters.scope, filters.compare);
+  const drawer = usePostDrawer();
   const accounts = overview.data?.accounts ?? [];
   const noAccounts = overview.isSuccess && accounts.length === 0;
 
   return (
     <>
       <AnalyticsFiltersBar filters={filters} />
+      <AnalyticsTabs />
       {overview.error ? (
         <Alert
           type="error"
@@ -53,23 +60,14 @@ export default function AnalyticsPage() {
       ) : (
         <div className="flex flex-col gap-6">
           <AnalyticsNotice accounts={accounts} />
-          <AnalyticsKpis
-            totals={overview.data?.totals}
-            previous={overview.data?.previousTotals}
-            loading={overview.isLoading}
-          />
-          <AnalyticsTrendChart scope={filters.scope} />
-          <AccountsComparison
-            accounts={accounts}
-            loading={overview.isFetching}
-          />
-          {/* Keyed by scope, so a new filter starts again at page 1. */}
-          <TopPostsTable
-            key={JSON.stringify(filters.scope)}
-            scope={filters.scope}
-          />
+          {children}
         </div>
       )}
+      <PostAnalyticsDrawer
+        postRef={drawer.openPost}
+        timezone={filters.scope.timezone}
+        onClose={drawer.close}
+      />
     </>
   );
 }

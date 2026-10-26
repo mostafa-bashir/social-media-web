@@ -77,3 +77,15 @@ The antd theme (`lib/antd-theme.ts`) reads the same JSON, so CSS and components 
 - Sign-in (password or email code) goes through the Auth.js credentials provider, which calls the API. Tokens live in the encrypted session cookie; the refresh token never reaches the browser.
 - Tokens are refreshed **only** via `useSession().update()` (a POST that persists the cookie), driven by `AuthSessionProvider` shortly before expiry and on a 401. Server Components never refresh, so a rotated refresh token can't be lost.
 - Switching workspace calls `update({ action: "switch-workspace", slug })`; the API re-checks membership.
+
+## Analytics hub
+
+`features/analytics` renders `/[slug]/analytics` as tabs (Overview, Accounts → account
+drill-down, Posts) under one layout with a shared filters bar. Filters (client, platform,
+account, range, compare-to, granularity) live in the URL, so every report can be bookmarked or
+shared, and tab links keep them. The post drawer opens from `?post=<source>:<id>`.
+
+Charts use Recharts with colours only from the `--ds-chart-*` tokens. Platforms keep fixed
+slots (Facebook 1, Instagram 2, YouTube 3) so a series never changes colour with filters; the
+slots were checked for colour-blind separation with the dataviz palette validator. Figures a
+platform doesn't report show as "—", never 0.

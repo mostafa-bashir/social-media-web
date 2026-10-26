@@ -9,27 +9,91 @@
     "range": "Date range",
     "lastDays": "{days} days",
     "custom": "Custom",
-    "customRange": "Custom date range"
+    "customRange": "Custom date range",
+    "compare": "Compare with",
+    "compareModes": {
+      "previous": "vs previous period",
+      "year": "vs last year",
+      "none": "No comparison"
+    }
+  },
+  "tabs": {
+    "label": "Analytics sections",
+    "overview": "Overview",
+    "accounts": "Accounts",
+    "posts": "Posts"
   },
   "kpis": {
     "followers": "Followers",
+    "followersGained": "New followers",
     "views": "Views",
     "engagements": "Engagements",
     "engagementRate": "Engagement rate",
+    "avgEngagementPerPost": "Engagement per post",
     "postsPublished": "Posts published",
-    "vsPrevious": "{change} vs previous"
+    "watchTimeMinutes": "Watch time (min)",
+    "profileViews": "Profile visits",
+    "shares": "Shares",
+    "saves": "Saves",
+    "vsPrevious": "{change} vs previous",
+    "vsYear": "{change} vs last year"
+  },
+  "insights": {
+    "title": "Highlights",
+    "changeUp": "{metric} went up {change} {period}.",
+    "changeDown": "{metric} went down {change} {period}.",
+    "previousPeriod": "compared with the previous period",
+    "lastYear": "compared with the same days last year",
+    "followersUp": "{count} more followers than at the start of the range.",
+    "followersDown": "{count} fewer followers than at the start of the range.",
+    "topPlatform": "{platform} has the best engagement rate, at {rate}.",
+    "cadence": "About {perWeek} posts a week in this range."
   },
   "trend": {
     "title": "Trend",
     "metric": "Metric",
-    "legend": "Platforms",
+    "groupBy": "Split by",
+    "granularity": "Interval",
+    "legend": "Lines",
     "empty": "No figures for this range yet.",
+    "total": "Total",
+    "previousPeriod": "Previous period",
+    "lastYear": "Last year",
+    "postsPublished": "Posts published",
+    "postsInBucket": "{count, plural, one {# post published} other {# posts published}}",
+    "moreAccounts": "{count, plural, one {# more account is} other {# more accounts are}} left out; the lines show the accounts with the highest totals.",
+    "weekOf": "Week of {date}",
+    "partialBuckets": "The first and last intervals can cover only part of a week or month.",
+    "groups": {
+      "total": "Total",
+      "platform": "Platform",
+      "account": "Account"
+    },
+    "granularities": {
+      "day": "Day",
+      "week": "Week",
+      "month": "Month"
+    },
     "metrics": {
       "views": "Views",
       "engagements": "Engagements",
+      "engagementRate": "Engagement rate",
+      "likes": "Likes",
+      "comments": "Comments",
+      "shares": "Shares",
+      "saves": "Saves",
+      "watchTimeMinutes": "Watch time (min)",
       "followers": "Followers",
-      "watchTimeMinutes": "Watch time (min)"
+      "followersGained": "New followers",
+      "followersLost": "Lost followers",
+      "profileViews": "Profile visits"
     }
+  },
+  "platforms": {
+    "title": "By platform",
+    "summary": "{followers} followers · {rate} engagement rate · {posts} posts",
+    "views": "Share of views",
+    "engagements": "Share of engagements"
   },
   "accounts": {
     "title": "Accounts",
@@ -44,6 +108,11 @@
       "status": "Analytics"
     }
   },
+  "account": {
+    "back": "Back to all accounts",
+    "followerFlow": "New and lost followers",
+    "engagementMix": "Engagement by type"
+  },
   "sync": {
     "reconnect": "Reconnect to enable",
     "failed": "Sync failed",
@@ -51,26 +120,64 @@
     "updated": "Updated {when}"
   },
   "posts": {
-    "title": "Top posts",
+    "topTitle": "Top posts",
     "sort": "Sort by",
+    "sortBy": "Sort: {sort}",
     "sorts": {
       "views": "Views",
       "engagements": "Engagements",
+      "engagementRate": "Engagement rate",
+      "reach": "Reach",
+      "likes": "Likes",
+      "comments": "Comments",
+      "shares": "Shares",
+      "saves": "Saves",
       "publishedAt": "Newest"
     },
+    "seeAll": "See all {count} posts",
+    "search": "Search captions",
+    "account": "Filter by account",
+    "allAccounts": "All accounts",
+    "type": "Filter by type",
+    "allTypes": "All types",
     "empty": "No posts published in this range",
     "emptyDescription": "Posts from the connected accounts show up here with their results.",
+    "emptyFiltered": "No posts match these filters.",
     "noCaption": "No caption",
     "viewOnPlatform": "View on the platform",
     "columns": {
       "post": "Post",
       "views": "Views",
+      "reach": "Reach",
       "engagements": "Engagements",
+      "engagementRate": "Engagement rate",
       "likes": "Likes",
       "comments": "Comments",
+      "shares": "Shares",
+      "saves": "Saves",
+      "watchTimeMinutes": "Watch time (min)",
       "link": "Link"
     },
     "external": "Posted outside the app"
+  },
+  "contentTypes": {
+    "image": "Image",
+    "video": "Video",
+    "reel": "Reel",
+    "carousel": "Carousel",
+    "text": "Text"
+  },
+  "post": {
+    "title": "Post results",
+    "noCaption": "No caption",
+    "viewOnPlatform": "View on the platform",
+    "noMetrics": "No results yet. They appear after the next sync, within a few hours.",
+    "vsAverage": "{change} vs the account's average",
+    "updated": "Updated {when}",
+    "averageOf": "Average of {count, plural, one {# post} other {# posts}}",
+    "history": "Over time",
+    "historyMetric": "Metric over time",
+    "historyPending": "The history fills in as the post is read each day. Check back tomorrow."
   },
   "notice": {
     "openAccounts": "Open social accounts",

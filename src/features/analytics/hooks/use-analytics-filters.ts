@@ -8,9 +8,16 @@ import { useClientOption } from "@/hooks/use-client-options";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { browserTimezone, dayjs } from "@/lib/dayjs";
 
-import { type AnalyticsScope, RANGE_PRESETS, type RangePreset } from "../types";
+import {
+  type AnalyticsScope,
+  COMPARE_MODES,
+  type CompareMode,
+  RANGE_PRESETS,
+  type RangePreset,
+} from "../types";
 
 const DEFAULT_PRESET: RangePreset = 30;
+const DEFAULT_COMPARE: CompareMode = "previous";
 const DAY_FORMAT = "YYYY-MM-DD";
 const DAY_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -20,6 +27,7 @@ export interface AnalyticsFilters {
   range: RangeChoice;
   clientId?: string;
   platform?: SocialPlatform;
+  compare: CompareMode;
   scope: AnalyticsScope;
   update: (change: FilterChange) => void;
 }
@@ -28,7 +36,8 @@ export type FilterChange =
   | { range: RangePreset }
   | { from: string; to: string }
   | { clientId: string | undefined }
-  | { platform: SocialPlatform | undefined };
+  | { platform: SocialPlatform | undefined }
+  | { compare: CompareMode };
 
 /**
  * Report filters live in the URL, so a report can be bookmarked or shared.
@@ -52,6 +61,10 @@ export function useAnalyticsFilters(): AnalyticsFilters {
   const preset =
     RANGE_PRESETS.find((days) => String(days) === params.get("range")) ??
     DEFAULT_PRESET;
+
+  const compare =
+    COMPARE_MODES.find((mode) => mode === params.get("compare")) ??
+    DEFAULT_COMPARE;
 
   const client = useClientOption(clientId);
   const timezone = (clientId && client.data?.timezone) || browserTimezone();
@@ -84,6 +97,11 @@ export function useAnalyticsFilters(): AnalyticsFilters {
         set("to", change.to);
       } else if ("clientId" in change) {
         set("clientId", change.clientId);
+      } else if ("compare" in change) {
+        set(
+          "compare",
+          change.compare === DEFAULT_COMPARE ? undefined : change.compare,
+        );
       } else {
         set("platform", change.platform);
       }
@@ -96,6 +114,7 @@ export function useAnalyticsFilters(): AnalyticsFilters {
     range: isCustom ? "custom" : preset,
     clientId,
     platform,
+    compare,
     scope,
     update,
   };

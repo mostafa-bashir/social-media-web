@@ -25,6 +25,10 @@ export const routes = {
     post: (postId: string) => `/${slug}/posts/${postId}`,
     media: `/${slug}/media`,
     analytics: `/${slug}/analytics`,
+    analyticsAccounts: `/${slug}/analytics/accounts`,
+    analyticsAccount: (accountId: string) =>
+      `/${slug}/analytics/accounts/${accountId}`,
+    analyticsPosts: `/${slug}/analytics/posts`,
     roles: `/${slug}/roles`,
     settings: `/${slug}/settings`,
   }),

@@ -45,7 +45,8 @@
 
     "chart-1": "#2A78D6",
     "chart-2": "#EB6834",
-    "chart-3": "#1BAF7A"
+    "chart-3": "#1BAF7A",
+    "chart-4": "#EDA100"
   },
   "dark": {
     "brand-primary": "#6366F1",
@@ -92,6 +93,7 @@
 
     "chart-1": "#3987E5",
     "chart-2": "#D95926",
-    "chart-3": "#199E70"
+    "chart-3": "#199E70",
+    "chart-4": "#C98500"
   }
 }

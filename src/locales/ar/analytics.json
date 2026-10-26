@@ -9,27 +9,91 @@
     "range": "الفترة",
     "lastDays": "{days} يومًا",
     "custom": "مخصصة",
-    "customRange": "فترة مخصصة"
+    "customRange": "فترة مخصصة",
+    "compare": "المقارنة مع",
+    "compareModes": {
+      "previous": "مقارنة بالفترة السابقة",
+      "year": "مقارنة بالعام الماضي",
+      "none": "بدون مقارنة"
+    }
+  },
+  "tabs": {
+    "label": "أقسام التحليلات",
+    "overview": "نظرة عامة",
+    "accounts": "الحسابات",
+    "posts": "المنشورات"
   },
   "kpis": {
     "followers": "المتابعون",
+    "followersGained": "متابعون جدد",
     "views": "المشاهدات",
     "engagements": "التفاعلات",
     "engagementRate": "معدل التفاعل",
+    "avgEngagementPerPost": "التفاعل لكل منشور",
     "postsPublished": "المنشورات المنشورة",
-    "vsPrevious": "{change} مقارنة بالفترة السابقة"
+    "watchTimeMinutes": "مدة المشاهدة (دقيقة)",
+    "profileViews": "زيارات الملف",
+    "shares": "المشاركات",
+    "saves": "الحفظ",
+    "vsPrevious": "{change} مقارنة بالفترة السابقة",
+    "vsYear": "{change} مقارنة بالعام الماضي"
+  },
+  "insights": {
+    "title": "أبرز النقاط",
+    "changeUp": "ارتفع مقياس {metric} بنسبة {change} {period}.",
+    "changeDown": "انخفض مقياس {metric} بنسبة {change} {period}.",
+    "previousPeriod": "مقارنة بالفترة السابقة",
+    "lastYear": "مقارنة بالأيام نفسها من العام الماضي",
+    "followersUp": "زاد عدد المتابعين بمقدار {count} منذ بداية الفترة.",
+    "followersDown": "نقص عدد المتابعين بمقدار {count} منذ بداية الفترة.",
+    "topPlatform": "أعلى معدل تفاعل على {platform}، بنسبة {rate}.",
+    "cadence": "نحو {perWeek} منشورات أسبوعيًا في هذه الفترة."
   },
   "trend": {
     "title": "الاتجاه",
     "metric": "المقياس",
-    "legend": "المنصات",
+    "groupBy": "التقسيم حسب",
+    "granularity": "الفاصل الزمني",
+    "legend": "الخطوط",
     "empty": "لا توجد أرقام لهذه الفترة بعد.",
+    "total": "الإجمالي",
+    "previousPeriod": "الفترة السابقة",
+    "lastYear": "العام الماضي",
+    "postsPublished": "المنشورات المنشورة",
+    "postsInBucket": "{count, plural, one {نُشر منشور واحد} two {نُشر منشوران} few {نُشرت # منشورات} many {نُشر # منشورًا} other {نُشر # منشور}}",
+    "moreAccounts": "{count, plural, one {استُبعد حساب واحد} two {استُبعد حسابان} few {استُبعدت # حسابات} many {استُبعد # حسابًا} other {استُبعد # حساب}}؛ تعرض الخطوط الحسابات ذات المجاميع الأعلى.",
+    "weekOf": "أسبوع {date}",
+    "partialBuckets": "قد تغطي الفترتان الأولى والأخيرة جزءًا فقط من الأسبوع أو الشهر.",
+    "groups": {
+      "total": "الإجمالي",
+      "platform": "المنصة",
+      "account": "الحساب"
+    },
+    "granularities": {
+      "day": "يوم",
+      "week": "أسبوع",
+      "month": "شهر"
+    },
     "metrics": {
       "views": "المشاهدات",
       "engagements": "التفاعلات",
+      "engagementRate": "معدل التفاعل",
+      "likes": "الإعجابات",
+      "comments": "التعليقات",
+      "shares": "المشاركات",
+      "saves": "الحفظ",
+      "watchTimeMinutes": "مدة المشاهدة (دقيقة)",
       "followers": "المتابعون",
-      "watchTimeMinutes": "مدة المشاهدة (دقيقة)"
+      "followersGained": "متابعون جدد",
+      "followersLost": "متابعون فُقدوا",
+      "profileViews": "زيارات الملف"
     }
+  },
+  "platforms": {
+    "title": "حسب المنصة",
+    "summary": "{followers} متابع · معدل تفاعل {rate} · {posts} منشور",
+    "views": "حصة المشاهدات",
+    "engagements": "حصة التفاعلات"
   },
   "accounts": {
     "title": "الحسابات",
@@ -44,6 +108,11 @@
       "status": "التحليلات"
     }
   },
+  "account": {
+    "back": "العودة إلى كل الحسابات",
+    "followerFlow": "المتابعون الجدد والمفقودون",
+    "engagementMix": "التفاعل حسب النوع"
+  },
   "sync": {
     "reconnect": "أعد الربط للتفعيل",
     "failed": "فشلت المزامنة",
@@ -51,26 +120,64 @@
     "updated": "حُدّثت {when}"
   },
   "posts": {
-    "title": "أفضل المنشورات",
+    "topTitle": "أفضل المنشورات",
     "sort": "الترتيب حسب",
+    "sortBy": "الترتيب: {sort}",
     "sorts": {
       "views": "المشاهدات",
       "engagements": "التفاعلات",
+      "engagementRate": "معدل التفاعل",
+      "reach": "الوصول",
+      "likes": "الإعجابات",
+      "comments": "التعليقات",
+      "shares": "المشاركات",
+      "saves": "الحفظ",
       "publishedAt": "الأحدث"
     },
+    "seeAll": "عرض كل المنشورات ({count})",
+    "search": "البحث في النصوص",
+    "account": "التصفية حسب الحساب",
+    "allAccounts": "كل الحسابات",
+    "type": "التصفية حسب النوع",
+    "allTypes": "كل الأنواع",
     "empty": "لم تُنشر منشورات في هذه الفترة",
     "emptyDescription": "تظهر هنا منشورات الحسابات المربوطة مع نتائجها.",
+    "emptyFiltered": "لا توجد منشورات تطابق هذه التصفية.",
     "noCaption": "بدون نص",
     "viewOnPlatform": "عرض على المنصة",
     "columns": {
       "post": "المنشور",
       "views": "المشاهدات",
+      "reach": "الوصول",
       "engagements": "التفاعلات",
+      "engagementRate": "معدل التفاعل",
       "likes": "الإعجابات",
       "comments": "التعليقات",
+      "shares": "المشاركات",
+      "saves": "الحفظ",
+      "watchTimeMinutes": "مدة المشاهدة (دقيقة)",
       "link": "الرابط"
     },
     "external": "نُشر خارج التطبيق"
+  },
+  "contentTypes": {
+    "image": "صورة",
+    "video": "فيديو",
+    "reel": "ريلز",
+    "carousel": "منشور متعدد الصور",
+    "text": "نص"
+  },
+  "post": {
+    "title": "نتائج المنشور",
+    "noCaption": "بدون نص",
+    "viewOnPlatform": "عرض على المنصة",
+    "noMetrics": "لا توجد نتائج بعد. تظهر بعد المزامنة التالية خلال بضع ساعات.",
+    "vsAverage": "{change} مقارنة بمتوسط الحساب",
+    "updated": "حُدّثت {when}",
+    "averageOf": "متوسط {count, plural, one {منشور واحد} two {منشورين} few {# منشورات} many {# منشورًا} other {# منشور}}",
+    "history": "عبر الزمن",
+    "historyMetric": "المقياس عبر الزمن",
+    "historyPending": "يكتمل السجل مع قراءة المنشور كل يوم. عد غدًا."
   },
   "notice": {
     "openAccounts": "فتح الحسابات الاجتماعية",

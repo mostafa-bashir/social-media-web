@@ -1,10 +1,14 @@
 "use client";
 
 import type { TableProps } from "antd";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import ListingTable from "@/components/ui/ListingTable";
 import PlatformBadge from "@/components/ui/PlatformBadge";
+import { routes } from "@/config/routes";
+import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
+import { Link } from "@/i18n/navigation";
 
 import { useMetricFormat } from "../hooks/use-metric-format";
 import { PLATFORM_SERIES } from "../lib/platform-series";
@@ -21,6 +25,8 @@ export default function AccountsComparison({
 }) {
   const t = useTranslations("analytics.accounts");
   const fmt = useMetricFormat();
+  const slug = useActiveWorkspaceSlug() ?? "";
+  const query = Object.fromEntries(useSearchParams().entries());
   const topViews = Math.max(0, ...accounts.map((a) => a.views ?? 0));
 
   const columns: TableProps<AnalyticsAccount>["columns"] = [
@@ -29,9 +35,15 @@ export default function AccountsComparison({
       key: "account",
       render: (_, account) => (
         <div className="flex min-w-0 flex-col gap-1">
-          <span className="truncate font-medium text-text-primary">
+          <Link
+            href={{
+              pathname: routes.workspace(slug).analyticsAccount(account.id),
+              query,
+            }}
+            className="truncate font-medium text-text-primary hover:text-primary-text"
+          >
             {account.displayName}
-          </span>
+          </Link>
           <PlatformBadge platform={account.platform} />
         </div>
       ),

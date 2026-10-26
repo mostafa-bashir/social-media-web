@@ -12,7 +12,7 @@ import type {
   AnalyticsFilters,
   RangeChoice,
 } from "../hooks/use-analytics-filters";
-import { RANGE_PRESETS } from "../types";
+import { COMPARE_MODES, type CompareMode, RANGE_PRESETS } from "../types";
 
 const DAY_FORMAT = "YYYY-MM-DD";
 /** The API caps a report at a year plus a leap day. */
@@ -87,6 +87,16 @@ export default function AnalyticsFiltersBar({
           }}
         />
       ) : null}
+      <Select<CompareMode>
+        className="w-full sm:w-48!"
+        aria-label={t("compare")}
+        value={filters.compare}
+        options={COMPARE_MODES.map((value) => ({
+          value,
+          label: t(`compareModes.${value}`),
+        }))}
+        onChange={(compare) => filters.update({ compare })}
+      />
     </div>
   );
 }

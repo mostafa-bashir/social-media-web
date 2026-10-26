@@ -9,11 +9,21 @@ const count = z.number().nullable();
 export const kpiTotalsSchema = z.object({
   followers: count,
   followerChange: count,
+  followersGained: count,
+  followersLost: count,
   views: count,
   engagements: count,
   engagementRate: count,
+  likes: count,
+  comments: count,
+  shares: count,
+  saves: count,
   watchTimeMinutes: count,
+  profileViews: count,
   postsPublished: z.number(),
+  postsMeasured: z.number(),
+  postEngagements: count,
+  avgEngagementPerPost: count,
 });
 export type KpiTotals = z.infer<typeof kpiTotalsSchema>;
 
@@ -33,9 +43,9 @@ const dayRangeSchema = z.object({ from: z.string(), to: z.string() });
 
 export const overviewSchema = z.object({
   range: dayRangeSchema,
-  previousRange: dayRangeSchema,
+  comparisonRange: dayRangeSchema.nullable(),
   totals: kpiTotalsSchema,
-  previousTotals: kpiTotalsSchema,
+  comparisonTotals: kpiTotalsSchema.nullable(),
   platforms: z.array(
     z.object({ platform: platformSchema, totals: kpiTotalsSchema }),
   ),
@@ -46,32 +56,65 @@ export type AnalyticsOverview = z.infer<typeof overviewSchema>;
 export const TREND_METRICS = [
   "views",
   "engagements",
-  "followers",
+  "engagementRate",
+  "likes",
+  "comments",
+  "shares",
+  "saves",
   "watchTimeMinutes",
+  "followers",
+  "followersGained",
+  "followersLost",
+  "profileViews",
 ] as const;
 export type TrendMetric = (typeof TREND_METRICS)[number];
 
+export const TREND_GROUPS = ["total", "platform", "account"] as const;
+export type TrendGroup = (typeof TREND_GROUPS)[number];
+
+export const GRANULARITIES = ["day", "week", "month"] as const;
+export type Granularity = (typeof GRANULARITIES)[number];
+
+const seriesSchema = z.object({
+  key: z.string(),
+  label: z.string(),
+  platform: platformSchema.nullable(),
+  points: z.array(z.object({ date: z.string(), value: z.number() })),
+});
+export type TrendSeries = z.infer<typeof seriesSchema>;
+
 export const timeseriesSchema = z.object({
   metric: z.enum(TREND_METRICS),
-  series: z.array(
-    z.object({
-      key: z.string(),
-      label: z.string(),
-      platform: platformSchema.nullable(),
-      points: z.array(z.object({ date: z.string(), value: z.number() })),
-    }),
-  ),
+  granularity: z.enum(GRANULARITIES),
+  series: z.array(seriesSchema),
+  comparison: z.array(seriesSchema).nullable(),
+  publications: z.array(z.object({ date: z.string(), count: z.number() })),
 });
 export type Timeseries = z.infer<typeof timeseriesSchema>;
+
+export const CONTENT_TYPES = [
+  "image",
+  "video",
+  "reel",
+  "carousel",
+  "text",
+] as const;
+export const contentTypeSchema = z.enum(CONTENT_TYPES);
+export type ContentType = z.infer<typeof contentTypeSchema>;
+
+export const POST_SOURCES = ["app", "external"] as const;
+export type PostSource = (typeof POST_SOURCES)[number];
 
 export const analyticsPostSchema = z.object({
   id: z.string(),
   /** `external` = found on the account, not published from the app. */
-  source: z.enum(["app", "external"]),
+  source: z.enum(POST_SOURCES),
   postId: z.string().nullable(),
   clientId: z.string(),
+  accountId: z.string().nullable(),
   platform: platformSchema,
   accountName: z.string(),
+  contentType: contentTypeSchema.nullable(),
   caption: z.string(),
   thumbnail: z
     .object({
@@ -86,11 +129,46 @@ export const analyticsPostSchema = z.object({
 });
 export type AnalyticsPost = z.infer<typeof analyticsPostSchema>;
 
-export const POST_SORTS = ["views", "engagements", "publishedAt"] as const;
+const postCountersSchema = postMetricsSchema.omit({ fetchedAt: true });
+
+export const postDetailSchema = z.object({
+  post: analyticsPostSchema,
+  history: z.array(postCountersSchema.extend({ date: z.string() })),
+  accountAverage: z
+    .object({
+      posts: z.number(),
+      views: count,
+      engagements: count,
+      engagementRate: count,
+    })
+    .nullable(),
+});
+export type PostDetail = z.infer<typeof postDetailSchema>;
+
+export const POST_SORTS = [
+  "views",
+  "engagements",
+  "engagementRate",
+  "reach",
+  "likes",
+  "comments",
+  "shares",
+  "saves",
+  "publishedAt",
+] as const;
 export type PostSort = (typeof POST_SORTS)[number];
+
+export interface PostFilters {
+  accountId?: string;
+  contentType?: ContentType;
+  search?: string;
+}
 
 export const RANGE_PRESETS = [7, 30, 90] as const;
 export type RangePreset = (typeof RANGE_PRESETS)[number];
+
+export const COMPARE_MODES = ["previous", "year", "none"] as const;
+export type CompareMode = (typeof COMPARE_MODES)[number];
 
 /** What every report is scoped by; dates are inclusive `YYYY-MM-DD` days. */
 export interface AnalyticsScope {
@@ -98,5 +176,6 @@ export interface AnalyticsScope {
   to: string;
   clientId?: string;
   platform?: SocialPlatform;
+  accountId?: string;
   timezone: string;
 }

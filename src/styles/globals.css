@@ -66,6 +66,7 @@
   --color-chart-1: var(--ds-chart-1);
   --color-chart-2: var(--ds-chart-2);
   --color-chart-3: var(--ds-chart-3);
+  --color-chart-4: var(--ds-chart-4);
 
   /* App shell (sidebar / canvas around the content card) */
   --color-shell: var(--ds-shell-bg);
