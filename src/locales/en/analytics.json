@@ -22,7 +22,8 @@
     "overview": "Overview",
     "accounts": "Accounts",
     "posts": "Posts",
-    "content": "Content"
+    "content": "Content",
+    "audience": "Audience"
   },
   "kpis": {
     "followers": "Followers",
@@ -270,6 +271,86 @@
       "title": "Working lately for you",
       "empty": "Nothing has clearly beaten these accounts' usual engagement in the last {days} days yet.",
       "lift": "{lift} · {posts, plural, one {# post} other {# posts}}"
+    }
+  },
+  "audience": {
+    "noData": "Not available for these accounts.",
+    "empty": {
+      "title": "No audience data yet",
+      "description": "Instagram shares demographics once an account has 100 followers; YouTube shares its viewers' age, gender and countries. Facebook no longer provides them. Data appears after the next sync."
+    },
+    "summary": {
+      "sentence": "Mostly {gender} aged {age}{place}",
+      "place": " in {country}",
+      "placeMena": " in {country} (MENA)",
+      "genders": {
+        "female": "women",
+        "male": "men"
+      },
+      "share": "{share} of the audience is in this group.",
+      "shareEstimated": "About {share} of the audience, estimated from the separate age and gender splits.",
+      "none": "Not enough audience data to describe the core audience yet."
+    },
+    "basis": {
+      "followers": "Based on Instagram followers.",
+      "viewers": "Based on YouTube viewers (share of views).",
+      "mixed": "Blends Instagram followers and YouTube viewers, weighted by account size."
+    },
+    "facebookNote": "{count, plural, one {# Facebook account} other {# Facebook accounts}} not included: Facebook no longer shares Page demographics.",
+    "limits": "Platforms don't share interests, languages or income, so the audience is described by age, gender and place only.",
+    "ageGender": "Age and gender",
+    "age": "Age",
+    "genders": {
+      "female": "Women",
+      "male": "Men",
+      "unknown": "Unspecified"
+    },
+    "pyramidRow": "Age {age}: women {female}, men {male}",
+    "unspecifiedGender": "{share} didn't specify a gender (not shown).",
+    "lifeStages": {
+      "title": "Life stage",
+      "teens": "Teens (13–17)",
+      "youngAdults": "Young adults (18–24)",
+      "adults": "Adults (25–34)",
+      "established": "Established (35–44)",
+      "mature": "Mature (45+)"
+    },
+    "countries": "Top countries",
+    "regions": "Regions",
+    "cities": "Top cities",
+    "menaShare": "{share} of the audience is in the Middle East & North Africa (MENA).",
+    "subRegions": {
+      "northernAfrica": "Northern Africa",
+      "easternAfrica": "Eastern Africa",
+      "middleAfrica": "Middle Africa",
+      "southernAfrica": "Southern Africa",
+      "westernAfrica": "Western Africa",
+      "caribbean": "Caribbean",
+      "centralAmerica": "Central America",
+      "southAmerica": "South America",
+      "northernAmerica": "Northern America",
+      "centralAsia": "Central Asia",
+      "easternAsia": "Eastern Asia",
+      "southEasternAsia": "South-eastern Asia",
+      "southernAsia": "Southern Asia",
+      "westernAsia": "Western Asia",
+      "easternEurope": "Eastern Europe",
+      "northernEurope": "Northern Europe",
+      "southernEurope": "Southern Europe",
+      "westernEurope": "Western Europe",
+      "australiaNewZealand": "Australia & New Zealand",
+      "melanesia": "Melanesia",
+      "micronesia": "Micronesia",
+      "polynesia": "Polynesia",
+      "antarctica": "Antarctica"
+    },
+    "continents": {
+      "africa": "Africa",
+      "americas": "Americas",
+      "asia": "Asia",
+      "europe": "Europe",
+      "oceania": "Oceania",
+      "antarctica": "Antarctica"
     }
   }
 }

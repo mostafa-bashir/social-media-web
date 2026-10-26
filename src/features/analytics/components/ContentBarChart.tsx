@@ -32,11 +32,14 @@ export default function ContentBarChart({
   bars,
   formatValue,
   horizontal = false,
+  categoryWidth = CATEGORY_AXIS_WIDTH,
   ariaLabel,
 }: {
   bars: ContentBar[];
   formatValue: (value: number) => string;
   horizontal?: boolean;
+  /** Room for category names down the side (horizontal only). */
+  categoryWidth?: number;
   ariaLabel: string;
 }) {
   const height = horizontal
@@ -71,11 +74,7 @@ export default function ContentBarChart({
           {horizontal ? (
             <>
               <XAxis type="number" {...valueAxis} />
-              <YAxis
-                type="category"
-                width={CATEGORY_AXIS_WIDTH}
-                {...categoryAxis}
-              />
+              <YAxis type="category" width={categoryWidth} {...categoryAxis} />
             </>
           ) : (
             <>

@@ -30,6 +30,7 @@ export const routes = {
       `/${slug}/analytics/accounts/${accountId}`,
     analyticsPosts: `/${slug}/analytics/posts`,
     analyticsContent: `/${slug}/analytics/content`,
+    analyticsAudience: `/${slug}/analytics/audience`,
     roles: `/${slug}/roles`,
     settings: `/${slug}/settings`,
   }),
