@@ -6,11 +6,6 @@
   "disconnect": "فصل",
   "reconnectHint": "توقفت المنصة عن قبول هذا الربط. أعد الربط لمواصلة النشر.",
   "actionsFor": "إجراءات {name}",
-  "platforms": {
-    "facebook": "فيسبوك",
-    "instagram": "إنستغرام",
-    "youtube": "يوتيوب"
-  },
   "status": {
     "active": "مربوط",
     "reconnect_required": "يحتاج إعادة ربط"

@@ -1,0 +1,29 @@
+{
+  "title": "Media library",
+  "description": "Images and videos for your clients’ posts.",
+  "upload": "Upload",
+  "pickClientFirst": "Pick a client first — files belong to a client.",
+  "uploaded": "{name} uploaded.",
+  "problems": {
+    "type": "{name} isn’t supported. Use PNG, JPEG, WebP, MP4 or MOV.",
+    "size": "{name} is too large (images up to 8 MB, videos up to 250 MB)."
+  },
+  "empty": {
+    "title": "No media yet",
+    "description": "Pick a client, then upload images or videos to use in posts.",
+    "filtered": "No media matches these filters."
+  },
+  "deleteFor": "Delete {name}",
+  "filters": {
+    "client": "Filter by client",
+    "allClients": "All clients",
+    "all": "All",
+    "images": "Images",
+    "videos": "Videos"
+  },
+  "deleteTitle": "Delete file",
+  "deleteQuestion": "Delete “{name}”?",
+  "deleteWarning": "Files used in a post can’t be deleted.",
+  "delete": "Delete",
+  "deleted": "{name} deleted."
+}

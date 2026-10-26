@@ -5,6 +5,7 @@ import { Alert, App, Button, Select } from "antd";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import ClientSelect from "@/components/ui/ClientSelect";
 import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 import ListingShell from "@/components/ui/ListingShell";
 import ListingToolbar from "@/components/ui/ListingToolbar";
@@ -23,7 +24,6 @@ import {
   type SocialAccount,
   type SocialPlatform,
 } from "../types";
-import ClientSelect from "./ClientSelect";
 import ConnectAccountModal from "./ConnectAccountModal";
 import ConnectErrorAlert from "./ConnectErrorAlert";
 import SocialAccountsTable from "./SocialAccountsTable";
@@ -42,7 +42,7 @@ export default function SocialAccountsPage({
   connectError,
 }: SocialAccountsPageProps) {
   const t = useTranslations("accounts");
-  const tPlatforms = useTranslations("accounts.platforms");
+  const tPlatforms = useTranslations("common.platforms");
   const errorMessage = useErrorMessage();
   const { message } = App.useApp();
   const { can } = usePermissions();

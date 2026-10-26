@@ -20,6 +20,8 @@ export const queryKeys = {
   clients: (slug: string) => ["workspace", slug, "clients"] as const,
   socialAccounts: (slug: string) =>
     ["workspace", slug, "social-accounts"] as const,
+  media: (slug: string) => ["workspace", slug, "media"] as const,
+  posts: (slug: string) => ["workspace", slug, "posts"] as const,
   permissionCatalog: (slug: string) =>
     ["workspace", slug, "permission-catalog"] as const,
 };

@@ -4,6 +4,7 @@ import { Alert, App, Avatar, Button, Checkbox, Skeleton } from "antd";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import PlatformBadge from "@/components/ui/PlatformBadge";
 import StatusBadge from "@/components/ui/StatusBadge";
 import { routes } from "@/config/routes";
 import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
@@ -13,7 +14,6 @@ import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { useConnectSelection } from "../api/get-social-accounts";
 import { useConfirmSelection } from "../api/social-account-mutations";
-import PlatformBadge from "./PlatformBadge";
 
 /** Step 3 of connecting: pick which Pages/profiles/channels to add. */
 export default function ConnectSelectionPage({

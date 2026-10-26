@@ -54,5 +54,20 @@
   "SELECTION_EXPIRED": "This connection has expired. Start connecting again.",
   "UNKNOWN_SELECTION_ACCOUNT": "Some selected accounts aren’t part of this connection.",
   "ACCOUNT_CONNECTED_TO_OTHER_CLIENT": "One of these accounts is already connected to another client.",
-  "ACCOUNT_CONNECT_CONFLICT": "One of these accounts was just connected by someone else. Refresh and try again."
+  "ACCOUNT_CONNECT_CONFLICT": "One of these accounts was just connected by someone else. Refresh and try again.",
+  "MEDIA_NOT_FOUND": "That file wasn’t found for this client.",
+  "MEDIA_IN_USE": "This file is attached to a post. Remove it from the post first.",
+  "MEDIA_TOO_LARGE": "This file is too large.",
+  "UNSUPPORTED_MEDIA": "Upload a PNG, JPEG or WebP image, or an MP4 or MOV video.",
+  "POST_NOT_FOUND": "Post not found.",
+  "POST_NOT_EDITABLE": "Posts that were already sent can’t be edited.",
+  "POST_PUBLISHING": "This post is being published right now. Try again in a moment.",
+  "POST_HAS_NO_TARGETS": "Choose at least one account to publish to.",
+  "POST_NOT_PUBLISHABLE": "This post doesn’t meet some platforms’ requirements yet.",
+  "SCHEDULE_TOO_SOON": "Pick a time at least a minute from now, or publish now.",
+  "POST_NOT_SCHEDULED": "Only scheduled posts can be moved back to drafts.",
+  "POST_TARGET_NOT_FOUND": "This account is not part of the post.",
+  "TARGET_NOT_FAILED": "Only failed accounts can be retried.",
+  "ACCOUNT_DISCONNECTED": "This account was disconnected. Reconnect it and create a new post.",
+  "ACCOUNTS_UNAVAILABLE": "Some accounts aren’t connected to this client or need reconnecting."
 }

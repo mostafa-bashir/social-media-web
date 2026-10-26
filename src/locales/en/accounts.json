@@ -6,11 +6,6 @@
   "disconnect": "Disconnect",
   "reconnectHint": "The platform stopped accepting this connection. Reconnect to keep publishing.",
   "actionsFor": "Actions for {name}",
-  "platforms": {
-    "facebook": "Facebook",
-    "instagram": "Instagram",
-    "youtube": "YouTube"
-  },
   "status": {
     "active": "Connected",
     "reconnect_required": "Reconnect needed"

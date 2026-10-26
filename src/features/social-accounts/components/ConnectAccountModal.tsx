@@ -4,16 +4,14 @@ import { Alert, Form, Modal, Radio } from "antd";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 
+import ClientSelect from "@/components/ui/ClientSelect";
+import { PLATFORM_ICONS } from "@/components/ui/platform-icons";
+import { useClientOptions } from "@/hooks/use-client-options";
 import { useErrorMessage } from "@/hooks/use-error-message";
 
-import {
-  useClientOptions,
-  usePlatformAvailability,
-} from "../api/get-social-accounts";
+import { usePlatformAvailability } from "../api/get-social-accounts";
 import { useStartConnect } from "../api/social-account-mutations";
 import type { SocialPlatform } from "../types";
-import ClientSelect from "./ClientSelect";
-import { PLATFORM_ICONS } from "./platform-icons";
 
 interface ConnectValues {
   clientId: string;
@@ -33,7 +31,7 @@ export default function ConnectAccountModal({
   onClose,
 }: ConnectAccountModalProps) {
   const t = useTranslations("accounts.connect");
-  const tPlatforms = useTranslations("accounts.platforms");
+  const tPlatforms = useTranslations("common.platforms");
   const tValidation = useTranslations("validation");
   const errorMessage = useErrorMessage();
   const [form] = Form.useForm<ConnectValues>();

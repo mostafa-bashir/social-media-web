@@ -5,7 +5,7 @@ import {
 } from "@ant-design/icons";
 import type { ReactNode } from "react";
 
-import type { SocialPlatform } from "../types";
+import type { SocialPlatform } from "@/config/platforms";
 
 /** Monochrome: icons take token colours, never third-party brand hex. */
 export const PLATFORM_ICONS: Record<SocialPlatform, ReactNode> = {

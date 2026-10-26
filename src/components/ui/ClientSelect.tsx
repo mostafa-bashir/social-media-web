@@ -3,9 +3,8 @@
 import { Select } from "antd";
 import { useMemo, useState } from "react";
 
+import { useClientOption, useClientOptions } from "@/hooks/use-client-options";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
-
-import { useClientOption, useClientOptions } from "../api/get-social-accounts";
 
 const SEARCH_DEBOUNCE_MS = 300;
 

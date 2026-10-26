@@ -15,6 +15,8 @@
     "dashboard": "Dashboard",
     "clients": "Clients",
     "accounts": "Social accounts",
+    "posts": "Posts",
+    "media": "Media library",
     "members": "Members",
     "roles": "Roles & permissions",
     "settings": "Settings",
@@ -40,5 +42,10 @@
       "team": "Plan content work with your team, linked to posts"
     },
     "footer": "Free for agencies and teams of any size."
+  },
+  "platforms": {
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "youtube": "YouTube"
   }
 }

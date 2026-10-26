@@ -10,11 +10,11 @@ import { Avatar, type TableProps, Tooltip } from "antd";
 import { useTranslations } from "next-intl";
 
 import ListingTable from "@/components/ui/ListingTable";
+import PlatformBadge from "@/components/ui/PlatformBadge";
 import RowActions from "@/components/ui/RowActions";
 import StatusBadge from "@/components/ui/StatusBadge";
 
 import type { SocialAccount } from "../types";
-import PlatformBadge from "./PlatformBadge";
 
 export interface SocialAccountsTableProps {
   accounts: SocialAccount[];

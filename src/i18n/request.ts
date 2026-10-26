@@ -16,6 +16,8 @@ const NAMESPACES = [
   "validation",
   "clients",
   "accounts",
+  "media",
+  "posts",
 ] as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {

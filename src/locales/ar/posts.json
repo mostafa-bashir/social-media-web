@@ -1,0 +1,139 @@
+{
+  "title": "المنشورات",
+  "description": "أنشئ المنشورات وجدولها وتابعها عبر حسابات عملائك.",
+  "create": "منشور جديد",
+  "view": "عرض",
+  "edit": "تعديل",
+  "unschedule": "إرجاع إلى المسودات",
+  "delete": "حذف",
+  "noCaption": "(بدون نص)",
+  "actionsFor": "إجراءات المنشور",
+  "columns": {
+    "post": "المنشور",
+    "accounts": "الحسابات",
+    "when": "الموعد ({timezone})",
+    "status": "الحالة"
+  },
+  "empty": {
+    "title": "لا توجد منشورات بعد",
+    "description": "أنشئ منشوراً لأحد عملائك وانشره الآن أو جدوله.",
+    "filtered": "لا توجد منشورات مطابقة لهذه الفلاتر."
+  },
+  "filters": {
+    "client": "تصفية حسب العميل",
+    "allClients": "كل العملاء",
+    "status": "تصفية حسب الحالة",
+    "allStatuses": "كل الحالات"
+  },
+  "views": {
+    "list": "قائمة",
+    "calendar": "تقويم"
+  },
+  "status": {
+    "draft": "مسودة",
+    "scheduled": "مجدول",
+    "publishing": "جارٍ النشر",
+    "published": "منشور",
+    "partially_failed": "فشل جزئياً",
+    "failed": "فشل"
+  },
+  "targetStatus": {
+    "pending": "بالانتظار",
+    "publishing": "جارٍ النشر",
+    "published": "منشور",
+    "failed": "فشل"
+  },
+  "unscheduled": "أُرجع إلى المسودات.",
+  "deleteTitle": "حذف المنشور",
+  "deleteQuestion": "حذف هذا المنشور؟",
+  "deleteWarning": "يُحذف هنا فقط، وما نُشر بالفعل يبقى على المنصة.",
+  "deleted": "تم حذف المنشور.",
+  "issues": {
+    "CAPTION_TOO_LONG": "النص طويل جداً",
+    "CONTENT_REQUIRED": "أضف نصاً أو ملفاً",
+    "MEDIA_REQUIRED": "أضف صورة أو فيديو",
+    "TOO_MANY_MEDIA": "ملف واحد فقط لكل منشور",
+    "JPEG_REQUIRED": "يجب أن تكون الصور بصيغة JPEG",
+    "VIDEO_REQUIRED": "أضف فيديو",
+    "TITLE_REQUIRED": "أضف عنواناً للفيديو",
+    "TITLE_TOO_LONG": "العنوان طويل جداً"
+  },
+  "calendar": {
+    "more": "+{count} أخرى",
+    "timezone": "الأوقات معروضة بتوقيت",
+    "truncated": "يُعرض أول {count} منشور في هذا الشهر. صفِّ حسب العميل لرؤية البقية."
+  },
+  "detail": {
+    "title": "تفاصيل المنشور",
+    "accounts": "الحسابات",
+    "retrying": "جارٍ إعادة المحاولة…",
+    "disconnected": "(غير متصل)",
+    "youtubePrivate": "التطبيقات التي لم تجتز مراجعة Google ترفع الفيديو كخاص؛ غيّر الظهور من YouTube Studio.",
+    "viewOnPlatform": "عرض على المنصة",
+    "retry": "إعادة المحاولة"
+  },
+  "schedule": {
+    "title": "جدولة المنشور",
+    "confirm": "جدولة",
+    "when": "التاريخ والوقت",
+    "timezoneHint": "بتوقيت العميل:",
+    "tooSoon": "اختر وقتاً بعد دقيقتين على الأقل من الآن."
+  },
+  "composer": {
+    "newTitle": "منشور جديد",
+    "editTitle": "تعديل المنشور",
+    "description": "اختر الحسابات، واكتب مرة واحدة، وتحقق من متطلبات كل منصة.",
+    "client": "العميل",
+    "clientPlaceholder": "اختر عميلاً",
+    "accounts": "النشر إلى",
+    "caption": "النص",
+    "captionPlaceholder": "ماذا تريد أن تقول؟",
+    "media": "صورة أو فيديو",
+    "checks": "جاهز للنشر؟",
+    "noAccounts": "لا توجد حسابات متصلة لهذا العميل بعد.",
+    "connectAccounts": "ربط الحسابات",
+    "needsReconnect": "يحتاج إلى إعادة الربط",
+    "addMedia": "إضافة وسائط",
+    "replaceMedia": "استبدال",
+    "removeMedia": "إزالة {name}",
+    "pickAccounts": "اختر حساباً واحداً على الأقل.",
+    "ready": "جاهز",
+    "notEditable": "تم إرسال هذا المنشور بالفعل، لذا لا يمكن تعديله.",
+    "backToPosts": "العودة إلى المنشورات",
+    "done": {
+      "save": "تم حفظ المسودة.",
+      "schedule": "تمت جدولة المنشور.",
+      "publish-now": "بدأ النشر."
+    },
+    "picker": {
+      "title": "اختيار الوسائط",
+      "upload": "رفع ملف جديد",
+      "empty": "لا توجد ملفات لهذا العميل بعد. ارفع ملفاً.",
+      "pick": "استخدام {name}",
+      "problems": {
+        "type": "الملف {name} غير مدعوم. استخدم PNG أو JPEG أو WebP أو MP4 أو MOV.",
+        "size": "الملف {name} كبير جداً (الصور حتى 8 ميجابايت، والفيديو حتى 250 ميجابايت)."
+      }
+    },
+    "youtube": {
+      "heading": "YouTube",
+      "title": "عنوان الفيديو",
+      "titlePlaceholder": "عنوان واضح وسهل البحث",
+      "privacy": "الظهور",
+      "privacyOptions": {
+        "private": "خاص",
+        "unlisted": "غير مدرج",
+        "public": "عام"
+      },
+      "privateNote": "إلى أن يجتاز التطبيق مراجعة Google، يبقي YouTube الفيديوهات المرفوعة عبر الواجهة خاصة."
+    },
+    "actions": {
+      "schedule": "جدولة",
+      "reschedule": "إعادة الجدولة",
+      "publishNow": "النشر الآن",
+      "publishNowConfirm": "النشر إلى الحسابات المختارة الآن؟",
+      "saveDraft": "حفظ كمسودة",
+      "saveChanges": "حفظ التغييرات"
+    }
+  }
+}

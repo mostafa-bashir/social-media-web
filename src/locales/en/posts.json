@@ -1,0 +1,139 @@
+{
+  "title": "Posts",
+  "description": "Compose, schedule and track posts across your clients’ accounts.",
+  "create": "New post",
+  "view": "View",
+  "edit": "Edit",
+  "unschedule": "Move to drafts",
+  "delete": "Delete",
+  "noCaption": "(no caption)",
+  "actionsFor": "Post actions",
+  "columns": {
+    "post": "Post",
+    "accounts": "Accounts",
+    "when": "When ({timezone})",
+    "status": "Status"
+  },
+  "empty": {
+    "title": "No posts yet",
+    "description": "Create a post for one of your clients and publish it now or schedule it.",
+    "filtered": "No posts match these filters."
+  },
+  "filters": {
+    "client": "Filter by client",
+    "allClients": "All clients",
+    "status": "Filter by status",
+    "allStatuses": "All statuses"
+  },
+  "views": {
+    "list": "List",
+    "calendar": "Calendar"
+  },
+  "status": {
+    "draft": "Draft",
+    "scheduled": "Scheduled",
+    "publishing": "Publishing",
+    "published": "Published",
+    "partially_failed": "Partly failed",
+    "failed": "Failed"
+  },
+  "targetStatus": {
+    "pending": "Waiting",
+    "publishing": "Publishing",
+    "published": "Published",
+    "failed": "Failed"
+  },
+  "unscheduled": "Moved back to drafts.",
+  "deleteTitle": "Delete post",
+  "deleteQuestion": "Delete this post?",
+  "deleteWarning": "This only removes it here. Anything already published stays on the platform.",
+  "deleted": "Post deleted.",
+  "issues": {
+    "CAPTION_TOO_LONG": "Caption is too long",
+    "CONTENT_REQUIRED": "Add a caption or a file",
+    "MEDIA_REQUIRED": "Add an image or video",
+    "TOO_MANY_MEDIA": "Only one file per post",
+    "JPEG_REQUIRED": "Images must be JPEG",
+    "VIDEO_REQUIRED": "Add a video",
+    "TITLE_REQUIRED": "Add a video title",
+    "TITLE_TOO_LONG": "Title is too long"
+  },
+  "calendar": {
+    "more": "+{count} more",
+    "timezone": "Times shown in",
+    "truncated": "Showing the first {count} posts of this month. Filter by client to see the rest."
+  },
+  "detail": {
+    "title": "Post details",
+    "accounts": "Accounts",
+    "retrying": "Retrying…",
+    "disconnected": "(disconnected)",
+    "youtubePrivate": "Apps that haven’t passed Google’s review upload as private; change visibility in YouTube Studio.",
+    "viewOnPlatform": "View on platform",
+    "retry": "Retry"
+  },
+  "schedule": {
+    "title": "Schedule post",
+    "confirm": "Schedule",
+    "when": "Date and time",
+    "timezoneHint": "In the client’s timezone:",
+    "tooSoon": "Pick a time at least 2 minutes from now."
+  },
+  "composer": {
+    "newTitle": "New post",
+    "editTitle": "Edit post",
+    "description": "Pick accounts, write once, and check each platform’s requirements.",
+    "client": "Client",
+    "clientPlaceholder": "Choose a client",
+    "accounts": "Publish to",
+    "caption": "Caption",
+    "captionPlaceholder": "What do you want to say?",
+    "media": "Image or video",
+    "checks": "Ready to publish?",
+    "noAccounts": "This client has no connected accounts yet.",
+    "connectAccounts": "Connect accounts",
+    "needsReconnect": "Needs reconnecting",
+    "addMedia": "Add media",
+    "replaceMedia": "Replace",
+    "removeMedia": "Remove {name}",
+    "pickAccounts": "Choose at least one account.",
+    "ready": "Ready",
+    "notEditable": "This post was already sent, so it can’t be edited.",
+    "backToPosts": "Back to posts",
+    "done": {
+      "save": "Draft saved.",
+      "schedule": "Post scheduled.",
+      "publish-now": "Publishing started."
+    },
+    "picker": {
+      "title": "Choose media",
+      "upload": "Upload new",
+      "empty": "No files for this client yet. Upload one.",
+      "pick": "Use {name}",
+      "problems": {
+        "type": "{name} isn’t supported. Use PNG, JPEG, WebP, MP4 or MOV.",
+        "size": "{name} is too large (images up to 8 MB, videos up to 250 MB)."
+      }
+    },
+    "youtube": {
+      "heading": "YouTube",
+      "title": "Video title",
+      "titlePlaceholder": "A clear, searchable title",
+      "privacy": "Visibility",
+      "privacyOptions": {
+        "private": "Private",
+        "unlisted": "Unlisted",
+        "public": "Public"
+      },
+      "privateNote": "Until the app passes Google’s review, YouTube keeps API uploads private."
+    },
+    "actions": {
+      "schedule": "Schedule",
+      "reschedule": "Reschedule",
+      "publishNow": "Publish now",
+      "publishNowConfirm": "Publish to the selected accounts now?",
+      "saveDraft": "Save draft",
+      "saveChanges": "Save changes"
+    }
+  }
+}

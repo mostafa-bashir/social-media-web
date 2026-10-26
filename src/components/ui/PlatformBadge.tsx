@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import type { SocialPlatform } from "../types";
+import type { SocialPlatform } from "@/config/platforms";
 import { PLATFORM_ICONS } from "./platform-icons";
 
 /** Platform icon + name. */
@@ -9,7 +9,7 @@ export default function PlatformBadge({
 }: {
   platform: SocialPlatform;
 }) {
-  const t = useTranslations("accounts.platforms");
+  const t = useTranslations("common.platforms");
   return (
     <span className="inline-flex items-center gap-2 text-text-secondary">
       <span className="text-base" aria-hidden>

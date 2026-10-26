@@ -1,9 +1,12 @@
 import { z } from "zod";
 
-/** Mirrors the API's `SocialPlatform` enum. */
-export const SOCIAL_PLATFORMS = ["facebook", "instagram", "youtube"] as const;
-export const platformSchema = z.enum(SOCIAL_PLATFORMS);
-export type SocialPlatform = z.infer<typeof platformSchema>;
+import { platformSchema, type SocialPlatform } from "@/config/platforms";
+
+export {
+  SOCIAL_PLATFORMS,
+  platformSchema,
+  type SocialPlatform,
+} from "@/config/platforms";
 
 export const accountStatusSchema = z.enum(["active", "reconnect_required"]);
 
@@ -46,12 +49,6 @@ export const selectionSchema = z.object({
   ),
 });
 export type ConnectSelection = z.infer<typeof selectionSchema>;
-
-export const clientOptionSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-});
-export type ClientOption = z.infer<typeof clientOptionSchema>;
 
 export interface SocialAccountsQuery {
   page: number;
