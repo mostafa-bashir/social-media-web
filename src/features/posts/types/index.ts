@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { platformSchema } from "@/config/platforms";
 import { mediaAssetSchema } from "@/lib/media";
+import { postMetricsSchema } from "@/lib/post-metrics";
 
 export const POST_STATUSES = [
   "draft",
@@ -42,6 +43,7 @@ export const postTargetSchema = z.object({
   lastError: z.string().nullable(),
   attempts: z.number(),
   publishedAt: z.string().nullable(),
+  metrics: postMetricsSchema.nullable(),
 });
 export type PostTarget = z.infer<typeof postTargetSchema>;
 

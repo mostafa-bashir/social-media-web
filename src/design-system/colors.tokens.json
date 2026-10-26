@@ -41,7 +41,11 @@
     "text-secondary": "#475569",
     "text-tertiary": "#64748B",
     "text-placeholder": "#94A3B8",
-    "text-on-color": "#FFFFFF"
+    "text-on-color": "#FFFFFF",
+
+    "chart-1": "#2A78D6",
+    "chart-2": "#EB6834",
+    "chart-3": "#1BAF7A"
   },
   "dark": {
     "brand-primary": "#6366F1",
@@ -84,6 +88,10 @@
     "text-secondary": "#94A3B8",
     "text-tertiary": "#7C8AA0",
     "text-placeholder": "#64748B",
-    "text-on-color": "#FFFFFF"
+    "text-on-color": "#FFFFFF",
+
+    "chart-1": "#3987E5",
+    "chart-2": "#D95926",
+    "chart-3": "#199E70"
   }
 }

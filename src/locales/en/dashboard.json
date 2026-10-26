@@ -22,6 +22,7 @@
     "tasks": {
       "title": "Team tasks",
       "description": "Plan content work with your team, linked to posts."
-    }
+    },
+    "open": "Open"
   }
 }

@@ -2,7 +2,7 @@
 
 import { LinkOutlined, ReloadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 import { PLATFORM_ICONS } from "@/components/ui/platform-icons";
 
@@ -23,6 +23,17 @@ export default function PostTargetRow({
   onRetry,
 }: PostTargetRowProps) {
   const t = useTranslations("posts.detail");
+  const format = useFormatter();
+  const metrics = target.metrics;
+  // Only what the platform reports; unknown figures are left out, not shown as 0.
+  const results = metrics
+    ? (["views", "likes", "comments"] as const).flatMap((key) => {
+        const value = metrics[key];
+        return value === null
+          ? []
+          : [t(`results.${key}`, { count: format.number(value) })];
+      })
+    : [];
   const privateOnYouTube =
     target.platform === "youtube" && target.status === "published";
 
@@ -44,6 +55,9 @@ export default function PostTargetRow({
       </div>
       {target.lastError ? (
         <p className="text-sm text-danger-text">{target.lastError}</p>
+      ) : null}
+      {results.length > 0 ? (
+        <p className="text-sm text-text-secondary">{results.join(" · ")}</p>
       ) : null}
       {privateOnYouTube ? (
         <p className="text-xs text-text-tertiary">{t("youtubePrivate")}</p>

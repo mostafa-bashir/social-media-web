@@ -1,0 +1,89 @@
+{
+  "title": "Analytics",
+  "description": "How your clients' accounts and posts perform, across every platform.",
+  "filters": {
+    "client": "Filter by client",
+    "allClients": "All clients",
+    "platform": "Filter by platform",
+    "allPlatforms": "All platforms",
+    "range": "Date range",
+    "lastDays": "{days} days",
+    "custom": "Custom",
+    "customRange": "Custom date range"
+  },
+  "kpis": {
+    "followers": "Followers",
+    "views": "Views",
+    "engagements": "Engagements",
+    "engagementRate": "Engagement rate",
+    "postsPublished": "Posts published",
+    "vsPrevious": "{change} vs previous"
+  },
+  "trend": {
+    "title": "Trend",
+    "metric": "Metric",
+    "legend": "Platforms",
+    "empty": "No figures for this range yet.",
+    "metrics": {
+      "views": "Views",
+      "engagements": "Engagements",
+      "followers": "Followers",
+      "watchTimeMinutes": "Watch time (min)"
+    }
+  },
+  "accounts": {
+    "title": "Accounts",
+    "empty": "No accounts match these filters.",
+    "columns": {
+      "account": "Account",
+      "followers": "Followers",
+      "views": "Views",
+      "engagements": "Engagements",
+      "rate": "Eng. rate",
+      "posts": "Posts",
+      "status": "Analytics"
+    }
+  },
+  "sync": {
+    "reconnect": "Reconnect to enable",
+    "failed": "Sync failed",
+    "pending": "First sync pending",
+    "updated": "Updated {when}"
+  },
+  "posts": {
+    "title": "Top posts",
+    "sort": "Sort by",
+    "sorts": {
+      "views": "Views",
+      "engagements": "Engagements",
+      "publishedAt": "Newest"
+    },
+    "empty": "No posts published in this range",
+    "emptyDescription": "Posts from the connected accounts show up here with their results.",
+    "noCaption": "No caption",
+    "viewOnPlatform": "View on the platform",
+    "columns": {
+      "post": "Post",
+      "views": "Views",
+      "engagements": "Engagements",
+      "likes": "Likes",
+      "comments": "Comments",
+      "link": "Link"
+    },
+    "external": "Posted outside the app"
+  },
+  "notice": {
+    "openAccounts": "Open social accounts",
+    "reconnectTitle": "{count, plural, one {# account needs} other {# accounts need}} reconnecting for analytics",
+    "reconnectBody": "They were connected before analytics permissions were asked for. Reconnect them and allow all permissions.",
+    "failedTitle": "{count, plural, one {# account} other {# accounts}} could not be synced",
+    "failedBody": "Hover the status in the accounts table for the reason. We retry automatically.",
+    "pendingTitle": "Collecting analytics for {count, plural, one {# account} other {# accounts}}",
+    "pendingBody": "The first sync runs within half an hour of connecting. Figures then refresh every few hours."
+  },
+  "empty": {
+    "title": "No connected accounts yet",
+    "description": "Connect a client's Facebook Page, Instagram or YouTube channel to see its analytics.",
+    "action": "Connect accounts"
+  }
+}

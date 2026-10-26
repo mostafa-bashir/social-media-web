@@ -62,6 +62,11 @@
   --color-danger-subtle: var(--ds-danger-subtle);
   --color-danger-text: var(--ds-danger-text);
 
+  /* Charts — categorical series in fixed order (validated for colour-blind separation) */
+  --color-chart-1: var(--ds-chart-1);
+  --color-chart-2: var(--ds-chart-2);
+  --color-chart-3: var(--ds-chart-3);
+
   /* App shell (sidebar / canvas around the content card) */
   --color-shell: var(--ds-shell-bg);
   --color-shell-surface: var(--ds-shell-surface);

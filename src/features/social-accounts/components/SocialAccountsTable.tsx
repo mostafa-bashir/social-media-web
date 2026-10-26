@@ -87,16 +87,25 @@ export default function SocialAccountsTable({
       key: "status",
       render: (_, account) =>
         account.status === "active" ? (
-          <Tooltip title={account.lastError ?? undefined}>
-            <span>
-              <StatusBadge
-                tone={account.lastError ? "accent" : "growth"}
-                icon={<CheckCircleOutlined />}
-              >
-                {t("status.active")}
-              </StatusBadge>
-            </span>
-          </Tooltip>
+          <div className="flex flex-col items-start gap-1">
+            <Tooltip title={account.lastError ?? undefined}>
+              <span>
+                <StatusBadge
+                  tone={account.lastError ? "accent" : "growth"}
+                  icon={<CheckCircleOutlined />}
+                >
+                  {t("status.active")}
+                </StatusBadge>
+              </span>
+            </Tooltip>
+            {account.analyticsEnabled ? null : (
+              <Tooltip title={t("analyticsOffHint")}>
+                <span className="text-xs text-accent-text">
+                  {t("analyticsOff")}
+                </span>
+              </Tooltip>
+            )}
+          </div>
         ) : (
           <Tooltip title={t("reconnectHint")}>
             <span>

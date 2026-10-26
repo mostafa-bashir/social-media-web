@@ -70,7 +70,12 @@
     "disconnected": "(غير متصل)",
     "youtubePrivate": "التطبيقات التي لم تجتز مراجعة Google ترفع الفيديو كخاص؛ غيّر الظهور من YouTube Studio.",
     "viewOnPlatform": "عرض على المنصة",
-    "retry": "إعادة المحاولة"
+    "retry": "إعادة المحاولة",
+    "results": {
+      "views": "{count} مشاهدة",
+      "likes": "{count} إعجاب",
+      "comments": "{count} تعليق"
+    }
   },
   "schedule": {
     "title": "جدولة المنشور",

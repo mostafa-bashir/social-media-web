@@ -3,12 +3,19 @@
 import { Skeleton } from "antd";
 import type { ReactNode } from "react";
 
+const TREND_TONE_CLASS = {
+  growth: "text-growth-text",
+  danger: "text-danger-text",
+  neutral: "text-text-tertiary",
+} as const;
+
 export interface StatCardProps {
   label: string;
   value: ReactNode;
   icon?: ReactNode;
-  /** e.g. "+12%" — shown in growth teal. */
+  /** e.g. "+12%"; the sign carries the direction, the tone only reinforces it. */
   trend?: string;
+  trendTone?: keyof typeof TREND_TONE_CLASS;
   /** Optional status pill under the value. */
   footer?: ReactNode;
   loading?: boolean;
@@ -20,6 +27,7 @@ export default function StatCard({
   value,
   icon,
   trend,
+  trendTone = "growth",
   footer,
   loading = false,
 }: StatCardProps) {
@@ -41,7 +49,9 @@ export default function StatCard({
             {value}
           </span>
           {trend ? (
-            <span className="text-sm font-medium text-growth-text">
+            <span
+              className={`text-sm font-medium ${TREND_TONE_CLASS[trendTone]}`}
+            >
               {trend}
             </span>
           ) : null}

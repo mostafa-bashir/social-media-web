@@ -24,6 +24,7 @@ export const routes = {
     newPost: `/${slug}/posts/new`,
     post: (postId: string) => `/${slug}/posts/${postId}`,
     media: `/${slug}/media`,
+    analytics: `/${slug}/analytics`,
     roles: `/${slug}/roles`,
     settings: `/${slug}/settings`,
   }),

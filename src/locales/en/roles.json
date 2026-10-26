@@ -19,7 +19,8 @@
     "team": "Team",
     "monitoring": "Monitoring",
     "clients": "Clients & accounts",
-    "content": "Content & publishing"
+    "content": "Content & publishing",
+    "analytics": "Analytics"
   },
   "permissions": {
     "workspace_update": "Edit workspace settings",
@@ -38,7 +39,8 @@
     "accounts_view": "View connected social accounts",
     "accounts_manage": "Connect and disconnect social accounts",
     "posts_view": "View posts and media",
-    "posts_manage": "Create, schedule and publish posts; upload media"
+    "posts_manage": "Create, schedule and publish posts; upload media",
+    "analytics_view": "View analytics and reports"
   },
   "system": {
     "owner": {

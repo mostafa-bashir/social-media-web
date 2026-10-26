@@ -36,6 +36,9 @@
   --ds-text-tertiary: #64748b;
   --ds-text-placeholder: #94a3b8;
   --ds-text-on-color: #ffffff;
+  --ds-chart-1: #2a78d6;
+  --ds-chart-2: #eb6834;
+  --ds-chart-3: #1baf7a;
 }
 
 :root[data-theme="dark"] {
@@ -73,4 +76,7 @@
   --ds-text-tertiary: #7c8aa0;
   --ds-text-placeholder: #64748b;
   --ds-text-on-color: #ffffff;
+  --ds-chart-1: #3987e5;
+  --ds-chart-2: #d95926;
+  --ds-chart-3: #199e70;
 }

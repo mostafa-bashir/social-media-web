@@ -23,6 +23,10 @@ export const socialAccountSchema = z.object({
   lastError: z.string().nullable(),
   tokenExpiresAt: z.string().nullable(),
   lastRefreshedAt: z.string().nullable(),
+  /** False when connected before analytics permissions were asked for. */
+  analyticsEnabled: z.boolean(),
+  analyticsSyncedAt: z.string().nullable(),
+  analyticsError: z.string().nullable(),
   createdAt: z.string(),
 });
 export type SocialAccount = z.infer<typeof socialAccountSchema>;

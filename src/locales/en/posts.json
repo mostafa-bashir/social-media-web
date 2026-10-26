@@ -70,7 +70,12 @@
     "disconnected": "(disconnected)",
     "youtubePrivate": "Apps that haven’t passed Google’s review upload as private; change visibility in YouTube Studio.",
     "viewOnPlatform": "View on platform",
-    "retry": "Retry"
+    "retry": "Retry",
+    "results": {
+      "views": "{count} views",
+      "likes": "{count} likes",
+      "comments": "{count} comments"
+    }
   },
   "schedule": {
     "title": "Schedule post",

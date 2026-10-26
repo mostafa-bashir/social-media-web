@@ -67,5 +67,7 @@
     "title": "Connecting account",
     "finishing": "Finishing the connection…",
     "back": "Back to accounts"
-  }
+  },
+  "analyticsOff": "Analytics off — reconnect to enable",
+  "analyticsOffHint": "Connected before analytics permissions were asked for. Reconnect and allow all permissions to see its analytics."
 }

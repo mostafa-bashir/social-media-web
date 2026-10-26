@@ -9,16 +9,26 @@ import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import StatusBadge, { type StatusTone } from "@/components/ui/StatusBadge";
+import { routes } from "@/config/routes";
+import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
+import { Link } from "@/i18n/navigation";
 
 interface UpcomingModule {
   key: "social" | "analytics" | "tasks";
   icon: ReactNode;
   tone: StatusTone;
+  /** Set once the module has shipped: the tile links there instead of saying "soon". */
+  href?: (slug: string) => string;
 }
 
 const MODULES: UpcomingModule[] = [
   { key: "social", icon: <ShareAltOutlined />, tone: "brand" },
-  { key: "analytics", icon: <BarChartOutlined />, tone: "growth" },
+  {
+    key: "analytics",
+    icon: <BarChartOutlined />,
+    tone: "growth",
+    href: (slug) => routes.workspace(slug).analytics,
+  },
   { key: "tasks", icon: <CheckSquareOutlined />, tone: "accent" },
 ];
 
@@ -33,6 +43,7 @@ const ICON_CLASS: Record<StatusTone, string> = {
 /** Placeholder until the social, analytics and task modules land. */
 export default function UpcomingModules() {
   const t = useTranslations("dashboard.modules");
+  const slug = useActiveWorkspaceSlug() ?? "";
   return (
     <section className="surface-card">
       <h2 className="px-3 pb-2 pt-1 text-sm font-semibold text-text-secondary">
@@ -50,7 +61,16 @@ export default function UpcomingModules() {
               >
                 {module.icon}
               </span>
-              <StatusBadge tone={module.tone}>{t("soon")}</StatusBadge>
+              {module.href ? (
+                <Link
+                  href={module.href(slug)}
+                  className="text-sm font-medium text-primary-text hover:underline"
+                >
+                  {t("open")}
+                </Link>
+              ) : (
+                <StatusBadge tone={module.tone}>{t("soon")}</StatusBadge>
+              )}
             </div>
             <h3 className="text-base font-semibold text-text-primary">
               {t(`${module.key}.title`)}
