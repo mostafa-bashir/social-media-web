@@ -14,6 +14,7 @@ import { useMetricFormat } from "../hooks/use-metric-format";
 import { PLATFORM_SERIES } from "../lib/platform-series";
 import type { AnalyticsAccount } from "../types";
 import AccountSyncStatus from "./AccountSyncStatus";
+import SyncNowButton from "./SyncNowButton";
 
 /** Per-account figures side by side; the bar shows each account's share of the top views. */
 export default function AccountsComparison({
@@ -114,7 +115,12 @@ export default function AccountsComparison({
     {
       title: t("columns.status"),
       key: "status",
-      render: (_, account) => <AccountSyncStatus account={account} />,
+      render: (_, account) => (
+        <div className="flex flex-col items-start gap-2">
+          <AccountSyncStatus account={account} />
+          <SyncNowButton account={account} size="small" />
+        </div>
+      ),
     },
   ];
 

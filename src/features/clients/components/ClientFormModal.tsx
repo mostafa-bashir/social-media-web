@@ -12,6 +12,7 @@ import { zodRule } from "@/lib/forms/zod-rule";
 import { useCreateClient, useUpdateClient } from "../api/client-mutations";
 import type { Client, ClientInput } from "../types";
 import ClientLogoField from "./ClientLogoField";
+import TargetCountriesSelect from "./TargetCountriesSelect";
 
 const MAX_NOTES_LENGTH = 2000;
 const OPAQUE_HEX_LENGTH = "#rrggbb".length;
@@ -27,6 +28,7 @@ interface ClientFormValues {
   timezone?: string;
   color: string | null;
   notes?: string;
+  targetCountries: string[];
 }
 
 export interface ClientFormModalProps {
@@ -64,6 +66,7 @@ export default function ClientFormModal({
       timezone: client?.timezone,
       color: client?.color ?? null,
       notes: client?.notes ?? "",
+      targetCountries: client?.targetCountries ?? [],
     });
     create.reset();
     update.reset();
@@ -141,6 +144,15 @@ export default function ClientFormModal({
               getValueFromEvent={toHexColor}
             >
               <ColorPicker allowClear format="hex" />
+            </Form.Item>
+            <Form.Item
+              name="targetCountries"
+              label={t("targetCountries")}
+              extra={t("targetCountriesHint")}
+            >
+              <TargetCountriesSelect
+                placeholder={t("targetCountriesPlaceholder")}
+              />
             </Form.Item>
             <Form.Item name="notes" label={t("notes")} className="mb-0!">
               <Input.TextArea

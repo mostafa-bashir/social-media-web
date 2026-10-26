@@ -40,6 +40,11 @@
   --ds-chart-2: #eb6834;
   --ds-chart-3: #1baf7a;
   --ds-chart-4: #eda100;
+  --ds-heat-1: #86b6ef;
+  --ds-heat-2: #5598e7;
+  --ds-heat-3: #2a78d6;
+  --ds-heat-4: #1c5cab;
+  --ds-heat-5: #104281;
 }
 
 :root[data-theme="dark"] {
@@ -81,4 +86,9 @@
   --ds-chart-2: #d95926;
   --ds-chart-3: #199e70;
   --ds-chart-4: #c98500;
+  --ds-heat-1: #184f95;
+  --ds-heat-2: #256abf;
+  --ds-heat-3: #3987e5;
+  --ds-heat-4: #6da7ec;
+  --ds-heat-5: #9ec5f4;
 }

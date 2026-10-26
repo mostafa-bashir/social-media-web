@@ -42,6 +42,9 @@
     "logoHint": "PNG, JPEG or WebP, up to 2 MB.",
     "logoType": "Use a PNG, JPEG or WebP image.",
     "logoSize": "The logo must be 2 MB or smaller.",
-    "logoUpdated": "Logo updated."
+    "logoUpdated": "Logo updated.",
+    "targetCountries": "Target markets",
+    "targetCountriesHint": "Used for trends in analytics. Up to 5 countries.",
+    "targetCountriesPlaceholder": "Pick countries"
   }
 }

@@ -12,6 +12,7 @@ import { Link } from "@/i18n/navigation";
 
 import type { AnalyticsAccount } from "../types";
 import AccountSyncStatus from "./AccountSyncStatus";
+import SyncNowButton from "./SyncNowButton";
 
 const AVATAR_SIZE = 48;
 
@@ -47,7 +48,10 @@ export default function AccountHeader({
           </h2>
           <PlatformBadge platform={account.platform} />
         </div>
-        <AccountSyncStatus account={account} />
+        <div className="flex flex-wrap items-center gap-3">
+          <AccountSyncStatus account={account} />
+          <SyncNowButton account={account} />
+        </div>
       </div>
     </div>
   );

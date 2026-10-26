@@ -29,6 +29,7 @@ export const routes = {
     analyticsAccount: (accountId: string) =>
       `/${slug}/analytics/accounts/${accountId}`,
     analyticsPosts: `/${slug}/analytics/posts`,
+    analyticsContent: `/${slug}/analytics/content`,
     roles: `/${slug}/roles`,
     settings: `/${slug}/settings`,
   }),

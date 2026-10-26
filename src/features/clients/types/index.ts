@@ -6,6 +6,7 @@ export const clientSchema = z.object({
   timezone: z.string(),
   color: z.string().nullable(),
   notes: z.string().nullable(),
+  targetCountries: z.array(z.string()).default([]),
   logoUrl: z.string().nullable(),
   accountCount: z.number(),
   archivedAt: z.string().nullable(),
@@ -19,6 +20,8 @@ export interface ClientInput {
   timezone?: string;
   color: string | null;
   notes: string | null;
+  /** ISO 3166-1 alpha-2 codes of the client's markets. */
+  targetCountries: string[];
 }
 
 export interface ClientsQuery {

@@ -21,7 +21,8 @@
     "label": "Analytics sections",
     "overview": "Overview",
     "accounts": "Accounts",
-    "posts": "Posts"
+    "posts": "Posts",
+    "content": "Content"
   },
   "kpis": {
     "followers": "Followers",
@@ -117,7 +118,11 @@
     "reconnect": "Reconnect to enable",
     "failed": "Sync failed",
     "pending": "First sync pending",
-    "updated": "Updated {when}"
+    "updated": "Updated {when}",
+    "syncNow": "Sync now",
+    "syncing": "Syncing…",
+    "done": "Analytics updated.",
+    "stillRunning": "Still syncing. The figures will update on their own when it finishes."
   },
   "posts": {
     "topTitle": "Top posts",
@@ -192,5 +197,79 @@
     "title": "No connected accounts yet",
     "description": "Connect a client's Facebook Page, Instagram or YouTube channel to see its analytics.",
     "action": "Connect accounts"
+  },
+  "content": {
+    "postsCount": "{count, plural, one {# post} other {# posts}}",
+    "unknownType": "Unknown",
+    "truncated": "Based on the newest {count} posts in this range.",
+    "empty": {
+      "title": "No posts in this range",
+      "description": "Content insights appear once the accounts have posts in the selected dates."
+    },
+    "byType": {
+      "title": "What works by content type",
+      "hint": "Average engagements per post"
+    },
+    "bestTimes": {
+      "title": "Best times to post",
+      "timezone": "Average engagements by when posts went out, in {timezone}.",
+      "cell": "{day} {hour}: {posts, plural, one {# post} other {# posts}}, {engagements} average engagements",
+      "hint": "Hover or focus a cell for details.",
+      "low": "Lower",
+      "high": "Higher",
+      "fewPosts": "Few posts"
+    },
+    "recommended": {
+      "slot": "{day}, {hour}",
+      "detail": "{engagements} average engagements · {posts, plural, one {# post} other {# posts}}",
+      "notEnough": "Not enough posts yet to recommend times. Keep posting at different times to find what works.",
+      "schedule": "Schedule a post"
+    },
+    "frequency": {
+      "title": "Posting frequency",
+      "hint": "Posts per week",
+      "detail": "{engagements} average engagements per post"
+    },
+    "captions": {
+      "title": "Caption length",
+      "hint": "Average engagements per post by caption length",
+      "buckets": {
+        "none": "None",
+        "short": "Short (≤50)",
+        "medium": "Medium (≤150)",
+        "long": "Long (≤300)",
+        "veryLong": "Very long"
+      }
+    },
+    "hashtags": {
+      "title": "Hashtags",
+      "hint": "Most-used hashtags and how their posts perform",
+      "empty": "No hashtags in these posts.",
+      "columns": {
+        "tag": "Hashtag",
+        "posts": "Posts",
+        "avgEngagements": "Average engagements"
+      }
+    }
+  },
+  "trends": {
+    "title": "Trends",
+    "description": "What's popular in a market, and what has been working for these accounts lately.",
+    "country": "Market",
+    "pickCountry": "Pick a country",
+    "noCountry": "Pick a country to see its trends. Set the client's target markets on the client to make this automatic.",
+    "searches": "Rising Google searches",
+    "youtube": "Popular on YouTube",
+    "youtubeNote": "YouTube's chart covers music, film and gaming.",
+    "updated": "Updated {when}",
+    "unavailable": "This source isn't available right now. Try again later.",
+    "none": "Nothing trending here today.",
+    "traffic": "{traffic} searches",
+    "views": "{views} views",
+    "whatWorks": {
+      "title": "Working lately for you",
+      "empty": "Nothing has clearly beaten these accounts' usual engagement in the last {days} days yet.",
+      "lift": "{lift} · {posts, plural, one {# post} other {# posts}}"
+    }
   }
 }

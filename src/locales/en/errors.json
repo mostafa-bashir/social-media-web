@@ -69,5 +69,9 @@
   "POST_TARGET_NOT_FOUND": "This account is not part of the post.",
   "TARGET_NOT_FAILED": "Only failed accounts can be retried.",
   "ACCOUNT_DISCONNECTED": "This account was disconnected. Reconnect it and create a new post.",
-  "ACCOUNTS_UNAVAILABLE": "Some accounts aren’t connected to this client or need reconnecting."
+  "ACCOUNTS_UNAVAILABLE": "Some accounts aren’t connected to this client or need reconnecting.",
+  "INVALID_DATE_RANGE": "Pick a date range of up to one year.",
+  "ANALYTICS_POST_NOT_FOUND": "This post isn't available any more. It may have been deleted or the link is incomplete.",
+  "ANALYTICS_NOT_ENABLED": "Reconnect this account and allow the analytics permissions first.",
+  "SYNC_COOLDOWN": "This account was synced moments ago. Try again in a few minutes."
 }

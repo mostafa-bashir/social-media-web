@@ -46,7 +46,13 @@
     "chart-1": "#2A78D6",
     "chart-2": "#EB6834",
     "chart-3": "#1BAF7A",
-    "chart-4": "#EDA100"
+    "chart-4": "#EDA100",
+
+    "heat-1": "#86B6EF",
+    "heat-2": "#5598E7",
+    "heat-3": "#2A78D6",
+    "heat-4": "#1C5CAB",
+    "heat-5": "#104281"
   },
   "dark": {
     "brand-primary": "#6366F1",
@@ -94,6 +100,12 @@
     "chart-1": "#3987E5",
     "chart-2": "#D95926",
     "chart-3": "#199E70",
-    "chart-4": "#C98500"
+    "chart-4": "#C98500",
+
+    "heat-1": "#184F95",
+    "heat-2": "#256ABF",
+    "heat-3": "#3987E5",
+    "heat-4": "#6DA7EC",
+    "heat-5": "#9EC5F4"
   }
 }

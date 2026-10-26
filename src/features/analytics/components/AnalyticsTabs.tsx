@@ -22,6 +22,7 @@ export default function AnalyticsTabs() {
     { key: "overview", href: workspace.analytics },
     { key: "accounts", href: workspace.analyticsAccounts },
     { key: "posts", href: workspace.analyticsPosts },
+    { key: "content", href: workspace.analyticsContent },
   ] as const;
   // The deepest matching section wins (an account page is under "accounts").
   const active = [...tabs]

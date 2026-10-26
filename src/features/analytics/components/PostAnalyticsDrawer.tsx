@@ -7,6 +7,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import MediaThumb from "@/components/ui/MediaThumb";
 import PlatformBadge from "@/components/ui/PlatformBadge";
 import { useErrorMessage } from "@/hooks/use-error-message";
+import { toApiError } from "@/lib/api/api-error";
 import { toZoned } from "@/lib/dayjs";
 
 import { type PostRef, useAnalyticsPost } from "../api/get-analytics";
@@ -43,7 +44,16 @@ export default function PostAnalyticsDrawer({
       destroyOnHidden
     >
       {detail.error ? (
-        <Alert type="error" showIcon title={errorMessage(detail.error)} />
+        <Alert
+          type="error"
+          showIcon
+          title={errorMessage(
+            // A malformed link names no post at all: say so, not "invalid fields".
+            toApiError(detail.error).code === "VALIDATION_FAILED"
+              ? "ANALYTICS_POST_NOT_FOUND"
+              : detail.error,
+          )}
+        />
       ) : !data ? (
         <Skeleton active paragraph={{ rows: 8 }} />
       ) : (

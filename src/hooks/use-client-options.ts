@@ -9,6 +9,8 @@ export const clientOptionSchema = z.object({
   id: z.string(),
   name: z.string(),
   timezone: z.string(),
+  /** ISO country codes of the client's markets (trends default to the first). */
+  targetCountries: z.array(z.string()).default([]),
 });
 export type ClientOption = z.infer<typeof clientOptionSchema>;
 

@@ -42,6 +42,9 @@
     "logoHint": "PNG أو JPEG أو WebP بحجم أقصى 2 ميجابايت.",
     "logoType": "استخدم صورة PNG أو JPEG أو WebP.",
     "logoSize": "يجب ألا يتجاوز حجم الشعار 2 ميجابايت.",
-    "logoUpdated": "تم تحديث الشعار."
+    "logoUpdated": "تم تحديث الشعار.",
+    "targetCountries": "الأسواق المستهدفة",
+    "targetCountriesHint": "تُستخدم لعرض الرائج في التحليلات. حتى 5 دول.",
+    "targetCountriesPlaceholder": "اختر الدول"
   }
 }
