@@ -9,13 +9,19 @@ import { useMetricFormat } from "../hooks/use-metric-format";
 import type { Audience } from "../types/audience";
 
 /** One sentence that names the core audience, plus what the numbers describe. */
-export default function AudienceSummary({ audience }: { audience: Audience }) {
+export default function AudienceSummary({
+  audience,
+}: {
+  /** Reports pass the summary fields only, without the account list. */
+  audience: Pick<Audience, "basis" | "primary" | "countries" | "geo"> &
+    Partial<Pick<Audience, "accounts">>;
+}) {
   const t = useTranslations("analytics.audience");
   const locale = useLocale();
   const fmt = useMetricFormat();
   const { primary, basis } = audience;
   const topCountry = audience.countries[0]?.key;
-  const unsupported = audience.accounts.filter((a) => !a.supported);
+  const unsupported = (audience.accounts ?? []).filter((a) => !a.supported);
 
   const place = topCountry
     ? audience.geo.mena >= 0.5

@@ -2,6 +2,7 @@
 
 import { useAnalyticsOverview } from "../api/get-analytics";
 import { useAnalyticsFilters } from "../hooks/use-analytics-filters";
+import GoalsCard from "./GoalsCard";
 import InsightsCard from "./InsightsCard";
 import KpiGrid from "./KpiGrid";
 import PlatformBreakdown from "./PlatformBreakdown";
@@ -23,6 +24,7 @@ export default function OverviewTab() {
         loading={overview.isLoading}
       />
       <InsightsCard overview={overview.data} compare={compare} />
+      {scope.clientId ? <GoalsCard clientId={scope.clientId} /> : null}
       <TrendChart scope={scope} compare={compare} />
       {platforms.length > 1 ? (
         <PlatformBreakdown platforms={platforms} loading={overview.isLoading} />

@@ -8,7 +8,7 @@ import { routing } from "@/i18n/routing";
 const intlMiddleware = createIntlMiddleware(routing);
 
 /** Pages reachable without a session. */
-const PUBLIC_PREFIXES = ["/auth", "/invite"];
+const PUBLIC_PREFIXES = ["/auth", "/invite", "/r"];
 /** Auth pages a signed-in user should skip. */
 const GUEST_ONLY_PREFIXES = ["/auth"];
 

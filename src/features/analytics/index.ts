@@ -3,5 +3,8 @@ export { default as AccountsTab } from "./components/AccountsTab";
 export { default as AnalyticsShell } from "./components/AnalyticsShell";
 export { default as AudienceTab } from "./components/AudienceTab";
 export { default as ContentTab } from "./components/ContentTab";
+export { default as ExportMenu } from "./components/ExportMenu";
 export { default as OverviewTab } from "./components/OverviewTab";
+export { default as PublicReportPage } from "./components/PublicReportPage";
+export { default as ReportsTab } from "./components/ReportsTab";
 export { default as PostsTab } from "./components/PostsTab";

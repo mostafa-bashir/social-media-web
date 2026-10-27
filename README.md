@@ -81,11 +81,22 @@ The antd theme (`lib/antd-theme.ts`) reads the same JSON, so CSS and components 
 ## Analytics hub
 
 `features/analytics` renders `/[slug]/analytics` as tabs (Overview, Accounts → account
-drill-down, Posts) under one layout with a shared filters bar. Filters (client, platform,
+drill-down, Posts, Content, Audience, Reports) under one layout with a shared filters bar. Filters (client, platform,
 account, range, compare-to, granularity) live in the URL, so every report can be bookmarked or
 shared, and tab links keep them. The post drawer opens from `?post=<source>:<id>`.
 
 Charts use Recharts with colours only from the `--ds-chart-*` tokens. Platforms keep fixed
 slots (Facebook 1, Instagram 2, YouTube 3) so a series never changes colour with filters; the
 slots were checked for colour-blind separation with the dataviz palette validator. Figures a
-platform doesn't report show as "—", never 0.
+platform doesn't report show as "—", never 0. The best-time heatmap uses its own one-hue
+ramp (`--ds-heat-1..5`).
+
+- **Reports tab** (needs a client in the filters): pick sections, then print / save as
+  PDF (`lib/print.ts` forces the light theme). With `analytics.manage` you can also create
+  share links and email schedules there.
+- **Shared reports** open at `/[locale]/r/[token]`. It's public in `proxy.ts`, not indexed,
+  and uses an axios client without the session interceptors.
+- **Goals** show on Overview when a client is selected; editing them needs
+  `analytics.manage`.
+- Permission-gated UI inside Suspense waits for `useIsClient()`, so the server and client
+  render the same markup.

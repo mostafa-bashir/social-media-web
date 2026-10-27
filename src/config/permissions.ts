@@ -18,6 +18,8 @@ export const Permission = {
   PostsView: "posts.view",
   PostsManage: "posts.manage",
   AnalyticsView: "analytics.view",
+  AnalyticsExport: "analytics.export",
+  AnalyticsManage: "analytics.manage",
 } as const;
 
 export type PermissionSlug = (typeof Permission)[keyof typeof Permission];

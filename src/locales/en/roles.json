@@ -40,7 +40,9 @@
     "accounts_manage": "Connect and disconnect social accounts",
     "posts_view": "View posts and media",
     "posts_manage": "Create, schedule and publish posts; upload media",
-    "analytics_view": "View analytics and reports"
+    "analytics_view": "View analytics and reports",
+    "analytics_export": "Export analytics as CSV",
+    "analytics_manage": "Manage report links, scheduled reports and goals"
   },
   "system": {
     "owner": {

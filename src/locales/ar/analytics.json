@@ -23,7 +23,8 @@
     "accounts": "الحسابات",
     "posts": "المنشورات",
     "content": "المحتوى",
-    "audience": "الجمهور"
+    "audience": "الجمهور",
+    "reports": "التقارير"
   },
   "kpis": {
     "followers": "المتابعون",
@@ -351,6 +352,143 @@
       "europe": "أوروبا",
       "oceania": "أوقيانوسيا",
       "antarctica": "القارة القطبية الجنوبية"
+    }
+  },
+  "export": {
+    "button": "تصدير",
+    "datasets": {
+      "accounts": "الحسابات (CSV)",
+      "daily": "الأرقام اليومية (CSV)",
+      "posts": "المنشورات (CSV)"
+    }
+  },
+  "report": {
+    "title": "{client}: تقرير وسائل التواصل الاجتماعي",
+    "range": "{from} – {to}",
+    "generated": "أُنشئ {when}",
+    "pickClient": "اختر عميلًا من عوامل التصفية أعلاه لإنشاء تقريره.",
+    "settings": "محتوى التقرير",
+    "print": "طباعة / حفظ PDF",
+    "noSections": "اختر قسمًا واحدًا على الأقل.",
+    "noPosts": "لم تُنشر منشورات في هذه الفترة.",
+    "noCaption": "بدون نص",
+    "views": "المشاهدات",
+    "engagements": "التفاعلات",
+    "sections": {
+      "kpis": "الأرقام الرئيسية",
+      "trend": "المشاهدات عبر الزمن",
+      "topPosts": "أفضل المنشورات",
+      "content": "ما الذي نجح",
+      "audience": "الجمهور"
+    }
+  },
+  "share": {
+    "title": "المشاركة مع العميل",
+    "description": "رابط للقراءة فقط لهذا التقرير يعرض دائمًا أحدث الأيام. يمكن لأي شخص لديه الرابط فتحه دون تسجيل الدخول.",
+    "range": "فترة التقرير",
+    "expiry": "صلاحية الرابط",
+    "lastDays": "آخر {days} يومًا",
+    "expiresIn": "تنتهي بعد {days} يومًا",
+    "create": "إنشاء رابط",
+    "summary": "آخر {days} يومًا · أُنشئ {created}",
+    "expires": "ينتهي {when}",
+    "viewed": "آخر فتح {when}",
+    "active": "نشط",
+    "revoked": "ملغى",
+    "expired": "منتهٍ",
+    "revoke": "إلغاء",
+    "revokeConfirm": "إلغاء هذا الرابط؟ سيتوقف عن العمل فورًا.",
+    "createdTitle": "تم إنشاء الرابط",
+    "createdHint": "انسخه الآن: لدواعٍ أمنية لن يُعرض مرة أخرى.",
+    "public": {
+      "unavailable": "هذا التقرير غير متاح",
+      "unavailableHint": "ربما انتهت صلاحية الرابط أو أُلغي. اطلب رابطًا جديدًا من المُرسِل."
+    }
+  },
+  "schedules": {
+    "title": "تقارير البريد الإلكتروني",
+    "description": "أرسل تقرير هذا العميل بالبريد الإلكتروني كل أسبوع أو شهر. الأوقات بتوقيت العميل ({timezone}).",
+    "add": "إضافة جدول",
+    "empty": "لا توجد رسائل مجدولة بعد.",
+    "weekly": "كل {weekday} الساعة {time}",
+    "monthly": "شهريًا في اليوم {day} الساعة {time}",
+    "next": "الإرسال التالي {when}",
+    "lastSent": "آخر إرسال {when}",
+    "neverSent": "لم يُرسل بعد",
+    "failed": "فشل آخر إرسال: {reason}",
+    "active": "نشط",
+    "paused": "متوقف",
+    "pause": "إيقاف هذا الجدول مؤقتًا",
+    "resume": "استئناف هذا الجدول",
+    "actionsFor": "إجراءات {rule}",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "deleteTitle": "حذف الجدول",
+    "deleteQuestion": "حذف جدول البريد هذا؟ لن تُرسل تقارير أخرى.",
+    "form": {
+      "createTitle": "إرسال هذا التقرير بالبريد",
+      "editTitle": "تعديل جدول البريد",
+      "save": "حفظ",
+      "frequency": "التكرار",
+      "weekly": "أسبوعيًا",
+      "monthly": "شهريًا",
+      "weekday": "يوم الأسبوع",
+      "dayOfMonth": "يوم الشهر",
+      "hour": "الوقت",
+      "hourHint": "بتوقيت العميل.",
+      "recipients": "المستلمون",
+      "recipientsHint": "اكتب بريدًا إلكترونيًا واضغط Enter. بحد أقصى {max}.",
+      "recipientsRequired": "أضف عنوان بريد إلكتروني واحدًا على الأقل.",
+      "invalidEmail": "أحد العناوين ليس بريدًا إلكترونيًا صالحًا.",
+      "tooMany": "بحد أقصى {max} مستلمين.",
+      "language": "لغة الرسالة",
+      "languages": {
+        "en": "English",
+        "ar": "العربية"
+      },
+      "sections": "يعرض التقرير المرفق",
+      "sectionsRequired": "اختر قسمًا واحدًا على الأقل."
+    }
+  },
+  "goals": {
+    "title": "الأهداف",
+    "description": "أهداف هذا العميل، مع تحديد الوتيرة المتوقعة حتى اليوم على كل شريط.",
+    "add": "إضافة هدف",
+    "empty": "لا توجد أهداف بعد. حدّد هدفًا لمتابعة التقدم نحوه.",
+    "emptyReadOnly": "لم تُحدَّد أهداف لهذا العميل.",
+    "summary": "{metric}: {actual} من {target}",
+    "pace": "الوتيرة المتوقعة {expected}",
+    "startsOn": "يبدأ {when}",
+    "actionsFor": "إجراءات هدف {metric}",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "deleteTitle": "حذف الهدف",
+    "deleteQuestion": "حذف هذا الهدف؟ لن يظهر تقدمه بعد الآن.",
+    "metrics": {
+      "followerGrowth": "نمو المتابعين",
+      "views": "المشاهدات",
+      "engagements": "التفاعلات"
+    },
+    "status": {
+      "upcoming": "قادم",
+      "onTrack": "على المسار",
+      "behind": "متأخر",
+      "achieved": "تحقق",
+      "missed": "لم يتحقق",
+      "noData": "لا توجد بيانات"
+    },
+    "form": {
+      "createTitle": "إضافة هدف",
+      "editTitle": "تعديل الهدف",
+      "save": "حفظ",
+      "metric": "المقياس",
+      "metricHint": "يُحسب عبر جميع حسابات العميل. نمو المتابعين صافٍ: المكتسبون ناقص المفقودين.",
+      "target": "الهدف",
+      "targetRequired": "أدخل قيمة الهدف.",
+      "period": "الفترة",
+      "periodHint": "أيام بتوقيت العميل، بحد أقصى {max}.",
+      "periodRequired": "اختر الفترة.",
+      "periodTooLong": "اختر {max} يومًا كحد أقصى."
     }
   }
 }

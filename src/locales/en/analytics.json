@@ -23,7 +23,8 @@
     "accounts": "Accounts",
     "posts": "Posts",
     "content": "Content",
-    "audience": "Audience"
+    "audience": "Audience",
+    "reports": "Reports"
   },
   "kpis": {
     "followers": "Followers",
@@ -351,6 +352,143 @@
       "europe": "Europe",
       "oceania": "Oceania",
       "antarctica": "Antarctica"
+    }
+  },
+  "export": {
+    "button": "Export",
+    "datasets": {
+      "accounts": "Accounts (CSV)",
+      "daily": "Daily figures (CSV)",
+      "posts": "Posts (CSV)"
+    }
+  },
+  "report": {
+    "title": "{client}: social media report",
+    "range": "{from} – {to}",
+    "generated": "Generated {when}",
+    "pickClient": "Pick a client in the filters above to build their report.",
+    "settings": "Report contents",
+    "print": "Print / save as PDF",
+    "noSections": "Pick at least one section.",
+    "noPosts": "No posts were published in this range.",
+    "noCaption": "No caption",
+    "views": "Views",
+    "engagements": "Engagements",
+    "sections": {
+      "kpis": "Key figures",
+      "trend": "Views over time",
+      "topPosts": "Top posts",
+      "content": "What worked",
+      "audience": "Audience"
+    }
+  },
+  "share": {
+    "title": "Share with the client",
+    "description": "A read-only link to this report, always showing the latest days. Anyone with the link can open it, without signing in.",
+    "range": "Report period",
+    "expiry": "Link expiry",
+    "lastDays": "Last {days} days",
+    "expiresIn": "Expires in {days} days",
+    "create": "Create link",
+    "summary": "Last {days} days · created {created}",
+    "expires": "Expires {when}",
+    "viewed": "last opened {when}",
+    "active": "Active",
+    "revoked": "Revoked",
+    "expired": "Expired",
+    "revoke": "Revoke",
+    "revokeConfirm": "Revoke this link? It stops working immediately.",
+    "createdTitle": "Link created",
+    "createdHint": "Copy it now: for security it won't be shown again.",
+    "public": {
+      "unavailable": "This report isn't available",
+      "unavailableHint": "The link may have expired or been revoked. Ask the sender for a new one."
+    }
+  },
+  "schedules": {
+    "title": "Email reports",
+    "description": "Email this client's report every week or month. Times are in the client's time zone ({timezone}).",
+    "add": "Add schedule",
+    "empty": "No scheduled emails yet.",
+    "weekly": "Every {weekday} at {time}",
+    "monthly": "Monthly on day {day} at {time}",
+    "next": "Next {when}",
+    "lastSent": "last sent {when}",
+    "neverSent": "not sent yet",
+    "failed": "Last send failed: {reason}",
+    "active": "Active",
+    "paused": "Paused",
+    "pause": "Pause this schedule",
+    "resume": "Resume this schedule",
+    "actionsFor": "Actions for {rule}",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteTitle": "Delete schedule",
+    "deleteQuestion": "Delete this email schedule? No more reports will be sent.",
+    "form": {
+      "createTitle": "Email this report",
+      "editTitle": "Edit email schedule",
+      "save": "Save",
+      "frequency": "How often",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "weekday": "Day of the week",
+      "dayOfMonth": "Day of the month",
+      "hour": "Time",
+      "hourHint": "In the client's time zone.",
+      "recipients": "Recipients",
+      "recipientsHint": "Type an email and press Enter. Up to {max}.",
+      "recipientsRequired": "Add at least one email address.",
+      "invalidEmail": "One of the addresses isn't a valid email.",
+      "tooMany": "At most {max} recipients.",
+      "language": "Email language",
+      "languages": {
+        "en": "English",
+        "ar": "العربية"
+      },
+      "sections": "The linked report shows",
+      "sectionsRequired": "Pick at least one section."
+    }
+  },
+  "goals": {
+    "title": "Goals",
+    "description": "Targets for this client, with today's expected pace marked on each bar.",
+    "add": "Add goal",
+    "empty": "No goals yet. Set a target to track progress against it.",
+    "emptyReadOnly": "No goals have been set for this client.",
+    "summary": "{metric}: {actual} of {target}",
+    "pace": "on pace would be {expected}",
+    "startsOn": "starts {when}",
+    "actionsFor": "Actions for the {metric} goal",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteTitle": "Delete goal",
+    "deleteQuestion": "Delete this goal? Its progress won't be shown any more.",
+    "metrics": {
+      "followerGrowth": "Follower growth",
+      "views": "Views",
+      "engagements": "Engagements"
+    },
+    "status": {
+      "upcoming": "Upcoming",
+      "onTrack": "On track",
+      "behind": "Behind",
+      "achieved": "Achieved",
+      "missed": "Missed",
+      "noData": "No data"
+    },
+    "form": {
+      "createTitle": "Add goal",
+      "editTitle": "Edit goal",
+      "save": "Save",
+      "metric": "Metric",
+      "metricHint": "Counted across all of the client's accounts. Follower growth is net: gained minus lost.",
+      "target": "Target",
+      "targetRequired": "Enter a target.",
+      "period": "Period",
+      "periodHint": "Days in the client's time zone, up to {max}.",
+      "periodRequired": "Pick the period.",
+      "periodTooLong": "Pick at most {max} days."
     }
   }
 }

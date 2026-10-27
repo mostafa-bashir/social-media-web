@@ -16,9 +16,12 @@ import type { TimeSlot } from "../types/content";
 export default function RecommendedSlots({
   slots,
   clientId,
+  showSchedule = true,
 }: {
   slots: TimeSlot[];
   clientId?: string;
+  /** Off in shared reports, whose readers can't post. */
+  showSchedule?: boolean;
 }) {
   const t = useTranslations("analytics.content.recommended");
   const slug = useActiveWorkspaceSlug() ?? "";
@@ -56,17 +59,19 @@ export default function RecommendedSlots({
           </li>
         ))}
       </ol>
-      <Link
-        href={{
-          pathname: routes.workspace(slug).newPost,
-          query: clientId ? { clientId } : {},
-        }}
-        className="self-start"
-      >
-        <Button icon={<PlusOutlined />} className="rounded-full!">
-          {t("schedule")}
-        </Button>
-      </Link>
+      {showSchedule ? (
+        <Link
+          href={{
+            pathname: routes.workspace(slug).newPost,
+            query: clientId ? { clientId } : {},
+          }}
+          className="self-start"
+        >
+          <Button icon={<PlusOutlined />} className="rounded-full!">
+            {t("schedule")}
+          </Button>
+        </Link>
+      ) : null}
     </div>
   );
 }

@@ -93,3 +93,21 @@ body {
   color: var(--ds-text-primary);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
+
+/* Client reports: printing shows the report alone, top-aligned, on white paper. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .report-print,
+  .report-print * {
+    visibility: visible;
+  }
+  .report-print {
+    position: absolute;
+    inset: 0 0 auto 0;
+  }
+  @page {
+    margin: 14mm;
+  }
+}

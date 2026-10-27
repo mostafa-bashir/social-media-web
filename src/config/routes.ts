@@ -15,6 +15,8 @@ export const routes = {
     create: "/workspaces/new",
   },
   invite: (token: string) => `/invite/${encodeURIComponent(token)}`,
+  /** A client report shared by link, readable without signing in. */
+  sharedReport: (token: string) => `/r/${encodeURIComponent(token)}`,
   workspace: (slug: string) => ({
     home: `/${slug}/dashboard`,
     members: `/${slug}/members`,
@@ -31,6 +33,7 @@ export const routes = {
     analyticsPosts: `/${slug}/analytics/posts`,
     analyticsContent: `/${slug}/analytics/content`,
     analyticsAudience: `/${slug}/analytics/audience`,
+    analyticsReports: `/${slug}/analytics/reports`,
     roles: `/${slug}/roles`,
     settings: `/${slug}/settings`,
   }),
@@ -41,5 +44,6 @@ export const NON_WORKSPACE_SEGMENTS: ReadonlySet<string> = new Set([
   "auth",
   "workspaces",
   "invite",
+  "r",
   "oauth-error",
 ]);

@@ -73,5 +73,9 @@
   "INVALID_DATE_RANGE": "Pick a date range of up to one year.",
   "ANALYTICS_POST_NOT_FOUND": "This post isn't available any more. It may have been deleted or the link is incomplete.",
   "ANALYTICS_NOT_ENABLED": "Reconnect this account and allow the analytics permissions first.",
-  "SYNC_COOLDOWN": "This account was synced moments ago. Try again in a few minutes."
+  "SYNC_COOLDOWN": "This account was synced moments ago. Try again in a few minutes.",
+  "REPORT_SCHEDULE_LIMIT": "This client already has the maximum number of email schedules.",
+  "REPORT_SCHEDULE_NOT_FOUND": "This email schedule no longer exists.",
+  "ANALYTICS_GOAL_LIMIT": "This client already has the maximum number of goals.",
+  "ANALYTICS_GOAL_NOT_FOUND": "This goal no longer exists."
 }
