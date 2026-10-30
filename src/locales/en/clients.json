@@ -45,6 +45,8 @@
     "logoUpdated": "Logo updated.",
     "targetCountries": "Target markets",
     "targetCountriesHint": "Used for trends in analytics. Up to 5 countries.",
-    "targetCountriesPlaceholder": "Pick countries"
+    "targetCountriesPlaceholder": "Pick countries",
+    "requireApproval": "Require approval",
+    "requireApprovalHint": "Posts must be approved by someone with approval rights before they're scheduled or published."
   }
 }

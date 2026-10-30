@@ -25,6 +25,11 @@ export const queryKeys = {
   analytics: (slug: string) => ["workspace", slug, "analytics"] as const,
   tasks: (slug: string) => ["workspace", slug, "tasks"] as const,
   taskStatuses: (slug: string) => ["workspace", slug, "task-statuses"] as const,
+  taskLabels: (slug: string) => ["workspace", slug, "task-labels"] as const,
+  taskSettings: (slug: string) => ["workspace", slug, "task-settings"] as const,
+  sprints: (slug: string) => ["workspace", slug, "sprints"] as const,
+  taskAutomationRules: (slug: string) =>
+    ["workspace", slug, "task-automation-rules"] as const,
   permissionCatalog: (slug: string) =>
     ["workspace", slug, "permission-catalog"] as const,
 };

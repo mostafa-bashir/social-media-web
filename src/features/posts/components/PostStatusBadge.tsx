@@ -6,6 +6,8 @@ import type { PostStatus } from "../types";
 
 const TONES: Record<PostStatus, StatusTone> = {
   draft: "neutral",
+  in_review: "accent",
+  changes_requested: "danger",
   scheduled: "brand",
   publishing: "accent",
   published: "growth",

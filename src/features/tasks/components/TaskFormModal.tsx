@@ -13,20 +13,37 @@ import {
   type TaskInput,
   type TaskPriority,
   type TaskStatus,
+  type TaskType,
 } from "../types";
+import TaskPlanningFields from "./TaskPlanningFields";
 
 const MAX_TITLE_LENGTH = 200;
 const MAX_DESCRIPTION_LENGTH = 10_000;
 const MAX_ASSIGNEES = 10;
+const MINUTES_PER_HOUR = 60;
 
 interface FormValues {
   title: string;
   description?: string;
   statusId?: string;
+  type: TaskType;
+  parentId?: string | null;
+  sprintId?: string | null;
+  labelIds: string[];
+  storyPoints?: number | null;
+  estimateHours?: number | null;
   priority: TaskPriority;
   assigneeIds: string[];
   clientId?: string;
+  startAt?: Dayjs | null;
   dueAt?: Dayjs | null;
+}
+
+export interface TaskFormDefaults {
+  statusId?: string;
+  clientId?: string;
+  type?: TaskType;
+  parentId?: string;
 }
 
 export interface TaskFormModalProps {
@@ -34,13 +51,57 @@ export interface TaskFormModalProps {
   /** Present when editing. */
   task?: Task;
   statuses: TaskStatus[];
-  defaults?: { statusId?: string; clientId?: string };
+  defaults?: TaskFormDefaults;
   loading: boolean;
   onCancel: () => void;
   onSubmit: (input: TaskInput) => void;
 }
 
-/** Create or edit a task. Due dates are picked and shown in the viewer's zone. */
+const toDayjs = (value: string | null) => (value ? dayjs(value) : null);
+
+function initialValuesFor(
+  task: Task | undefined,
+  statuses: TaskStatus[],
+  defaults: TaskFormDefaults | undefined,
+): FormValues {
+  if (!task) {
+    return {
+      title: "",
+      description: "",
+      statusId: defaults?.statusId ?? statuses[0]?.id,
+      type: defaults?.type ?? "task",
+      parentId: defaults?.parentId ?? null,
+      sprintId: null,
+      labelIds: [],
+      storyPoints: null,
+      estimateHours: null,
+      priority: "medium",
+      assigneeIds: [],
+      clientId: defaults?.clientId,
+      startAt: null,
+      dueAt: null,
+    };
+  }
+  return {
+    title: task.title,
+    description: task.description ?? "",
+    type: task.type,
+    parentId: task.parent?.id ?? null,
+    sprintId: task.sprint?.id ?? null,
+    labelIds: task.labels.map((label) => label.id),
+    storyPoints: task.storyPoints,
+    estimateHours: task.estimateMinutes
+      ? task.estimateMinutes / MINUTES_PER_HOUR
+      : null,
+    priority: task.priority,
+    assigneeIds: task.assignees.map((person) => person.userId),
+    clientId: task.client?.id,
+    startAt: toDayjs(task.startAt),
+    dueAt: toDayjs(task.dueAt),
+  };
+}
+
+/** Create or edit a task. Dates are picked and shown in the viewer's zone. */
 export default function TaskFormModal({
   open,
   task,
@@ -54,35 +115,20 @@ export default function TaskFormModal({
   const tPriority = useTranslations("tasks.priority");
   const [form] = Form.useForm<FormValues>();
 
-  // The modal is destroyed when hidden, so these apply afresh on every open.
-  const initialValues: FormValues = task
-    ? {
-        title: task.title,
-        description: task.description ?? "",
-        priority: task.priority,
-        assigneeIds: task.assignees.map((person) => person.userId),
-        clientId: task.client?.id,
-        dueAt: task.dueAt ? dayjs(task.dueAt) : null,
-      }
-    : {
-        title: "",
-        description: "",
-        statusId: defaults?.statusId ?? statuses[0]?.id,
-        priority: "medium",
-        assigneeIds: [],
-        clientId: defaults?.clientId,
-        dueAt: null,
-      };
-
-  const submit = (values: FormValues) =>
+  const submit = ({ startAt, dueAt, estimateHours, ...values }: FormValues) =>
     onSubmit({
-      title: values.title,
+      ...values,
       description: values.description || null,
-      ...(task ? {} : { statusId: values.statusId }),
-      priority: values.priority,
-      assigneeIds: values.assigneeIds,
-      clientId: values.clientId ?? null,
-      dueAt: values.dueAt ? values.dueAt.toISOString() : null,
+      parentId: values.parentId ?? null,
+      sprintId: values.sprintId ?? null,
+      storyPoints: values.storyPoints ?? null,
+      estimateMinutes: estimateHours
+        ? Math.round(estimateHours * MINUTES_PER_HOUR)
+        : null,
+      // Left out on create, a child inherits its parent's client.
+      clientId: task ? (values.clientId ?? null) : values.clientId,
+      startAt: startAt ? startAt.toISOString() : null,
+      dueAt: dueAt ? dueAt.toISOString() : null,
     });
 
   return (
@@ -94,12 +140,14 @@ export default function TaskFormModal({
       cancelButtonProps={{ className: "rounded-full!" }}
       onCancel={onCancel}
       onOk={() => form.submit()}
+      width={640}
+      // The modal is destroyed when hidden, so initial values apply afresh on every open.
       destroyOnHidden
     >
       <Form
         form={form}
         layout="vertical"
-        initialValues={initialValues}
+        initialValues={initialValuesFor(task, statuses, defaults)}
         onFinish={submit}
       >
         <Form.Item
@@ -115,6 +163,7 @@ export default function TaskFormModal({
             maxLength={MAX_DESCRIPTION_LENGTH}
           />
         </Form.Item>
+        <TaskPlanningFields task={task} />
         <div className="grid gap-x-4 sm:grid-cols-2">
           {task ? null : (
             <Form.Item name="statusId" label={t("status")}>

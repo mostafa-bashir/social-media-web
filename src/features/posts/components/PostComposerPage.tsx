@@ -12,20 +12,27 @@ import { usePost } from "../api/get-posts";
 import { EDITABLE_STATUSES } from "../types";
 import PostComposer from "./PostComposer";
 
-/** New post (no `postId`) or editing an existing draft/scheduled post. */
+/**
+ * New post (no `postId`) or editing an existing draft/scheduled post. A new
+ * post started from a task (`taskId`) is linked to it on save.
+ */
 export default function PostComposerPage({
   postId,
   initialClientId,
+  taskId,
 }: {
   postId?: string;
   initialClientId?: string;
+  taskId?: string;
 }) {
   const t = useTranslations("posts.composer");
   const slug = useActiveWorkspaceSlug() ?? "";
   const errorMessage = useErrorMessage();
   const post = usePost(postId);
 
-  if (!postId) return <PostComposer initialClientId={initialClientId} />;
+  if (!postId) {
+    return <PostComposer initialClientId={initialClientId} taskId={taskId} />;
+  }
   if (post.isLoading) {
     return <Skeleton active className="p-6" paragraph={{ rows: 8 }} />;
   }

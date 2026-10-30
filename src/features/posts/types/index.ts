@@ -6,6 +6,8 @@ import { postMetricsSchema } from "@/lib/post-metrics";
 
 export const POST_STATUSES = [
   "draft",
+  "in_review",
+  "changes_requested",
   "scheduled",
   "publishing",
   "published",
@@ -86,4 +88,8 @@ export interface PostsQuery {
 }
 
 /** Statuses in which a post can still be edited (mirrors the API). */
-export const EDITABLE_STATUSES: readonly PostStatus[] = ["draft", "scheduled"];
+export const EDITABLE_STATUSES: readonly PostStatus[] = [
+  "draft",
+  "changes_requested",
+  "scheduled",
+];

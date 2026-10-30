@@ -35,7 +35,9 @@
     "publishing": "جارٍ النشر",
     "published": "منشور",
     "partially_failed": "فشل جزئياً",
-    "failed": "فشل"
+    "failed": "فشل",
+    "in_review": "قيد المراجعة",
+    "changes_requested": "مطلوب تعديلات"
   },
   "targetStatus": {
     "pending": "بالانتظار",
@@ -75,7 +77,8 @@
       "views": "{count} مشاهدة",
       "likes": "{count} إعجاب",
       "comments": "{count} تعليق"
-    }
+    },
+    "tasks": "المهام"
   },
   "schedule": {
     "title": "جدولة المنشور",
@@ -108,7 +111,8 @@
     "done": {
       "save": "تم حفظ المسودة.",
       "schedule": "تمت جدولة المنشور.",
-      "publish-now": "بدأ النشر."
+      "publish-now": "بدأ النشر.",
+      "submit-review": "أُرسل للمراجعة."
     },
     "picker": {
       "title": "اختيار الوسائط",
@@ -138,7 +142,35 @@
       "publishNow": "النشر الآن",
       "publishNowConfirm": "النشر إلى الحسابات المختارة الآن؟",
       "saveDraft": "حفظ كمسودة",
-      "saveChanges": "حفظ التغييرات"
+      "saveChanges": "حفظ التغييرات",
+      "submitWithTime": "إرسال للمراجعة…",
+      "submitPublishOnApproval": "إرسال — النشر بعد الموافقة"
+    },
+    "fromTask": "سيُربط هذا المنشور بالمهمة التي بدأت منها.",
+    "needsApproval": "منشورات هذا العميل تحتاج إلى موافقة. أرسله للمراجعة وسيجدوله أحد المعتمِدين.",
+    "review": {
+      "title": "إرسال للمراجعة",
+      "confirm": "إرسال"
+    }
+  },
+  "review": {
+    "title": "الموافقة",
+    "approve": "موافقة",
+    "requestChanges": "طلب تعديلات",
+    "withdraw": "سحب",
+    "send": "إعادة للتعديل",
+    "commentLabel": "ما الذي يجب تغييره؟",
+    "commentPlaceholder": "أخبر الكاتب بما يجب تغييره قبل الموافقة…",
+    "timePassedTitle": "انقضى الوقت المطلوب — اختر وقتًا جديدًا",
+    "approved": "تمت الموافقة على المنشور.",
+    "withdrawn": "سُحب طلب المراجعة.",
+    "changesRequested": "أُعيد للتعديل.",
+    "formerMember": "عضو سابق",
+    "actions": {
+      "submitted": "أُرسل",
+      "approved": "تمت الموافقة",
+      "changes_requested": "مطلوب تعديلات",
+      "withdrawn": "سُحب"
     }
   }
 }

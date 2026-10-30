@@ -35,7 +35,9 @@
     "publishing": "Publishing",
     "published": "Published",
     "partially_failed": "Partly failed",
-    "failed": "Failed"
+    "failed": "Failed",
+    "in_review": "In review",
+    "changes_requested": "Changes requested"
   },
   "targetStatus": {
     "pending": "Waiting",
@@ -75,7 +77,8 @@
       "views": "{count} views",
       "likes": "{count} likes",
       "comments": "{count} comments"
-    }
+    },
+    "tasks": "Tasks"
   },
   "schedule": {
     "title": "Schedule post",
@@ -108,7 +111,8 @@
     "done": {
       "save": "Draft saved.",
       "schedule": "Post scheduled.",
-      "publish-now": "Publishing started."
+      "publish-now": "Publishing started.",
+      "submit-review": "Sent for review."
     },
     "picker": {
       "title": "Choose media",
@@ -138,7 +142,35 @@
       "publishNow": "Publish now",
       "publishNowConfirm": "Publish to the selected accounts now?",
       "saveDraft": "Save draft",
-      "saveChanges": "Save changes"
+      "saveChanges": "Save changes",
+      "submitWithTime": "Submit for review…",
+      "submitPublishOnApproval": "Submit — publish once approved"
+    },
+    "fromTask": "This post will be linked to the task you started from.",
+    "needsApproval": "This client's posts need approval. Submit it and an approver will schedule it.",
+    "review": {
+      "title": "Submit for review",
+      "confirm": "Submit"
+    }
+  },
+  "review": {
+    "title": "Approval",
+    "approve": "Approve",
+    "requestChanges": "Request changes",
+    "withdraw": "Withdraw",
+    "send": "Send back",
+    "commentLabel": "What should change?",
+    "commentPlaceholder": "Tell the author what to change before you approve…",
+    "timePassedTitle": "The requested time has passed — pick a new one",
+    "approved": "Post approved.",
+    "withdrawn": "Review withdrawn.",
+    "changesRequested": "Sent back for changes.",
+    "formerMember": "Former member",
+    "actions": {
+      "submitted": "Submitted",
+      "approved": "Approved",
+      "changes_requested": "Changes requested",
+      "withdrawn": "Withdrawn"
     }
   }
 }

@@ -46,7 +46,8 @@
     "analytics_manage": "Manage report links, scheduled reports and goals",
     "tasks_view": "View tasks and comment on them",
     "tasks_manage": "Create, edit, move and delete tasks",
-    "tasks_configure": "Manage task board columns"
+    "tasks_configure": "Manage task board columns",
+    "posts_approve": "Approve or send back posts for clients that need approval"
   },
   "system": {
     "owner": {

@@ -9,10 +9,13 @@ import ClientSelect from "@/components/ui/ClientSelect";
 import { useDebouncedValue } from "@/hooks/use-debounced-value";
 import { useMemberOptions } from "@/hooks/use-member-options";
 
+import { useTaskLabels } from "../api/task-meta";
 import type { TaskPageState } from "../hooks/use-task-filters";
+import SprintSelect from "./SprintSelect";
 import {
   DUE_FILTERS,
   TASK_PRIORITIES,
+  TASK_TYPES,
   TASK_VIEWS,
   type TaskView,
 } from "../types";
@@ -38,6 +41,7 @@ export default function TaskFiltersBar({
     SEARCH_DEBOUNCE_MS,
   );
   const members = useMemberOptions(debouncedMemberSearch);
+  const labels = useTaskLabels().data ?? [];
 
   useEffect(() => {
     if (debouncedSearch !== (state.search ?? "")) {
@@ -85,6 +89,40 @@ export default function TaskFiltersBar({
           onChange({ assigneeId });
         }}
       />
+      <SprintSelect
+        asFilter
+        className="w-full sm:w-44!"
+        placeholder={t("filters.anySprint")}
+        aria-label={t("filters.sprint")}
+        value={state.sprintId}
+        onChange={(sprintId) => onChange({ sprintId: sprintId ?? undefined })}
+      />
+      <Select
+        allowClear
+        className="w-full sm:w-36!"
+        placeholder={t("filters.anyType")}
+        aria-label={t("filters.type")}
+        value={state.type}
+        options={TASK_TYPES.map((value) => ({
+          value,
+          label: t(`types.${value}`),
+        }))}
+        onChange={(type) => onChange({ type })}
+      />
+      {labels.length > 0 ? (
+        <Select
+          allowClear
+          className="w-full sm:w-40!"
+          placeholder={t("filters.anyLabel")}
+          aria-label={t("filters.label")}
+          value={state.labelId}
+          options={labels.map((label) => ({
+            value: label.id,
+            label: label.name,
+          }))}
+          onChange={(labelId) => onChange({ labelId })}
+        />
+      ) : null}
       <Select
         allowClear
         className="w-full sm:w-36!"

@@ -161,6 +161,8 @@ export default function PostsPage() {
       <PostDetailDrawer
         postId={openPostId}
         canManage={canManage}
+        canViewTasks={can(Permission.TasksView)}
+        canApprove={can(Permission.PostsApprove)}
         onClose={() => setOpenPostId(null)}
         onUnschedule={unschedule}
         onDelete={setDeleting}

@@ -14,7 +14,7 @@ import {
 } from "../types";
 import { boardQueryKey } from "./get-tasks";
 
-/** Task changes also move column counts, so statuses refresh too. */
+/** Task changes also move column and sprint totals, so those refresh too. */
 function useInvalidateTasks() {
   const slug = useActiveWorkspaceSlug() ?? "";
   const queryClient = useQueryClient();
@@ -23,6 +23,7 @@ function useInvalidateTasks() {
     await queryClient.invalidateQueries({
       queryKey: queryKeys.taskStatuses(slug),
     });
+    await queryClient.invalidateQueries({ queryKey: queryKeys.sprints(slug) });
   };
 }
 

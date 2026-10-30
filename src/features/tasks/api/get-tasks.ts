@@ -10,6 +10,7 @@ import {
   taskCommentSchema,
   type TaskFilters,
   taskSchema,
+  type TaskType,
   taskStatusSchema,
 } from "../types";
 
@@ -95,5 +96,56 @@ export function useTaskComments(taskId: string | undefined) {
         ).data,
       ),
     enabled: Boolean(slug && taskId),
+  });
+}
+
+const CHILDREN_PAGE_SIZE = 100;
+const PARENT_OPTIONS_PAGE_SIZE = 20;
+
+/** Subtasks of a task, or the items of a campaign. */
+export function useTaskChildren(parentId: string) {
+  const slug = useActiveWorkspaceSlug() ?? "";
+  return useQuery({
+    queryKey: [...queryKeys.tasks(slug), "children", parentId],
+    queryFn: async () =>
+      parsePaginated(
+        taskSchema,
+        (
+          await apiClient.get("/tasks", {
+            params: { parentId, pageSize: CHILDREN_PAGE_SIZE },
+          })
+        ).data,
+      ),
+    enabled: Boolean(slug),
+  });
+}
+
+/** Work items that can hold a child of `childType` (see the API's hierarchy rules). */
+export function useParentOptions(childType: TaskType, search: string) {
+  const slug = useActiveWorkspaceSlug() ?? "";
+  const wantsCampaign = childType !== "subtask";
+  return useQuery({
+    queryKey: [...queryKeys.tasks(slug), "parents", childType, search],
+    queryFn: async () => {
+      const page = parsePaginated(
+        taskSchema,
+        (
+          await apiClient.get("/tasks", {
+            params: {
+              type: wantsCampaign ? "campaign" : undefined,
+              search: search || undefined,
+              pageSize: PARENT_OPTIONS_PAGE_SIZE,
+            },
+          })
+        ).data,
+      );
+      return page.data.filter((task) =>
+        wantsCampaign
+          ? task.type === "campaign"
+          : task.type !== "campaign" && task.type !== "subtask",
+      );
+    },
+    enabled: Boolean(slug) && childType !== "campaign",
+    placeholderData: keepPreviousData,
   });
 }

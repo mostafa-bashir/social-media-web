@@ -1,6 +1,6 @@
 "use client";
 
-import { Alert, ColorPicker, Form, Input, Modal, Select } from "antd";
+import { Alert, ColorPicker, Form, Input, Modal, Select, Switch } from "antd";
 import type { Color } from "antd/es/color-picker";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo } from "react";
@@ -29,6 +29,7 @@ interface ClientFormValues {
   color: string | null;
   notes?: string;
   targetCountries: string[];
+  requireApproval: boolean;
 }
 
 export interface ClientFormModalProps {
@@ -67,6 +68,7 @@ export default function ClientFormModal({
       color: client?.color ?? null,
       notes: client?.notes ?? "",
       targetCountries: client?.targetCountries ?? [],
+      requireApproval: client?.requireApproval ?? false,
     });
     create.reset();
     update.reset();
@@ -153,6 +155,14 @@ export default function ClientFormModal({
               <TargetCountriesSelect
                 placeholder={t("targetCountriesPlaceholder")}
               />
+            </Form.Item>
+            <Form.Item
+              name="requireApproval"
+              label={t("requireApproval")}
+              extra={t("requireApprovalHint")}
+              valuePropName="checked"
+            >
+              <Switch />
             </Form.Item>
             <Form.Item name="notes" label={t("notes")} className="mb-0!">
               <Input.TextArea

@@ -24,6 +24,9 @@ export interface ScheduleModalProps {
   loading: boolean;
   onCancel: () => void;
   onConfirm: (scheduledAtIso: string) => void;
+  /** Overrides for reuse when submitting for review or approving. */
+  title?: string;
+  confirmLabel?: string;
 }
 
 /** Date and time are picked in the client's timezone, which the label names. */
@@ -34,6 +37,8 @@ export default function ScheduleModal({
   loading,
   onCancel,
   onConfirm,
+  title,
+  confirmLabel,
 }: ScheduleModalProps) {
   const t = useTranslations("posts.schedule");
   // Mounted only while open (see the composer), so this starts fresh each time.
@@ -55,8 +60,8 @@ export default function ScheduleModal({
   return (
     <Modal
       open={open}
-      title={t("title")}
-      okText={t("confirm")}
+      title={title ?? t("title")}
+      okText={confirmLabel ?? t("confirm")}
       onOk={confirm}
       okButtonProps={{
         disabled: !value,

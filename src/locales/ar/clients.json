@@ -45,6 +45,8 @@
     "logoUpdated": "تم تحديث الشعار.",
     "targetCountries": "الأسواق المستهدفة",
     "targetCountriesHint": "تُستخدم لعرض الرائج في التحليلات. حتى 5 دول.",
-    "targetCountriesPlaceholder": "اختر الدول"
+    "targetCountriesPlaceholder": "اختر الدول",
+    "requireApproval": "اشتراط الموافقة",
+    "requireApprovalHint": "يجب أن يوافق على المنشورات شخص لديه صلاحية الموافقة قبل جدولتها أو نشرها."
   }
 }

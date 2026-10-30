@@ -15,6 +15,7 @@ import {
   useReorderTaskStatuses,
   useUpdateTaskStatus,
 } from "../api/task-mutations";
+import { useBlockedWarning } from "../hooks/use-blocked-warning";
 import type { Task, TaskFilters, TaskStatus, TaskStatusInput } from "../types";
 import ColumnMenu from "./ColumnMenu";
 import DeleteStatusModal from "./DeleteStatusModal";
@@ -44,6 +45,7 @@ export default function TaskBoardView({
   const { message } = App.useApp();
   const board = useTaskBoard(filters);
   const move = useMoveTask(filters);
+  const warnIfBlocked = useBlockedWarning(statuses);
   const create = useCreateTaskStatus();
   const update = useUpdateTaskStatus();
   const reorder = useReorderTaskStatuses();
@@ -82,7 +84,15 @@ export default function TaskBoardView({
         canManage={canManage}
         onOpen={onOpen}
         onAdd={onAdd}
-        onMove={(change) => move.mutate(change, { onError })}
+        onMove={(change) => {
+          warnIfBlocked(
+            board.data
+              ?.flatMap((column) => column.tasks)
+              .find((task) => task.id === change.taskId),
+            change.statusId,
+          );
+          move.mutate(change, { onError });
+        }}
         columnMenu={
           canConfigure
             ? (column) => {

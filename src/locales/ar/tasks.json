@@ -23,7 +23,10 @@
   },
   "views": {
     "board": "لوحة",
-    "list": "قائمة"
+    "list": "قائمة",
+    "backlog": "قائمة الانتظار",
+    "timeline": "الجدول الزمني",
+    "reports": "التقارير"
   },
   "filters": {
     "search": "ابحث في المهام",
@@ -39,7 +42,13 @@
     "dueOptions": {
       "overdue": "متأخرة",
       "week": "مستحقة خلال 7 أيام"
-    }
+    },
+    "anyType": "أي نوع",
+    "type": "النوع",
+    "anyLabel": "أي وسم",
+    "label": "الوسم",
+    "anySprint": "أي دورة عمل",
+    "sprint": "دورة العمل"
   },
   "columns": {
     "add": "إضافة عمود",
@@ -85,10 +94,23 @@
     "client": "العميل",
     "noClient": "بدون عميل",
     "assignees": "المسؤولون",
-    "unassigned": "غير مسندة"
+    "unassigned": "غير مسندة",
+    "type": "النوع",
+    "parentTask": "المهمة الرئيسية",
+    "campaign": "الحملة",
+    "pickParent": "اختر مهمة",
+    "noCampaign": "بدون حملة",
+    "labels": "الوسوم",
+    "noLabels": "بدون وسوم",
+    "storyPoints": "نقاط التقدير",
+    "startAt": "البداية",
+    "estimate": "التقدير",
+    "hoursUnit": "س",
+    "sprint": "دورة العمل"
   },
   "detail": {
-    "title": "المهمة"
+    "title": "المهمة",
+    "noDescription": "لا يوجد وصف."
   },
   "comments": {
     "title": "{count, plural, =0 {التعليقات} one {تعليق واحد} two {تعليقان} few {# تعليقات} many {# تعليقًا} other {# تعليق}}",
@@ -117,5 +139,291 @@
     "title": "لا توجد مهام بعد",
     "description": "أنشئ مهمة لتبدأ التخطيط لعمل فريقك.",
     "filtered": "لا توجد مهام تطابق عوامل التصفية"
+  },
+  "types": {
+    "campaign": "حملة",
+    "content": "محتوى",
+    "task": "مهمة",
+    "bug": "خلل",
+    "subtask": "مهمة فرعية"
+  },
+  "meta": {
+    "children": "تم إنجاز {done} من {total}",
+    "checklist": "تم إنجاز {done} من {total} من بنود قائمة التحقق",
+    "points": "{points} نقاط تقدير"
+  },
+  "children": {
+    "campaignTitle": "العمل ضمن هذه الحملة",
+    "subtasksTitle": "المهام الفرعية",
+    "progress": "تم إنجاز {done} من {total}",
+    "addItem": "أضف مهمة إلى هذه الحملة — اضغط Enter",
+    "addSubtask": "أضف مهمة فرعية — اضغط Enter"
+  },
+  "checklist": {
+    "title": "قائمة التحقق",
+    "progress": "تم إنجاز {done} من {total}",
+    "delete": "حذف \"{item}\"",
+    "add": "أضف بندًا — اضغط Enter"
+  },
+  "labels": {
+    "name": "اسم الوسم",
+    "tone": "اللون",
+    "add": "إضافة وسم",
+    "empty": "لا توجد وسوم بعد. تساعدك الوسوم على تجميع المهام عبر العملاء والأعمدة.",
+    "taskCount": "{count, plural, =0 {غير مستخدم} one {مهمة واحدة} two {مهمتان} few {# مهام} many {# مهمة} other {# مهمة}}",
+    "toneFor": "لون {label}",
+    "deleteLabel": "حذف {label}",
+    "deleteTitle": "حذف الوسم",
+    "delete": "حذف"
+  },
+  "keys": {
+    "saved": "تم حفظ بادئة المفاتيح",
+    "current": "تُرقَّم المهام بهذا الشكل: {prefix}-12.",
+    "prefix": "بادئة المفاتيح",
+    "help": "من 2 إلى 6 أحرف أو أرقام لاتينية تبدأ بحرف. اتركها فارغة لاستخدام البادئة المأخوذة من عنوان مساحة العمل. تغييرها يغيّر مفاتيح كل المهام.",
+    "invalid": "استخدم من 2 إلى 6 أحرف أو أرقام لاتينية تبدأ بحرف.",
+    "save": "حفظ"
+  },
+  "settings": {
+    "title": "إعدادات اللوحة",
+    "labels": "الوسوم",
+    "keys": "مفاتيح المهام",
+    "automation": "الأتمتة"
+  },
+  "stages": {
+    "no_post": "يحتاج إلى منشور",
+    "draft": "مسودة",
+    "scheduled": "مجدول",
+    "publishing": "جارٍ النشر",
+    "published": "منشور",
+    "measuring": "متابعة الأهداف",
+    "goal_reached": "تحقق الهدف",
+    "goal_missed": "لم يتحقق الهدف",
+    "failed": "فشل النشر",
+    "in_review": "قيد المراجعة",
+    "changes_requested": "مطلوب تعديلات"
+  },
+  "workflow": {
+    "label": "مسار المحتوى",
+    "needsPost": "يحتاج إلى منشور",
+    "draft": "مسودة",
+    "scheduled": "مجدول",
+    "published": "منشور",
+    "failed": "فشل",
+    "goals": "الأهداف",
+    "inReview": "قيد المراجعة",
+    "changesRequested": "مطلوب تعديلات"
+  },
+  "posts": {
+    "title": "المنشورات",
+    "create": "إنشاء منشور",
+    "empty": "لا توجد منشورات بعد. أنشئ منشورًا أو اربط منشورًا موجودًا.",
+    "noCaption": "(بدون نص)",
+    "unlink": "إلغاء ربط المنشور",
+    "linkExisting": "اربط منشورًا موجودًا…",
+    "noPosts": "لا توجد منشورات لهذا العميل بعد"
+  },
+  "goals": {
+    "title": "الأهداف",
+    "empty": "أضف هدفًا مثل 10 آلاف مشاهدة، وستكتمل المهمة تلقائيًا عندما تصل إليه المنشورات.",
+    "emptyCampaign": "تجمع الأهداف هنا منشورات كل عناصر الحملة.",
+    "progress": "{actual} / {target} {metric}",
+    "achieved": "تحقق",
+    "missed": "لم يتحقق",
+    "tracking": "قيد المتابعة",
+    "delete": "حذف هدف {metric}",
+    "due": "قبل {date}",
+    "metric": "المقياس",
+    "target": "الهدف",
+    "dueBy": "الموعد النهائي (اختياري)",
+    "add": "إضافة هدف",
+    "metrics": {
+      "views": "مشاهدة",
+      "reach": "وصول",
+      "likes": "إعجاب",
+      "comments": "تعليق",
+      "shares": "مشاركة",
+      "saves": "حفظ",
+      "engagements": "تفاعل",
+      "watch_time_minutes": "دقيقة مشاهدة"
+    }
+  },
+  "automation": {
+    "intro": "عندما تصل منشورات المهمة أو أهدافها إلى مرحلة ما، تنتقل المهمة إلى العمود الذي تختاره. النقل اليدوي للبطاقة يبقى ساريًا حتى التغيير التالي.",
+    "stay": "لا تنقل",
+    "columnFor": "العمود لمرحلة {stage}",
+    "enabledFor": "نقل المهام عند {stage}",
+    "saved": "تم حفظ الأتمتة",
+    "save": "حفظ",
+    "stageNames": {
+      "no_post": "يحتاج إلى منشور",
+      "draft": "مسودة",
+      "scheduled": "مجدول",
+      "publishing": "جارٍ النشر",
+      "published": "منشور",
+      "measuring": "متابعة الأهداف",
+      "goal_reached": "تحقق الهدف",
+      "goal_missed": "لم يتحقق الهدف",
+      "failed": "فشل النشر",
+      "in_review": "قيد المراجعة",
+      "changes_requested": "مطلوب تعديلات"
+    }
+  },
+  "time": {
+    "title": "الوقت",
+    "minutes": "{minutes} د",
+    "hours": "{hours} س",
+    "hoursMinutes": "{hours} س {minutes} د",
+    "loggedOf": "سُجّل {logged} من {estimate}",
+    "logged": "سُجّل {logged}"
+  },
+  "watchers": {
+    "list": "المتابعون: {names}",
+    "none": "لا يتابع أحد هذه المهمة بعد",
+    "watching": "تتابعها ({count})",
+    "watch": "متابعة"
+  },
+  "links": {
+    "title": "الروابط",
+    "done": "مكتملة",
+    "remove": "إزالة الرابط إلى {key}",
+    "kind": "نوع الرابط",
+    "pick": "ابحث عن مهمة بالعنوان أو المفتاح…",
+    "blockedBy": "{count, plural, one {تعيقها مهمة مفتوحة واحدة} two {تعيقها مهمتان مفتوحتان} few {تعيقها # مهام مفتوحة} many {تعيقها # مهمة مفتوحة} other {تعيقها # مهمة مفتوحة}}",
+    "movingBlocked": "{count, plural, one {تنبيه: ما زالت هذه المهمة تعيقها مهمة مفتوحة واحدة.} two {تنبيه: ما زالت هذه المهمة تعيقها مهمتان مفتوحتان.} few {تنبيه: ما زالت هذه المهمة تعيقها # مهام مفتوحة.} many {تنبيه: ما زالت هذه المهمة تعيقها # مهمة مفتوحة.} other {تنبيه: ما زالت هذه المهمة تعيقها # مهمة مفتوحة.}}",
+    "phrases": {
+      "blocks": {
+        "outgoing": "تعيق",
+        "incoming": "تعيقها"
+      },
+      "relates": {
+        "outgoing": "مرتبطة بـ",
+        "incoming": "مرتبطة بـ"
+      },
+      "duplicates": {
+        "outgoing": "تكرر",
+        "incoming": "تكررها"
+      }
+    }
+  },
+  "attachments": {
+    "title": "المرفقات",
+    "add": "إرفاق ملف",
+    "empty": "لا توجد ملفات بعد. أرفق صورًا أو فيديوهات أو ملفات PDF.",
+    "delete": "حذف {name}"
+  },
+  "activityTabs": {
+    "comments": "التعليقات",
+    "history": "السجل",
+    "worklog": "سجل الوقت"
+  },
+  "history": {
+    "empty": "لا يوجد سجل بعد.",
+    "automation": "الأتمتة",
+    "none": "لا شيء",
+    "noCaption": "(بدون نص)",
+    "created": "أنشأ المهمة",
+    "changed": "غيّر {field}",
+    "changedValue": "غيّر {field} من {from} إلى {to}",
+    "moved": "نقلها من {from} إلى {to}",
+    "stage": "غيّر المرحلة إلى {stage}",
+    "stageMoved": "غيّر المرحلة إلى {stage} ونقلها إلى {column}",
+    "post_linked": "ربط المنشور «{caption}»",
+    "post_unlinked": "ألغى ربط المنشور «{caption}»",
+    "goal_added": "أضاف هدف {target} {metric}",
+    "goal_removed": "حذف هدف {target} {metric}",
+    "goal_reached": "سجّل تحقق هدف {target} {metric}",
+    "goal_missed": "سجّل عدم تحقق هدف {target} {metric}",
+    "link_added": "أضاف رابطًا: {phrase} {key} {title}",
+    "link_removed": "أزال رابطًا: {phrase} {key} {title}",
+    "attachment_added": "أرفق {name}",
+    "attachment_removed": "حذف {name}",
+    "time_logged": "سجّل {duration}",
+    "unknown": "أجرى تغييرًا",
+    "fields": {
+      "title": "العنوان",
+      "description": "الوصف",
+      "type": "النوع",
+      "priority": "الأولوية",
+      "parent": "العنصر الرئيسي",
+      "client": "العميل",
+      "startAt": "البداية",
+      "dueAt": "موعد الاستحقاق",
+      "storyPoints": "نقاط التقدير",
+      "estimateMinutes": "التقدير",
+      "assignees": "المسؤولين",
+      "labels": "الوسوم"
+    }
+  },
+  "worklog": {
+    "hours": "الساعات",
+    "when": "متى (افتراضيًا: الآن)",
+    "note": "على ماذا عملت؟ (اختياري)",
+    "log": "تسجيل الوقت",
+    "empty": "لم يُسجّل وقت بعد.",
+    "formerMember": "عضو سابق",
+    "delete": "حذف إدخال الوقت"
+  },
+  "sprints": {
+    "activeSprint": "دورة العمل الحالية",
+    "backlog": "قائمة الانتظار",
+    "activeName": "{name} (حالية)",
+    "points": "نقاط التقدير",
+    "moveTask": "دورة العمل لـ {key}",
+    "create": "دورة عمل جديدة",
+    "started": "بدأت دورة العمل",
+    "completed": "اكتملت دورة العمل",
+    "defaultName": "دورة العمل {number}",
+    "deleteTitle": "حذف دورة العمل",
+    "delete": "حذف",
+    "start": "بدء دورة العمل",
+    "completeAction": "إنهاء دورة العمل",
+    "edit": "تعديل دورة العمل",
+    "actionsFor": "إجراءات {name}",
+    "summary": "{tasks, plural, one {مهمة واحدة} two {مهمتان} few {# مهام} many {# مهمة} other {# مهمة}} · أُنجز {done} من {points} نقطة",
+    "backlogSummary": "{tasks, plural, =0 {لا شيء بالانتظار} one {مهمة مفتوحة واحدة} two {مهمتان مفتوحتان} few {# مهام مفتوحة} many {# مهمة مفتوحة} other {# مهمة مفتوحة}}",
+    "emptySprint": "لا توجد مهام بعد. انقل مهام إلى هنا من قائمة الانتظار.",
+    "emptyBacklog": "قائمة الانتظار فارغة.",
+    "states": {
+      "planned": "مخطط لها",
+      "active": "حالية",
+      "completed": "مكتملة"
+    },
+    "form": {
+      "createTitle": "دورة عمل جديدة",
+      "editTitle": "تعديل دورة العمل",
+      "save": "حفظ",
+      "create": "إنشاء",
+      "name": "الاسم",
+      "goal": "هدف دورة العمل",
+      "goalPlaceholder": "ما الذي يجب أن تحققه هذه الدورة؟",
+      "dates": "التواريخ",
+      "datesHint": "اختياري. عند البدء تُملأ التواريخ الفارغة باليوم ولمدة أسبوعين."
+    },
+    "complete": {
+      "title": "إنهاء {name}",
+      "confirm": "إنهاء دورة العمل",
+      "summary": "أُنجزت {done, plural, one {مهمة واحدة} two {مهمتان} few {# مهام} many {# مهمة} other {# مهمة}}، {unfinished, plural, =0 {ولم يتبق شيء} one {وبقيت مهمة واحدة} two {وبقيت مهمتان} few {وبقيت # مهام} many {وبقيت # مهمة} other {وبقيت # مهمة}}.",
+      "moveTo": "انقل المهام غير المكتملة إلى",
+      "backlog": "قائمة الانتظار"
+    }
+  },
+  "reports": {
+    "burndown": "مخطط الإنجاز لدورة العمل",
+    "velocity": "السرعة (آخر 6 دورات)",
+    "pickSprint": "دورة العمل",
+    "noSprint": "ابدأ دورة عمل لترى مخطط الإنجاز.",
+    "noPoints": "لم تكن لأي من مهام هذه الدورة نقاط تقدير عند بدئها.",
+    "noVelocity": "أنهِ دورة عمل لترى السرعة.",
+    "remaining": "النقاط المتبقية",
+    "ideal": "المثالي",
+    "committed": "الملتزم به",
+    "completed": "المنجز",
+    "burndownSummary": "{committed} نقطة ملتزم بها، و{remaining} متبقية."
+  },
+  "timeline": {
+    "empty": "لا توجد حملات بعد. أنشئ مهمة من نوع حملة لتخطط لها.",
+    "undated": "حملات بلا تواريخ",
+    "bar": "{title}: من {start} إلى {end}، أُنجز {done} من {total}"
   }
 }

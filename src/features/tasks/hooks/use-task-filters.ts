@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import {
   DUE_FILTERS,
   TASK_PRIORITIES,
+  TASK_TYPES,
   TASK_VIEWS,
   type TaskFilters,
   type TaskView,
@@ -33,6 +34,9 @@ export function useTaskFilters() {
   const state = useMemo<TaskPageState>(
     () => ({
       view: pick(TASK_VIEWS, params.get("view")) ?? DEFAULT_VIEW,
+      type: pick(TASK_TYPES, params.get("type")),
+      sprintId: params.get("sprintId") ?? undefined,
+      labelId: params.get("labelId") ?? undefined,
       clientId: params.get("clientId") ?? undefined,
       assigneeId: params.get("assigneeId") ?? undefined,
       priority: pick(TASK_PRIORITIES, params.get("priority")),
@@ -45,6 +49,9 @@ export function useTaskFilters() {
 
   const filters = useMemo<TaskFilters>(
     () => ({
+      sprintId: state.sprintId,
+      type: state.type,
+      labelId: state.labelId,
       clientId: state.clientId,
       assigneeId: state.assigneeId,
       priority: state.priority,

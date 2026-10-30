@@ -22,7 +22,10 @@ export default async function NewPostRoute({
   return (
     <>
       <PageHeader title={t("newTitle")} description={t("description")} />
-      <PostComposerPage initialClientId={firstValue(params.clientId)} />
+      <PostComposerPage
+        initialClientId={firstValue(params.clientId)}
+        taskId={firstValue(params.taskId)}
+      />
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined, SettingOutlined } from "@ant-design/icons";
 import { App, Button } from "antd";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -20,13 +20,14 @@ import {
   useMoveTask,
   useUpdateTask,
 } from "../api/task-mutations";
+import { useBlockedWarning } from "../hooks/use-blocked-warning";
 import { useTaskFilters } from "../hooks/use-task-filters";
 import type { Task, TaskInput } from "../types";
-import TaskBoardView from "./TaskBoardView";
+import BoardSettingsModal from "./BoardSettingsModal";
 import TaskDrawer from "./TaskDrawer";
 import TaskFiltersBar from "./TaskFiltersBar";
 import TaskFormModal from "./TaskFormModal";
-import TaskListView from "./TaskListView";
+import TaskViewSwitch from "./TaskViewSwitch";
 
 type FormState =
   { mode: "create"; statusId?: string } | { mode: "edit"; task: Task };
@@ -37,14 +38,17 @@ export default function TasksPage() {
   const { message } = App.useApp();
   const { can, userId } = usePermissions();
   const canManage = can(Permission.TasksManage);
+  const canConfigure = can(Permission.TasksConfigure);
   const { state, filters, update } = useTaskFilters();
   const statuses = useTaskStatuses().data ?? [];
   const create = useCreateTask();
   const edit = useUpdateTask();
   const remove = useDeleteTask();
   const move = useMoveTask(filters);
+  const warnIfBlocked = useBlockedWarning(statuses);
   const [form, setForm] = useState<FormState | null>(null);
   const [deleting, setDeleting] = useState<Task | null>(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const onError = (error: unknown) => message.error(errorMessage(error));
 
   const open = (task: Task) => update({ task: task.id });
@@ -75,17 +79,28 @@ export default function TasksPage() {
     <ListingToolbar
       filters={<TaskFiltersBar state={state} onChange={update} />}
       actions={
-        canManage ? (
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            className={TOOLBAR_CREATE_BUTTON_CLASS}
-            aria-label={t("create")}
-            onClick={() => setForm({ mode: "create" })}
-          >
-            <span className="max-sm:hidden">{t("create")}</span>
-          </Button>
-        ) : null
+        <>
+          {canConfigure ? (
+            <Button
+              shape="circle"
+              icon={<SettingOutlined />}
+              aria-label={t("settings.title")}
+              title={t("settings.title")}
+              onClick={() => setSettingsOpen(true)}
+            />
+          ) : null}
+          {canManage ? (
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              className={TOOLBAR_CREATE_BUTTON_CLASS}
+              aria-label={t("create")}
+              onClick={() => setForm({ mode: "create" })}
+            >
+              <span className="max-sm:hidden">{t("create")}</span>
+            </Button>
+          ) : null}
+        </>
       }
     />
   );
@@ -93,27 +108,17 @@ export default function TasksPage() {
   return (
     <>
       <ListingShell toolbar={toolbar}>
-        {state.view === "board" ? (
-          <TaskBoardView
-            filters={filters}
-            statuses={statuses}
-            canManage={canManage}
-            canConfigure={can(Permission.TasksConfigure)}
-            onOpen={open}
-            onAdd={(statusId) => setForm({ mode: "create", statusId })}
-          />
-        ) : (
-          <TaskListView
-            // New filters start again from the first page.
-            key={JSON.stringify(filters)}
-            filters={filters}
-            statuses={statuses}
-            canManage={canManage}
-            onOpen={open}
-            onEdit={(task) => setForm({ mode: "edit", task })}
-            onDelete={setDeleting}
-          />
-        )}
+        <TaskViewSwitch
+          view={state.view}
+          filters={filters}
+          statuses={statuses}
+          canManage={canManage}
+          canConfigure={canConfigure}
+          onOpen={open}
+          onAdd={(statusId) => setForm({ mode: "create", statusId })}
+          onEdit={(task) => setForm({ mode: "edit", task })}
+          onDelete={setDeleting}
+        />
       </ListingShell>
       <TaskDrawer
         taskId={state.task}
@@ -121,11 +126,17 @@ export default function TasksPage() {
         userId={userId ?? undefined}
         canManage={canManage}
         onClose={() => update({ task: undefined })}
+        onOpen={(taskId) => update({ task: taskId })}
         onEdit={(task) => setForm({ mode: "edit", task })}
         onDelete={setDeleting}
-        onStatusChange={(task, statusId) =>
-          move.mutateAsync({ taskId: task.id, statusId, afterTaskId: null })
-        }
+        onStatusChange={(task, statusId) => {
+          warnIfBlocked(task, statusId);
+          return move.mutateAsync({
+            taskId: task.id,
+            statusId,
+            afterTaskId: null,
+          });
+        }}
       />
       <TaskFormModal
         open={form !== null}
@@ -138,6 +149,10 @@ export default function TasksPage() {
         loading={create.isPending || edit.isPending}
         onCancel={() => setForm(null)}
         onSubmit={submit}
+      />
+      <BoardSettingsModal
+        open={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
       />
       <DeleteConfirmModal
         open={deleting !== null}

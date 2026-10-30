@@ -1,6 +1,10 @@
 "use client";
 
-import { CalendarOutlined, SendOutlined } from "@ant-design/icons";
+import {
+  AuditOutlined,
+  CalendarOutlined,
+  SendOutlined,
+} from "@ant-design/icons";
 import { Button, Popconfirm } from "antd";
 import { useTranslations } from "next-intl";
 
@@ -15,20 +19,27 @@ export interface ComposerActionsProps {
   status?: PostStatus;
   canSave: boolean;
   canSend: boolean;
+  /** The client needs approval and this user can't approve: submit instead of send. */
+  reviewMode: boolean;
   pending: boolean;
   onSave: () => void;
   onPublishNow: () => void;
+  /** Opens the time picker: schedule, or (review mode) request that time. */
   onSchedule: () => void;
+  /** Review mode only: submit to be published as soon as it's approved. */
+  onSubmitForApproval: () => void;
 }
 
 export default function ComposerActions({
   status,
   canSave,
   canSend,
+  reviewMode,
   pending,
   onSave,
   onPublishNow,
   onSchedule,
+  onSubmitForApproval,
 }: ComposerActionsProps) {
   const t = useTranslations("posts.composer.actions");
   const scheduled = status === "scheduled";
@@ -37,29 +48,45 @@ export default function ComposerActions({
     <div className="flex flex-col gap-2">
       <Button
         type="primary"
-        icon={<CalendarOutlined />}
+        icon={reviewMode ? <AuditOutlined /> : <CalendarOutlined />}
         disabled={!canSend}
         loading={pending}
         className={PRIMARY_PILL_BUTTON_CLASS}
         onClick={onSchedule}
       >
-        {scheduled ? t("reschedule") : t("schedule")}
+        {reviewMode
+          ? t("submitWithTime")
+          : scheduled
+            ? t("reschedule")
+            : t("schedule")}
       </Button>
-      <Popconfirm
-        title={t("publishNowConfirm")}
-        okText={t("publishNow")}
-        disabled={!canSend}
-        onConfirm={onPublishNow}
-      >
+      {reviewMode ? (
         <Button
           icon={<SendOutlined />}
           disabled={!canSend}
           loading={pending}
           className={SECONDARY_PILL_CLASS}
+          onClick={onSubmitForApproval}
         >
-          {t("publishNow")}
+          {t("submitPublishOnApproval")}
         </Button>
-      </Popconfirm>
+      ) : (
+        <Popconfirm
+          title={t("publishNowConfirm")}
+          okText={t("publishNow")}
+          disabled={!canSend}
+          onConfirm={onPublishNow}
+        >
+          <Button
+            icon={<SendOutlined />}
+            disabled={!canSend}
+            loading={pending}
+            className={SECONDARY_PILL_CLASS}
+          >
+            {t("publishNow")}
+          </Button>
+        </Popconfirm>
+      )}
       <Button
         type="text"
         disabled={!canSave}

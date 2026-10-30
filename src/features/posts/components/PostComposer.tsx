@@ -1,10 +1,13 @@
 "use client";
 
+import { Alert } from "antd";
 import { useTranslations } from "next-intl";
 import { type ReactNode, useState } from "react";
 
 import ClientSelect from "@/components/ui/ClientSelect";
+import { Permission } from "@/config/permissions";
 import { useClientOption } from "@/hooks/use-client-options";
+import { usePermissions } from "@/hooks/use-permissions";
 
 import { useComposerAccounts } from "../api/get-posts";
 import { useComposer } from "../hooks/use-composer";
@@ -30,18 +33,24 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 export default function PostComposer({
   post,
   initialClientId,
+  taskId,
 }: {
   post?: Post;
   initialClientId?: string;
+  taskId?: string;
 }) {
   const t = useTranslations("posts.composer");
   const composer = useComposer(post, initialClientId);
   const { state } = composer;
   const accounts = useComposerAccounts(state.clientId);
   const client = useClientOption(state.clientId);
-  const { submit, pending } = useComposerSubmit(composer, post?.id);
+  const { submit, pending } = useComposerSubmit(composer, post?.id, taskId);
   const [scheduling, setScheduling] = useState(false);
   const platforms = composer.issues.map((entry) => entry.platform);
+  const { can } = usePermissions();
+  // The API enforces this too; here it just offers the right buttons.
+  const reviewMode =
+    Boolean(client.data?.requireApproval) && !can(Permission.PostsApprove);
 
   return (
     <div className="grid gap-4 p-4 lg:grid-cols-[1fr_320px] lg:p-6">
@@ -94,17 +103,25 @@ export default function PostComposer({
       </div>
       <aside className="surface-card h-fit lg:sticky lg:top-4">
         <div className="surface-panel flex flex-col gap-5">
+          {taskId ? <Alert type="info" showIcon title={t("fromTask")} /> : null}
           <Section title={t("checks")}>
             <PlatformChecks checks={composer.issues} />
           </Section>
+          {reviewMode ? (
+            <Alert type="warning" showIcon title={t("needsApproval")} />
+          ) : null}
           <ComposerActions
             status={post?.status}
             canSave={Boolean(state.clientId)}
             canSend={composer.isPublishable}
+            reviewMode={reviewMode}
             pending={pending}
             onSave={() => submit()}
             onPublishNow={() => submit({ kind: "publish-now" })}
             onSchedule={() => setScheduling(true)}
+            onSubmitForApproval={() =>
+              submit({ kind: "submit-review", scheduledAt: null })
+            }
           />
         </div>
       </aside>
@@ -114,11 +131,15 @@ export default function PostComposer({
           timezone={client.data?.timezone ?? "UTC"}
           scheduledAt={post?.scheduledAt}
           loading={pending}
+          title={reviewMode ? t("review.title") : undefined}
+          confirmLabel={reviewMode ? t("review.confirm") : undefined}
           onCancel={() => setScheduling(false)}
           onConfirm={(scheduledAt) =>
-            submit({ kind: "schedule", scheduledAt }).finally(() =>
-              setScheduling(false),
-            )
+            submit(
+              reviewMode
+                ? { kind: "submit-review", scheduledAt }
+                : { kind: "schedule", scheduledAt },
+            ).finally(() => setScheduling(false))
           }
         />
       ) : null}

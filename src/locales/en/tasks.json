@@ -23,7 +23,10 @@
   },
   "views": {
     "board": "Board",
-    "list": "List"
+    "list": "List",
+    "backlog": "Backlog",
+    "timeline": "Timeline",
+    "reports": "Reports"
   },
   "filters": {
     "search": "Search tasks",
@@ -39,7 +42,13 @@
     "dueOptions": {
       "overdue": "Overdue",
       "week": "Due in 7 days"
-    }
+    },
+    "anyType": "Any type",
+    "type": "Type",
+    "anyLabel": "Any label",
+    "label": "Label",
+    "anySprint": "Any sprint",
+    "sprint": "Sprint"
   },
   "columns": {
     "add": "Add column",
@@ -85,10 +94,23 @@
     "client": "Client",
     "noClient": "No client",
     "assignees": "Assignees",
-    "unassigned": "Unassigned"
+    "unassigned": "Unassigned",
+    "type": "Type",
+    "parentTask": "Parent task",
+    "campaign": "Campaign",
+    "pickParent": "Choose a task",
+    "noCampaign": "No campaign",
+    "labels": "Labels",
+    "noLabels": "No labels",
+    "storyPoints": "Story points",
+    "startAt": "Start",
+    "estimate": "Estimate",
+    "hoursUnit": "h",
+    "sprint": "Sprint"
   },
   "detail": {
-    "title": "Task"
+    "title": "Task",
+    "noDescription": "No description."
   },
   "comments": {
     "title": "{count, plural, =0 {Comments} one {# comment} other {# comments}}",
@@ -117,5 +139,291 @@
     "title": "No tasks yet",
     "description": "Create a task to start planning your team's work.",
     "filtered": "No tasks match these filters"
+  },
+  "types": {
+    "campaign": "Campaign",
+    "content": "Content",
+    "task": "Task",
+    "bug": "Bug",
+    "subtask": "Subtask"
+  },
+  "meta": {
+    "children": "{done} of {total} items done",
+    "checklist": "{done} of {total} checklist items done",
+    "points": "{points} story points"
+  },
+  "children": {
+    "campaignTitle": "Work in this campaign",
+    "subtasksTitle": "Subtasks",
+    "progress": "{done} of {total} done",
+    "addItem": "Add a task to this campaign — press Enter",
+    "addSubtask": "Add a subtask — press Enter"
+  },
+  "checklist": {
+    "title": "Checklist",
+    "progress": "{done} of {total} done",
+    "delete": "Delete \"{item}\"",
+    "add": "Add an item — press Enter"
+  },
+  "labels": {
+    "name": "Label name",
+    "tone": "Colour",
+    "add": "Add label",
+    "empty": "No labels yet. Labels help you group tasks across clients and columns.",
+    "taskCount": "{count, plural, =0 {Not used} one {# task} other {# tasks}}",
+    "toneFor": "Colour of {label}",
+    "deleteLabel": "Delete {label}",
+    "deleteTitle": "Delete label",
+    "delete": "Delete"
+  },
+  "keys": {
+    "saved": "Key prefix saved",
+    "current": "Tasks are numbered like {prefix}-12.",
+    "prefix": "Key prefix",
+    "help": "2–6 letters or digits, starting with a letter. Leave empty to use the one from the workspace address. Changing it re-keys every task.",
+    "invalid": "Use 2–6 letters or digits, starting with a letter.",
+    "save": "Save"
+  },
+  "settings": {
+    "title": "Board settings",
+    "labels": "Labels",
+    "keys": "Issue keys",
+    "automation": "Automation"
+  },
+  "stages": {
+    "no_post": "Needs a post",
+    "draft": "Draft",
+    "scheduled": "Scheduled",
+    "publishing": "Publishing",
+    "published": "Published",
+    "measuring": "Tracking goals",
+    "goal_reached": "Goal reached",
+    "goal_missed": "Goal missed",
+    "failed": "Publishing failed",
+    "in_review": "In review",
+    "changes_requested": "Changes requested"
+  },
+  "workflow": {
+    "label": "Content workflow",
+    "needsPost": "Needs a post",
+    "draft": "Draft",
+    "scheduled": "Scheduled",
+    "published": "Published",
+    "failed": "Failed",
+    "goals": "Goals",
+    "inReview": "In review",
+    "changesRequested": "Changes requested"
+  },
+  "posts": {
+    "title": "Posts",
+    "create": "Create post",
+    "empty": "No posts yet. Create one or link an existing post.",
+    "noCaption": "(no caption)",
+    "unlink": "Unlink post",
+    "linkExisting": "Link an existing post…",
+    "noPosts": "No posts for this client yet"
+  },
+  "goals": {
+    "title": "Goals",
+    "empty": "Add a target, such as 10k views, and the task completes itself when the posts reach it.",
+    "emptyCampaign": "Goals here add up the posts of every item in the campaign.",
+    "progress": "{actual} / {target} {metric}",
+    "achieved": "Reached",
+    "missed": "Missed",
+    "tracking": "Tracking",
+    "delete": "Delete the {metric} goal",
+    "due": "By {date}",
+    "metric": "Metric",
+    "target": "Target",
+    "dueBy": "Deadline (optional)",
+    "add": "Add goal",
+    "metrics": {
+      "views": "views",
+      "reach": "reach",
+      "likes": "likes",
+      "comments": "comments",
+      "shares": "shares",
+      "saves": "saves",
+      "engagements": "engagements",
+      "watch_time_minutes": "watch minutes"
+    }
+  },
+  "automation": {
+    "intro": "When a task's posts or goals reach a stage, move the task to the column you pick. Moving a card by hand always wins until the next change.",
+    "stay": "Don't move",
+    "columnFor": "Column for {stage}",
+    "enabledFor": "Move tasks at {stage}",
+    "saved": "Automation saved",
+    "save": "Save",
+    "stageNames": {
+      "no_post": "Needs a post",
+      "draft": "Draft",
+      "scheduled": "Scheduled",
+      "publishing": "Publishing",
+      "published": "Published",
+      "measuring": "Tracking goals",
+      "goal_reached": "Goal reached",
+      "goal_missed": "Goal missed",
+      "failed": "Publishing failed",
+      "in_review": "In review",
+      "changes_requested": "Changes requested"
+    }
+  },
+  "time": {
+    "title": "Time",
+    "minutes": "{minutes}m",
+    "hours": "{hours}h",
+    "hoursMinutes": "{hours}h {minutes}m",
+    "loggedOf": "{logged} logged of {estimate}",
+    "logged": "{logged} logged"
+  },
+  "watchers": {
+    "list": "Watching: {names}",
+    "none": "Nobody is watching yet",
+    "watching": "Watching ({count})",
+    "watch": "Watch"
+  },
+  "links": {
+    "title": "Links",
+    "done": "Done",
+    "remove": "Remove the link to {key}",
+    "kind": "Link type",
+    "pick": "Find a task by title or key…",
+    "blockedBy": "{count, plural, one {Blocked by # open task} other {Blocked by # open tasks}}",
+    "movingBlocked": "{count, plural, one {Heads up: this task is still blocked by # open task.} other {Heads up: this task is still blocked by # open tasks.}}",
+    "phrases": {
+      "blocks": {
+        "outgoing": "blocks",
+        "incoming": "is blocked by"
+      },
+      "relates": {
+        "outgoing": "relates to",
+        "incoming": "relates to"
+      },
+      "duplicates": {
+        "outgoing": "duplicates",
+        "incoming": "is duplicated by"
+      }
+    }
+  },
+  "attachments": {
+    "title": "Attachments",
+    "add": "Attach file",
+    "empty": "No files yet. Attach images, videos or PDFs.",
+    "delete": "Delete {name}"
+  },
+  "activityTabs": {
+    "comments": "Comments",
+    "history": "History",
+    "worklog": "Work log"
+  },
+  "history": {
+    "empty": "No history yet.",
+    "automation": "Automation",
+    "none": "none",
+    "noCaption": "(no caption)",
+    "created": "created the task",
+    "changed": "changed the {field}",
+    "changedValue": "changed the {field} from {from} to {to}",
+    "moved": "moved it from {from} to {to}",
+    "stage": "set the step to {stage}",
+    "stageMoved": "set the step to {stage} and moved it to {column}",
+    "post_linked": "linked the post “{caption}”",
+    "post_unlinked": "unlinked the post “{caption}”",
+    "goal_added": "added a goal of {target} {metric}",
+    "goal_removed": "removed the goal of {target} {metric}",
+    "goal_reached": "recorded the goal of {target} {metric} as reached",
+    "goal_missed": "recorded the goal of {target} {metric} as missed",
+    "link_added": "added a link: {phrase} {key} {title}",
+    "link_removed": "removed a link: {phrase} {key} {title}",
+    "attachment_added": "attached {name}",
+    "attachment_removed": "removed {name}",
+    "time_logged": "logged {duration}",
+    "unknown": "made a change",
+    "fields": {
+      "title": "title",
+      "description": "description",
+      "type": "type",
+      "priority": "priority",
+      "parent": "parent",
+      "client": "client",
+      "startAt": "start",
+      "dueAt": "due date",
+      "storyPoints": "story points",
+      "estimateMinutes": "estimate",
+      "assignees": "assignees",
+      "labels": "labels"
+    }
+  },
+  "worklog": {
+    "hours": "Hours",
+    "when": "When (default: now)",
+    "note": "What did you work on? (optional)",
+    "log": "Log time",
+    "empty": "No time logged yet.",
+    "formerMember": "Former member",
+    "delete": "Delete time entry"
+  },
+  "sprints": {
+    "activeSprint": "Active sprint",
+    "backlog": "Backlog",
+    "activeName": "{name} (active)",
+    "points": "Story points",
+    "moveTask": "Sprint for {key}",
+    "create": "New sprint",
+    "started": "Sprint started",
+    "completed": "Sprint completed",
+    "defaultName": "Sprint {number}",
+    "deleteTitle": "Delete sprint",
+    "delete": "Delete",
+    "start": "Start sprint",
+    "completeAction": "Complete sprint",
+    "edit": "Edit sprint",
+    "actionsFor": "Actions for {name}",
+    "summary": "{tasks, plural, one {# task} other {# tasks}} · {done} of {points} points done",
+    "backlogSummary": "{tasks, plural, =0 {Nothing waiting} one {# open task} other {# open tasks}}",
+    "emptySprint": "No tasks yet. Move tasks here from the backlog.",
+    "emptyBacklog": "The backlog is empty.",
+    "states": {
+      "planned": "Planned",
+      "active": "Active",
+      "completed": "Completed"
+    },
+    "form": {
+      "createTitle": "New sprint",
+      "editTitle": "Edit sprint",
+      "save": "Save",
+      "create": "Create",
+      "name": "Name",
+      "goal": "Sprint goal",
+      "goalPlaceholder": "What should this sprint achieve?",
+      "dates": "Dates",
+      "datesHint": "Optional. Starting the sprint fills in today and two weeks if empty."
+    },
+    "complete": {
+      "title": "Complete {name}",
+      "confirm": "Complete sprint",
+      "summary": "{done, plural, one {# task done} other {# tasks done}}, {unfinished, plural, =0 {nothing left over} one {# unfinished} other {# unfinished}}.",
+      "moveTo": "Move unfinished tasks to",
+      "backlog": "Backlog"
+    }
+  },
+  "reports": {
+    "burndown": "Sprint burndown",
+    "velocity": "Velocity (last 6 sprints)",
+    "pickSprint": "Sprint",
+    "noSprint": "Start a sprint to see its burndown.",
+    "noPoints": "None of this sprint's tasks had story points when it started.",
+    "noVelocity": "Complete a sprint to see velocity.",
+    "remaining": "Points remaining",
+    "ideal": "Ideal",
+    "committed": "Committed",
+    "completed": "Completed",
+    "burndownSummary": "{committed} points committed, {remaining} remaining."
+  },
+  "timeline": {
+    "empty": "No campaigns yet. Create a task of type Campaign to plan one.",
+    "undated": "Campaigns without dates",
+    "bar": "{title}: {start} to {end}, {done} of {total} items done"
   }
 }

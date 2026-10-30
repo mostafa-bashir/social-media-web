@@ -49,5 +49,9 @@
     "facebook": "Facebook",
     "instagram": "Instagram",
     "youtube": "YouTube"
+  },
+  "linkedTasks": {
+    "empty": "No tasks are linked to this post.",
+    "done": "Done"
   }
 }

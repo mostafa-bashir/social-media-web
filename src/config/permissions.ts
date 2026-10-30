@@ -17,6 +17,7 @@ export const Permission = {
   AccountsManage: "accounts.manage",
   PostsView: "posts.view",
   PostsManage: "posts.manage",
+  PostsApprove: "posts.approve",
   AnalyticsView: "analytics.view",
   AnalyticsExport: "analytics.export",
   AnalyticsManage: "analytics.manage",

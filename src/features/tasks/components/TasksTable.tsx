@@ -11,6 +11,7 @@ import StatusBadge from "@/components/ui/StatusBadge";
 
 import type { Task, TaskStatus } from "../types";
 import TaskDueLabel from "./TaskDueLabel";
+import TaskKeyLabel from "./TaskKeyLabel";
 import TaskPriorityBadge from "./TaskPriorityBadge";
 
 const MAX_AVATARS = 3;
@@ -78,7 +79,8 @@ export default function TasksTable({
       title: t("columnsTable.task"),
       key: "task",
       render: (_, task) => (
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-0.5">
+          <TaskKeyLabel type={task.type} taskKey={task.key} />
           <span className="line-clamp-2 font-medium text-text-primary">
             {task.title}
           </span>

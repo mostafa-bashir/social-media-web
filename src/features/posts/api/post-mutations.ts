@@ -36,10 +36,15 @@ export function useSavePost() {
   });
 }
 
+/** `kind` is the endpoint under `/posts/:id/`; the rest is the request body. */
 export type PostAction =
   | { kind: "schedule"; scheduledAt: string }
   | { kind: "publish-now" }
-  | { kind: "unschedule" };
+  | { kind: "unschedule" }
+  | { kind: "submit-review"; scheduledAt: string | null }
+  | { kind: "withdraw-review" }
+  | { kind: "approve"; scheduledAt?: string }
+  | { kind: "request-changes"; comment: string };
 
 export function usePostAction() {
   const onSuccess = useInvalidatePosts();
@@ -51,11 +56,10 @@ export function usePostAction() {
       postId: string;
       action: PostAction;
     }) => {
-      const body =
-        action.kind === "schedule" ? { scheduledAt: action.scheduledAt } : {};
+      const { kind, ...body } = action;
       return parseData(
         postSchema,
-        (await apiClient.post(`/posts/${postId}/${action.kind}`, body)).data,
+        (await apiClient.post(`/posts/${postId}/${kind}`, body)).data,
       );
     },
     onSuccess,

@@ -110,6 +110,31 @@ filters and the open task (`?task=<id>`) live in the URL.
   immediately and rolls back if the API refuses. Keyboard: Tab to a card, Space to
   pick it up, arrow keys to move, Space to drop; Enter opens the card. Columns are
   managed from each column's menu (`tasks.configure`).
+- **Task detail.** `TaskDrawer` is two columns on large screens (work on the left:
+  description, `TaskChildren`, `TaskChecklist`, comments; fields in
+  `TaskDetailSidebar` on the right) and stacks on phones. Parent and child keys open
+  that task in the drawer.
+- **Board settings** (gear in the toolbar, `tasks.configure`): automation rules
+  (stage → column), labels and the issue-key prefix.
+- **Social side.** Content tasks show a `WorkflowStepper`; `TaskPostsSection` links
+  posts or opens the composer with `?taskId=` (the composer links the new post before
+  sending it and returns to the task); `TaskGoalsSection` shows live goal progress.
+  The posts feature shows linked tasks through the shared `hooks/use-post-tasks` +
+  `components/ui/LinkedTasksList` (features never import each other).
+- **Collaboration.** `WatchButton` in the drawer header; `TaskLinksSection` (with
+  `TaskSearchSelect`), `TaskAttachmentsSection` (multipart upload needs an explicit
+  `Content-Type`), and `TaskActivityTabs` (Comments · History · Work log). History
+  sentences come from `hooks/use-activity-text`; durations from `hooks/use-duration`.
+  Moving a blocked task into a done column warns (`hooks/use-blocked-warning`).
+- **Views.** `TaskViewSwitch`: Board · List · **Backlog** (`BacklogView`: sprint
+  sections with start/complete/edit/delete, the backlog, and a per-row sprint picker)
+  · **Timeline** (`CampaignTimeline`: campaigns as bars between start and due, filled
+  by item progress) · **Reports** (`BurndownChart` vs an ideal line, `VelocityChart`;
+  chart tokens `chart-1/2`, legend text in text ink).
+- **Approvals (posts feature).** The composer switches to "Submit for review" when
+  the client requires approval and the user lacks `posts.approve`;
+  `PostReviewPanel` in the post drawer approves (asking for a new time if the
+  requested one passed), requests changes, withdraws, and lists the review trail.
 - **Shared pickers.** `components/ui/MemberSelect` and `MemberAvatar`, backed by
   `hooks/use-member-options`, serve any feature that picks members.
 - Comments support @mentions (antd `Mentions`). Only mentions still in the text are

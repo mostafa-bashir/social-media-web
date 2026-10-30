@@ -11,6 +11,8 @@ export const clientOptionSchema = z.object({
   timezone: z.string(),
   /** ISO country codes of the client's markets (trends default to the first). */
   targetCountries: z.array(z.string()).default([]),
+  /** Non-approvers submit this client's posts for review. */
+  requireApproval: z.boolean().default(false),
 });
 export type ClientOption = z.infer<typeof clientOptionSchema>;
 

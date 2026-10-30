@@ -3,6 +3,7 @@
 import { App, Button, Drawer, Skeleton } from "antd";
 import { useTranslations } from "next-intl";
 
+import LinkedTasksList from "@/components/ui/LinkedTasksList";
 import MediaThumb from "@/components/ui/MediaThumb";
 import { routes } from "@/config/routes";
 import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
@@ -14,6 +15,7 @@ import { usePost } from "../api/get-posts";
 import { useRetryTarget } from "../api/post-mutations";
 import { usePostTime } from "../hooks/use-post-time";
 import { EDITABLE_STATUSES, type Post } from "../types";
+import PostReviewPanel from "./PostReviewPanel";
 import PostStatusBadge from "./PostStatusBadge";
 import PostTargetRow from "./PostTargetRow";
 
@@ -23,6 +25,10 @@ const THUMB_SIZE = 160;
 export interface PostDetailDrawerProps {
   postId: string | null;
   canManage: boolean;
+  /** Shows the tasks that produce this post. */
+  canViewTasks: boolean;
+  /** Holds `posts.approve`. */
+  canApprove: boolean;
   onClose: () => void;
   onUnschedule: (post: Post) => void;
   onDelete: (post: Post) => void;
@@ -32,6 +38,8 @@ export interface PostDetailDrawerProps {
 export default function PostDetailDrawer({
   postId,
   canManage,
+  canViewTasks,
+  canApprove,
   onClose,
   onUnschedule,
   onDelete,
@@ -110,6 +118,20 @@ export default function PostDetailDrawer({
                   />
                 ))}
               </ul>
+            </section>
+          ) : null}
+          <PostReviewPanel
+            post={data}
+            timezone={timezone}
+            canApprove={canApprove}
+            canManage={canManage}
+          />
+          {canViewTasks ? (
+            <section className="flex flex-col gap-2">
+              <h3 className="text-sm font-semibold text-text-primary">
+                {t("detail.tasks")}
+              </h3>
+              <LinkedTasksList postId={data.id} />
             </section>
           ) : null}
           {canManage ? (

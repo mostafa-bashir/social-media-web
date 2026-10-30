@@ -7,6 +7,7 @@ export const clientSchema = z.object({
   color: z.string().nullable(),
   notes: z.string().nullable(),
   targetCountries: z.array(z.string()).default([]),
+  requireApproval: z.boolean().default(false),
   logoUrl: z.string().nullable(),
   accountCount: z.number(),
   archivedAt: z.string().nullable(),
@@ -22,6 +23,8 @@ export interface ClientInput {
   notes: string | null;
   /** ISO 3166-1 alpha-2 codes of the client's markets. */
   targetCountries: string[];
+  /** Posts need a `posts.approve` holder's sign-off. */
+  requireApproval: boolean;
 }
 
 export interface ClientsQuery {
