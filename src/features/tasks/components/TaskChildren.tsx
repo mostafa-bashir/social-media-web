@@ -84,7 +84,7 @@ export default function TaskChildren({
             <li key={child.id}>
               <button
                 type="button"
-                className="flex w-full items-center gap-3 py-2 text-start hover:bg-background-secondary"
+                className="flex w-full items-center gap-3 py-2 text-start hover:bg-background-subtle"
                 onClick={() => onOpen(child.id)}
               >
                 <TaskKeyLabel type={child.type} taskKey={child.key} />

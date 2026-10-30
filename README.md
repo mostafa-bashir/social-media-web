@@ -139,3 +139,12 @@ filters and the open task (`?task=<id>`) live in the URL.
   `hooks/use-member-options`, serve any feature that picks members.
 - Comments support @mentions (antd `Mentions`). Only mentions still in the text are
   sent.
+
+## Notifications
+
+`features/notifications` provides the header `NotificationBell` (passed to `AppShell`
+through its `headerExtra` slot by the workspace layout, since `components/ui` can't
+import features). The unread count polls every 60 s; the list loads when the bell
+opens; items link to `/tasks?task=<id>` or `/posts?post=<id>`, and the email-digest
+switch sits at the bottom of the panel.
+

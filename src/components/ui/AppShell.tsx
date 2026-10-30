@@ -17,6 +17,8 @@ export interface AppShellProps {
   slug: string;
   /** Rendered at the top of the sidebar (the workspace switcher). */
   sidebarTop: ReactNode;
+  /** Header items before the user menu (the notification bell), from the layout. */
+  headerExtra?: ReactNode;
   children: ReactNode;
 }
 
@@ -28,6 +30,7 @@ export interface AppShellProps {
 export default function AppShell({
   slug,
   sidebarTop,
+  headerExtra,
   children,
 }: AppShellProps) {
   const t = useTranslations("common");
@@ -61,7 +64,10 @@ export default function AppShell({
               onClick={() => setDrawerOpen(true)}
             />
             <BrandMark onDark showName={false} />
-            <UserMenu />
+            <div className="flex items-center gap-2">
+              {headerExtra}
+              <UserMenu />
+            </div>
           </div>
           <Drawer
             open={drawerOpen}
@@ -80,7 +86,8 @@ export default function AppShell({
       <div className="app-shell-main">
         <div className="app-shell-content">
           {isDesktop ? (
-            <header className="app-shell-header justify-end">
+            <header className="app-shell-header justify-end gap-3">
+              {headerExtra}
               <UserMenu />
             </header>
           ) : (

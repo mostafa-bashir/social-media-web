@@ -43,7 +43,7 @@ export default function PostReviewHistory({
             </time>
           </div>
           {review.comment ? (
-            <p className="whitespace-pre-wrap rounded-lg bg-background-secondary p-2 text-sm text-text-secondary">
+            <p className="whitespace-pre-wrap rounded-lg bg-background-subtle p-2 text-sm text-text-secondary">
               {review.comment}
             </p>
           ) : null}

@@ -1,0 +1,27 @@
+{
+  "title": "الإشعارات",
+  "markAllRead": "تعيين الكل كمقروء",
+  "empty": "لا جديد لديك.",
+  "emailToggle": "أرسل لي التحديثات المهمة بالبريد",
+  "bell": "الإشعارات",
+  "bellUnread": "{count, plural, one {الإشعارات، واحد غير مقروء} two {الإشعارات، اثنان غير مقروءين} few {الإشعارات، # غير مقروءة} many {الإشعارات، # غير مقروء} other {الإشعارات، # غير مقروء}}",
+  "someone": "أحد الأعضاء",
+  "noCaption": "منشور",
+  "generic": "حدث تغيير",
+  "types": {
+    "task_assigned": "أسند إليك {actor} المهمة {key} {title}",
+    "task_mentioned": "أشار إليك {actor} في {key} {title}",
+    "task_commented": "علّق {actor} على {key} {title}",
+    "task_updated": "حدّث {actor} المهمة {key} {title}",
+    "task_moved": "نقل {actor} المهمة {key} {title} إلى {column}",
+    "task_automation_moved": "نُقلت {key} {title} تلقائيًا إلى {column}",
+    "task_post_failed": "فشل نشر أحد منشورات {key} {title}",
+    "task_goal_reached": "حققت {key} {title} هدف {target} {metric}",
+    "task_goal_missed": "لم تحقق {key} {title} هدف {target} {metric}",
+    "task_due_soon": "موعد استحقاق {key} {title} خلال يوم",
+    "post_review_requested": "طلب منك {actor} مراجعة «{caption}»",
+    "post_approved": "وافق {actor} على «{caption}»",
+    "post_changes_requested": "طلب {actor} تعديلات على «{caption}»",
+    "sprint_started": "بدأ {actor} دورة العمل {name}"
+  }
+}

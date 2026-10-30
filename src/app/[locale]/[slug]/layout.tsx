@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { auth } from "@/auth";
 import AppShell from "@/components/ui/AppShell";
+import { NotificationBell } from "@/features/notifications";
 import { WorkspaceSwitcher } from "@/features/workspaces";
 
 /**
@@ -22,7 +23,11 @@ export default async function WorkspaceLayout({
     notFound();
   }
   return (
-    <AppShell slug={slug} sidebarTop={<WorkspaceSwitcher />}>
+    <AppShell
+      slug={slug}
+      sidebarTop={<WorkspaceSwitcher />}
+      headerExtra={<NotificationBell />}
+    >
       {children}
     </AppShell>
   );

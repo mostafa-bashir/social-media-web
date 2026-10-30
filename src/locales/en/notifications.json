@@ -1,0 +1,27 @@
+{
+  "title": "Notifications",
+  "markAllRead": "Mark all as read",
+  "empty": "You're all caught up.",
+  "emailToggle": "Email me important updates",
+  "bell": "Notifications",
+  "bellUnread": "{count, plural, one {Notifications, # unread} other {Notifications, # unread}}",
+  "someone": "Someone",
+  "noCaption": "a post",
+  "generic": "Something changed",
+  "types": {
+    "task_assigned": "{actor} assigned you to {key} {title}",
+    "task_mentioned": "{actor} mentioned you on {key} {title}",
+    "task_commented": "{actor} commented on {key} {title}",
+    "task_updated": "{actor} updated {key} {title}",
+    "task_moved": "{actor} moved {key} {title} to {column}",
+    "task_automation_moved": "{key} {title} moved to {column} automatically",
+    "task_post_failed": "A post of {key} {title} failed to publish",
+    "task_goal_reached": "{key} {title} reached its goal of {target} {metric}",
+    "task_goal_missed": "{key} {title} missed its goal of {target} {metric}",
+    "task_due_soon": "{key} {title} is due within a day",
+    "post_review_requested": "{actor} asked you to review “{caption}”",
+    "post_approved": "{actor} approved “{caption}”",
+    "post_changes_requested": "{actor} asked for changes to “{caption}”",
+    "sprint_started": "{actor} started {name}"
+  }
+}

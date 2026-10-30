@@ -3,6 +3,7 @@
 import { PlusOutlined } from "@ant-design/icons";
 import { Alert, App, Button, Segmented, Select } from "antd";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import ClientSelect from "@/components/ui/ClientSelect";
@@ -42,6 +43,9 @@ export default function PostsPage() {
   const [clientId, setClientId] = useState<string>();
   const [status, setStatus] = useState<PostStatus>();
   const [openPostId, setOpenPostId] = useState<string | null>(null);
+  // `?post=<id>` opens a post directly (links from notifications).
+  const linkedPostId = useSearchParams().get("post");
+  const shownPostId = openPostId ?? linkedPostId;
   const [deleting, setDeleting] = useState<Post | null>(null);
   const client = useClientOption(clientId);
   // One client: its own zone. All clients: the viewer's zone, labelled on screen.
@@ -159,11 +163,14 @@ export default function PostsPage() {
         )}
       </ListingShell>
       <PostDetailDrawer
-        postId={openPostId}
+        postId={shownPostId}
         canManage={canManage}
         canViewTasks={can(Permission.TasksView)}
         canApprove={can(Permission.PostsApprove)}
-        onClose={() => setOpenPostId(null)}
+        onClose={() => {
+          setOpenPostId(null);
+          if (linkedPostId) router.replace(routes.workspace(slug).posts);
+        }}
         onUnschedule={unschedule}
         onDelete={setDeleting}
       />
