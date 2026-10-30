@@ -1,0 +1,121 @@
+{
+  "title": "Tasks",
+  "description": "Plan your team's work on a board and keep every client's to-dos in one place.",
+  "create": "New task",
+  "created": "Task created",
+  "saved": "Task saved",
+  "deleted": "Task deleted",
+  "delete": "Delete",
+  "deleteTitle": "Delete task",
+  "edit": "Edit",
+  "view": "View",
+  "actionsFor": "Task actions",
+  "overdue": "Overdue",
+  "commentCount": "{count, plural, one {# comment} other {# comments}}",
+  "addToColumn": "Add a task to {column}",
+  "emptyColumn": "No tasks here",
+  "hiddenTasks": "{count, plural, one {# more task — narrow the filters to see it} other {# more tasks — narrow the filters to see them}}",
+  "priority": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "urgent": "Urgent"
+  },
+  "views": {
+    "board": "Board",
+    "list": "List"
+  },
+  "filters": {
+    "search": "Search tasks",
+    "allClients": "All clients",
+    "client": "Client",
+    "anyone": "Anyone",
+    "assignee": "Assignee",
+    "me": "Assigned to me",
+    "anyPriority": "Any priority",
+    "priority": "Priority",
+    "anyDue": "Any due date",
+    "due": "Due date",
+    "dueOptions": {
+      "overdue": "Overdue",
+      "week": "Due in 7 days"
+    }
+  },
+  "columns": {
+    "add": "Add column",
+    "createTitle": "New column",
+    "editTitle": "Edit column",
+    "create": "Create",
+    "save": "Save",
+    "name": "Name",
+    "tone": "Colour",
+    "tones": {
+      "neutral": "Grey",
+      "brand": "Indigo",
+      "growth": "Teal",
+      "accent": "Amber",
+      "danger": "Red"
+    },
+    "category": "Counts as",
+    "categoryHelp": "Tasks in a \"Done\" column count as completed and never show as overdue.",
+    "categories": {
+      "todo": "To do",
+      "in_progress": "In progress",
+      "done": "Done"
+    },
+    "deleteTitle": "Delete column",
+    "deleteWarning": "{count, plural, one {# task is in this column. Choose where to move it.} other {# tasks are in this column. Choose where to move them.}}",
+    "delete": "Delete",
+    "moveTo": "Move its tasks to…",
+    "edit": "Edit column",
+    "moveEarlier": "Move earlier",
+    "moveLater": "Move later",
+    "actionsFor": "Actions for {column}"
+  },
+  "form": {
+    "createTitle": "New task",
+    "editTitle": "Edit task",
+    "create": "Create",
+    "save": "Save",
+    "title": "Title",
+    "description": "Description",
+    "status": "Column",
+    "priority": "Priority",
+    "dueAt": "Due",
+    "client": "Client",
+    "noClient": "No client",
+    "assignees": "Assignees",
+    "unassigned": "Unassigned"
+  },
+  "detail": {
+    "title": "Task"
+  },
+  "comments": {
+    "title": "{count, plural, =0 {Comments} one {# comment} other {# comments}}",
+    "label": "Write a comment",
+    "placeholder": "Write a comment… type @ to mention a teammate",
+    "send": "Comment",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "actions": "Comment actions",
+    "formerMember": "Former member",
+    "edited": "edited",
+    "truncated": "Showing the first {shown} of {total} comments.",
+    "deleteTitle": "Delete comment",
+    "deleteQuestion": "Delete this comment?"
+  },
+  "columnsTable": {
+    "task": "Task",
+    "status": "Column",
+    "priority": "Priority",
+    "due": "Due",
+    "assignees": "Assignees"
+  },
+  "empty": {
+    "title": "No tasks yet",
+    "description": "Create a task to start planning your team's work.",
+    "filtered": "No tasks match these filters"
+  }
+}

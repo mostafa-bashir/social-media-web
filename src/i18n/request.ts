@@ -19,6 +19,7 @@ const NAMESPACES = [
   "media",
   "posts",
   "analytics",
+  "tasks",
 ] as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {

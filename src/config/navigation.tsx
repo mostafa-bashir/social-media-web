@@ -1,6 +1,7 @@
 import {
   ApiOutlined,
   BarChartOutlined,
+  CarryOutOutlined,
   DashboardOutlined,
   PictureOutlined,
   ScheduleOutlined,
@@ -60,6 +61,13 @@ export const WORKSPACE_NAV: NavItem[] = [
     icon: <PictureOutlined />,
     href: (slug) => routes.workspace(slug).media,
     permission: Permission.PostsView,
+  },
+  {
+    key: "tasks",
+    labelKey: "tasks",
+    icon: <CarryOutOutlined />,
+    href: (slug) => routes.workspace(slug).tasks,
+    permission: Permission.TasksView,
   },
   {
     key: "analytics",

@@ -100,3 +100,17 @@ ramp (`--ds-heat-1..5`).
   `analytics.manage`.
 - Permission-gated UI inside Suspense waits for `useIsClient()`, so the server and client
   render the same markup.
+
+## Tasks
+
+`features/tasks` renders `/[slug]/tasks` as a Kanban board or a list. The view,
+filters and the open task (`?task=<id>`) live in the URL.
+
+- **Board.** Drag and drop uses `@dnd-kit` (MIT). A card moves in the cache
+  immediately and rolls back if the API refuses. Keyboard: Tab to a card, Space to
+  pick it up, arrow keys to move, Space to drop; Enter opens the card. Columns are
+  managed from each column's menu (`tasks.configure`).
+- **Shared pickers.** `components/ui/MemberSelect` and `MemberAvatar`, backed by
+  `hooks/use-member-options`, serve any feature that picks members.
+- Comments support @mentions (antd `Mentions`). Only mentions still in the text are
+  sent.

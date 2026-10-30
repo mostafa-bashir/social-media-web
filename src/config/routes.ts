@@ -26,6 +26,7 @@ export const routes = {
     newPost: `/${slug}/posts/new`,
     post: (postId: string) => `/${slug}/posts/${postId}`,
     media: `/${slug}/media`,
+    tasks: `/${slug}/tasks`,
     analytics: `/${slug}/analytics`,
     analyticsAccounts: `/${slug}/analytics/accounts`,
     analyticsAccount: (accountId: string) =>

@@ -77,5 +77,18 @@
   "REPORT_SCHEDULE_LIMIT": "لدى هذا العميل الحد الأقصى من جداول البريد.",
   "REPORT_SCHEDULE_NOT_FOUND": "جدول البريد هذا لم يعد موجودًا.",
   "ANALYTICS_GOAL_LIMIT": "لدى هذا العميل الحد الأقصى من الأهداف.",
-  "ANALYTICS_GOAL_NOT_FOUND": "هذا الهدف لم يعد موجودًا."
+  "ANALYTICS_GOAL_NOT_FOUND": "هذا الهدف لم يعد موجودًا.",
+  "TASK_NOT_FOUND": "هذه المهمة لم تعد موجودة.",
+  "TASK_STATUS_NOT_FOUND": "هذا العمود لم يعد موجودًا.",
+  "TASK_STATUS_NAME_TAKEN": "يوجد عمود بهذا الاسم بالفعل.",
+  "TASK_STATUS_LIMIT": "وصلت اللوحة إلى الحد الأقصى لعدد الأعمدة.",
+  "TASK_STATUS_ORDER_MISMATCH": "تغيّرت اللوحة في هذه الأثناء. حدّث الصفحة وحاول مرة أخرى.",
+  "TASK_STATUS_NOT_EMPTY": "اختر عمودًا آخر لنقل المهام الموجودة في هذا العمود.",
+  "TASK_STATUS_LAST": "تحتاج اللوحة إلى عمود واحد على الأقل.",
+  "TASK_STATUS_LAST_DONE": "تحتاج اللوحة إلى عمود \"منجز\" واحد على الأقل.",
+  "TASK_MEMBER_NOT_FOUND": "يمكن إسناد المهام أو الإشارة إلى أعضاء مساحة العمل فقط.",
+  "TASK_POST_NOT_FOUND": "المنشور المرتبط لم يعد موجودًا.",
+  "TASK_ANCHOR_INVALID": "تغيّرت اللوحة في هذه الأثناء. حدّث الصفحة وحاول مرة أخرى.",
+  "TASK_COMMENT_NOT_FOUND": "هذا التعليق لم يعد موجودًا.",
+  "TASK_COMMENT_FORBIDDEN": "يمكنك تعديل تعليقاتك فقط."
 }

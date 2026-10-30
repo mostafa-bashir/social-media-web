@@ -20,7 +20,8 @@
     "monitoring": "Monitoring",
     "clients": "Clients & accounts",
     "content": "Content & publishing",
-    "analytics": "Analytics"
+    "analytics": "Analytics",
+    "tasks": "Tasks"
   },
   "permissions": {
     "workspace_update": "Edit workspace settings",
@@ -42,7 +43,10 @@
     "posts_manage": "Create, schedule and publish posts; upload media",
     "analytics_view": "View analytics and reports",
     "analytics_export": "Export analytics as CSV",
-    "analytics_manage": "Manage report links, scheduled reports and goals"
+    "analytics_manage": "Manage report links, scheduled reports and goals",
+    "tasks_view": "View tasks and comment on them",
+    "tasks_manage": "Create, edit, move and delete tasks",
+    "tasks_configure": "Manage task board columns"
   },
   "system": {
     "owner": {

@@ -77,5 +77,18 @@
   "REPORT_SCHEDULE_LIMIT": "This client already has the maximum number of email schedules.",
   "REPORT_SCHEDULE_NOT_FOUND": "This email schedule no longer exists.",
   "ANALYTICS_GOAL_LIMIT": "This client already has the maximum number of goals.",
-  "ANALYTICS_GOAL_NOT_FOUND": "This goal no longer exists."
+  "ANALYTICS_GOAL_NOT_FOUND": "This goal no longer exists.",
+  "TASK_NOT_FOUND": "This task no longer exists.",
+  "TASK_STATUS_NOT_FOUND": "This column no longer exists.",
+  "TASK_STATUS_NAME_TAKEN": "A column with this name already exists.",
+  "TASK_STATUS_LIMIT": "The board already has the maximum number of columns.",
+  "TASK_STATUS_ORDER_MISMATCH": "The board changed meanwhile. Refresh and try again.",
+  "TASK_STATUS_NOT_EMPTY": "Choose another column for the tasks in this one.",
+  "TASK_STATUS_LAST": "A board needs at least one column.",
+  "TASK_STATUS_LAST_DONE": "A board needs at least one \"Done\" column.",
+  "TASK_MEMBER_NOT_FOUND": "Only members of this workspace can be assigned or mentioned.",
+  "TASK_POST_NOT_FOUND": "The linked post no longer exists.",
+  "TASK_ANCHOR_INVALID": "The board changed meanwhile. Refresh and try again.",
+  "TASK_COMMENT_NOT_FOUND": "This comment no longer exists.",
+  "TASK_COMMENT_FORBIDDEN": "You can only change your own comments."
 }
