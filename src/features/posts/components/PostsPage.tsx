@@ -22,10 +22,12 @@ import { TOOLBAR_CREATE_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { usePosts } from "../api/get-posts";
 import { useDeletePost, usePostAction } from "../api/post-mutations";
+import { useDuplicateAndEdit } from "../hooks/use-duplicate-post";
 import { type Post, POST_STATUSES, type PostStatus } from "../types";
 import PostDetailDrawer from "./PostDetailDrawer";
 import PostsCalendar from "./PostsCalendar";
 import PostsTable from "./PostsTable";
+import PostsToolbarExtras from "./PostsToolbarExtras";
 
 const PAGE_SIZE = 20;
 type View = "list" | "calendar";
@@ -55,6 +57,7 @@ export default function PostsPage() {
   const posts = usePosts({ page, pageSize: PAGE_SIZE, clientId, status });
   const remove = useDeletePost();
   const action = usePostAction();
+  const duplicate = useDuplicateAndEdit();
 
   const unschedule = (post: Post) =>
     action.mutate(
@@ -107,21 +110,24 @@ export default function PostsPage() {
       }
       actions={
         canManage ? (
-          <Link
-            href={{
-              pathname: routes.workspace(slug).newPost,
-              query: clientId ? { clientId } : {},
-            }}
-          >
-            <Button
-              type="primary"
-              icon={<PlusOutlined />}
-              className={TOOLBAR_CREATE_BUTTON_CLASS}
-              aria-label={t("create")}
+          <div className="flex flex-wrap items-center gap-2">
+            <PostsToolbarExtras clientId={clientId} />
+            <Link
+              href={{
+                pathname: routes.workspace(slug).newPost,
+                query: clientId ? { clientId } : {},
+              }}
             >
-              <span className="max-sm:hidden">{t("create")}</span>
-            </Button>
-          </Link>
+              <Button
+                type="primary"
+                icon={<PlusOutlined />}
+                className={TOOLBAR_CREATE_BUTTON_CLASS}
+                aria-label={t("create")}
+              >
+                <span className="max-sm:hidden">{t("create")}</span>
+              </Button>
+            </Link>
+          </div>
         ) : null
       }
     />
@@ -158,6 +164,7 @@ export default function PostsPage() {
             onOpen={(post) => setOpenPostId(post.id)}
             onEdit={(post) => router.push(routes.workspace(slug).post(post.id))}
             onUnschedule={unschedule}
+            onDuplicate={duplicate}
             onDelete={setDeleting}
           />
         )}
@@ -172,6 +179,7 @@ export default function PostsPage() {
           if (linkedPostId) router.replace(routes.workspace(slug).posts);
         }}
         onUnschedule={unschedule}
+        onDuplicate={duplicate}
         onDelete={setDeleting}
       />
       <DeleteConfirmModal

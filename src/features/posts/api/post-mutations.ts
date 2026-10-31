@@ -5,7 +5,7 @@ import { apiClient, parseData } from "@/lib/api/api-client";
 import { mediaAssetSchema } from "@/lib/media";
 import { queryKeys } from "@/lib/query-keys";
 
-import { type PostInput, postSchema } from "../types";
+import { duplicatePostSchema, type PostInput, postSchema } from "../types";
 
 function useInvalidatePosts() {
   const slug = useActiveWorkspaceSlug() ?? "";
@@ -40,6 +40,9 @@ export function useSavePost() {
 export type PostAction =
   | { kind: "schedule"; scheduledAt: string }
   | { kind: "publish-now" }
+  /** At the client's next free posting time. */
+  | { kind: "queue" }
+  | { kind: "stop-repeat" }
   | { kind: "unschedule" }
   | { kind: "submit-review"; scheduledAt: string | null }
   | { kind: "withdraw-review" }
@@ -80,6 +83,42 @@ export function useRetryTarget() {
         postSchema,
         (await apiClient.post(`/posts/${postId}/targets/${targetId}/retry`))
           .data,
+      ),
+    onSuccess,
+  });
+}
+
+/** Tries a failed or skipped first comment again. */
+export function useRetryComment() {
+  const onSuccess = useInvalidatePosts();
+  return useMutation({
+    mutationFn: async ({
+      postId,
+      targetId,
+    }: {
+      postId: string;
+      targetId: string;
+    }) =>
+      parseData(
+        postSchema,
+        (
+          await apiClient.post(
+            `/posts/${postId}/targets/${targetId}/retry-comment`,
+          )
+        ).data,
+      ),
+    onSuccess,
+  });
+}
+
+/** A new draft with the same content; nothing is published. */
+export function useDuplicatePost() {
+  const onSuccess = useInvalidatePosts();
+  return useMutation({
+    mutationFn: async (postId: string) =>
+      parseData(
+        duplicatePostSchema,
+        (await apiClient.post(`/posts/${postId}/duplicate`)).data,
       ),
     onSuccess,
   });

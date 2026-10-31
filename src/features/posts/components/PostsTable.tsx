@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CopyOutlined,
   DeleteOutlined,
   EditOutlined,
   EyeOutlined,
@@ -33,6 +34,7 @@ export interface PostsTableProps {
   onOpen: (post: Post) => void;
   onEdit: (post: Post) => void;
   onUnschedule: (post: Post) => void;
+  onDuplicate: (post: Post) => void;
   onDelete: (post: Post) => void;
 }
 
@@ -49,6 +51,7 @@ export default function PostsTable({
   onOpen,
   onEdit,
   onUnschedule,
+  onDuplicate,
   onDelete,
 }: PostsTableProps) {
   const t = useTranslations("posts");
@@ -78,6 +81,16 @@ export default function PostsTable({
             label: t("unschedule"),
             icon: <RollbackOutlined />,
             onClick: () => onUnschedule(post),
+          },
+        ]
+      : []),
+    ...(canManage
+      ? [
+          {
+            key: "duplicate",
+            label: t("duplicate.action"),
+            icon: <CopyOutlined />,
+            onClick: () => onDuplicate(post),
           },
         ]
       : []),
@@ -115,7 +128,12 @@ export default function PostsTable({
       title: t("columns.accounts"),
       key: "accounts",
       width: 140,
-      render: (_, post) => <PostTargetsIcons targets={post.targets} />,
+      render: (_, post) => (
+        <PostTargetsIcons
+          targets={post.targets}
+          mediaCount={post.media.length}
+        />
+      ),
     },
     {
       title: t("columns.when", { timezone }),

@@ -69,5 +69,7 @@
     "back": "Back to accounts"
   },
   "analyticsOff": "Analytics off — reconnect to enable",
-  "analyticsOffHint": "Connected before analytics permissions were asked for. Reconnect and allow all permissions to see its analytics."
+  "analyticsOffHint": "Connected before analytics permissions were asked for. Reconnect and allow all permissions to see its analytics.",
+  "commentsOff": "First comments off",
+  "commentsOffHint": "Connected before comment permission was asked for. Reconnect to post first comments."
 }

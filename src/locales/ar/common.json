@@ -50,6 +50,15 @@
     "instagram": "إنستغرام",
     "youtube": "يوتيوب"
   },
+  "platformFormats": {
+    "feed": "منشور",
+    "reel": "ريل",
+    "story": "قصة",
+    "video": "فيديو",
+    "short": "Short",
+    "album": "ألبوم",
+    "carousel": "عرض دوّار"
+  },
   "linkedTasks": {
     "empty": "لا توجد مهام مرتبطة بهذا المنشور.",
     "done": "مكتملة"

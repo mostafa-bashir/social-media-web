@@ -1,8 +1,7 @@
 "use client";
 
-import { Alert } from "antd";
 import { useTranslations } from "next-intl";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 
 import ClientSelect from "@/components/ui/ClientSelect";
 import { Permission } from "@/config/permissions";
@@ -14,21 +13,12 @@ import { useComposer } from "../hooks/use-composer";
 import { useComposerSubmit } from "../hooks/use-composer-submit";
 import type { Post } from "../types";
 import AccountPicker from "./AccountPicker";
-import CaptionField from "./CaptionField";
-import ComposerActions from "./ComposerActions";
+import CaptionEditor from "./CaptionEditor";
 import ComposerMedia from "./ComposerMedia";
-import PlatformChecks from "./PlatformChecks";
+import ComposerSection from "./ComposerSection";
+import ComposerSidebar from "./ComposerSidebar";
+import PlatformOptionsSections from "./PlatformOptionsSections";
 import ScheduleModal from "./ScheduleModal";
-import YouTubeOptions from "./YouTubeOptions";
-
-function Section({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <section className="flex flex-col gap-3">
-      <h2 className="text-sm font-semibold text-text-primary">{title}</h2>
-      {children}
-    </section>
-  );
-}
 
 export default function PostComposer({
   post,
@@ -46,7 +36,6 @@ export default function PostComposer({
   const client = useClientOption(state.clientId);
   const { submit, pending } = useComposerSubmit(composer, post?.id, taskId);
   const [scheduling, setScheduling] = useState(false);
-  const platforms = composer.issues.map((entry) => entry.platform);
   const { can } = usePermissions();
   // The API enforces this too; here it just offers the right buttons.
   const reviewMode =
@@ -54,9 +43,9 @@ export default function PostComposer({
 
   return (
     <div className="grid gap-4 p-4 lg:grid-cols-[1fr_320px] lg:p-6">
-      <div className="surface-card">
+      <div className="surface-card h-fit">
         <div className="surface-panel flex flex-col gap-6">
-          <Section title={t("client")}>
+          <ComposerSection title={t("client")}>
             <ClientSelect
               className="w-full sm:max-w-sm!"
               placeholder={t("clientPlaceholder")}
@@ -64,70 +53,59 @@ export default function PostComposer({
               value={state.clientId}
               onChange={composer.setClient}
             />
-          </Section>
+          </ComposerSection>
           {state.clientId ? (
             <>
-              <Section title={t("accounts")}>
+              <ComposerSection title={t("accounts")}>
                 <AccountPicker
                   accounts={accounts.data ?? []}
                   loading={accounts.isLoading}
-                  selectedIds={Object.keys(state.targets)}
+                  formats={Object.fromEntries(
+                    Object.entries(state.targets).map(([id, target]) => [
+                      id,
+                      target.format,
+                    ]),
+                  )}
+                  mediaCount={state.media.length}
                   onToggle={composer.toggleAccount}
+                  onFormatChange={composer.setFormat}
                 />
-              </Section>
-              <Section title={t("caption")}>
-                <CaptionField
-                  value={state.caption}
-                  platforms={platforms}
-                  onChange={composer.setCaption}
-                />
-              </Section>
-              <Section title={t("media")}>
+              </ComposerSection>
+              <ComposerSection title={t("caption")}>
+                <CaptionEditor composer={composer} clientId={state.clientId} />
+              </ComposerSection>
+              <ComposerSection title={t("media")}>
                 <ComposerMedia
                   clientId={state.clientId}
                   media={state.media}
+                  altTexts={state.altTexts}
                   onChange={composer.setMedia}
+                  onAltTextChange={composer.setAltText}
                 />
-              </Section>
-              {composer.youtubeOptions ? (
-                <Section title={t("youtube.heading")}>
-                  <YouTubeOptions
-                    value={composer.youtubeOptions}
-                    onChange={composer.setYouTubeOptions}
-                  />
-                </Section>
-              ) : null}
+              </ComposerSection>
+              <PlatformOptionsSections
+                composer={composer}
+                clientId={state.clientId}
+                accounts={accounts.data ?? []}
+              />
             </>
           ) : null}
         </div>
       </div>
-      <aside className="surface-card h-fit lg:sticky lg:top-4">
-        <div className="surface-panel flex flex-col gap-5">
-          {taskId ? <Alert type="info" showIcon title={t("fromTask")} /> : null}
-          <Section title={t("checks")}>
-            <PlatformChecks checks={composer.issues} />
-          </Section>
-          {reviewMode ? (
-            <Alert type="warning" showIcon title={t("needsApproval")} />
-          ) : null}
-          <ComposerActions
-            status={post?.status}
-            canSave={Boolean(state.clientId)}
-            canSend={composer.isPublishable}
-            reviewMode={reviewMode}
-            pending={pending}
-            onSave={() => submit()}
-            onPublishNow={() => submit({ kind: "publish-now" })}
-            onSchedule={() => setScheduling(true)}
-            onSubmitForApproval={() =>
-              submit({ kind: "submit-review", scheduledAt: null })
-            }
-          />
-        </div>
-      </aside>
+      <ComposerSidebar
+        composer={composer}
+        post={post}
+        taskId={taskId}
+        accounts={accounts.data ?? []}
+        reviewMode={reviewMode}
+        pending={pending}
+        submit={submit}
+        onSchedule={() => setScheduling(true)}
+      />
       {scheduling ? (
         <ScheduleModal
           open
+          clientId={state.clientId}
           timezone={client.data?.timezone ?? "UTC"}
           scheduledAt={post?.scheduledAt}
           loading={pending}

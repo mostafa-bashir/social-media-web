@@ -6,23 +6,31 @@ import { useFormatter, useTranslations } from "next-intl";
 
 import { PLATFORM_ICONS } from "@/components/ui/platform-icons";
 
+import { formatLabel } from "../lib/format-label";
 import type { PostTarget } from "../types";
+import TargetFirstComment from "./TargetFirstComment";
 import TargetStatusBadge from "./TargetStatusBadge";
 
 export interface PostTargetRowProps {
+  postId: string;
   target: PostTarget;
+  /** Files in the post, to tell an album or carousel from a single post. */
+  mediaCount: number;
   canRetry: boolean;
   retrying: boolean;
   onRetry: () => void;
 }
 
 export default function PostTargetRow({
+  postId,
   target,
+  mediaCount,
   canRetry,
   retrying,
   onRetry,
 }: PostTargetRowProps) {
   const t = useTranslations("posts.detail");
+  const tFormats = useTranslations("common.platformFormats");
   const format = useFormatter();
   const metrics = target.metrics;
   // Only what the platform reports; unknown figures are left out, not shown as 0.
@@ -45,6 +53,9 @@ export default function PostTargetRow({
         </span>
         <span className="min-w-0 flex-1 truncate font-medium text-text-primary">
           {target.accountName}
+          <span className="ms-2 inline-block text-xs font-normal text-text-tertiary">
+            {tFormats(formatLabel(target.platform, target.format, mediaCount))}
+          </span>
           {target.socialAccountId ? null : (
             <span className="ms-2 text-xs text-text-tertiary">
               {t("disconnected")}
@@ -55,6 +66,21 @@ export default function PostTargetRow({
       </div>
       {target.lastError ? (
         <p className="text-sm text-danger-text">{target.lastError}</p>
+      ) : null}
+      {target.warning ? (
+        <p className="text-sm text-accent-text">{target.warning}</p>
+      ) : null}
+      {target.firstComment ? (
+        <TargetFirstComment
+          postId={postId}
+          targetId={target.id}
+          comment={target.firstComment}
+          canRetry={
+            canRetry &&
+            target.status === "published" &&
+            target.format !== "story"
+          }
+        />
       ) : null}
       {results.length > 0 ? (
         <p className="text-sm text-text-secondary">{results.join(" · ")}</p>

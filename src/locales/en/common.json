@@ -50,6 +50,15 @@
     "instagram": "Instagram",
     "youtube": "YouTube"
   },
+  "platformFormats": {
+    "feed": "Post",
+    "reel": "Reel",
+    "story": "Story",
+    "video": "Video",
+    "short": "Short",
+    "album": "Album",
+    "carousel": "Carousel"
+  },
   "linkedTasks": {
     "empty": "No tasks are linked to this post.",
     "done": "Done"

@@ -77,7 +77,10 @@ export default function PostsCalendar({
               <span dir="ltr">
                 {toZoned(post.scheduledAt as string, timezone).format("HH:mm")}
               </span>
-              <PostTargetsIcons targets={post.targets} />
+              <PostTargetsIcons
+                targets={post.targets}
+                mediaCount={post.media.length}
+              />
             </button>
           </li>
         ))}

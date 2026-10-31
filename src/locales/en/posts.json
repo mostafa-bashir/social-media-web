@@ -54,11 +54,25 @@
     "CAPTION_TOO_LONG": "Caption is too long",
     "CONTENT_REQUIRED": "Add a caption or a file",
     "MEDIA_REQUIRED": "Add an image or video",
-    "TOO_MANY_MEDIA": "Only one file per post",
+    "TOO_MANY_MEDIA": "Too many files for this format",
     "JPEG_REQUIRED": "Images must be JPEG",
     "VIDEO_REQUIRED": "Add a video",
     "TITLE_REQUIRED": "Add a video title",
-    "TITLE_TOO_LONG": "Title is too long"
+    "TITLE_TOO_LONG": "Title is too long",
+    "FORMAT_NOT_SUPPORTED": "This account can’t publish this format",
+    "TOO_FEW_MEDIA": "Add at least two files",
+    "MIXED_MEDIA": "A video has to be the only file",
+    "IMAGE_REQUIRED": "A single video goes out as a Reel — pick Reel",
+    "ASPECT_RATIO": "File proportions don’t fit this format",
+    "VIDEO_TOO_SHORT": "Video is too short for this format",
+    "VIDEO_TOO_LONG": "Video is too long for this format",
+    "LINK_WITH_MEDIA": "Link posts can’t include files",
+    "TOO_MANY_HASHTAGS": "Instagram allows at most 30 hashtags",
+    "TAGS_TOO_LONG": "Tags are longer than YouTube's 500 characters"
+  },
+  "warnings": {
+    "CAPTION_IGNORED": "Stories don’t show the caption",
+    "SIZE_UNKNOWN": "Couldn’t read a file’s size; the platform will check it"
   },
   "calendar": {
     "more": "+{count} more",
@@ -78,14 +92,39 @@
       "likes": "{count} likes",
       "comments": "{count} comments"
     },
-    "tasks": "Tasks"
+    "tasks": "Tasks",
+    "firstComment": {
+      "pending": "First comment waiting",
+      "posting": "Posting first comment…",
+      "posted": "First comment posted",
+      "failed": "First comment failed",
+      "skipped": "First comment skipped",
+      "retry": "Retry comment",
+      "retrying": "Posting the comment again…"
+    },
+    "repeat": {
+      "frequencies": {
+        "daily": "Repeats daily",
+        "weekly": "Repeats weekly",
+        "monthly": "Repeats monthly"
+      },
+      "everyN": "Repeats every {count} {unit}",
+      "ofTotal": "{occurrence} of {total}",
+      "until": "#{occurrence}, until {date}",
+      "occurrence": "#{occurrence}",
+      "stopped": "{every} (stopped)",
+      "stopConfirm": "Stop repeating? Posts already scheduled still go out.",
+      "stop": "Stop repeating",
+      "stoppedDone": "This post won't repeat any more."
+    }
   },
   "schedule": {
     "title": "Schedule post",
     "confirm": "Schedule",
     "when": "Date and time",
     "timezoneHint": "In the client’s timezone:",
-    "tooSoon": "Pick a time at least 2 minutes from now."
+    "tooSoon": "Pick a time at least 2 minutes from now.",
+    "suggested": "Best times:"
   },
   "composer": {
     "newTitle": "New post",
@@ -96,13 +135,12 @@
     "accounts": "Publish to",
     "caption": "Caption",
     "captionPlaceholder": "What do you want to say?",
-    "media": "Image or video",
+    "media": "Images or videos",
     "checks": "Ready to publish?",
     "noAccounts": "This client has no connected accounts yet.",
     "connectAccounts": "Connect accounts",
     "needsReconnect": "Needs reconnecting",
     "addMedia": "Add media",
-    "replaceMedia": "Replace",
     "removeMedia": "Remove {name}",
     "pickAccounts": "Choose at least one account.",
     "ready": "Ready",
@@ -112,17 +150,20 @@
       "save": "Draft saved.",
       "schedule": "Post scheduled.",
       "publish-now": "Publishing started.",
-      "submit-review": "Sent for review."
+      "submit-review": "Sent for review.",
+      "queue": "Added to the queue."
     },
     "picker": {
       "title": "Choose media",
       "upload": "Upload new",
       "empty": "No files for this client yet. Upload one.",
-      "pick": "Use {name}",
+      "pick": "Pick {name}",
       "problems": {
         "type": "{name} isn’t supported. Use PNG, JPEG, WebP, MP4 or MOV.",
         "size": "{name} is too large (images up to 8 MB, videos up to 250 MB)."
-      }
+      },
+      "addPicked": "{count, plural, =0 {Add files} one {Add # file} other {Add # files}}",
+      "pickedCount": "{count} of {max} picked"
     },
     "youtube": {
       "heading": "YouTube",
@@ -134,7 +175,38 @@
         "unlisted": "Unlisted",
         "public": "Public"
       },
-      "privateNote": "Until the app passes Google’s review, YouTube keeps API uploads private."
+      "privateNote": "Until the app passes Google’s review, YouTube keeps API uploads private.",
+      "more": "More YouTube settings",
+      "tags": "Tags",
+      "tagsPlaceholder": "Type a tag and press Enter or comma",
+      "category": "Category",
+      "categories": {
+        "1": "Film & Animation",
+        "2": "Autos & Vehicles",
+        "10": "Music",
+        "15": "Pets & Animals",
+        "17": "Sports",
+        "19": "Travel & Events",
+        "20": "Gaming",
+        "22": "People & Blogs",
+        "23": "Comedy",
+        "24": "Entertainment",
+        "25": "News & Politics",
+        "26": "Howto & Style",
+        "27": "Education",
+        "28": "Science & Technology",
+        "29": "Nonprofits & Activism"
+      },
+      "madeForKids": "Audience",
+      "notForKids": "Not made for kids",
+      "forKids": "Made for kids",
+      "thumbnail": "Custom thumbnail",
+      "thumbnailChosen": "A custom thumbnail is chosen.",
+      "thumbnailChoose": "Choose image",
+      "thumbnailChange": "Change",
+      "thumbnailRemove": "Remove",
+      "thumbnailHint": "JPEG or PNG up to 2 MB, ideally 1280×720. YouTube applies it on verified channels only.",
+      "thumbnailInvalid": "Pick a JPEG or PNG image of up to 2 MB."
     },
     "actions": {
       "schedule": "Schedule",
@@ -144,13 +216,144 @@
       "saveDraft": "Save draft",
       "saveChanges": "Save changes",
       "submitWithTime": "Submit for review…",
-      "submitPublishOnApproval": "Submit — publish once approved"
+      "submitPublishOnApproval": "Submit — publish once approved",
+      "queue": "Add to queue",
+      "editSlots": "Posting times"
     },
     "fromTask": "This post will be linked to the task you started from.",
     "needsApproval": "This client's posts need approval. Submit it and an approver will schedule it.",
     "review": {
       "title": "Submit for review",
       "confirm": "Submit"
+    },
+    "mediaHint": "Up to {max} files. Drag to set the order for albums and carousels.",
+    "moveMedia": "Move {name} (position {position})",
+    "formatFor": "Format for {name}",
+    "facebook": {
+      "heading": "Facebook",
+      "link": "Link (optional)",
+      "linkHint": "Shared as a link post with a preview card. Can’t be combined with files."
+    },
+    "instagram": {
+      "heading": "Instagram",
+      "shareToFeed": "Also show in the profile grid",
+      "cover": "Cover frame",
+      "seconds": "sec",
+      "collaborators": "Collaborators",
+      "collaboratorsPlaceholder": "username, another.username",
+      "collaboratorsHint": "Up to {max} Instagram accounts. The post appears on their profile once they accept."
+    },
+    "hashtagCount": "Hashtags: {count} / {max}",
+    "captionFor": "Caption for",
+    "allAccounts": "All accounts",
+    "customizeFor": "Write a separate caption for {platform}",
+    "captionForPlatform": "{platform} caption",
+    "sharedCaptionEmpty": "Uses the caption written for all accounts (empty so far).",
+    "previewHeading": "Preview",
+    "emoji": {
+      "search": "Search emoji",
+      "loading": "Loading…",
+      "empty": "No emoji found."
+    },
+    "toolbar": {
+      "emoji": "Emoji",
+      "snippets": "Snippets",
+      "utm": "Tracked link"
+    },
+    "snippets": {
+      "search": "Search snippets",
+      "noMatches": "No snippets match.",
+      "empty": "No saved snippets yet.",
+      "manage": "Manage snippets",
+      "manageTitle": "Snippets & hashtag groups",
+      "kinds": {
+        "hashtags": "Hashtag groups",
+        "snippet": "Text snippets"
+      },
+      "kind": "Type",
+      "name": "Name",
+      "nameRequired": "Give it a name",
+      "body": "Text",
+      "bodyRequired": "Add the text to insert",
+      "bodyPlaceholder": "#launch #newcollection — or a sign-off you reuse",
+      "scope": "Available for",
+      "scopeClient": "This client",
+      "scopeWorkspace": "All clients",
+      "cancel": "Cancel",
+      "save": "Save",
+      "saved": "Snippet saved.",
+      "create": "New snippet",
+      "actionsFor": "Actions for {name}",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteTitle": "Delete snippet"
+    },
+    "utm": {
+      "title": "Tracked link",
+      "insert": "Insert link",
+      "url": "Page address",
+      "source": "Source",
+      "medium": "Medium",
+      "campaign": "Campaign",
+      "campaignPlaceholder": "e.g. spring-sale",
+      "result": "Link to share",
+      "resultEmpty": "Enter a full address starting with http:// or https://"
+    },
+    "altText": {
+      "title": "Alt text",
+      "label": "Alt text for {name}",
+      "placeholder": "Describe what's in the image",
+      "hint": "Read aloud by screen readers. Sent to Instagram with feed images.",
+      "add": "Add alt text to {name}",
+      "edit": "Edit alt text of {name}"
+    },
+    "preview": {
+      "justNow": "Just now",
+      "noMedia": "Add a file to see it here",
+      "formats": {
+        "feed": "Post",
+        "reel": "Reel",
+        "story": "Story",
+        "video": "Video",
+        "short": "Short"
+      },
+      "untitled": "Untitled video",
+      "pickAccounts": "Choose an account to preview the post.",
+      "choose": "Preview for",
+      "disclaimer": "An approximation; each app lays posts out its own way."
+    },
+    "firstComment": {
+      "heading": "First comment",
+      "label": "First comment",
+      "placeholder": "Posted as the first comment right after publishing, e.g. hashtags or a link",
+      "skipsStories": "Not posted on stories: {names}.",
+      "needsReconnect": "Won't be posted on {names} until they're reconnected to allow comments.",
+      "reconnect": "Reconnect"
+    },
+    "repeat": {
+      "heading": "Repeat",
+      "frequency": "How often",
+      "never": "Doesn't repeat",
+      "frequencies": {
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      },
+      "every": "every",
+      "interval": "Repeat interval",
+      "units": {
+        "daily": "{count, plural, one {day} other {days}}",
+        "weekly": "{count, plural, one {week} other {weeks}}",
+        "monthly": "{count, plural, one {month} other {months}}"
+      },
+      "ends": "Ends",
+      "endsNever": "Never",
+      "endsAfter": "After",
+      "occurrences": "Number of times",
+      "times": "times",
+      "endsOn": "On",
+      "lastDay": "Last day",
+      "hint": "Each repeat is a copy of this post, scheduled when the previous one has gone out, at the same local time."
     }
   },
   "review": {
@@ -172,5 +375,60 @@
       "changes_requested": "Changes requested",
       "withdrawn": "Withdrawn"
     }
+  },
+  "duplicate": {
+    "action": "Duplicate",
+    "done": "Copied into a new draft.",
+    "skipped": "{count, plural, one {Copied into a new draft. # account was left out because it needs reconnecting.} other {Copied into a new draft. # accounts were left out because they need reconnecting.}}"
+  },
+  "postingSlots": {
+    "title": "Posting times",
+    "save": "Save",
+    "saved": "Posting times saved.",
+    "description": "\"Add to queue\" schedules posts at the next free time below. Times are in the client's time zone:",
+    "weekdays": {
+      "1": "Monday",
+      "2": "Tuesday",
+      "3": "Wednesday",
+      "4": "Thursday",
+      "5": "Friday",
+      "6": "Saturday",
+      "7": "Sunday"
+    },
+    "remove": "Remove {day} {time}",
+    "timeFor": "New time on {day}",
+    "add": "Add time on {day}"
+  },
+  "import": {
+    "title": "Import posts from CSV",
+    "confirm": "{count, plural, =0 {Import} one {Import # post} other {Import # posts}}",
+    "done": "{count, plural, one {# post scheduled.} other {# posts scheduled.}}",
+    "description": "One post per row: date and time in the client's time zone, accounts (platform names like facebook, account names, separated by ;), and optionally format, caption, first_comment, media (file names from the media library, separated by ;) and title (YouTube). Every row is checked before anything is created.",
+    "client": "Client",
+    "chooseFile": "Choose CSV file",
+    "changeFile": "Choose another file",
+    "template": "Download template",
+    "tooLarge": "The file is larger than 1 MB.",
+    "summary": "{valid} ready, {invalid} with problems.",
+    "ready": "Ready",
+    "columns": {
+      "line": "Line",
+      "when": "When ({timezone})",
+      "accounts": "Accounts",
+      "status": "Status"
+    },
+    "errors": {
+      "ACCOUNT_NOT_FOUND": "No such account",
+      "ACCOUNTS_REQUIRED": "Add at least one account",
+      "DATE_INVALID": "Date must be YYYY-MM-DD",
+      "TIME_INVALID": "Time must be HH:mm",
+      "TIME_IN_PAST": "This time has already passed",
+      "MEDIA_NOT_FOUND": "File not in the media library"
+    }
+  },
+  "toolbar": {
+    "postingTimes": "Posting times",
+    "pickClientForSlots": "Filter by a client to set its posting times",
+    "import": "Import CSV"
   }
 }

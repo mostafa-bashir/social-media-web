@@ -17,6 +17,7 @@ import { usePostTime } from "../hooks/use-post-time";
 import { EDITABLE_STATUSES, type Post } from "../types";
 import PostReviewPanel from "./PostReviewPanel";
 import PostStatusBadge from "./PostStatusBadge";
+import PostRepeatInfo from "./PostRepeatInfo";
 import PostTargetRow from "./PostTargetRow";
 
 const DRAWER_WIDTH = 480;
@@ -31,6 +32,7 @@ export interface PostDetailDrawerProps {
   canApprove: boolean;
   onClose: () => void;
   onUnschedule: (post: Post) => void;
+  onDuplicate: (post: Post) => void;
   onDelete: (post: Post) => void;
 }
 
@@ -42,6 +44,7 @@ export default function PostDetailDrawer({
   canApprove,
   onClose,
   onUnschedule,
+  onDuplicate,
   onDelete,
 }: PostDetailDrawerProps) {
   const t = useTranslations("posts");
@@ -78,6 +81,13 @@ export default function PostDetailDrawer({
               </span>
             ) : null}
           </div>
+          {data.repeat ? (
+            <PostRepeatInfo
+              postId={data.id}
+              repeat={data.repeat}
+              canManage={canManage}
+            />
+          ) : null}
           <p className="whitespace-pre-wrap text-text-primary">
             {data.caption || (
               <span className="text-text-tertiary">{t("noCaption")}</span>
@@ -99,7 +109,9 @@ export default function PostDetailDrawer({
                 {data.targets.map((target) => (
                   <PostTargetRow
                     key={target.id}
+                    postId={data.id}
                     target={target}
+                    mediaCount={data.media.length}
                     canRetry={canManage}
                     retrying={
                       retry.isPending && retry.variables?.targetId === target.id
@@ -149,6 +161,12 @@ export default function PostDetailDrawer({
                   {t("unschedule")}
                 </Button>
               ) : null}
+              <Button
+                className="rounded-full!"
+                onClick={() => onDuplicate(data)}
+              >
+                {t("duplicate.action")}
+              </Button>
               {data.status !== "publishing" ? (
                 <Button
                   danger

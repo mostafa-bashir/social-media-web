@@ -15,6 +15,11 @@ export const mediaAssetSchema = z.object({
   kind: mediaKindSchema,
   mimeType: z.string(),
   sizeBytes: z.number(),
+  /** Displayed size; null when the API couldn't read it. */
+  width: z.number().nullable(),
+  height: z.number().nullable(),
+  /** Videos only. */
+  durationMs: z.number().nullable(),
   originalFilename: z.string(),
   /** Short-lived signed URL. */
   url: z.string(),

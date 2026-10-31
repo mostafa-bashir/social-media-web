@@ -25,6 +25,8 @@ export const socialAccountSchema = z.object({
   lastRefreshedAt: z.string().nullable(),
   /** False when connected before analytics permissions were asked for. */
   analyticsEnabled: z.boolean(),
+  /** False when connected before comment permissions were asked for. */
+  engagementEnabled: z.boolean(),
   analyticsSyncedAt: z.string().nullable(),
   analyticsError: z.string().nullable(),
   createdAt: z.string(),

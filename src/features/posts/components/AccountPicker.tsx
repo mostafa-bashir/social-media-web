@@ -8,21 +8,27 @@ import { routes } from "@/config/routes";
 import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
 import { Link } from "@/i18n/navigation";
 
-import type { ComposerAccount } from "../types";
+import type { ComposerAccount, TargetFormat } from "../types";
+import FormatPicker from "./FormatPicker";
 
 export interface AccountPickerProps {
   accounts: ComposerAccount[];
   loading: boolean;
-  selectedIds: string[];
+  /** Selected account id → its format. */
+  formats: Record<string, TargetFormat>;
+  mediaCount: number;
   onToggle: (account: ComposerAccount, selected: boolean) => void;
+  onFormatChange: (accountId: string, format: TargetFormat) => void;
 }
 
-/** Accounts of the chosen client; ones needing a reconnect can't be picked. */
+/** Accounts of the chosen client, each with its format; ones needing a reconnect can't be picked. */
 export default function AccountPicker({
   accounts,
   loading,
-  selectedIds,
+  formats,
+  mediaCount,
   onToggle,
+  onFormatChange,
 }: AccountPickerProps) {
   const t = useTranslations("posts.composer");
   const slug = useActiveWorkspaceSlug() ?? "";
@@ -43,18 +49,24 @@ export default function AccountPicker({
   }
 
   return (
-    <ul className="grid gap-2 sm:grid-cols-2">
+    <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
       {accounts.map((account) => {
         const disabled = account.status !== "active";
-        const checked = selectedIds.includes(account.id);
+        const format = formats[account.id];
+        const checked = format !== undefined;
         return (
-          <li key={account.id}>
+          <li
+            key={account.id}
+            className={`flex flex-col gap-2 rounded-xl border p-3 ${
+              checked
+                ? "border-primary-border bg-primary-subtle"
+                : "border-border-default"
+            } ${disabled ? "opacity-60" : ""}`}
+          >
             <label
-              className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 ${
-                checked
-                  ? "border-primary-border bg-primary-subtle"
-                  : "border-border-default"
-              } ${disabled ? "cursor-not-allowed opacity-60" : ""}`}
+              className={`flex items-center gap-3 ${
+                disabled ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
             >
               <Checkbox
                 checked={checked}
@@ -76,6 +88,15 @@ export default function AccountPicker({
                 {PLATFORM_ICONS[account.platform]}
               </span>
             </label>
+            {checked ? (
+              <FormatPicker
+                platform={account.platform}
+                accountName={account.displayName}
+                value={format}
+                mediaCount={mediaCount}
+                onChange={(next) => onFormatChange(account.id, next)}
+              />
+            ) : null}
           </li>
         );
       })}

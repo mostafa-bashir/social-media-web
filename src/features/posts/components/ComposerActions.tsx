@@ -3,6 +3,7 @@
 import {
   AuditOutlined,
   CalendarOutlined,
+  FieldTimeOutlined,
   SendOutlined,
 } from "@ant-design/icons";
 import { Button, Popconfirm } from "antd";
@@ -28,6 +29,10 @@ export interface ComposerActionsProps {
   onSchedule: () => void;
   /** Review mode only: submit to be published as soon as it's approved. */
   onSubmitForApproval: () => void;
+  /** Schedules at the client's next free posting time. */
+  onQueue: () => void;
+  /** Opens the client's posting times; undefined before a client is chosen. */
+  onEditSlots?: () => void;
 }
 
 export default function ComposerActions({
@@ -40,6 +45,8 @@ export default function ComposerActions({
   onPublishNow,
   onSchedule,
   onSubmitForApproval,
+  onQueue,
+  onEditSlots,
 }: ComposerActionsProps) {
   const t = useTranslations("posts.composer.actions");
   const scheduled = status === "scheduled";
@@ -60,6 +67,30 @@ export default function ComposerActions({
             ? t("reschedule")
             : t("schedule")}
       </Button>
+      {reviewMode ? null : (
+        <div className="flex flex-col items-center gap-1">
+          <Button
+            block
+            icon={<FieldTimeOutlined />}
+            disabled={!canSend}
+            loading={pending}
+            className={SECONDARY_PILL_CLASS}
+            onClick={onQueue}
+          >
+            {t("queue")}
+          </Button>
+          {onEditSlots ? (
+            <Button
+              type="link"
+              size="small"
+              className="text-xs!"
+              onClick={onEditSlots}
+            >
+              {t("editSlots")}
+            </Button>
+          ) : null}
+        </div>
+      )}
       {reviewMode ? (
         <Button
           icon={<SendOutlined />}

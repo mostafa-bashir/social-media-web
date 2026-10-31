@@ -1,20 +1,23 @@
 "use client";
 
-import { Alert, Input, Select } from "antd";
+import { Alert, Collapse, Input, Select } from "antd";
 import { useTranslations } from "next-intl";
 
-import { PLATFORM_LIMITS } from "../lib/platform-rules";
+import { YOUTUBE_MAX_TITLE } from "../lib/platform-rules";
 import {
   type TargetOptions,
   YOUTUBE_PRIVACY,
   type YouTubePrivacy,
 } from "../types";
+import YouTubeAdvancedOptions from "./YouTubeAdvancedOptions";
 
 /** Title and visibility, shared by every YouTube channel in the post. */
 export default function YouTubeOptions({
+  clientId,
   value,
   onChange,
 }: {
+  clientId: string;
   value: TargetOptions;
   onChange: (options: TargetOptions) => void;
 }) {
@@ -29,7 +32,7 @@ export default function YouTubeOptions({
           </span>
           <Input
             value={value.title}
-            maxLength={PLATFORM_LIMITS.youtube.maxTitle}
+            maxLength={YOUTUBE_MAX_TITLE}
             showCount
             placeholder={t("titlePlaceholder")}
             onChange={(event) =>
@@ -51,6 +54,22 @@ export default function YouTubeOptions({
           />
         </label>
       </div>
+      <Collapse
+        size="small"
+        items={[
+          {
+            key: "more",
+            label: t("more"),
+            children: (
+              <YouTubeAdvancedOptions
+                clientId={clientId}
+                value={value}
+                onChange={onChange}
+              />
+            ),
+          },
+        ]}
+      />
       <Alert type="info" showIcon title={t("privateNote")} />
     </div>
   );

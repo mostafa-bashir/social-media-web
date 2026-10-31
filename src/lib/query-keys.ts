@@ -22,6 +22,9 @@ export const queryKeys = {
     ["workspace", slug, "social-accounts"] as const,
   media: (slug: string) => ["workspace", slug, "media"] as const,
   posts: (slug: string) => ["workspace", slug, "posts"] as const,
+  captionSnippets: (slug: string) =>
+    ["workspace", slug, "caption-snippets"] as const,
+  postingSlots: (slug: string) => ["workspace", slug, "posting-slots"] as const,
   analytics: (slug: string) => ["workspace", slug, "analytics"] as const,
   tasks: (slug: string) => ["workspace", slug, "tasks"] as const,
   taskStatuses: (slug: string) => ["workspace", slug, "task-statuses"] as const,

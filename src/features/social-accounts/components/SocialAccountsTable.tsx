@@ -105,6 +105,13 @@ export default function SocialAccountsTable({
                 </span>
               </Tooltip>
             )}
+            {account.engagementEnabled ? null : (
+              <Tooltip title={t("commentsOffHint")}>
+                <span className="text-xs text-accent-text">
+                  {t("commentsOff")}
+                </span>
+              </Tooltip>
+            )}
           </div>
         ) : (
           <Tooltip title={t("reconnectHint")}>
