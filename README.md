@@ -86,7 +86,7 @@ account, range, compare-to, granularity) live in the URL, so every report can be
 shared, and tab links keep them. The post drawer opens from `?post=<source>:<id>`.
 
 Charts use Recharts with colours only from the `--ds-chart-*` tokens. Platforms keep fixed
-slots (Facebook 1, Instagram 2, YouTube 3) so a series never changes colour with filters; the
+slots (Facebook 1, Instagram 2, YouTube 3, TikTok 4) so a series never changes colour with filters; the
 slots were checked for colour-blind separation with the dataviz palette validator. Figures a
 platform doesn't report show as "—", never 0. The best-time heatmap uses its own one-hue
 ramp (`--ds-heat-1..5`).

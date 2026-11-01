@@ -122,6 +122,17 @@ export const FORMAT_RULES: Record<
       maxVideoMs: 180 * SECOND_MS,
     },
   },
+  tiktok: {
+    video: {
+      maxCaption: 2_200,
+      captionUsed: true,
+      minMedia: 1,
+      maxMedia: 1,
+      kinds: VIDEO_ONLY,
+      minVideoMs: 3 * SECOND_MS,
+      maxVideoMs: 10 * 60 * SECOND_MS,
+    },
+  },
 };
 
 export type PlatformIssue =
@@ -142,7 +153,8 @@ export type PlatformIssue =
   | "LINK_WITH_MEDIA"
   | "TITLE_REQUIRED"
   | "TITLE_TOO_LONG"
-  | "TAGS_TOO_LONG";
+  | "TAGS_TOO_LONG"
+  | "BRANDED_CONTENT_PRIVATE";
 
 /** Shown, but don't block publishing. */
 export type PlatformWarning = "CAPTION_IGNORED" | "SIZE_UNKNOWN";
@@ -179,7 +191,7 @@ export function defaultFormat(
   platform: SocialPlatform,
   media: Pick<MediaAsset, "kind">[],
 ): TargetFormat {
-  if (platform === "youtube") return "video";
+  if (platform === "youtube" || platform === "tiktok") return "video";
   if (platform === "instagram" && media.length === 1) {
     return media[0].kind === "video" ? "reel" : "feed";
   }
@@ -275,6 +287,13 @@ function checkPlatformExtras(input: RuleInput): PlatformIssue[] {
     if (youtubeTagsLength(options.tags ?? []) > YOUTUBE_MAX_TAGS_LENGTH) {
       issues.push("TAGS_TOO_LONG");
     }
+  }
+  if (
+    input.platform === "tiktok" &&
+    options.brandedContent &&
+    options.tiktokPrivacy === "private"
+  ) {
+    issues.push("BRANDED_CONTENT_PRIVATE");
   }
   return issues;
 }

@@ -24,7 +24,7 @@
   },
   "empty": {
     "title": "No accounts connected yet",
-    "description": "Connect a Facebook Page, Instagram account or YouTube channel for one of your clients.",
+    "description": "Connect a Facebook Page, Instagram account, YouTube channel or TikTok account for one of your clients.",
     "filtered": "No accounts match these filters."
   },
   "disconnectTitle": "Disconnect account",

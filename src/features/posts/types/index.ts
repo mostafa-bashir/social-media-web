@@ -28,6 +28,14 @@ export type TargetStatus = z.infer<typeof targetStatusSchema>;
 export const YOUTUBE_PRIVACY = ["private", "unlisted", "public"] as const;
 export type YouTubePrivacy = (typeof YOUTUBE_PRIVACY)[number];
 
+export const TIKTOK_PRIVACY = [
+  "private",
+  "followers",
+  "friends",
+  "public",
+] as const;
+export type TikTokPrivacy = (typeof TIKTOK_PRIVACY)[number];
+
 /** How a target goes out; which formats a platform has is in `FORMAT_RULES`. */
 export const TARGET_FORMATS = [
   "feed",
@@ -51,6 +59,13 @@ export const targetOptionsSchema = z.object({
   categoryId: z.string().optional(),
   madeForKids: z.boolean().optional(),
   thumbnailMediaId: z.string().optional(),
+  tiktokPrivacy: z.enum(TIKTOK_PRIVACY).optional(),
+  allowComment: z.boolean().optional(),
+  allowDuet: z.boolean().optional(),
+  allowStitch: z.boolean().optional(),
+  brandOrganic: z.boolean().optional(),
+  brandedContent: z.boolean().optional(),
+  aiGenerated: z.boolean().optional(),
 });
 
 export const FIRST_COMMENT_STATUSES = [

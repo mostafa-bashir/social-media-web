@@ -48,7 +48,8 @@
   "platforms": {
     "facebook": "Facebook",
     "instagram": "Instagram",
-    "youtube": "YouTube"
+    "youtube": "YouTube",
+    "tiktok": "TikTok"
   },
   "platformFormats": {
     "feed": "Post",

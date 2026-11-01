@@ -1,6 +1,7 @@
 import {
   FacebookFilled,
   InstagramFilled,
+  TikTokFilled,
   YoutubeFilled,
 } from "@ant-design/icons";
 import type { ReactNode } from "react";
@@ -12,4 +13,5 @@ export const PLATFORM_ICONS: Record<SocialPlatform, ReactNode> = {
   facebook: <FacebookFilled />,
   instagram: <InstagramFilled />,
   youtube: <YoutubeFilled />,
+  tiktok: <TikTokFilled />,
 };

@@ -197,7 +197,7 @@
   },
   "empty": {
     "title": "No connected accounts yet",
-    "description": "Connect a client's Facebook Page, Instagram or YouTube channel to see its analytics.",
+    "description": "Connect a client's Facebook Page, Instagram, YouTube channel or TikTok account to see its analytics.",
     "action": "Connect accounts"
   },
   "content": {

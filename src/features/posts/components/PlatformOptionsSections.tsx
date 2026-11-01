@@ -10,6 +10,7 @@ import FirstCommentField from "./FirstCommentField";
 import InstagramCollaboratorsField from "./InstagramCollaboratorsField";
 import InstagramReelOptions from "./InstagramReelOptions";
 import RepeatField from "./RepeatField";
+import TikTokOptions from "./TikTokOptions";
 import YouTubeOptions from "./YouTubeOptions";
 
 /** Settings that only some platforms and formats take, shown when one is selected. */
@@ -27,6 +28,7 @@ export default function PlatformOptionsSections({
     facebookFeedOptions,
     instagramPostOptions,
     instagramReelOptions,
+    tiktokOptions,
     youtubeOptions,
   } = composer;
   const setInstagram = (options: TargetOptions) =>
@@ -84,6 +86,16 @@ export default function PlatformOptionsSections({
             value={youtubeOptions}
             onChange={(options) =>
               composer.setPlatformOptions("youtube", options)
+            }
+          />
+        </ComposerSection>
+      ) : null}
+      {tiktokOptions ? (
+        <ComposerSection title={t("tiktok.heading")}>
+          <TikTokOptions
+            value={tiktokOptions}
+            onChange={(options) =>
+              composer.setPlatformOptions("tiktok", options)
             }
           />
         </ComposerSection>

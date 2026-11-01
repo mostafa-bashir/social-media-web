@@ -68,7 +68,8 @@
     "VIDEO_TOO_LONG": "Video is too long for this format",
     "LINK_WITH_MEDIA": "Link posts can’t include files",
     "TOO_MANY_HASHTAGS": "Instagram allows at most 30 hashtags",
-    "TAGS_TOO_LONG": "Tags are longer than YouTube's 500 characters"
+    "TAGS_TOO_LONG": "Tags are longer than YouTube's 500 characters",
+    "BRANDED_CONTENT_PRIVATE": "TikTok doesn’t allow a paid partnership to be private. Change the visibility or turn the disclosure off"
   },
   "warnings": {
     "CAPTION_IGNORED": "Stories don’t show the caption",
@@ -164,6 +165,28 @@
       },
       "addPicked": "{count, plural, =0 {Add files} one {Add # file} other {Add # files}}",
       "pickedCount": "{count} of {max} picked"
+    },
+    "tiktok": {
+      "heading": "TikTok",
+      "privacy": "Who can watch",
+      "privacyOptions": {
+        "private": "Only me",
+        "followers": "Followers",
+        "friends": "Friends",
+        "public": "Everyone"
+      },
+      "interactions": "Allow viewers to",
+      "disclosures": "Disclose",
+      "fields": {
+        "allowComment": "Comment",
+        "allowDuet": "Duet",
+        "allowStitch": "Stitch",
+        "brandOrganic": "Promotes my own brand",
+        "brandedContent": "Paid partnership",
+        "aiGenerated": "AI-generated content"
+      },
+      "brandedPrivateNote": "A paid partnership can’t be private on TikTok. Pick another visibility.",
+      "privateNote": "Until TikTok approves the app, every post is published as private (only you can see it)."
     },
     "youtube": {
       "heading": "YouTube",

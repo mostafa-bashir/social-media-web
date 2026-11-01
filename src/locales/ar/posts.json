@@ -68,7 +68,8 @@
     "VIDEO_TOO_LONG": "الفيديو أطول مما يسمح به هذا النوع",
     "LINK_WITH_MEDIA": "منشورات الروابط لا يمكن أن تتضمن ملفات",
     "TOO_MANY_HASHTAGS": "يسمح إنستغرام بـ 30 وسمًا كحد أقصى",
-    "TAGS_TOO_LONG": "الوسوم أطول من 500 حرف التي يسمح بها يوتيوب"
+    "TAGS_TOO_LONG": "الوسوم أطول من 500 حرف التي يسمح بها يوتيوب",
+    "BRANDED_CONTENT_PRIVATE": "لا يسمح تيك توك بأن تكون الشراكة المدفوعة خاصة. غيّر الظهور أو أوقف الإفصاح"
   },
   "warnings": {
     "CAPTION_IGNORED": "القصص لا تعرض النص",
@@ -164,6 +165,28 @@
       },
       "addPicked": "{count, plural, =0 {إضافة ملفات} one {إضافة ملف واحد} two {إضافة ملفين} few {إضافة # ملفات} many {إضافة # ملفًا} other {إضافة # ملف}}",
       "pickedCount": "تم اختيار {count} من {max}"
+    },
+    "tiktok": {
+      "heading": "TikTok",
+      "privacy": "من يمكنه المشاهدة",
+      "privacyOptions": {
+        "private": "أنا فقط",
+        "followers": "المتابعون",
+        "friends": "الأصدقاء",
+        "public": "الجميع"
+      },
+      "interactions": "السماح للمشاهدين بـ",
+      "disclosures": "الإفصاح",
+      "fields": {
+        "allowComment": "التعليق",
+        "allowDuet": "الديو",
+        "allowStitch": "الدمج (Stitch)",
+        "brandOrganic": "يروّج لعلامتي التجارية",
+        "brandedContent": "شراكة مدفوعة",
+        "aiGenerated": "محتوى مُنشأ بالذكاء الاصطناعي"
+      },
+      "brandedPrivateNote": "لا يمكن أن تكون الشراكة المدفوعة خاصة على تيك توك. اختر ظهورًا آخر.",
+      "privateNote": "إلى أن يوافق تيك توك على التطبيق، يُنشر كل منشور كخاص (أنت فقط من يراه)."
     },
     "youtube": {
       "heading": "YouTube",

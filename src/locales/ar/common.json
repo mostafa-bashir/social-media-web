@@ -48,7 +48,8 @@
   "platforms": {
     "facebook": "فيسبوك",
     "instagram": "إنستغرام",
-    "youtube": "يوتيوب"
+    "youtube": "يوتيوب",
+    "tiktok": "تيك توك"
   },
   "platformFormats": {
     "feed": "منشور",

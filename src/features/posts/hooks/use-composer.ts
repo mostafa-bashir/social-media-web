@@ -63,6 +63,16 @@ const NEW_TARGET_OPTIONS: Record<SocialPlatform, TargetOptions> = {
     categoryId: DEFAULT_YOUTUBE_CATEGORY,
     madeForKids: false,
   },
+  // TikTok wants every interaction switch chosen by the creator, so none starts on.
+  tiktok: {
+    tiktokPrivacy: "private",
+    allowComment: false,
+    allowDuet: false,
+    allowStitch: false,
+    brandOrganic: false,
+    brandedContent: false,
+    aiGenerated: false,
+  },
 };
 
 function initialState(post?: Post, clientId?: string): ComposerState {
@@ -182,6 +192,7 @@ export function useComposer(post?: Post, initialClientId?: string) {
     isPublishable:
       checks.length > 0 && checks.every((check) => check.issues.length === 0),
     youtubeOptions: sharedOptions("youtube"),
+    tiktokOptions: sharedOptions("tiktok"),
     facebookFeedOptions: sharedOptions("facebook", "feed"),
     instagramReelOptions: sharedOptions("instagram", "reel"),
     /** Feed posts and reels take collaborators; stories don't. */
