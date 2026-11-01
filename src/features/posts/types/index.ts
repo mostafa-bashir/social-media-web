@@ -1,21 +1,15 @@
 import { z } from "zod";
 
 import { platformSchema } from "@/config/platforms";
+import { type PostStatus, postStatusSchema } from "@/config/post-statuses";
 import { mediaAssetSchema } from "@/lib/media";
 import { postMetricsSchema } from "@/lib/post-metrics";
 
-export const POST_STATUSES = [
-  "draft",
-  "in_review",
-  "changes_requested",
-  "scheduled",
-  "publishing",
-  "published",
-  "partially_failed",
-  "failed",
-] as const;
-export const postStatusSchema = z.enum(POST_STATUSES);
-export type PostStatus = z.infer<typeof postStatusSchema>;
+export {
+  POST_STATUSES,
+  type PostStatus,
+  postStatusSchema,
+} from "@/config/post-statuses";
 
 export const targetStatusSchema = z.enum([
   "pending",
@@ -219,7 +213,7 @@ export interface PostsQuery {
   page: number;
   pageSize: number;
   clientId?: string;
-  status?: PostStatus;
+  status?: PostStatus[];
   from?: string;
   to?: string;
 }

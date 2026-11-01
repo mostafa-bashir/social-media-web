@@ -20,6 +20,8 @@ export interface TaskPageState extends TaskFilters {
   view: TaskView;
   /** Task open in the drawer, so a task can be linked. */
   task?: string;
+  /** `create=1` opens the new-task form (link from the dashboard). */
+  create?: "1";
 }
 
 const pick = <T extends string>(list: readonly T[], value: string | null) =>
@@ -43,6 +45,7 @@ export function useTaskFilters() {
       due: pick(DUE_FILTERS, params.get("due")),
       search: params.get("search") ?? undefined,
       task: params.get("task") ?? undefined,
+      create: params.get("create") === "1" ? "1" : undefined,
     }),
     [params],
   );

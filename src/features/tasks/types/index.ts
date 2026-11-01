@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+import { TASK_PRIORITIES, type TaskPriority } from "@/config/task-priorities";
+
+export { TASK_PRIORITIES, type TaskPriority };
+
 export const STATUS_TONES = [
   "neutral",
   "brand",
@@ -8,7 +12,6 @@ export const STATUS_TONES = [
   "danger",
 ] as const;
 export const STATUS_CATEGORIES = ["todo", "in_progress", "done"] as const;
-export const TASK_PRIORITIES = ["low", "medium", "high", "urgent"] as const;
 export const TASK_TYPES = [
   "campaign",
   "content",
@@ -63,7 +66,6 @@ export const TASK_VIEWS = [
 
 export type StatusTone = (typeof STATUS_TONES)[number];
 export type StatusCategory = (typeof STATUS_CATEGORIES)[number];
-export type TaskPriority = (typeof TASK_PRIORITIES)[number];
 export type TaskType = (typeof TASK_TYPES)[number];
 export type DueFilter = (typeof DUE_FILTERS)[number];
 export type WorkflowStage = (typeof WORKFLOW_STAGES)[number];

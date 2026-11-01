@@ -20,6 +20,8 @@ import {
   useStartConnect,
 } from "../api/social-account-mutations";
 import {
+  ACCOUNT_STATUSES,
+  type AccountStatus,
   SOCIAL_PLATFORMS,
   type SocialAccount,
   type SocialPlatform,
@@ -33,12 +35,15 @@ const PAGE_SIZE = 20;
 export interface SocialAccountsPageProps {
   /** From `?clientId=` (e.g. the clients list links here filtered). */
   initialClientId?: string;
+  /** From `?status=` (e.g. the dashboard's reconnect tile). */
+  initialStatus?: string;
   /** From `?connectError=`, set by the connect callback page. */
   connectError?: string;
 }
 
 export default function SocialAccountsPage({
   initialClientId,
+  initialStatus,
   connectError,
 }: SocialAccountsPageProps) {
   const t = useTranslations("accounts");
@@ -50,6 +55,9 @@ export default function SocialAccountsPage({
   const [page, setPage] = useState(1);
   const [clientId, setClientId] = useState(initialClientId);
   const [platform, setPlatform] = useState<SocialPlatform>();
+  const [status, setStatus] = useState<AccountStatus | undefined>(() =>
+    ACCOUNT_STATUSES.find((value) => value === initialStatus),
+  );
   const [connectOpen, setConnectOpen] = useState(false);
   const [disconnecting, setDisconnecting] = useState<SocialAccount | null>(
     null,
@@ -59,6 +67,7 @@ export default function SocialAccountsPage({
     pageSize: PAGE_SIZE,
     clientId,
     platform,
+    status,
   });
   const disconnect = useDisconnectAccount();
   const reconnect = useStartConnect();
@@ -93,6 +102,23 @@ export default function SocialAccountsPage({
             }))}
             onChange={(value?: SocialPlatform) => {
               setPlatform(value);
+              setPage(1);
+            }}
+          />
+          <Select
+            allowClear
+            showSearch
+            optionFilterProp="label"
+            className="w-full sm:w-44"
+            placeholder={t("filters.allStatuses")}
+            aria-label={t("filters.status")}
+            value={status}
+            options={ACCOUNT_STATUSES.map((value) => ({
+              value,
+              label: t(`status.${value}`),
+            }))}
+            onChange={(value?: AccountStatus) => {
+              setStatus(value);
               setPage(1);
             }}
           />
@@ -140,7 +166,7 @@ export default function SocialAccountsPage({
             page={page}
             pageSize={PAGE_SIZE}
             loading={accounts.isFetching || reconnect.isPending}
-            filtered={Boolean(clientId || platform)}
+            filtered={Boolean(clientId || platform || status)}
             canManage={canManage}
             onPageChange={setPage}
             onReconnect={(account) =>

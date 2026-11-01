@@ -24,6 +24,7 @@ export default async function AccountsRoute({
       <PageHeader title={t("title")} description={t("description")} />
       <SocialAccountsPage
         initialClientId={firstValue(params.clientId)}
+        initialStatus={firstValue(params.status)}
         connectError={firstValue(params.connectError)}
       />
     </>

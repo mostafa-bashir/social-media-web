@@ -14,7 +14,9 @@
     "client": "Filter by client",
     "allClients": "All clients",
     "platform": "Filter by platform",
-    "allPlatforms": "All platforms"
+    "allPlatforms": "All platforms",
+    "status": "Filter by status",
+    "allStatuses": "All statuses"
   },
   "columns": {
     "account": "Account",

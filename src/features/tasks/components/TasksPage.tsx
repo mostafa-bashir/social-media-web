@@ -46,10 +46,21 @@ export default function TasksPage() {
   const remove = useDeleteTask();
   const move = useMoveTask(filters);
   const warnIfBlocked = useBlockedWarning(statuses);
-  const [form, setForm] = useState<FormState | null>(null);
+  const [openForm, setForm] = useState<FormState | null>(null);
   const [deleting, setDeleting] = useState<Task | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const onError = (error: unknown) => message.error(errorMessage(error));
+  // `?create=1` (dashboard link) opens the form once statuses have loaded,
+  // since the form takes its default column when it mounts.
+  const form: FormState | null =
+    openForm ??
+    (state.create && canManage && statuses.length > 0
+      ? { mode: "create" }
+      : null);
+  const closeForm = () => {
+    setForm(null);
+    if (state.create) update({ create: undefined });
+  };
 
   const open = (task: Task) => update({ task: task.id });
   const submit = (input: TaskInput) => {
@@ -59,7 +70,7 @@ export default function TasksPage() {
         {
           onSuccess: () => {
             message.success(t("saved"));
-            setForm(null);
+            closeForm();
           },
           onError,
         },
@@ -68,7 +79,7 @@ export default function TasksPage() {
       create.mutate(input, {
         onSuccess: () => {
           message.success(t("created"));
-          setForm(null);
+          closeForm();
         },
         onError,
       });
@@ -147,7 +158,7 @@ export default function TasksPage() {
           clientId: state.clientId,
         }}
         loading={create.isPending || edit.isPending}
-        onCancel={() => setForm(null)}
+        onCancel={closeForm}
         onSubmit={submit}
       />
       <BoardSettingsModal

@@ -34,7 +34,7 @@ export default function DashboardStats() {
   }
 
   return (
-    <div className="surface-card mb-6">
+    <div className="surface-card">
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
         {canViewMembers ? (
           <StatCard

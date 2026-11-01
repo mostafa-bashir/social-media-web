@@ -20,7 +20,12 @@ export function usePosts(query: PostsQuery) {
     queryFn: async () =>
       parsePaginated(
         postSchema,
-        (await apiClient.get("/posts", { params: query })).data,
+        (
+          await apiClient.get("/posts", {
+            // The API takes several statuses as one comma-separated value.
+            params: { ...query, status: query.status?.join(",") || undefined },
+          })
+        ).data,
       ),
     placeholderData: keepPreviousData,
     enabled: Boolean(slug),

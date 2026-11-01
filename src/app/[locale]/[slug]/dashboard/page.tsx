@@ -3,13 +3,23 @@ import { getTranslations } from "next-intl/server";
 
 import { auth } from "@/auth";
 import PageHeader from "@/components/ui/PageHeader";
-import { DashboardStats, UpcomingModules } from "@/features/dashboard";
+import {
+  AccountsHealthCard,
+  AttentionStrip,
+  DashboardHeaderActions,
+  DashboardStats,
+  GettingStartedCard,
+  KpiStrip,
+  MyTasksCard,
+  UpcomingPostsCard,
+} from "@/features/dashboard";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("dashboard");
   return { title: t("title") };
 }
 
+/** Command center: what needs you, what's coming, how it's going. */
 export default async function DashboardPage() {
   const [t, session] = await Promise.all([
     getTranslations("dashboard"),
@@ -22,9 +32,21 @@ export default async function DashboardPage() {
         description={t("subtitle", {
           workspace: session?.activeWorkspace?.name ?? "",
         })}
+        extra={<DashboardHeaderActions />}
       />
-      <DashboardStats />
-      <UpcomingModules />
+      <GettingStartedCard />
+      <AttentionStrip />
+      <KpiStrip />
+      <div className="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <UpcomingPostsCard />
+        <MyTasksCard />
+      </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <AccountsHealthCard />
+        <div className="lg:col-span-2">
+          <DashboardStats />
+        </div>
+      </div>
     </>
   );
 }

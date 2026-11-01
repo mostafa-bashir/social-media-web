@@ -19,7 +19,7 @@ const GRID_EDGE_DAYS = 7;
 
 export interface PostsCalendarProps {
   clientId?: string;
-  status?: PostStatus;
+  status?: PostStatus[];
   timezone: string;
   onOpen: (post: Post) => void;
 }

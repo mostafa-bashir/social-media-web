@@ -14,7 +14,9 @@
     "client": "التصفية حسب العميل",
     "allClients": "كل العملاء",
     "platform": "التصفية حسب المنصة",
-    "allPlatforms": "كل المنصات"
+    "allPlatforms": "كل المنصات",
+    "status": "تصفية حسب الحالة",
+    "allStatuses": "كل الحالات"
   },
   "columns": {
     "account": "الحساب",

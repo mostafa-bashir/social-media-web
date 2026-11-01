@@ -8,7 +8,9 @@ export {
   type SocialPlatform,
 } from "@/config/platforms";
 
-export const accountStatusSchema = z.enum(["active", "reconnect_required"]);
+export const ACCOUNT_STATUSES = ["active", "reconnect_required"] as const;
+export const accountStatusSchema = z.enum(ACCOUNT_STATUSES);
+export type AccountStatus = z.infer<typeof accountStatusSchema>;
 
 export const socialAccountSchema = z.object({
   id: z.string(),
@@ -61,6 +63,7 @@ export interface SocialAccountsQuery {
   pageSize: number;
   clientId?: string;
   platform?: SocialPlatform;
+  status?: AccountStatus;
 }
 
 /** Reasons the API's OAuth callback sends back in `?connectError=`. */

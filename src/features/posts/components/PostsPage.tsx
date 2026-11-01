@@ -23,6 +23,7 @@ import { TOOLBAR_CREATE_BUTTON_CLASS } from "@/lib/listing-ui";
 import { usePosts } from "../api/get-posts";
 import { useDeletePost, usePostAction } from "../api/post-mutations";
 import { useDuplicateAndEdit } from "../hooks/use-duplicate-post";
+import { usePostListFilters } from "../hooks/use-post-list-filters";
 import { type Post, POST_STATUSES, type PostStatus } from "../types";
 import PostDetailDrawer from "./PostDetailDrawer";
 import PostsCalendar from "./PostsCalendar";
@@ -41,12 +42,18 @@ export default function PostsPage() {
   const { can } = usePermissions();
   const canManage = can(Permission.PostsManage);
   const [view, setView] = useState<View>("list");
-  const [page, setPage] = useState(1);
-  const [clientId, setClientId] = useState<string>();
-  const [status, setStatus] = useState<PostStatus>();
+  const searchParams = useSearchParams();
+  const { filters, update } = usePostListFilters();
+  const { clientId, status } = filters;
+  // The page belongs to one set of filters, so any filter change (a click or a
+  // link landing here) starts again at page 1.
+  const filterKey = `${clientId ?? ""}|${status.join(",")}`;
+  const [paging, setPaging] = useState({ filterKey, page: 1 });
+  const page = paging.filterKey === filterKey ? paging.page : 1;
+  const setPage = (next: number) => setPaging({ filterKey, page: next });
   const [openPostId, setOpenPostId] = useState<string | null>(null);
   // `?post=<id>` opens a post directly (links from notifications).
-  const linkedPostId = useSearchParams().get("post");
+  const linkedPostId = searchParams.get("post");
   const shownPostId = openPostId ?? linkedPostId;
   const [deleting, setDeleting] = useState<Post | null>(null);
   const client = useClientOption(clientId);
@@ -78,14 +85,13 @@ export default function PostsPage() {
             placeholder={t("filters.allClients")}
             aria-label={t("filters.client")}
             value={clientId}
-            onChange={(value) => {
-              setClientId(value);
-              setPage(1);
-            }}
+            onChange={(value) => update({ clientId: value })}
           />
-          <Select<PostStatus>
+          <Select<PostStatus[]>
             allowClear
-            className="w-full sm:w-44!"
+            mode="multiple"
+            maxTagCount="responsive"
+            className="w-full sm:w-56!"
             placeholder={t("filters.allStatuses")}
             aria-label={t("filters.status")}
             value={status}
@@ -93,10 +99,7 @@ export default function PostsPage() {
               value,
               label: t(`status.${value}`),
             }))}
-            onChange={(value) => {
-              setStatus(value);
-              setPage(1);
-            }}
+            onChange={(value) => update({ status: value ?? [] })}
           />
           <Segmented<View>
             value={view}
@@ -157,7 +160,7 @@ export default function PostsPage() {
             page={page}
             pageSize={PAGE_SIZE}
             loading={posts.isFetching}
-            filtered={Boolean(clientId || status)}
+            filtered={Boolean(clientId) || status.length > 0}
             timezone={timezone}
             canManage={canManage}
             onPageChange={setPage}
