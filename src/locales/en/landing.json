@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "title": "Social Media Manager — plan, publish and measure for agencies",
+    "description": "Schedule posts to Facebook, Instagram, YouTube and TikTok, get client approvals, compare analytics across accounts and run your team's content work — in one workspace."
+  },
+  "skipLink": "Skip to content",
+  "nav": {
+    "label": "Main",
+    "features": "Features",
+    "how": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "login": "Log in",
+    "getStarted": "Get started",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "hero": {
+    "eyebrow": "Built for agencies and in-house teams",
+    "title": "Every client’s social media, planned, published and measured in one place",
+    "subtitle": "Write once for Facebook, Instagram, YouTube and TikTok, get approvals from clients, schedule at the best time, and see what works across every account — while your team runs the work on a linked task board.",
+    "primaryCta": "Create a free workspace",
+    "secondaryCta": "See features",
+    "note": "Free during early access · No card required"
+  },
+  "preview": {
+    "caption": "Preview of the post composer, schedule and analytics",
+    "composer": "New post",
+    "sampleCaption": "Our autumn collection drops Friday. Which look is your favourite? 🍂",
+    "scheduled": "Scheduled · Fri 10:00",
+    "approved": "Approved by client",
+    "reach": "Reach",
+    "engagement": "Engagement",
+    "published": "Published to 4 platforms",
+    "growth": "+18% reach this month"
+  },
+  "platforms": {
+    "title": "Publish where your clients’ audiences are",
+    "formats": "Posts, reels, stories, videos, shorts, albums and carousels"
+  },
+  "features": {
+    "eyebrow": "Features",
+    "title": "Everything an agency needs, without juggling tools",
+    "subtitle": "Publishing, analytics and project work share one workspace, so nothing falls between apps.",
+    "items": {
+      "composer": {
+        "title": "One composer, every platform",
+        "body": "Live previews per network, platform-specific options, first comment, alt text, caption snippets and a UTM link builder."
+      },
+      "scheduling": {
+        "title": "Scheduling and calendar",
+        "body": "Posting slots, repeating posts, bulk import and a content calendar that shows every client at a glance."
+      },
+      "approvals": {
+        "title": "Client approvals",
+        "body": "Send posts for review, collect feedback and keep a full review history before anything goes live."
+      },
+      "media": {
+        "title": "Media library",
+        "body": "Keep images and videos for every client in one place and reuse them across posts."
+      },
+      "analytics": {
+        "title": "Cross-platform analytics",
+        "body": "KPIs, account comparison, audience breakdowns, hashtags and a best-time heatmap across all accounts."
+      },
+      "reports": {
+        "title": "Reports clients love",
+        "body": "Goals, scheduled email reports, shareable report links and exports — no more screenshot decks."
+      },
+      "tasks": {
+        "title": "Team task manager",
+        "body": "Kanban board, backlog, sprints with burndown, campaign timeline and automations, with tasks linked to posts."
+      },
+      "team": {
+        "title": "Built for agency structure",
+        "body": "Separate workspaces and clients, custom roles and permissions, member invites and account health checks."
+      }
+    }
+  },
+  "showcase": {
+    "publishing": {
+      "eyebrow": "Publishing",
+      "title": "Plan the whole month, then let it run",
+      "body": "Drag posts into the calendar, reuse posting slots and let the best-time recommendations pick when each audience is most active.",
+      "points": {
+        "first": "Timezone-correct scheduling, always",
+        "second": "Approval step before anything publishes",
+        "third": "Clear status when a platform rejects a post"
+      }
+    },
+    "analytics": {
+      "eyebrow": "Analytics",
+      "title": "See what works across every account",
+      "body": "Compare reach and engagement across platforms and clients, spot the best times to post and track progress against goals.",
+      "points": {
+        "first": "Account and platform comparison",
+        "second": "Best-time heatmap and recommended slots",
+        "third": "Scheduled reports and shareable links"
+      }
+    },
+    "tasks": {
+      "eyebrow": "Tasks",
+      "title": "Run content work like a product team",
+      "body": "Plan campaigns in sprints, move work across the board and link every task to the post it produces.",
+      "points": {
+        "first": "Kanban, backlog and sprints with burndown",
+        "second": "Campaign timeline and automation rules",
+        "third": "Checklists, comments, attachments and subtasks"
+      }
+    }
+  },
+  "mockups": {
+    "calendarCaption": "Content calendar with scheduled posts",
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri"
+    },
+    "posts": {
+      "launch": "Product launch",
+      "reel": "Behind the scenes",
+      "tips": "Weekly tips",
+      "event": "Event recap",
+      "promo": "Weekend promo"
+    },
+    "analyticsCaption": "Analytics dashboard with KPIs and a best-time heatmap",
+    "kpis": {
+      "reach": "Reach",
+      "engagement": "Engagement",
+      "followers": "Followers"
+    },
+    "bestTime": "Best time to post",
+    "kanbanCaption": "Task board with To do, In progress and Done columns",
+    "columns": {
+      "todo": "To do",
+      "doing": "In progress",
+      "done": "Done"
+    },
+    "tasks": {
+      "brief": "Write campaign brief",
+      "shoot": "Product photo shoot",
+      "captions": "Draft captions",
+      "edit": "Edit reel",
+      "report": "Monthly client report"
+    },
+    "labels": {
+      "content": "Content",
+      "design": "Design",
+      "client": "Client"
+    }
+  },
+  "how": {
+    "eyebrow": "How it works",
+    "title": "Up and running in an afternoon",
+    "steps": {
+      "connect": {
+        "title": "Connect accounts",
+        "body": "Create a workspace, add your clients and connect their Facebook, Instagram, YouTube and TikTok accounts."
+      },
+      "plan": {
+        "title": "Plan and approve",
+        "body": "Write posts, organise the work on the task board and send content to clients for approval."
+      },
+      "measure": {
+        "title": "Publish and measure",
+        "body": "Posts go out on schedule; analytics and reports show what to do more of next month."
+      }
+    }
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Simple pricing that grows with you",
+    "subtitle": "Start free today. Paid plans for larger teams will be announced, and early-access workspaces get notice before any change.",
+    "perMonth": "{price} / month",
+    "free": "Free",
+    "freeNote": "During early access",
+    "includes": "What’s included",
+    "highlighted": "Available now",
+    "plans": {
+      "earlyAccess": {
+        "name": "Early access",
+        "tagline": "Every feature, for agencies and teams of any size.",
+        "cta": "Create a free workspace"
+      }
+    },
+    "featureList": {
+      "platforms": "Facebook, Instagram, YouTube and TikTok",
+      "unlimitedClients": "Unlimited clients and workspaces",
+      "publishing": "Composer, scheduling, calendar and approvals",
+      "analytics": "Cross-platform analytics and client reports",
+      "tasks": "Team task manager with sprints",
+      "roles": "Custom roles and permissions"
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Questions, answered",
+    "items": {
+      "platforms": {
+        "question": "Which platforms are supported?",
+        "answer": "Facebook Pages, Instagram professional accounts, YouTube channels and TikTok. You can publish posts, reels, stories, videos, shorts, albums and carousels, depending on what each platform allows."
+      },
+      "security": {
+        "question": "How is our clients’ data kept safe?",
+        "answer": "Each workspace’s data is stored separately from every other workspace. Access tokens for connected social accounts are encrypted at rest and never shown in the browser."
+      },
+      "roles": {
+        "question": "Can I control what each team member can do?",
+        "answer": "Yes. Create custom roles with exactly the permissions you need — for example, writers who can draft posts but not publish them."
+      },
+      "approvals": {
+        "question": "Can clients approve posts before they go live?",
+        "answer": "Yes. Send posts for review, collect feedback and keep a full history of every review decision."
+      },
+      "pricing": {
+        "question": "How much does it cost?",
+        "answer": "It’s free during early access, with every feature included. When paid plans for larger teams launch, existing workspaces will get notice before anything changes."
+      },
+      "language": {
+        "question": "Is Arabic supported?",
+        "answer": "Yes. The whole app is available in English and Arabic, with a full right-to-left layout."
+      }
+    }
+  },
+  "cta": {
+    "title": "Give your team one place to plan, publish and report",
+    "subtitle": "Set up your workspace in minutes. Free during early access.",
+    "primary": "Get started free",
+    "secondary": "Log in"
+  },
+  "footer": {
+    "navLabel": "Footer",
+    "tagline": "Social media and team work for agencies, in one workspace.",
+    "rights": "© {year} {appName}. All rights reserved."
+  }
+}

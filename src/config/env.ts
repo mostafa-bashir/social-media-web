@@ -21,3 +21,43 @@ export function getServerEnv(): z.infer<typeof serverEnvSchema> {
     AUTH_SECRET: process.env.AUTH_SECRET,
   });
 }
+
+/** Local fallback only; production must name its public origin. */
+const DEV_SITE_URL = "http://localhost:3000";
+
+const siteOriginSchema = z
+  .url({ protocol: /^https?$/, error: "SITE_URL must be an http(s) URL" })
+  .refine((value) => {
+    const { pathname, search, hash } = new URL(value);
+    return pathname === "/" && !search && !hash;
+  }, "SITE_URL must be an origin only, e.g. https://example.com")
+  .transform((value) => new URL(value).origin);
+
+function readSiteUrl() {
+  const raw = process.env.SITE_URL;
+  if (raw) {
+    return siteOriginSchema.safeParse(raw);
+  }
+  return process.env.NODE_ENV === "production"
+    ? siteOriginSchema.safeParse(undefined)
+    : ({ success: true, data: DEV_SITE_URL } as const);
+}
+
+/**
+ * Public origin for canonical/OG URLs, or null when unset or invalid in
+ * production. Page metadata uses this so a missing SEO setting never breaks
+ * the app itself; those pages just omit absolute URLs.
+ */
+export function findSiteUrl(): string | null {
+  const result = readSiteUrl();
+  return result.success ? result.data : null;
+}
+
+/** Public origin for the sitemap and robots.txt; throws a clear error when unset or invalid. */
+export function getSiteUrl(): string {
+  const result = readSiteUrl();
+  if (!result.success) {
+    throw result.error;
+  }
+  return result.data;
+}

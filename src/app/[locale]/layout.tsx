@@ -5,10 +5,15 @@ import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { auth } from "@/auth";
+import { findSiteUrl } from "@/config/env";
 import { directionFor, routing } from "@/i18n/routing";
 import { COLOR_SCHEME_COOKIE, parseColorScheme } from "@/lib/color-scheme";
 import { AuthSessionProvider } from "@/providers/AuthSessionProvider";
@@ -21,6 +26,12 @@ const arabicFont = Noto_Sans_Arabic({
   variable: "--font-arabic",
 });
 
+/**
+ * Namespaces read only by server components. Kept out of the client payload so
+ * every app page doesn't ship the guest landing copy.
+ */
+const SERVER_ONLY_NAMESPACES: ReadonlySet<string> = new Set(["landing"]);
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -32,7 +43,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "common" });
-  return { title: { default: t("appName"), template: `%s · ${t("appName")}` } };
+  const siteUrl = findSiteUrl();
+  return {
+    ...(siteUrl && { metadataBase: new URL(siteUrl) }),
+    title: { default: t("appName"), template: `%s · ${t("appName")}` },
+  };
 }
 
 export default async function LocaleLayout({
@@ -48,7 +63,16 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
-  const [session, cookieStore] = await Promise.all([auth(), cookies()]);
+  const [session, cookieStore, messages] = await Promise.all([
+    auth(),
+    cookies(),
+    getMessages(),
+  ]);
+  const clientMessages = Object.fromEntries(
+    Object.entries(messages).filter(
+      ([namespace]) => !SERVER_ONLY_NAMESPACES.has(namespace),
+    ),
+  );
   const colorScheme = parseColorScheme(
     cookieStore.get(COLOR_SCHEME_COOKIE)?.value,
   );
@@ -64,7 +88,7 @@ export default async function LocaleLayout({
       style={{ ["--font-sans" as string]: fontVariable }}
     >
       <body>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={clientMessages}>
           <AuthSessionProvider session={session}>
             <QueryProvider>
               <ThemeProvider locale={locale} initialColorScheme={colorScheme}>

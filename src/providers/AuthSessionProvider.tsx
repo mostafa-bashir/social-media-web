@@ -5,12 +5,10 @@ import { SessionProvider, signOut, useSession } from "next-auth/react";
 import { useLocale } from "next-intl";
 import { type ReactNode, useEffect } from "react";
 
-import { routes } from "@/config/routes";
+import { isPublicPath, routes } from "@/config/routes";
+import { usePathname } from "@/i18n/navigation";
 import { setApiSession } from "@/lib/api/api-session";
-import {
-  SESSION_ERROR_REFRESH_FAILED,
-  type SessionUpdate,
-} from "@/lib/auth/session-types";
+import type { SessionUpdate } from "@/lib/auth/session-types";
 
 /** Refresh this long before the access token expires. */
 const REFRESH_LEAD_MS = 2 * 60_000;
@@ -24,6 +22,10 @@ const MIN_TIMER_MS = 5_000;
 function SessionSync() {
   const { data: session, update } = useSession();
   const locale = useLocale();
+  const pathname = usePathname();
+  // Guests may browse public pages (landing, share links, invites); a dead
+  // session there is cleared quietly instead of bouncing them to the login form.
+  const onPublicPage = isPublicPath(pathname);
 
   useEffect(() => {
     const refresh = async () => {
@@ -36,7 +38,9 @@ function SessionSync() {
         : null;
     };
     const endSession = () => {
-      void signOut({ callbackUrl: `/${locale}${routes.auth.login}` });
+      void (onPublicPage
+        ? signOut({ redirect: false })
+        : signOut({ callbackUrl: `/${locale}${routes.auth.login}` }));
     };
 
     setApiSession(
@@ -51,7 +55,8 @@ function SessionSync() {
     if (!session) {
       return;
     }
-    if (session.error === SESSION_ERROR_REFRESH_FAILED) {
+    // Any error marks the session dead, matching how pages and the proxy read it.
+    if (session.error) {
       endSession();
       return;
     }
@@ -75,7 +80,7 @@ function SessionSync() {
       window.clearTimeout(timer);
       document.removeEventListener("visibilitychange", onVisible);
     };
-  }, [session, update, locale]);
+  }, [session, update, locale, onPublicPage]);
 
   return null;
 }

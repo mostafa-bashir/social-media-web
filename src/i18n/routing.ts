@@ -3,6 +3,12 @@ import { defineRouting } from "next-intl/routing";
 export const LOCALES = ["en", "ar"] as const;
 export type AppLocale = (typeof LOCALES)[number];
 
+/** Open Graph wants `language_TERRITORY` codes. */
+export const OG_LOCALES: Record<AppLocale, string> = {
+  en: "en_US",
+  ar: "ar_AR",
+};
+
 export const RTL_LOCALES: ReadonlySet<string> = new Set(["ar"]);
 
 export function directionFor(locale: string): "rtl" | "ltr" {

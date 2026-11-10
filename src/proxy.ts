@@ -2,21 +2,19 @@ import { getToken } from "next-auth/jwt";
 import createIntlMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
 
-import { NON_WORKSPACE_SEGMENTS, routes } from "@/config/routes";
+import {
+  matchesPrefix,
+  METADATA_IMAGE_PATHS,
+  NON_WORKSPACE_SEGMENTS,
+  PUBLIC_PREFIXES,
+  routes,
+} from "@/config/routes";
 import { routing } from "@/i18n/routing";
 
 const intlMiddleware = createIntlMiddleware(routing);
 
-/** Pages reachable without a session. */
-const PUBLIC_PREFIXES = ["/auth", "/invite", "/r"];
 /** Auth pages a signed-in user should skip. */
 const GUEST_ONLY_PREFIXES = ["/auth"];
-
-function matchesPrefix(path: string, prefixes: readonly string[]): boolean {
-  return prefixes.some(
-    (prefix) => path === prefix || path.startsWith(`${prefix}/`),
-  );
-}
 
 function splitLocale(
   pathname: string,
@@ -39,6 +37,9 @@ export default async function proxy(request: NextRequest) {
     return intlMiddleware(request);
   }
   const { locale, path } = localized;
+  if (METADATA_IMAGE_PATHS.has(path)) {
+    return NextResponse.next();
+  }
   const redirectTo = (target: string) =>
     NextResponse.redirect(new URL(`/${locale}${target}`, request.url));
 
@@ -60,14 +61,18 @@ export default async function proxy(request: NextRequest) {
     return intlMiddleware(request);
   }
 
+  // Guests on the bare locale root get the public landing page; signed-in
+  // users fall through to the page, which redirects into their workspace.
+  if (path === "/") {
+    return intlMiddleware(request);
+  }
+
   if (!signedIn) {
     const login = new URL(`/${locale}${routes.auth.login}`, request.url);
-    if (path !== "/") {
-      login.searchParams.set(
-        "callbackUrl",
-        `${request.nextUrl.pathname}${request.nextUrl.search}`,
-      );
-    }
+    login.searchParams.set(
+      "callbackUrl",
+      `${request.nextUrl.pathname}${request.nextUrl.search}`,
+    );
     return NextResponse.redirect(login);
   }
 

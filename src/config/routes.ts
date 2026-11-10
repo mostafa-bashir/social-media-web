@@ -3,6 +3,8 @@
  * (from `@/i18n/navigation`), which add the `/{locale}` prefix.
  */
 export const routes = {
+  /** Public landing page for guests; signed-in users are sent to their workspace. */
+  home: "/",
   auth: {
     login: "/auth/login",
     register: "/auth/register",
@@ -48,3 +50,26 @@ export const NON_WORKSPACE_SEGMENTS: ReadonlySet<string> = new Set([
   "r",
   "oauth-error",
 ]);
+
+/** Locale-less path prefixes reachable without a session (besides `routes.home`). */
+export const PUBLIC_PREFIXES: readonly string[] = ["/auth", "/invite", "/r"];
+
+/** Generated link-preview images under `/{locale}`; crawlers fetch them signed out. */
+export const METADATA_IMAGE_PATHS: ReadonlySet<string> = new Set([
+  "/opengraph-image",
+  "/twitter-image",
+]);
+
+export function matchesPrefix(
+  path: string,
+  prefixes: readonly string[],
+): boolean {
+  return prefixes.some(
+    (prefix) => path === prefix || path.startsWith(`${prefix}/`),
+  );
+}
+
+/** Pages a guest may view; a dead session there is cleared, not sent to login. */
+export function isPublicPath(path: string): boolean {
+  return path === routes.home || matchesPrefix(path, PUBLIC_PREFIXES);
+}

@@ -1,19 +1,14 @@
 "use client";
 
-import {
-  GlobalOutlined,
-  LogoutOutlined,
-  MoonOutlined,
-  SunOutlined,
-} from "@ant-design/icons";
+import { GlobalOutlined, LogoutOutlined } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, type MenuProps } from "antd";
 import { signOut, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { routes } from "@/config/routes";
+import { useColorSchemeToggle } from "@/hooks/use-color-scheme-toggle";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { LOCALES } from "@/i18n/routing";
-import { useColorScheme } from "@/providers/ThemeProvider";
 
 export default function UserMenu() {
   const t = useTranslations("common.userMenu");
@@ -22,7 +17,7 @@ export default function UserMenu() {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const colorSchemeToggle = useColorSchemeToggle();
 
   const items: MenuProps["items"] = [
     {
@@ -36,8 +31,8 @@ export default function UserMenu() {
     },
     {
       key: "theme",
-      icon: colorScheme === "dark" ? <SunOutlined /> : <MoonOutlined />,
-      label: colorScheme === "dark" ? t("lightMode") : t("darkMode"),
+      icon: colorSchemeToggle.icon,
+      label: colorSchemeToggle.label,
     },
     {
       key: "language",
@@ -60,7 +55,7 @@ export default function UserMenu() {
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
     if (key === "theme") {
-      toggleColorScheme();
+      colorSchemeToggle.toggle();
     } else if (key.startsWith("locale:")) {
       router.replace(pathname, { locale: key.slice("locale:".length) });
     } else if (key === "signOut") {

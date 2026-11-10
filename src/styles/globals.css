@@ -94,6 +94,13 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Landing page anchor links glide, unless the visitor prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html:has([data-smooth-scroll]) {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Client reports: printing shows the report alone, top-aligned, on white paper. */
 @media print {
   body * {
