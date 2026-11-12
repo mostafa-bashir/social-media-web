@@ -1,7 +1,7 @@
 "use client";
 
-import { PlusOutlined, SearchOutlined } from "@ant-design/icons";
-import { Alert, App, Button, Input, Segmented } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { Alert, App, Button } from "antd";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -14,11 +14,17 @@ import { useErrorMessage } from "@/hooks/use-error-message";
 import { usePermissions } from "@/hooks/use-permissions";
 import { TOOLBAR_CREATE_BUTTON_CLASS } from "@/lib/listing-ui";
 
-import { useArchiveClient, useRestoreClient } from "../api/client-mutations";
+import {
+  useArchiveClient,
+  useConvertClient,
+  useRestoreClient,
+} from "../api/client-mutations";
 import { useClients } from "../api/get-clients";
-import type { Client } from "../types";
+import type { Client, ClientKind } from "../types";
 import ClientFormModal from "./ClientFormModal";
+import ClientsFilters from "./ClientsFilters";
 import ClientsTable from "./ClientsTable";
+import PublicYoutubeModal from "./PublicYoutubeModal";
 
 const PAGE_SIZE = 20;
 const SEARCH_DEBOUNCE_MS = 300;
@@ -32,18 +38,28 @@ export default function ClientsPage() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [archived, setArchived] = useState(false);
+  const [kind, setKind] = useState<ClientKind>("all");
   const [editing, setEditing] = useState<Client | null>(null);
   const [formOpen, setFormOpen] = useState(false);
   const [archiving, setArchiving] = useState<Client | null>(null);
+  const [youtubeFor, setYoutubeFor] = useState<Client | null>(null);
   const debouncedSearch = useDebouncedValue(search, SEARCH_DEBOUNCE_MS);
   const clients = useClients({
     page,
     pageSize: PAGE_SIZE,
     search: debouncedSearch,
     archived,
+    kind,
   });
   const archive = useArchiveClient();
   const restore = useRestoreClient();
+  const convert = useConvertClient();
+  const resetPageAnd =
+    <T,>(set: (value: T) => void) =>
+    (value: T) => {
+      set(value);
+      setPage(1);
+    };
 
   const openForm = (client: Client | null) => {
     setEditing(client);
@@ -53,31 +69,14 @@ export default function ClientsPage() {
   const toolbar = (
     <ListingToolbar
       filters={
-        <>
-          <Input
-            allowClear
-            prefix={<SearchOutlined className="text-text-tertiary" />}
-            placeholder={t("searchPlaceholder")}
-            aria-label={t("searchPlaceholder")}
-            className="sm:max-w-xs!"
-            value={search}
-            onChange={(event) => {
-              setSearch(event.target.value);
-              setPage(1);
-            }}
-          />
-          <Segmented
-            value={archived ? "archived" : "active"}
-            options={[
-              { value: "active", label: t("filters.active") },
-              { value: "archived", label: t("filters.archived") },
-            ]}
-            onChange={(value) => {
-              setArchived(value === "archived");
-              setPage(1);
-            }}
-          />
-        </>
+        <ClientsFilters
+          search={search}
+          archived={archived}
+          kind={kind}
+          onSearchChange={resetPageAnd(setSearch)}
+          onArchivedChange={resetPageAnd(setArchived)}
+          onKindChange={resetPageAnd(setKind)}
+        />
       }
       actions={
         canManage ? (
@@ -112,7 +111,7 @@ export default function ClientsPage() {
             page={page}
             pageSize={PAGE_SIZE}
             loading={clients.isFetching}
-            filtered={Boolean(debouncedSearch)}
+            filtered={Boolean(debouncedSearch) || kind !== "all"}
             archived={archived}
             canManage={canManage}
             onPageChange={setPage}
@@ -125,6 +124,14 @@ export default function ClientsPage() {
                 onError: (error) => message.error(errorMessage(error)),
               })
             }
+            onPublicYoutube={setYoutubeFor}
+            onConvert={(client) =>
+              convert.mutate(client.id, {
+                onSuccess: () =>
+                  message.success(t("converted", { name: client.name })),
+                onError: (error) => message.error(errorMessage(error)),
+              })
+            }
           />
         )}
       </ListingShell>
@@ -133,6 +140,15 @@ export default function ClientsPage() {
         client={editing}
         onClose={() => setFormOpen(false)}
       />
+      {/* Mounted per client, so one client's error never shows on another's. */}
+      {youtubeFor ? (
+        <PublicYoutubeModal
+          key={youtubeFor.id}
+          client={youtubeFor}
+          onClose={() => setYoutubeFor(null)}
+          onSaved={() => setYoutubeFor(null)}
+        />
+      ) : null}
       <DeleteConfirmModal
         open={archiving !== null}
         title={t("archiveTitle")}

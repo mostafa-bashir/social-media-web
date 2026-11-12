@@ -22,6 +22,7 @@
     "post_review_requested": "طلب منك {actor} مراجعة «{caption}»",
     "post_approved": "وافق {actor} على «{caption}»",
     "post_changes_requested": "طلب {actor} تعديلات على «{caption}»",
-    "sprint_started": "بدأ {actor} دورة العمل {name}"
+    "sprint_started": "بدأ {actor} دورة العمل {name}",
+    "accounts_connected": "{count, plural, one {رُبط حساب {platform} واحد} two {رُبط حسابا {platform}} few {رُبطت # حسابات {platform}} many {رُبط # حسابًا على {platform}} other {رُبط # حساب {platform}}} بالعميل {client} عبر رابط الربط"
   }
 }

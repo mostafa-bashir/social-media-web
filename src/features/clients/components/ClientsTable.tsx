@@ -1,19 +1,23 @@
 "use client";
 
-import { EditOutlined, InboxOutlined, UndoOutlined } from "@ant-design/icons";
 import type { TableProps } from "antd";
 import { useTranslations } from "next-intl";
 
 import ListingTable from "@/components/ui/ListingTable";
-import RowActions, { type RowAction } from "@/components/ui/RowActions";
+import RowActions from "@/components/ui/RowActions";
+import StatusBadge from "@/components/ui/StatusBadge";
 import { routes } from "@/config/routes";
 import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
 import { Link } from "@/i18n/navigation";
 
+import {
+  type ClientRowHandlers,
+  useClientRowActions,
+} from "../hooks/use-client-row-actions";
 import type { Client } from "../types";
 import ClientAvatar from "./ClientAvatar";
 
-export interface ClientsTableProps {
+export interface ClientsTableProps extends ClientRowHandlers {
   clients: Client[];
   total: number;
   page: number;
@@ -23,9 +27,6 @@ export interface ClientsTableProps {
   archived: boolean;
   canManage: boolean;
   onPageChange: (page: number) => void;
-  onEdit: (client: Client) => void;
-  onArchive: (client: Client) => void;
-  onRestore: (client: Client) => void;
 }
 
 export default function ClientsTable({
@@ -38,38 +39,11 @@ export default function ClientsTable({
   archived,
   canManage,
   onPageChange,
-  onEdit,
-  onArchive,
-  onRestore,
+  ...handlers
 }: ClientsTableProps) {
   const t = useTranslations("clients");
   const slug = useActiveWorkspaceSlug() ?? "";
-
-  const actionsFor = (client: Client): RowAction[] =>
-    archived
-      ? [
-          {
-            key: "restore",
-            label: t("restore"),
-            icon: <UndoOutlined />,
-            onClick: () => onRestore(client),
-          },
-        ]
-      : [
-          {
-            key: "edit",
-            label: t("edit"),
-            icon: <EditOutlined />,
-            onClick: () => onEdit(client),
-          },
-          {
-            key: "archive",
-            label: t("archive"),
-            icon: <InboxOutlined />,
-            danger: true,
-            onClick: () => onArchive(client),
-          },
-        ];
+  const actionsFor = useClientRowActions(archived, handlers);
 
   const columns: TableProps<Client>["columns"] = [
     {
@@ -79,8 +53,13 @@ export default function ClientsTable({
         <div className="flex items-center gap-3">
           <ClientAvatar client={client} />
           <div className="min-w-0">
-            <div className="truncate font-medium text-text-primary">
-              {client.name}
+            <div className="flex items-center gap-2">
+              <span className="truncate font-medium text-text-primary">
+                {client.name}
+              </span>
+              {client.isProspect ? (
+                <StatusBadge tone="accent">{t("prospect")}</StatusBadge>
+              ) : null}
             </div>
             {client.notes ? (
               <div className="max-w-md truncate text-xs text-text-tertiary">

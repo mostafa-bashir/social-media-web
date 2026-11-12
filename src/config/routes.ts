@@ -19,6 +19,8 @@ export const routes = {
   invite: (token: string) => `/invite/${encodeURIComponent(token)}`,
   /** A client report shared by link, readable without signing in. */
   sharedReport: (token: string) => `/r/${encodeURIComponent(token)}`,
+  /** A link a client or prospect opens to connect their own accounts. */
+  connectLink: (token: string) => `/connect/${encodeURIComponent(token)}`,
   workspace: (slug: string) => ({
     home: `/${slug}/dashboard`,
     members: `/${slug}/members`,
@@ -48,11 +50,17 @@ export const NON_WORKSPACE_SEGMENTS: ReadonlySet<string> = new Set([
   "workspaces",
   "invite",
   "r",
+  "connect",
   "oauth-error",
 ]);
 
 /** Locale-less path prefixes reachable without a session (besides `routes.home`). */
-export const PUBLIC_PREFIXES: readonly string[] = ["/auth", "/invite", "/r"];
+export const PUBLIC_PREFIXES: readonly string[] = [
+  "/auth",
+  "/invite",
+  "/r",
+  "/connect",
+];
 
 /** Generated link-preview images under `/{locale}`; crawlers fetch them signed out. */
 export const METADATA_IMAGE_PATHS: ReadonlySet<string> = new Set([

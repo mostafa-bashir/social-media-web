@@ -1,6 +1,6 @@
 "use client";
 
-import { LinkOutlined } from "@ant-design/icons";
+import { LinkOutlined, SendOutlined } from "@ant-design/icons";
 import { Alert, App, Button, Select } from "antd";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -28,6 +28,7 @@ import {
 } from "../types";
 import ConnectAccountModal from "./ConnectAccountModal";
 import ConnectErrorAlert from "./ConnectErrorAlert";
+import ConnectLinksModal from "./ConnectLinksModal";
 import SocialAccountsTable from "./SocialAccountsTable";
 
 const PAGE_SIZE = 20;
@@ -39,12 +40,15 @@ export interface SocialAccountsPageProps {
   initialStatus?: string;
   /** From `?connectError=`, set by the connect callback page. */
   connectError?: string;
+  /** From `?connectLink=1` (the clients list's "Send connect link"). */
+  openConnectLink?: boolean;
 }
 
 export default function SocialAccountsPage({
   initialClientId,
   initialStatus,
   connectError,
+  openConnectLink = false,
 }: SocialAccountsPageProps) {
   const t = useTranslations("accounts");
   const tPlatforms = useTranslations("common.platforms");
@@ -59,6 +63,7 @@ export default function SocialAccountsPage({
     ACCOUNT_STATUSES.find((value) => value === initialStatus),
   );
   const [connectOpen, setConnectOpen] = useState(false);
+  const [linksOpen, setLinksOpen] = useState(openConnectLink);
   const [disconnecting, setDisconnecting] = useState<SocialAccount | null>(
     null,
   );
@@ -126,15 +131,25 @@ export default function SocialAccountsPage({
       }
       actions={
         canManage ? (
-          <Button
-            type="primary"
-            icon={<LinkOutlined />}
-            className={TOOLBAR_CREATE_BUTTON_CLASS}
-            onClick={() => setConnectOpen(true)}
-            aria-label={t("connectButton")}
-          >
-            <span className="max-sm:hidden">{t("connectButton")}</span>
-          </Button>
+          <>
+            <Button
+              icon={<SendOutlined />}
+              className="rounded-full!"
+              onClick={() => setLinksOpen(true)}
+              aria-label={t("connectLink.button")}
+            >
+              <span className="max-sm:hidden">{t("connectLink.button")}</span>
+            </Button>
+            <Button
+              type="primary"
+              icon={<LinkOutlined />}
+              className={TOOLBAR_CREATE_BUTTON_CLASS}
+              onClick={() => setConnectOpen(true)}
+              aria-label={t("connectButton")}
+            >
+              <span className="max-sm:hidden">{t("connectButton")}</span>
+            </Button>
+          </>
         ) : null
       }
     />
@@ -184,6 +199,14 @@ export default function SocialAccountsPage({
         defaultClientId={clientId}
         onClose={() => setConnectOpen(false)}
       />
+      {/* Mounted per opening: a shown-once link must not reappear later. */}
+      {linksOpen && canManage ? (
+        <ConnectLinksModal
+          open
+          defaultClientId={clientId}
+          onClose={() => setLinksOpen(false)}
+        />
+      ) : null}
       <DeleteConfirmModal
         open={disconnecting !== null}
         title={t("disconnectTitle")}

@@ -23,6 +23,7 @@ const KNOWN_TYPES = new Set([
   "post.approved",
   "post.changes_requested",
   "sprint.started",
+  "accounts.connected",
 ]);
 
 /** Message text and destination for one notification. */
@@ -42,6 +43,9 @@ export function useNotificationView() {
       name: String(data.name ?? ""),
       metric: String(data.metric ?? ""),
       target: String(data.target ?? ""),
+      client: String(data.client ?? ""),
+      platform: String(data.platform ?? ""),
+      count: Number(data.count ?? 0),
     };
     const text = KNOWN_TYPES.has(notification.type)
       ? t(`types.${notification.type.replace(".", "_")}`, values)
@@ -57,7 +61,12 @@ export function useNotificationView() {
               pathname: workspace.posts,
               query: { post: notification.resourceId },
             }
-          : { pathname: workspace.tasks, query: { view: "backlog" } };
+          : notification.resourceType === "client"
+            ? {
+                pathname: workspace.accounts,
+                query: { clientId: notification.resourceId },
+              }
+            : { pathname: workspace.tasks, query: { view: "backlog" } };
     const detail =
       typeof data.excerpt === "string"
         ? data.excerpt

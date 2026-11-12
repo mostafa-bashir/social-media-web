@@ -26,6 +26,7 @@ export default async function AccountsRoute({
         initialClientId={firstValue(params.clientId)}
         initialStatus={firstValue(params.status)}
         connectError={firstValue(params.connectError)}
+        openConnectLink={firstValue(params.connectLink) === "1"}
       />
     </>
   );

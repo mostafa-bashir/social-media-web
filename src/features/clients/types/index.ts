@@ -8,6 +8,12 @@ export const clientSchema = z.object({
   notes: z.string().nullable(),
   targetCountries: z.array(z.string()).default([]),
   requireApproval: z.boolean().default(false),
+  isProspect: z.boolean().default(false),
+  /** A public channel the audit can rate before anything is connected. */
+  publicYoutube: z
+    .object({ channelId: z.string(), title: z.string() })
+    .nullable()
+    .default(null),
   logoUrl: z.string().nullable(),
   accountCount: z.number(),
   archivedAt: z.string().nullable(),
@@ -25,11 +31,17 @@ export interface ClientInput {
   targetCountries: string[];
   /** Posts need a `posts.approve` holder's sign-off. */
   requireApproval: boolean;
+  /** Create only: a business being pitched. Clearing it is "convert". */
+  isProspect?: boolean;
 }
+
+export const CLIENT_KINDS = ["all", "clients", "prospects"] as const;
+export type ClientKind = (typeof CLIENT_KINDS)[number];
 
 export interface ClientsQuery {
   page: number;
   pageSize: number;
   search?: string;
   archived: boolean;
+  kind: ClientKind;
 }

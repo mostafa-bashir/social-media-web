@@ -3,6 +3,7 @@
 import { PrinterOutlined } from "@ant-design/icons";
 import { Alert, Button, Checkbox, Skeleton } from "antd";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { Permission } from "@/config/permissions";
@@ -12,11 +13,28 @@ import { usePermissions } from "@/hooks/use-permissions";
 
 import { useReport } from "../api/get-report";
 import { useAnalyticsFilters } from "../hooks/use-analytics-filters";
-import { REPORT_SECTIONS, type ReportSection } from "../types/report";
+import {
+  DEFAULT_REPORT_SECTIONS,
+  REPORT_SECTIONS,
+  type ReportSection,
+  type ScheduledReportSection,
+} from "../types/report";
 import { printInLightTheme } from "../lib/print";
 import ReportView from "./ReportView";
 import SchedulesCard from "./SchedulesCard";
 import ShareLinksCard from "./ShareLinksCard";
+
+const isScheduledSection = (
+  section: ReportSection,
+): section is ScheduledReportSection => section !== "audit";
+
+/** Known sections from a comma list, or the defaults when there are none. */
+function sectionsFromParam(value: string | null): ReportSection[] {
+  const picked = REPORT_SECTIONS.filter((section) =>
+    (value ?? "").split(",").includes(section),
+  );
+  return picked.length > 0 ? picked : [...DEFAULT_REPORT_SECTIONS];
+}
 
 /** A client report to print or save as PDF, share by link, or email on a schedule. */
 export default function ReportsTab() {
@@ -25,9 +43,11 @@ export default function ReportsTab() {
   const { scope } = useAnalyticsFilters();
   const { can } = usePermissions();
   const isClient = useIsClient();
-  const [sections, setSections] = useState<ReportSection[]>([
-    ...REPORT_SECTIONS,
-  ]);
+  const params = useSearchParams();
+  // `?sections=audit` comes from the clients page's "View audit".
+  const [sections, setSections] = useState<ReportSection[]>(() =>
+    sectionsFromParam(params.get("sections")),
+  );
   const report = useReport({
     clientId: scope.clientId,
     from: scope.from,
@@ -70,7 +90,7 @@ export default function ReportsTab() {
           <SchedulesCard
             clientId={scope.clientId}
             timezone={report.data?.client.timezone}
-            sections={sections}
+            sections={sections.filter(isScheduledSection)}
           />
         </>
       ) : null}

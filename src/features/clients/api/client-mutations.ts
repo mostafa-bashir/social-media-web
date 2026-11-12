@@ -56,6 +56,52 @@ export function useRestoreClient() {
   });
 }
 
+export function useConvertClient() {
+  const onSuccess = useInvalidateClients();
+  return useMutation({
+    mutationFn: async (clientId: string) =>
+      parseData(
+        clientSchema,
+        (await apiClient.post(`/clients/${clientId}/convert`)).data,
+      ),
+    onSuccess,
+  });
+}
+
+export function useSetPublicYoutube() {
+  const onSuccess = useInvalidateClients();
+  return useMutation({
+    mutationFn: async ({
+      clientId,
+      channel,
+    }: {
+      clientId: string;
+      channel: string;
+    }) =>
+      parseData(
+        clientSchema,
+        (
+          await apiClient.put(`/clients/${clientId}/public-youtube`, {
+            channel,
+          })
+        ).data,
+      ),
+    onSuccess,
+  });
+}
+
+export function useClearPublicYoutube() {
+  const onSuccess = useInvalidateClients();
+  return useMutation({
+    mutationFn: async (clientId: string) =>
+      parseData(
+        clientSchema,
+        (await apiClient.delete(`/clients/${clientId}/public-youtube`)).data,
+      ),
+    onSuccess,
+  });
+}
+
 export function useUploadClientLogo() {
   const onSuccess = useInvalidateClients();
   return useMutation({

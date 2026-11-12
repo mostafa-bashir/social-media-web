@@ -73,5 +73,52 @@
   "analyticsOff": "Analytics off — reconnect to enable",
   "analyticsOffHint": "Connected before analytics permissions were asked for. Reconnect and allow all permissions to see its analytics.",
   "commentsOff": "First comments off",
-  "commentsOffHint": "Connected before comment permission was asked for. Reconnect to post first comments."
+  "commentsOffHint": "Connected before comment permission was asked for. Reconnect to post first comments.",
+  "connectLink": {
+    "button": "Send connect link",
+    "title": "Connect link",
+    "description": "Send this link to your client or prospect. They sign in on each platform themselves and pick which accounts to connect: no password sharing, and no account here needed.",
+    "client": "Client",
+    "expiry": "Link expiry",
+    "expiresIn": "{days, plural, one {Expires in # day} other {Expires in # days}}",
+    "create": "Create link",
+    "createdTitle": "Your link is ready",
+    "createdHint": "Copy it now: for security it won't be shown again.",
+    "shareWhatsApp": "Send on WhatsApp",
+    "whatsAppMessage": "Please connect your social media accounts here, it only takes a minute: {url}",
+    "earlier": "Earlier links",
+    "created": "Created {when}",
+    "expires": "Expires {when}",
+    "used": "Used {when}",
+    "active": "Active",
+    "expired": "Expired",
+    "revoked": "Turned off",
+    "revoke": "Turn off",
+    "revokeConfirm": "Turn off this link? Anyone who has it won't be able to use it."
+  },
+  "publicConnect": {
+    "pageTitle": "Connect your accounts",
+    "title": "Connect {client}'s social accounts",
+    "invitedBy": "{workspace} asked you to connect them, so they can manage your social media.",
+    "promises": {
+      "ownLogin": "You sign in on the platform itself. Your password is never shared.",
+      "access": "{workspace} will be able to publish posts and read analytics for the accounts you pick.",
+      "remove": "You can remove this access at any time from the platform's settings."
+    },
+    "pickPlatform": "Choose a platform",
+    "connectWith": "Connect {platform}",
+    "noPlatforms": "No platforms are available right now. Please contact the agency.",
+    "expires": "This link works until {when}.",
+    "gone": "This link no longer works",
+    "goneHint": "It may have expired or been turned off. Ask the agency for a new link.",
+    "pickFor": "These will be connected for {client}. Untick any you don't want to share.",
+    "unavailable": "Already managed by this agency",
+    "finishing": "Finishing the connection…",
+    "failed": "Nothing was connected",
+    "startAgain": "Start again",
+    "doneTitle": "All done, thank you!",
+    "doneHint": "These accounts are now connected. You can close this page, or go back to the link to connect another platform.",
+    "loadFailed": "We couldn't open this link right now",
+    "tryAgain": "Try again"
+  }
 }

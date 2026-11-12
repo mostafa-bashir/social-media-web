@@ -12,7 +12,7 @@ const INBOX_PAGE_SIZE = 30;
 export const notificationSchema = z.object({
   id: z.string(),
   type: z.string(),
-  resourceType: z.enum(["task", "post", "sprint"]),
+  resourceType: z.enum(["task", "post", "sprint", "client"]),
   resourceId: z.string(),
   actor: z
     .object({

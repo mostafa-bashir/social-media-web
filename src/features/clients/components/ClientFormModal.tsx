@@ -30,6 +30,7 @@ interface ClientFormValues {
   notes?: string;
   targetCountries: string[];
   requireApproval: boolean;
+  isProspect: boolean;
 }
 
 export interface ClientFormModalProps {
@@ -69,6 +70,7 @@ export default function ClientFormModal({
       notes: client?.notes ?? "",
       targetCountries: client?.targetCountries ?? [],
       requireApproval: client?.requireApproval ?? false,
+      isProspect: false,
     });
     create.reset();
     update.reset();
@@ -76,15 +78,16 @@ export default function ClientFormModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open, client]);
 
-  const onFinish = (values: ClientFormValues) => {
+  const onFinish = ({ isProspect, ...values }: ClientFormValues) => {
     const input: ClientInput = {
       ...values,
       notes: values.notes?.trim() || null,
     };
     if (client) {
+      // Prospect status changes only through "Convert to client".
       update.mutate({ ...input, id: client.id }, { onSuccess: onClose });
     } else {
-      create.mutate(input, { onSuccess: onClose });
+      create.mutate({ ...input, isProspect }, { onSuccess: onClose });
     }
   };
 
@@ -128,6 +131,16 @@ export default function ClientFormModal({
             >
               <Input autoFocus />
             </Form.Item>
+            {client ? null : (
+              <Form.Item
+                name="isProspect"
+                label={t("isProspect")}
+                extra={t("isProspectHint")}
+                valuePropName="checked"
+              >
+                <Switch />
+              </Form.Item>
+            )}
             <Form.Item
               name="timezone"
               label={t("timezone")}

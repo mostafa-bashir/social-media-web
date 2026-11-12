@@ -12,6 +12,7 @@ import AudienceSummary from "./AudienceSummary";
 import ContentBarChart from "./ContentBarChart";
 import KpiGrid from "./KpiGrid";
 import RecommendedSlots from "./RecommendedSlots";
+import ReportAudit from "./ReportAudit";
 import ReportTopPosts from "./ReportTopPosts";
 import ReportTrend from "./ReportTrend";
 import ShareList from "./ShareList";
@@ -67,6 +68,11 @@ export default function ReportView({ report }: { report: Report }) {
           </p>
         </div>
       </header>
+      {report.audit ? (
+        <Section title={t("sections.audit")}>
+          <ReportAudit audit={report.audit} />
+        </Section>
+      ) : null}
       {report.kpis ? (
         <Section title={t("sections.kpis")}>
           <KpiGrid

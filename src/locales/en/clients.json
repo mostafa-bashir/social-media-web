@@ -6,7 +6,16 @@
   "archive": "Archive",
   "restore": "Restore",
   "searchPlaceholder": "Search clients",
+  "prospect": "Prospect",
+  "viewAudit": "View audit",
+  "convert": "Convert to client",
+  "converted": "{name} is now a client.",
   "filters": {
+    "kindLabel": "Clients or prospects",
+    "statusLabel": "Active or archived",
+    "all": "All",
+    "clients": "Clients",
+    "prospects": "Prospects",
     "active": "Active",
     "archived": "Archived"
   },
@@ -20,7 +29,7 @@
   "empty": {
     "title": "No clients yet",
     "description": "Add your first client, then connect their social accounts.",
-    "filtered": "No clients match your search.",
+    "filtered": "No clients match these filters.",
     "archived": "No archived clients."
   },
   "archiveTitle": "Archive client",
@@ -33,6 +42,8 @@
     "editTitle": "Edit client",
     "save": "Save",
     "name": "Client name",
+    "isProspect": "Prospect",
+    "isProspectHint": "A business you're pitching. Connect its accounts to get an audit to share, then convert it once it signs.",
     "timezone": "Timezone",
     "timezoneHint": "Posts for this client are scheduled and shown in this timezone.",
     "timezonePlaceholder": "Same as the workspace",
@@ -48,5 +59,19 @@
     "targetCountriesPlaceholder": "Pick countries",
     "requireApproval": "Require approval",
     "requireApprovalHint": "Posts must be approved by someone with approval rights before they're scheduled or published."
+  },
+  "sendConnectLink": "Send connect link",
+  "publicYoutube": {
+    "action": "Public YouTube channel",
+    "title": "Public YouTube channel",
+    "description": "Audit a prospect's YouTube channel from public data, before they connect anything. It's added to their social media audit.",
+    "channel": "Channel",
+    "channelHint": "An @handle, or a youtube.com/@… or youtube.com/channel/… link.",
+    "required": "Enter a channel.",
+    "current": "Now: {title}",
+    "remove": "Remove",
+    "removed": "Public YouTube channel removed.",
+    "saved": "{title} added. Its public data is in the audit.",
+    "save": "Save"
   }
 }

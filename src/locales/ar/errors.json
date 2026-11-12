@@ -130,5 +130,10 @@
   "SPRINT_TARGET_INVALID": "يمكن نقل المهام غير المكتملة إلى دورة عمل مخطط لها فقط.",
   "SPRINT_COMPLETED": "اكتملت دورة العمل هذه بالفعل.",
   "SPRINT_NOT_STARTED": "يبدأ مخطط الإنجاز عند بدء دورة العمل.",
-  "SPRINT_DATES_INVALID": "يجب أن تنتهي دورة العمل بعد بدايتها."
+  "SPRINT_DATES_INVALID": "يجب أن تنتهي دورة العمل بعد بدايتها.",
+  "CONNECT_LINK_NOT_FOUND": "هذا الرابط لم يعد يعمل. ربما انتهت صلاحيته أو أُوقف. اطلب رابطًا جديدًا من الوكالة.",
+  "PUBLIC_PREVIEW_NOT_CONFIGURED": "يتطلب البحث في يوتيوب العام مفتاح YouTube API في إعدادات الخادم.",
+  "YOUTUBE_CHANNEL_INVALID": "أدخل معرّف القناة @، أو رابط youtube.com/@… أو youtube.com/channel/…",
+  "YOUTUBE_CHANNEL_NOT_FOUND": "لم يُعثر على قناة يوتيوب بهذا المعرّف أو الرابط.",
+  "PUBLIC_PREVIEW_UNAVAILABLE": "لم يستجب يوتيوب كما ينبغي. حاول بعد قليل."
 }

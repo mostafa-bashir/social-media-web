@@ -86,7 +86,9 @@ export default async function proxy(request: NextRequest) {
       request.url,
     );
     picker.searchParams.set("switchTo", firstSegment);
-    picker.searchParams.set("next", path);
+    // Keep the query (filters, `?post=`…); the picker only follows `next`
+    // inside the workspace it switched to (see `useSwitchWorkspace`).
+    picker.searchParams.set("next", `${path}${request.nextUrl.search}`);
     return NextResponse.redirect(picker);
   }
 

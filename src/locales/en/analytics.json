@@ -379,7 +379,98 @@
       "trend": "Views over time",
       "topPosts": "Top posts",
       "content": "What worked",
-      "audience": "Audience"
+      "audience": "Audience",
+      "audit": "Social media audit"
+    }
+  },
+  "audit": {
+    "score": "Score {score} out of 100",
+    "noScore": "Not scored yet",
+    "verdict": {
+      "growth": "Strong presence",
+      "accent": "Room to grow",
+      "danger": "Needs attention",
+      "neutral": "Waiting for data"
+    },
+    "window": "Last {days} days: {from} – {to}",
+    "noAccounts": "Connect this business's social accounts, or add its public YouTube channel, to run the audit. Both are on the Clients page.",
+    "pendingSync": "{count, plural, one {# account is} other {# accounts are}} still importing history. The audit fills in once that finishes, usually within minutes.",
+    "posts": "{count, plural, =0 {No posts} one {# post} other {# posts}}",
+    "measured": "Measured",
+    "targetLabel": "Target",
+    "disclaimer": "Targets are common industry rules of thumb, not platform guarantees.",
+    "status": {
+      "good": "Good",
+      "fair": "Fair",
+      "poor": "Needs work",
+      "noData": "Not enough data"
+    },
+    "checks": {
+      "cadence": "Posting frequency",
+      "longestGap": "Longest silence",
+      "engagementRate": "Engagement rate",
+      "videoShare": "Video content",
+      "timing": "Posting at the best times",
+      "hashtags": "Hashtags per post",
+      "growth": "Follower growth"
+    },
+    "units": {
+      "cadence": "{value} a week",
+      "longestGap": "{value} days",
+      "engagementRate": "{value}",
+      "videoShare": "{value} of posts",
+      "timing": "{value} of posts",
+      "hashtags": "{value} a post",
+      "growth": "{value} a month"
+    },
+    "target": {
+      "atLeast": "Target: {value} or more",
+      "atMost": "Target: {value} or less",
+      "between": "Target: {min}–{max}"
+    },
+    "advice": {
+      "noData": "Too few posts or no follower data in this period to judge.",
+      "cadence": {
+        "good": "Posts often enough to stay in followers' feeds.",
+        "fair": "Posting a little more often would keep the account visible.",
+        "poor": "Posts too rarely for the feed to show them. A steady weekly plan fixes this."
+      },
+      "longestGap": {
+        "good": "No long silences: the account looks active.",
+        "fair": "Some quiet stretches. A content calendar keeps the rhythm.",
+        "poor": "Long silences make the account look abandoned to new visitors."
+      },
+      "engagementRate": {
+        "good": "Followers interact well with the content.",
+        "fair": "Engagement is average. Stronger hooks and questions lift it.",
+        "poor": "Few followers react. The content isn't matching what the audience wants."
+      },
+      "videoShare": {
+        "good": "A healthy share of video, which platforms favour in reach.",
+        "fair": "Some video. More reels and short videos would widen reach.",
+        "poor": "Almost no video, missing the format that reaches the most people."
+      },
+      "timing": {
+        "good": "Most posts go out when this audience responds best.",
+        "fair": "Some posts miss the best times. Scheduling would help.",
+        "poor": "Posts mostly go out at times when the audience responds least."
+      },
+      "hashtags": {
+        "good": "Hashtag use is in the healthy range.",
+        "fair": "Hashtags could be tuned: a few focused tags work best.",
+        "poor": "Hashtags are missing or overused, which costs discovery."
+      },
+      "growth": {
+        "good": "The audience is growing steadily.",
+        "fair": "Followers are flat. Consistent posting and collaborations help.",
+        "poor": "The account is losing followers."
+      }
+    },
+    "publicData": "Public data",
+    "publicDataHint": "Rated from public data only: likes and comments count as engagement, and growth needs a connected channel.",
+    "publicPreview": {
+      "not_configured": "Public YouTube data for {title} isn't available yet.",
+      "unavailable": "Couldn't read {title} from YouTube right now. Try again later."
     }
   },
   "share": {

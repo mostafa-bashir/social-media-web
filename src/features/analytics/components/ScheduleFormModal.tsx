@@ -16,7 +16,7 @@ import {
   useCreateReportSchedule,
   useUpdateReportSchedule,
 } from "../api/report-schedules";
-import { REPORT_SECTIONS, type ReportSection } from "../types/report";
+import { DEFAULT_REPORT_SECTIONS, type ReportSection } from "../types/report";
 import ScheduleTimingFields from "./ScheduleTimingFields";
 
 const DEFAULT_SEND_HOUR = 9;
@@ -145,7 +145,7 @@ export default function ScheduleFormModal({
           rules={[{ required: true, message: t("sectionsRequired") }]}
         >
           <Checkbox.Group
-            options={REPORT_SECTIONS.map((section) => ({
+            options={DEFAULT_REPORT_SECTIONS.map((section) => ({
               value: section,
               label: tSections(section),
             }))}

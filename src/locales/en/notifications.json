@@ -22,6 +22,7 @@
     "post_review_requested": "{actor} asked you to review “{caption}”",
     "post_approved": "{actor} approved “{caption}”",
     "post_changes_requested": "{actor} asked for changes to “{caption}”",
-    "sprint_started": "{actor} started {name}"
+    "sprint_started": "{actor} started {name}",
+    "accounts_connected": "{count, plural, one {# {platform} account was} other {# {platform} accounts were}} connected to {client} through a connect link"
   }
 }

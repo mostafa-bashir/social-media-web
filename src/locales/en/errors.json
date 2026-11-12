@@ -130,5 +130,10 @@
   "SPRINT_TARGET_INVALID": "Unfinished tasks can only move to a planned sprint.",
   "SPRINT_COMPLETED": "This sprint is already completed.",
   "SPRINT_NOT_STARTED": "The burndown starts when the sprint does.",
-  "SPRINT_DATES_INVALID": "A sprint must end after it starts."
+  "SPRINT_DATES_INVALID": "A sprint must end after it starts.",
+  "CONNECT_LINK_NOT_FOUND": "This link no longer works. It may have expired or been turned off. Ask the agency for a new one.",
+  "PUBLIC_PREVIEW_NOT_CONFIGURED": "Public YouTube lookups need a YouTube API key in the server settings.",
+  "YOUTUBE_CHANNEL_INVALID": "Enter a channel @handle, or a youtube.com/@… or youtube.com/channel/… link.",
+  "YOUTUBE_CHANNEL_NOT_FOUND": "No YouTube channel was found for that handle or link.",
+  "PUBLIC_PREVIEW_UNAVAILABLE": "YouTube didn't answer as expected. Try again in a moment."
 }
