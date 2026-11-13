@@ -9,6 +9,7 @@ import ClientSelect from "@/components/ui/ClientSelect";
 import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
 import ListingShell from "@/components/ui/ListingShell";
 import ListingToolbar from "@/components/ui/ListingToolbar";
+import { Feature } from "@/config/features";
 import { Permission } from "@/config/permissions";
 import { useErrorMessage } from "@/hooks/use-error-message";
 import { usePermissions } from "@/hooks/use-permissions";
@@ -54,8 +55,9 @@ export default function SocialAccountsPage({
   const tPlatforms = useTranslations("common.platforms");
   const errorMessage = useErrorMessage();
   const { message } = App.useApp();
-  const { can } = usePermissions();
+  const { can, featureEnabled } = usePermissions();
   const canManage = can(Permission.AccountsManage);
+  const canSendLinks = canManage && featureEnabled(Feature.ClientConnectLinks);
   const [page, setPage] = useState(1);
   const [clientId, setClientId] = useState(initialClientId);
   const [platform, setPlatform] = useState<SocialPlatform>();
@@ -132,14 +134,16 @@ export default function SocialAccountsPage({
       actions={
         canManage ? (
           <>
-            <Button
-              icon={<SendOutlined />}
-              className="rounded-full!"
-              onClick={() => setLinksOpen(true)}
-              aria-label={t("connectLink.button")}
-            >
-              <span className="max-sm:hidden">{t("connectLink.button")}</span>
-            </Button>
+            {canSendLinks ? (
+              <Button
+                icon={<SendOutlined />}
+                className="rounded-full!"
+                onClick={() => setLinksOpen(true)}
+                aria-label={t("connectLink.button")}
+              >
+                <span className="max-sm:hidden">{t("connectLink.button")}</span>
+              </Button>
+            ) : null}
             <Button
               type="primary"
               icon={<LinkOutlined />}
@@ -200,7 +204,7 @@ export default function SocialAccountsPage({
         onClose={() => setConnectOpen(false)}
       />
       {/* Mounted per opening: a shown-once link must not reappear later. */}
-      {linksOpen && canManage ? (
+      {linksOpen && canSendLinks ? (
         <ConnectLinksModal
           open
           defaultClientId={clientId}

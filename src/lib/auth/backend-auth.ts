@@ -18,6 +18,21 @@ const authResponseSchema = tokensSchema.extend({
 });
 export type BackendAuthResponse = z.infer<typeof authResponseSchema>;
 
+const impersonationResponseSchema = z.object({
+  accessToken: z.string(),
+  accessTokenExpiresAt: z.number(),
+  user: sessionUserSchema,
+  activeWorkspace: workspaceSummarySchema,
+  impersonation: z.object({
+    id: z.string(),
+    adminName: z.string(),
+    expiresAt: z.string(),
+  }),
+});
+export type BackendImpersonationResponse = z.infer<
+  typeof impersonationResponseSchema
+>;
+
 const switchResponseSchema = z.object({
   accessToken: z.string(),
   accessTokenExpiresAt: z.number(),
@@ -38,7 +53,7 @@ export class BackendAuthError extends Error {
   }
 }
 
-async function post<T>(
+export async function post<T>(
   path: string,
   body: unknown,
   schema: z.ZodType<T>,
@@ -86,6 +101,28 @@ export function loginWithEmailCode(
   return post("/auth/verify-email", { email, code }, authResponseSchema, {
     forwardedFor,
   });
+}
+
+/** Turns the admin console's one-time code into a support session. */
+export function exchangeImpersonationCode(
+  code: string,
+  forwardedFor: string | null,
+): Promise<BackendImpersonationResponse> {
+  return post(
+    "/auth/impersonation/exchange",
+    { code },
+    impersonationResponseSchema,
+    { forwardedFor },
+  );
+}
+
+/** Best effort, like `logout`: the local session is cleared regardless. */
+export async function endImpersonation(accessToken: string): Promise<void> {
+  await fetch(`${getServerEnv().API_URL}/auth/impersonation/end`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${accessToken}` },
+    cache: "no-store",
+  }).catch(() => undefined);
 }
 
 export function refreshTokens(

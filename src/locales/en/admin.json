@@ -1,0 +1,512 @@
+{
+  "consoleBadge": "Admin console",
+  "retry": "Try again",
+  "nav": {
+    "label": "Admin console",
+    "overview": "Overview",
+    "admins": "Admins",
+    "auditLog": "Audit log",
+    "tenants": "Workspaces",
+    "users": "Users",
+    "usage": "Usage",
+    "health": "System health",
+    "announcements": "Announcements"
+  },
+  "roles": {
+    "super_admin": "Super admin",
+    "support": "Support"
+  },
+  "userMenu": {
+    "label": "Admin account",
+    "language": "Language",
+    "signOut": "Sign out"
+  },
+  "login": {
+    "title": "Admin sign-in",
+    "subtitle": "For platform operators only.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Continue",
+    "codeTitle": "Check your email",
+    "codeSubtitle": "We sent a 6-digit code to {email}.",
+    "code": "Sign-in code",
+    "verify": "Sign in",
+    "startOver": "Use a different account"
+  },
+  "setupPassword": {
+    "title": "Set your admin password",
+    "subtitle": "Use at least 12 characters with a letter and a number.",
+    "password": "New password",
+    "confirm": "Repeat password",
+    "mismatch": "The passwords don't match.",
+    "submit": "Set password",
+    "doneTitle": "Password set",
+    "doneSubtitle": "You can now sign in to the admin console.",
+    "goToLogin": "Go to sign-in"
+  },
+  "admins": {
+    "title": "Admins",
+    "description": "People who can operate the platform. Support admins are read-only.",
+    "inviteButton": "Invite admin",
+    "you": "(you)",
+    "empty": "No admins yet",
+    "actionsFor": "Actions for {name}",
+    "updated": "Admin updated",
+    "resent": "Invitation sent again to {email}",
+    "deactivateTitle": "Deactivate {name}?",
+    "deactivateWarning": "They are signed out immediately and can't sign in until reactivated.",
+    "columns": {
+      "name": "Name",
+      "role": "Role",
+      "status": "Status",
+      "lastLogin": "Last sign-in"
+    },
+    "status": {
+      "active": "Active",
+      "invited": "Invitation pending",
+      "inactive": "Deactivated"
+    },
+    "actions": {
+      "makeRole": {
+        "super_admin": "Make super admin",
+        "support": "Make support"
+      },
+      "resend": "Resend invitation",
+      "deactivate": "Deactivate",
+      "reactivate": "Reactivate"
+    },
+    "invite": {
+      "title": "Invite admin",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "roleHint": "Support admins can view everything and open workspaces, but can't change settings or admins.",
+      "send": "Send invitation",
+      "sent": "Invitation sent to {email}"
+    }
+  },
+  "audit": {
+    "title": "Audit log",
+    "description": "Every action taken in the console, newest first.",
+    "allAdmins": "All admins",
+    "filterAdmin": "Filter by admin",
+    "actionPlaceholder": "Filter by action, e.g. admin.",
+    "unknownAdmin": "Removed admin",
+    "empty": "Nothing recorded yet",
+    "emptyFiltered": "No entries match these filters",
+    "columns": {
+      "when": "When",
+      "admin": "Admin",
+      "action": "Action",
+      "target": "Target",
+      "ip": "IP address"
+    }
+  },
+  "tenants": {
+    "title": "Workspaces",
+    "description": "Every agency workspace on the platform.",
+    "searchPlaceholder": "Search name, URL or owner email",
+    "allStatuses": "All statuses",
+    "filterStatus": "Filter by status",
+    "empty": "No workspaces yet",
+    "emptyFiltered": "No workspaces match these filters",
+    "backToList": "All workspaces",
+    "noOwner": "No owner",
+    "status": {
+      "active": "Active",
+      "suspended": "Suspended"
+    },
+    "columns": {
+      "workspace": "Workspace",
+      "owner": "Owner",
+      "members": "Members",
+      "status": "Status",
+      "created": "Created"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "members": "Members",
+      "accounts": "Social accounts",
+      "activity": "Activity",
+      "sessions": "Support sessions",
+      "usage": "Usage",
+      "plan": "Plan & limits"
+    },
+    "overview": {
+      "members": "Members",
+      "clients": "Clients",
+      "socialAccounts": "Social accounts",
+      "needReconnect": "{count} need reconnecting",
+      "posts": "Posts",
+      "postsBreakdown": "{scheduled} scheduled · {failed} failed",
+      "tasks": "Tasks",
+      "storage": "Media storage",
+      "settings": "Time zone {timezone} · language {locale} · created {created}"
+    },
+    "members": {
+      "name": "Member",
+      "role": "Role",
+      "lastLogin": "Last sign-in",
+      "owner": "Owner",
+      "disabled": "Disabled",
+      "empty": "No members"
+    },
+    "accounts": {
+      "account": "Account",
+      "client": "Client",
+      "status": "Status",
+      "connected": "Connected",
+      "reconnect": "Needs reconnect",
+      "tokenExpires": "Access expires",
+      "noExpiry": "Doesn't expire",
+      "empty": "No social accounts connected"
+    },
+    "activity": {
+      "when": "When",
+      "action": "Action",
+      "actor": "By",
+      "system": "System",
+      "bySupport": "Done during a support session",
+      "empty": "No activity recorded"
+    },
+    "sessions": {
+      "started": "Started",
+      "admin": "Admin",
+      "reason": "Reason",
+      "state": "State",
+      "end": "End now",
+      "endedMessage": "Support session ended",
+      "empty": "No support sessions yet",
+      "states": {
+        "pending": "Opening",
+        "active": "Active",
+        "ended": "Ended",
+        "expired": "Expired"
+      }
+    },
+    "actions": {
+      "openAsOwner": "Open as owner",
+      "suspend": "Suspend",
+      "reactivate": "Reactivate",
+      "delete": "Delete workspace",
+      "suspendTitle": "Suspend {name}?",
+      "suspendWarning": "Members can't open it and scheduled posts won't publish until it's reactivated. Nothing is deleted.",
+      "reactivateTitle": "Reactivate {name}?",
+      "reactivateWarning": "Members get access again. Posts whose time passed while suspended need rescheduling.",
+      "suspended": "Workspace suspended",
+      "reactivated": "Workspace reactivated",
+      "deleteTitle": "Delete this workspace?",
+      "deleteWarning": "Every post, client, account connection, task and file in it is permanently deleted. This can't be undone.",
+      "typeSlug": "Type {slug} to confirm",
+      "deleted": "{name} was deleted"
+    }
+  },
+  "impersonation": {
+    "title": "Open {name} as its owner",
+    "warning": "You'll act with {email}'s full access. They are emailed the reason, and everything you do is recorded. This replaces any agency session in this browser.",
+    "reason": "Reason",
+    "reasonHint": "Shown to the owner, e.g. the support ticket you're working on.",
+    "reasonLength": "Use {min} to {max} characters.",
+    "open": "Open workspace"
+  },
+  "users": {
+    "title": "Users",
+    "description": "Every agency account on the platform.",
+    "searchPlaceholder": "Search email or name",
+    "allStates": "All accounts",
+    "filterState": "Filter by state",
+    "empty": "No users yet",
+    "emptyFiltered": "No users match these filters",
+    "backToList": "All users",
+    "columns": {
+      "user": "User",
+      "state": "State",
+      "workspaces": "Workspaces",
+      "lastLogin": "Last sign-in"
+    },
+    "state": {
+      "active": "Active",
+      "disabled": "Disabled",
+      "locked": "Locked",
+      "unverified": "Unverified"
+    },
+    "detail": {
+      "account": "Account",
+      "created": "Created",
+      "lastLogin": "Last sign-in",
+      "lockedUntil": "Locked until",
+      "disabledAt": "Disabled on",
+      "locale": "Language and time zone",
+      "workspaces": "Workspaces",
+      "noWorkspaces": "Not a member of any workspace.",
+      "owner": "Owner"
+    },
+    "actions": {
+      "sign-out": "Sign out everywhere",
+      "unlock": "Unlock",
+      "verify-email": "Mark email verified",
+      "password-reset": "Send password reset",
+      "disable": "Disable account",
+      "enable": "Enable account",
+      "confirm": {
+        "sign-out": "Sign {name} out of every device?",
+        "disable": "Disable {name}? They're signed out and can't sign in until enabled."
+      },
+      "done": {
+        "sign-out": "Signed out everywhere",
+        "unlock": "Account unlocked",
+        "verify-email": "Email marked as verified",
+        "password-reset": "Reset link sent to {email}",
+        "disable": "Account disabled",
+        "enable": "Account enabled"
+      }
+    }
+  },
+  "usage": {
+    "title": "Platform overview",
+    "updated": "Usage data updated {time}",
+    "neverUpdated": "Usage data hasn't been collected yet: it runs hourly, or press Refresh.",
+    "range": "Date range",
+    "days": "{days} days",
+    "refresh": "Refresh now",
+    "featuresUsed": "Features used",
+    "used": "used",
+    "notUsed": "not used yet",
+    "kpis": {
+      "workspaces": "Active workspaces",
+      "workspacesFooter": "{suspended} suspended · {created} new in range",
+      "users": "Users",
+      "usersFooter": "{created} new in range",
+      "activeToday": "Active today",
+      "activeFooter": "{wau} this week · {mau} this month",
+      "postsPublished": "Posts published",
+      "postsFooter": "{failed} failed · {rate} succeeded",
+      "postsFooterNone": "Nothing published in range"
+    },
+    "charts": {
+      "activeUsers": "Daily active users",
+      "activeUsersSeries": "Active users",
+      "growth": "Sign-ups",
+      "newUsers": "New users",
+      "newTenants": "New workspaces",
+      "published": "Posts published per day",
+      "publishedSeries": "Published",
+      "posts": "Posts per day",
+      "postsCreated": "Created",
+      "byPlatform": "Published by platform",
+      "noPosts": "Nothing published in this range.",
+      "adoption": "Feature adoption across {count} workspaces",
+      "noSnapshot": "No usage snapshot yet."
+    },
+    "lists": {
+      "topTitle": "Most active workspaces",
+      "topHint": "By posts published in this range.",
+      "topEmpty": "No posts published in this range.",
+      "posts": "{count} posts",
+      "riskTitle": "At risk",
+      "riskHint": "Active workspaces with no member sign-in for 14 days.",
+      "riskEmpty": "Every workspace has been active recently.",
+      "lastActive": "Last active {day}",
+      "neverActive": "Never active · created {created}"
+    },
+    "table": {
+      "title": "Usage",
+      "description": "What each workspace did in the chosen range.",
+      "search": "Search workspaces",
+      "sortBy": "Sort by",
+      "export": "Export CSV",
+      "empty": "No workspaces yet",
+      "emptyFiltered": "No workspaces match",
+      "workspace": "Workspace",
+      "postsPublished": "Published",
+      "postsFailed": "Failed",
+      "activeUsers": "Active users",
+      "members": "Members",
+      "accounts": "Accounts",
+      "features": "Features",
+      "lastActive": "Last active",
+      "never": "Never",
+      "sorts": {
+        "postsPublished": "Most published",
+        "activeUsers": "Most active users",
+        "lastActiveDay": "Recently active",
+        "name": "Name"
+      }
+    },
+    "features": {
+      "scheduling": "Scheduled posts",
+      "reelsAndStories": "Reels, stories and shorts",
+      "firstComment": "First comment",
+      "recurringPosts": "Recurring posts",
+      "postingSlots": "Posting slots",
+      "captionLibrary": "Caption library",
+      "approvals": "Client approvals",
+      "sharedReports": "Shared reports",
+      "scheduledReports": "Emailed reports",
+      "analyticsGoals": "Analytics goals",
+      "tasks": "Tasks",
+      "sprints": "Sprints",
+      "taskAutomation": "Task automation",
+      "prospectAudits": "Prospect audits",
+      "clientConnectLinks": "Client connect links"
+    },
+    "dayColumn": "Day",
+    "refreshQueued": "Refresh started: the numbers update in a few seconds.",
+    "refreshRunning": "A refresh is already running."
+  },
+  "health": {
+    "title": "System health",
+    "description": "Services, background jobs, publishing and upkeep.",
+    "checked": "Checked at {time} · usage data from {snapshot} · refreshes every 30 seconds",
+    "never": "never",
+    "status": {
+      "database": "Database",
+      "redis": "Redis",
+      "storage": "File storage",
+      "worker": "Background worker",
+      "up": "Up",
+      "down": "Down",
+      "workersOnline": "{count} online",
+      "noWorker": "Not running"
+    },
+    "queues": {
+      "title": "Background jobs",
+      "queue": "Queue",
+      "waiting": "Waiting",
+      "active": "Running",
+      "delayed": "Scheduled",
+      "failed": "Failed",
+      "workers": "Workers",
+      "noWorker": "None",
+      "viewFailed": "{count} failed",
+      "empty": "No queues",
+      "names": {
+        "post-publishing": "Publishing",
+        "social-token-refresh": "Account token refresh",
+        "analytics-sync": "Analytics sync",
+        "analytics-report-emails": "Report emails",
+        "notifications": "Notifications",
+        "task-automations": "Task automation",
+        "usage": "Usage snapshots",
+        "platform-maintenance": "Maintenance"
+      },
+      "unavailable": "Unavailable"
+    },
+    "failedJobs": {
+      "title": "Failed jobs: {queue}",
+      "empty": "No failed jobs.",
+      "noReason": "No error message.",
+      "attempts": "{count} attempts",
+      "workspace": "Workspace",
+      "retry": "Retry",
+      "remove": "Remove",
+      "retried": "Job queued again",
+      "removed": "Job removed",
+      "removeTitle": "Remove this failed job?",
+      "removeWarning": "It's deleted for good and won't run again. Retry it instead if the problem is fixed."
+    },
+    "publishing": {
+      "title": "Publishing",
+      "window": "Period",
+      "today": "Today",
+      "week": "7 days",
+      "platform": "Platform",
+      "published": "Published",
+      "failed": "Failed",
+      "successRate": "Success",
+      "empty": "Nothing published or failed in this period.",
+      "topReasons": "Most common failures (7 days)",
+      "noFailures": "No failures in the last 7 days.",
+      "noMessage": "No error message"
+    },
+    "accounts": {
+      "title": "Accounts needing attention",
+      "summary": "{reconnect} need reconnecting · {expiring} expire within 7 days",
+      "row": "{reconnect} reconnect · {expiring} expiring",
+      "empty": "Every connected account is healthy."
+    },
+    "migrations": {
+      "title": "Database updates",
+      "upToDate": "Every workspace has all {count} updates.",
+      "behindSummary": "{count} workspaces are missing updates.",
+      "run": "Run pending updates",
+      "progress": "{applied} of {expected}",
+      "confirmTitle": "Run pending database updates?",
+      "confirmBody": "Updates {count} workspaces in the background. This normally happens during a deploy; use it if a deploy step failed.",
+      "queued": "Updates started in the background.",
+      "alreadyRunning": "Updates are already running.",
+      "noTable": "No update history"
+    },
+    "unavailable": "Couldn't be read right now. It is retried on the next refresh."
+  },
+  "plan": {
+    "featuresTitle": "Features",
+    "featuresHint": "Switched-off modules disappear from the workspace's menu and their pages are refused.",
+    "limitsTitle": "Limits",
+    "limitsHint": "Leave empty for unlimited. Lowering a limit never deletes anything; it only stops adding more.",
+    "features": {
+      "tasks": "Tasks",
+      "analytics": "Analytics and reports",
+      "clientConnectLinks": "Client connect links",
+      "prospectAudits": "Prospect audits"
+    },
+    "limits": {
+      "members": "Members (incl. pending invites)",
+      "clients": "Active clients",
+      "socialAccounts": "Social accounts",
+      "storageMb": "Media storage (MB)"
+    },
+    "inUse": "{count} in use now",
+    "unlimited": "Unlimited",
+    "save": "Save plan",
+    "saved": "Plan saved",
+    "readOnly": "Only super admins can change a workspace's plan."
+  },
+  "announcements": {
+    "title": "Announcements",
+    "description": "Banners shown inside agency workspaces: maintenance, news, changes.",
+    "create": "New announcement",
+    "edit": "Edit",
+    "delete": "Delete",
+    "empty": "No announcements yet",
+    "actionsFor": "Actions for {title}",
+    "deleted": "Announcement deleted",
+    "deleteTitle": "Delete this announcement?",
+    "deleteWarning": "It disappears from every workspace at once.",
+    "noEnd": "until removed",
+    "audienceAll": "All workspaces",
+    "audienceCount": "{count} workspaces",
+    "columns": {
+      "announcement": "Announcement",
+      "audience": "Shown to",
+      "window": "When",
+      "state": "State"
+    },
+    "states": {
+      "scheduled": "Scheduled",
+      "live": "Live",
+      "ended": "Ended"
+    },
+    "form": {
+      "createTitle": "New announcement",
+      "editTitle": "Edit announcement",
+      "save": "Save",
+      "created": "Announcement published",
+      "updated": "Announcement updated",
+      "title": "Title",
+      "body": "Message",
+      "severity": "Type",
+      "severities": {
+        "info": "Information",
+        "warning": "Warning"
+      },
+      "audience": "Show to",
+      "audienceAll": "All workspaces",
+      "audienceSelected": "Chosen workspaces",
+      "tenants": "Workspaces",
+      "tenantsPlaceholder": "Search by name, URL or owner email",
+      "window": "When",
+      "windowHint": "Leave empty to start now and keep it until you remove it."
+    }
+  }
+}

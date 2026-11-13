@@ -18,10 +18,12 @@ export default function AppShellNav({
   const t = useTranslations("common.nav");
   const pathname = usePathname();
   const router = useRouter();
-  const { can, isLoading } = usePermissions();
+  const { can, featureEnabled, isLoading } = usePermissions();
 
   const items: MenuProps["items"] = WORKSPACE_NAV.filter(
-    (item) => !item.permission || can(item.permission),
+    (item) =>
+      (!item.permission || can(item.permission)) &&
+      (!item.feature || featureEnabled(item.feature)),
   ).map((item) => ({
     key: item.href(slug),
     icon: item.icon,

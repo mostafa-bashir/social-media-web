@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import ClientSelect from "@/components/ui/ClientSelect";
 import { useErrorMessage } from "@/hooks/use-error-message";
+import { saveBlob } from "@/lib/download";
 import { PRIMARY_PILL_BUTTON_CLASS } from "@/lib/listing-ui";
 
 import { useImportPosts } from "../api/smart-schedule";
@@ -43,14 +44,10 @@ export default function ImportPostsModal({
     );
 
   const downloadTemplate = () => {
-    const url = URL.createObjectURL(
+    saveBlob(
       new Blob([importTemplateCsv()], { type: "text/csv;charset=utf-8" }),
+      "posts-import-template.csv",
     );
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "posts-import-template.csv";
-    link.click();
-    URL.revokeObjectURL(url);
   };
 
   return (

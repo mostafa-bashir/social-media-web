@@ -34,8 +34,24 @@ export const queryKeys = {
   notifications: (slug: string) =>
     ["workspace", slug, "notifications"] as const,
   dashboard: (slug: string) => ["workspace", slug, "dashboard"] as const,
+  announcements: (slug: string) =>
+    ["workspace", slug, "announcements"] as const,
   taskAutomationRules: (slug: string) =>
     ["workspace", slug, "task-automation-rules"] as const,
   permissionCatalog: (slug: string) =>
     ["workspace", slug, "permission-catalog"] as const,
+  /** Platform admin console: never under a workspace key. */
+  admin: {
+    session: ["admin", "session"] as const,
+    admins: ["admin", "admins"] as const,
+    auditLog: ["admin", "audit-log"] as const,
+    tenants: ["admin", "tenants"] as const,
+    tenant: (tenantId: string) => ["admin", "tenants", tenantId] as const,
+    users: ["admin", "users"] as const,
+    user: (userId: string) => ["admin", "users", userId] as const,
+    impersonations: ["admin", "impersonations"] as const,
+    usage: ["admin", "usage"] as const,
+    health: ["admin", "health"] as const,
+    announcements: ["admin", "announcements"] as const,
+  },
 };

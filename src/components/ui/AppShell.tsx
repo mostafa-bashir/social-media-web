@@ -9,14 +9,21 @@ import { directionFor } from "@/i18n/routing";
 
 import AppShellNav from "./AppShellNav";
 import BrandMark from "./BrandMark";
+import AnnouncementBanner from "./AnnouncementBanner";
+import ImpersonationBanner from "./ImpersonationBanner";
 import UserMenu from "./UserMenu";
 
 const SIDER_WIDTH = 248;
 
 export interface AppShellProps {
-  slug: string;
+  /** Workspace whose navigation to show; omit when passing `nav`. */
+  slug?: string;
   /** Rendered at the top of the sidebar (the workspace switcher). */
   sidebarTop: ReactNode;
+  /** Replaces the workspace navigation (the admin console has its own). */
+  nav?: (onNavigate: () => void) => ReactNode;
+  /** Replaces the agency user menu. */
+  userMenu?: ReactNode;
   /** Header items before the user menu (the notification bell), from the layout. */
   headerExtra?: ReactNode;
   children: ReactNode;
@@ -30,6 +37,8 @@ export interface AppShellProps {
 export default function AppShell({
   slug,
   sidebarTop,
+  nav,
+  userMenu = <UserMenu />,
   headerExtra,
   children,
 }: AppShellProps) {
@@ -45,7 +54,14 @@ export default function AppShell({
       </div>
       <div className="shell-divider" />
       {sidebarTop}
-      <AppShellNav slug={slug} onNavigate={() => setDrawerOpen(false)} />
+      {nav ? (
+        nav(() => setDrawerOpen(false))
+      ) : (
+        <AppShellNav
+          slug={slug ?? ""}
+          onNavigate={() => setDrawerOpen(false)}
+        />
+      )}
     </>
   );
 
@@ -66,7 +82,7 @@ export default function AppShell({
             <BrandMark onDark showName={false} />
             <div className="flex items-center gap-2">
               {headerExtra}
-              <UserMenu />
+              {userMenu}
             </div>
           </div>
           <Drawer
@@ -88,12 +104,16 @@ export default function AppShell({
           {isDesktop ? (
             <header className="app-shell-header justify-end gap-3">
               {headerExtra}
-              <UserMenu />
+              {userMenu}
             </header>
           ) : (
             <div className="h-4" />
           )}
-          <main className="app-shell-body">{children}</main>
+          <main className="app-shell-body">
+            <ImpersonationBanner />
+            {slug ? <AnnouncementBanner slug={slug} /> : null}
+            {children}
+          </main>
         </div>
       </div>
     </div>

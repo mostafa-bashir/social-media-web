@@ -6,6 +6,9 @@ import { z } from "zod";
 import {
   BackendAuthError,
   type BackendAuthResponse,
+  type BackendImpersonationResponse,
+  endImpersonation,
+  exchangeImpersonationCode,
   loginWithEmailCode,
   loginWithPassword,
   logout,
@@ -40,6 +43,10 @@ const credentialsSchema = z.discriminatedUnion("method", [
     email: z.string(),
     code: z.string(),
   }),
+  z.object({
+    method: z.literal("impersonation"),
+    code: z.string(),
+  }),
 ]);
 
 function toUser(response: BackendAuthResponse): User {
@@ -52,7 +59,56 @@ function toUser(response: BackendAuthResponse): User {
   };
 }
 
+function toImpersonationUser(response: BackendImpersonationResponse): User {
+  return {
+    sessionUser: response.user,
+    accessToken: response.accessToken,
+    accessTokenExpiresAt: response.accessTokenExpiresAt,
+    refreshToken: "",
+    activeWorkspace: response.activeWorkspace,
+    impersonation: {
+      id: response.impersonation.id,
+      adminName: response.impersonation.adminName,
+      expiresAt: new Date(response.impersonation.expiresAt).getTime(),
+    },
+  };
+}
+
+async function authorizeCredentials(
+  credentials: z.infer<typeof credentialsSchema>,
+  forwardedFor: string | null,
+): Promise<User> {
+  switch (credentials.method) {
+    case "password":
+      return toUser(
+        await loginWithPassword(
+          credentials.email,
+          credentials.password,
+          forwardedFor,
+        ),
+      );
+    case "email-code":
+      return toUser(
+        await loginWithEmailCode(
+          credentials.email,
+          credentials.code,
+          forwardedFor,
+        ),
+      );
+    case "impersonation":
+      return toImpersonationUser(
+        await exchangeImpersonationCode(credentials.code, forwardedFor),
+      );
+  }
+}
+
 async function withFreshAccessToken(token: JWT): Promise<JWT> {
+  // Support sessions have no refresh token: they simply end on time.
+  if (token.impersonation) {
+    return token.impersonation.expiresAt > Date.now()
+      ? token
+      : { ...token, error: SESSION_ERROR_REFRESH_FAILED };
+  }
   if (token.accessTokenExpiresAt - ACCESS_TOKEN_EARLY_REFRESH_MS > Date.now()) {
     return token;
   }
@@ -111,19 +167,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }
         const forwardedFor = request.headers.get("x-forwarded-for");
         try {
-          const response =
-            credentials.data.method === "password"
-              ? await loginWithPassword(
-                  credentials.data.email,
-                  credentials.data.password,
-                  forwardedFor,
-                )
-              : await loginWithEmailCode(
-                  credentials.data.email,
-                  credentials.data.code,
-                  forwardedFor,
-                );
-          return toUser(response);
+          return await authorizeCredentials(credentials.data, forwardedFor);
         } catch (error) {
           throw new BackendSignInError(
             error instanceof BackendAuthError ? error.code : "UNKNOWN_ERROR",
@@ -142,6 +186,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           accessTokenExpiresAt: user.accessTokenExpiresAt,
           refreshToken: user.refreshToken,
           activeWorkspace: user.activeWorkspace,
+          impersonation: user.impersonation,
         };
       }
       if (trigger === "update") {
@@ -156,13 +201,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         accessToken: token.accessToken,
         accessTokenExpiresAt: token.accessTokenExpiresAt,
         activeWorkspace: token.activeWorkspace,
+        impersonation: token.impersonation,
         error: token.error,
       };
     },
   },
   events: {
     async signOut(message) {
-      if ("token" in message && message.token?.refreshToken) {
+      if (!("token" in message) || !message.token) {
+        return;
+      }
+      if (message.token.impersonation) {
+        await endImpersonation(message.token.accessToken);
+      } else if (message.token.refreshToken) {
         await logout(message.token.refreshToken);
       }
     },

@@ -2,7 +2,10 @@ import { getToken } from "next-auth/jwt";
 import createIntlMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
 
+import { openAdminCookie } from "@/lib/admin-auth/admin-session";
+import { ADMIN_SESSION_COOKIE } from "@/lib/admin-auth/admin-session-shared";
 import {
+  ADMIN_PUBLIC_PATHS,
   matchesPrefix,
   METADATA_IMAGE_PATHS,
   NON_WORKSPACE_SEGMENTS,
@@ -42,6 +45,22 @@ export default async function proxy(request: NextRequest) {
   }
   const redirectTo = (target: string) =>
     NextResponse.redirect(new URL(`/${locale}${target}`, request.url));
+
+  // The admin console has its own session and never touches the agency one.
+  if (matchesPrefix(path, [routes.admin.home])) {
+    if (matchesPrefix(path, ADMIN_PUBLIC_PATHS)) {
+      return intlMiddleware(request);
+    }
+    const adminSession = await openAdminCookie(
+      request.cookies.get(ADMIN_SESSION_COOKIE)?.value,
+    );
+    if (!adminSession) {
+      const login = new URL(`/${locale}${routes.admin.login}`, request.url);
+      login.searchParams.set("callbackUrl", request.nextUrl.pathname);
+      return NextResponse.redirect(login);
+    }
+    return intlMiddleware(request);
+  }
 
   // Auth.js salts the cookie encryption with the cookie name, which differs on HTTPS.
   const secureCookie =

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useCallback } from "react";
 import { z } from "zod";
 
+import type { FeatureKey } from "@/config/features";
 import type { PermissionSlug } from "@/config/permissions";
 import { apiClient, parseData } from "@/lib/api/api-client";
 import { queryKeys } from "@/lib/query-keys";
@@ -15,6 +16,8 @@ const currentMemberSchema = z.object({
   roleId: z.string(),
   roleSlug: z.string(),
   permissions: z.array(z.string()),
+  /** Modules a platform admin switched off for this workspace. */
+  disabledFeatures: z.array(z.string()),
 });
 
 /**
@@ -34,8 +37,14 @@ export function usePermissions() {
       member?.permissions.includes(permission) ?? false,
     [member],
   );
+  const featureEnabled = useCallback(
+    (feature: FeatureKey) =>
+      !(member?.disabledFeatures.includes(feature) ?? false),
+    [member],
+  );
   return {
     can,
+    featureEnabled,
     isLoading,
     userId: member?.userId ?? null,
     roleSlug: member?.roleSlug ?? null,

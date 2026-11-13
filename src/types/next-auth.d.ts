@@ -1,4 +1,8 @@
-import type { SessionUser, WorkspaceSummary } from "@/lib/auth/session-types";
+import type {
+  ImpersonationInfo,
+  SessionUser,
+  WorkspaceSummary,
+} from "@/lib/auth/session-types";
 
 declare module "next-auth" {
   /** What the browser sees. The refresh token is deliberately absent. */
@@ -7,6 +11,7 @@ declare module "next-auth" {
     accessToken: string;
     accessTokenExpiresAt: number;
     activeWorkspace: WorkspaceSummary | null;
+    impersonation?: ImpersonationInfo;
     error?: "RefreshFailed";
   }
 
@@ -15,8 +20,10 @@ declare module "next-auth" {
     sessionUser: SessionUser;
     accessToken: string;
     accessTokenExpiresAt: number;
+    /** Empty for support sessions, which are never refreshed. */
     refreshToken: string;
     activeWorkspace: WorkspaceSummary | null;
+    impersonation?: ImpersonationInfo;
   }
 }
 
@@ -28,6 +35,7 @@ declare module "next-auth/jwt" {
     accessTokenExpiresAt: number;
     refreshToken: string;
     activeWorkspace: WorkspaceSummary | null;
+    impersonation?: ImpersonationInfo;
     error?: "RefreshFailed";
   }
 }

@@ -18,6 +18,15 @@ export const workspaceSummarySchema = z.object({
 });
 export type WorkspaceSummary = z.infer<typeof workspaceSummarySchema>;
 
+/** Present while a platform admin is acting as this user (support session). */
+export const impersonationInfoSchema = z.object({
+  id: z.string(),
+  adminName: z.string(),
+  /** Epoch ms; the session ends here and is never refreshed. */
+  expiresAt: z.number(),
+});
+export type ImpersonationInfo = z.infer<typeof impersonationInfoSchema>;
+
 /** Client → server payloads accepted by `useSession().update(...)`. */
 export const sessionUpdateSchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("refresh") }),

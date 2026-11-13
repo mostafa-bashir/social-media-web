@@ -19,8 +19,25 @@ export const routes = {
   invite: (token: string) => `/invite/${encodeURIComponent(token)}`,
   /** A client report shared by link, readable without signing in. */
   sharedReport: (token: string) => `/r/${encodeURIComponent(token)}`,
+  /** Where the admin console hands a support session to the app. */
+  impersonate: "/impersonate",
   /** A link a client or prospect opens to connect their own accounts. */
   connectLink: (token: string) => `/connect/${encodeURIComponent(token)}`,
+  /** Platform admin console: separate sign-in, never inside a workspace. */
+  admin: {
+    home: "/admin",
+    login: "/admin/login",
+    setupPassword: "/admin/setup-password",
+    admins: "/admin/admins",
+    auditLog: "/admin/audit-log",
+    tenants: "/admin/tenants",
+    tenant: (tenantId: string) => `/admin/tenants/${tenantId}`,
+    users: "/admin/users",
+    usage: "/admin/usage",
+    health: "/admin/health",
+    announcements: "/admin/announcements",
+    user: (userId: string) => `/admin/users/${userId}`,
+  },
   workspace: (slug: string) => ({
     home: `/${slug}/dashboard`,
     members: `/${slug}/members`,
@@ -52,11 +69,20 @@ export const NON_WORKSPACE_SEGMENTS: ReadonlySet<string> = new Set([
   "r",
   "connect",
   "oauth-error",
+  "admin",
+  "impersonate",
 ]);
+
+/** Admin console pages reachable without an admin session. */
+export const ADMIN_PUBLIC_PATHS: readonly string[] = [
+  routes.admin.login,
+  routes.admin.setupPassword,
+];
 
 /** Locale-less path prefixes reachable without a session (besides `routes.home`). */
 export const PUBLIC_PREFIXES: readonly string[] = [
   "/auth",
+  "/impersonate",
   "/invite",
   "/r",
   "/connect",

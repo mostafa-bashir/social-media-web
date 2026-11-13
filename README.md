@@ -1,4 +1,4 @@
-# Social Media Manager — Web
+# Skroulz — Web
 
 Next.js 16 (App Router) · Auth.js v5 · Ant Design 6 + Tailwind 4 · TanStack Query · next-intl (en / ar, RTL)
 

@@ -5,7 +5,7 @@ import { SessionProvider, signOut, useSession } from "next-auth/react";
 import { useLocale } from "next-intl";
 import { type ReactNode, useEffect } from "react";
 
-import { isPublicPath, routes } from "@/config/routes";
+import { isPublicPath, matchesPrefix, routes } from "@/config/routes";
 import { usePathname } from "@/i18n/navigation";
 import { setApiSession } from "@/lib/api/api-session";
 import type { SessionUpdate } from "@/lib/auth/session-types";
@@ -25,7 +25,9 @@ function SessionSync() {
   const pathname = usePathname();
   // Guests may browse public pages (landing, share links, invites); a dead
   // session there is cleared quietly instead of bouncing them to the login form.
-  const onPublicPage = isPublicPath(pathname);
+  // Same in the admin console, which has its own session and must not be left.
+  const onPublicPage =
+    isPublicPath(pathname) || matchesPrefix(pathname, [routes.admin.home]);
 
   useEffect(() => {
     const refresh = async () => {
@@ -38,9 +40,13 @@ function SessionSync() {
         : null;
     };
     const endSession = () => {
+      // A support session that ran out returns its admin to the console.
+      const signedOutUrl = session?.impersonation
+        ? `/${locale}${routes.admin.home}`
+        : `/${locale}${routes.auth.login}`;
       void (onPublicPage
         ? signOut({ redirect: false })
-        : signOut({ callbackUrl: `/${locale}${routes.auth.login}` }));
+        : signOut({ callbackUrl: signedOutUrl }));
     };
 
     setApiSession(
@@ -61,17 +67,15 @@ function SessionSync() {
       return;
     }
 
-    const delay = Math.max(
-      session.accessTokenExpiresAt - Date.now() - REFRESH_LEAD_MS,
-      MIN_TIMER_MS,
-    );
+    // A support session is never refreshed: check once, when it ends.
+    const refreshAt = session.impersonation
+      ? session.impersonation.expiresAt
+      : session.accessTokenExpiresAt - REFRESH_LEAD_MS;
+    const delay = Math.max(refreshAt - Date.now(), MIN_TIMER_MS);
     const timer = window.setTimeout(() => void refresh(), delay);
     // Timers stall while a laptop sleeps; catch up when the tab is visible again.
     const onVisible = () => {
-      if (
-        document.visibilityState === "visible" &&
-        session.accessTokenExpiresAt - Date.now() < REFRESH_LEAD_MS
-      ) {
+      if (document.visibilityState === "visible" && Date.now() >= refreshAt) {
         void refresh();
       }
     };

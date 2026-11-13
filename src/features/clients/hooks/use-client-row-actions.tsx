@@ -12,6 +12,7 @@ import {
 import { useTranslations } from "next-intl";
 
 import type { RowAction } from "@/components/ui/RowActions";
+import { Feature } from "@/config/features";
 import { Permission } from "@/config/permissions";
 import { routes } from "@/config/routes";
 import { useActiveWorkspaceSlug } from "@/hooks/use-active-workspace";
@@ -48,8 +49,11 @@ export function useClientRowActions(
   const t = useTranslations("clients");
   const router = useRouter();
   const slug = useActiveWorkspaceSlug() ?? "";
-  const { can } = usePermissions();
-  const canSendLink = can(Permission.AccountsManage);
+  const { can, featureEnabled } = usePermissions();
+  const canSendLink =
+    can(Permission.AccountsManage) &&
+    featureEnabled(Feature.ClientConnectLinks);
+  const canPreviewYoutube = featureEnabled(Feature.ProspectAudits);
 
   const sendConnectLink = (client: Client) =>
     router.push({
@@ -85,12 +89,16 @@ export function useClientRowActions(
         icon: <AuditOutlined />,
         onClick: () => viewAudit(client),
       },
-      {
-        key: "public-youtube",
-        label: t("publicYoutube.action"),
-        icon: <YoutubeOutlined />,
-        onClick: () => onPublicYoutube(client),
-      },
+      ...(canPreviewYoutube
+        ? [
+            {
+              key: "public-youtube",
+              label: t("publicYoutube.action"),
+              icon: <YoutubeOutlined />,
+              onClick: () => onPublicYoutube(client),
+            },
+          ]
+        : []),
       ...(canSendLink
         ? [
             {

@@ -1,0 +1,512 @@
+{
+  "consoleBadge": "لوحة الإدارة",
+  "retry": "حاول مرة أخرى",
+  "nav": {
+    "label": "لوحة الإدارة",
+    "overview": "نظرة عامة",
+    "admins": "المسؤولون",
+    "auditLog": "سجل التدقيق",
+    "tenants": "مساحات العمل",
+    "users": "المستخدمون",
+    "usage": "الاستخدام",
+    "health": "حالة النظام",
+    "announcements": "الإعلانات"
+  },
+  "roles": {
+    "super_admin": "مسؤول أعلى",
+    "support": "دعم"
+  },
+  "userMenu": {
+    "label": "حساب المسؤول",
+    "language": "اللغة",
+    "signOut": "تسجيل الخروج"
+  },
+  "login": {
+    "title": "دخول المسؤولين",
+    "subtitle": "لمشغّلي المنصة فقط.",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "submit": "متابعة",
+    "codeTitle": "تحقق من بريدك",
+    "codeSubtitle": "أرسلنا رمزًا من 6 أرقام إلى {email}.",
+    "code": "رمز الدخول",
+    "verify": "تسجيل الدخول",
+    "startOver": "استخدام حساب آخر"
+  },
+  "setupPassword": {
+    "title": "تعيين كلمة مرور المسؤول",
+    "subtitle": "استخدم 12 حرفًا على الأقل تتضمن حرفًا ورقمًا.",
+    "password": "كلمة المرور الجديدة",
+    "confirm": "أعد كتابة كلمة المرور",
+    "mismatch": "كلمتا المرور غير متطابقتين.",
+    "submit": "تعيين كلمة المرور",
+    "doneTitle": "تم تعيين كلمة المرور",
+    "doneSubtitle": "يمكنك الآن تسجيل الدخول إلى لوحة الإدارة.",
+    "goToLogin": "الذهاب لتسجيل الدخول"
+  },
+  "admins": {
+    "title": "المسؤولون",
+    "description": "الأشخاص الذين يمكنهم تشغيل المنصة. مسؤولو الدعم للقراءة فقط.",
+    "inviteButton": "دعوة مسؤول",
+    "you": "(أنت)",
+    "empty": "لا يوجد مسؤولون بعد",
+    "actionsFor": "إجراءات {name}",
+    "updated": "تم تحديث المسؤول",
+    "resent": "أُعيد إرسال الدعوة إلى {email}",
+    "deactivateTitle": "تعطيل {name}؟",
+    "deactivateWarning": "سيتم تسجيل خروجه فورًا ولن يتمكن من الدخول حتى يُعاد تفعيله.",
+    "columns": {
+      "name": "الاسم",
+      "role": "الدور",
+      "status": "الحالة",
+      "lastLogin": "آخر دخول"
+    },
+    "status": {
+      "active": "نشط",
+      "invited": "الدعوة معلّقة",
+      "inactive": "معطّل"
+    },
+    "actions": {
+      "makeRole": {
+        "super_admin": "تعيين كمسؤول أعلى",
+        "support": "تعيين كدعم"
+      },
+      "resend": "إعادة إرسال الدعوة",
+      "deactivate": "تعطيل",
+      "reactivate": "إعادة التفعيل"
+    },
+    "invite": {
+      "title": "دعوة مسؤول",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "roleHint": "يمكن لمسؤولي الدعم عرض كل شيء وفتح مساحات العمل، لكن لا يمكنهم تغيير الإعدادات أو المسؤولين.",
+      "send": "إرسال الدعوة",
+      "sent": "أُرسلت الدعوة إلى {email}"
+    }
+  },
+  "audit": {
+    "title": "سجل التدقيق",
+    "description": "كل إجراء تم في اللوحة، الأحدث أولًا.",
+    "allAdmins": "كل المسؤولين",
+    "filterAdmin": "التصفية حسب المسؤول",
+    "actionPlaceholder": "التصفية حسب الإجراء، مثل admin.",
+    "unknownAdmin": "مسؤول محذوف",
+    "empty": "لا شيء مسجّل بعد",
+    "emptyFiltered": "لا توجد سجلات مطابقة لهذه الفلاتر",
+    "columns": {
+      "when": "الوقت",
+      "admin": "المسؤول",
+      "action": "الإجراء",
+      "target": "الهدف",
+      "ip": "عنوان IP"
+    }
+  },
+  "tenants": {
+    "title": "مساحات العمل",
+    "description": "كل مساحات عمل الوكالات على المنصة.",
+    "searchPlaceholder": "ابحث بالاسم أو الرابط أو بريد المالك",
+    "allStatuses": "كل الحالات",
+    "filterStatus": "التصفية حسب الحالة",
+    "empty": "لا توجد مساحات عمل بعد",
+    "emptyFiltered": "لا توجد مساحات عمل مطابقة",
+    "backToList": "كل مساحات العمل",
+    "noOwner": "بلا مالك",
+    "status": {
+      "active": "نشطة",
+      "suspended": "موقوفة"
+    },
+    "columns": {
+      "workspace": "مساحة العمل",
+      "owner": "المالك",
+      "members": "الأعضاء",
+      "status": "الحالة",
+      "created": "تاريخ الإنشاء"
+    },
+    "tabs": {
+      "overview": "نظرة عامة",
+      "members": "الأعضاء",
+      "accounts": "حسابات التواصل",
+      "activity": "النشاط",
+      "sessions": "جلسات الدعم",
+      "usage": "الاستخدام",
+      "plan": "الخطة والحدود"
+    },
+    "overview": {
+      "members": "الأعضاء",
+      "clients": "العملاء",
+      "socialAccounts": "حسابات التواصل",
+      "needReconnect": "{count} بحاجة لإعادة الربط",
+      "posts": "المنشورات",
+      "postsBreakdown": "{scheduled} مجدولة · {failed} فاشلة",
+      "tasks": "المهام",
+      "storage": "مساحة الوسائط",
+      "settings": "المنطقة الزمنية {timezone} · اللغة {locale} · أُنشئت {created}"
+    },
+    "members": {
+      "name": "العضو",
+      "role": "الدور",
+      "lastLogin": "آخر دخول",
+      "owner": "المالك",
+      "disabled": "معطّل",
+      "empty": "لا يوجد أعضاء"
+    },
+    "accounts": {
+      "account": "الحساب",
+      "client": "العميل",
+      "status": "الحالة",
+      "connected": "مرتبط",
+      "reconnect": "يحتاج إعادة ربط",
+      "tokenExpires": "انتهاء الصلاحية",
+      "noExpiry": "لا تنتهي",
+      "empty": "لا توجد حسابات مرتبطة"
+    },
+    "activity": {
+      "when": "الوقت",
+      "action": "الإجراء",
+      "actor": "بواسطة",
+      "system": "النظام",
+      "bySupport": "تم أثناء جلسة دعم",
+      "empty": "لا يوجد نشاط مسجّل"
+    },
+    "sessions": {
+      "started": "البدء",
+      "admin": "المسؤول",
+      "reason": "السبب",
+      "state": "الحالة",
+      "end": "إنهاء الآن",
+      "endedMessage": "انتهت جلسة الدعم",
+      "empty": "لا توجد جلسات دعم بعد",
+      "states": {
+        "pending": "قيد الفتح",
+        "active": "نشطة",
+        "ended": "منتهية",
+        "expired": "منتهية الصلاحية"
+      }
+    },
+    "actions": {
+      "openAsOwner": "فتح كمالك",
+      "suspend": "إيقاف",
+      "reactivate": "إعادة التفعيل",
+      "delete": "حذف مساحة العمل",
+      "suspendTitle": "إيقاف {name}؟",
+      "suspendWarning": "لن يتمكن الأعضاء من فتحها ولن تُنشر المنشورات المجدولة حتى إعادة التفعيل. لن يُحذف شيء.",
+      "reactivateTitle": "إعادة تفعيل {name}؟",
+      "reactivateWarning": "سيستعيد الأعضاء الوصول. المنشورات التي فات وقتها أثناء الإيقاف تحتاج إعادة جدولة.",
+      "suspended": "تم إيقاف مساحة العمل",
+      "reactivated": "تمت إعادة تفعيل مساحة العمل",
+      "deleteTitle": "حذف مساحة العمل هذه؟",
+      "deleteWarning": "سيُحذف نهائيًا كل منشور وعميل وربط حساب ومهمة وملف فيها. لا يمكن التراجع.",
+      "typeSlug": "اكتب {slug} للتأكيد",
+      "deleted": "تم حذف {name}"
+    }
+  },
+  "impersonation": {
+    "title": "فتح {name} كمالك",
+    "warning": "ستعمل بصلاحيات {email} الكاملة. سيصله السبب بالبريد ويُسجَّل كل ما تفعله. سيحل هذا محل أي جلسة وكالة في هذا المتصفح.",
+    "reason": "السبب",
+    "reasonHint": "يظهر للمالك، مثل رقم تذكرة الدعم التي تعمل عليها.",
+    "reasonLength": "استخدم من {min} إلى {max} حرفًا.",
+    "open": "فتح مساحة العمل"
+  },
+  "users": {
+    "title": "المستخدمون",
+    "description": "كل حسابات الوكالات على المنصة.",
+    "searchPlaceholder": "ابحث بالبريد أو الاسم",
+    "allStates": "كل الحسابات",
+    "filterState": "التصفية حسب الحالة",
+    "empty": "لا يوجد مستخدمون بعد",
+    "emptyFiltered": "لا يوجد مستخدمون مطابقون",
+    "backToList": "كل المستخدمين",
+    "columns": {
+      "user": "المستخدم",
+      "state": "الحالة",
+      "workspaces": "مساحات العمل",
+      "lastLogin": "آخر دخول"
+    },
+    "state": {
+      "active": "نشط",
+      "disabled": "معطّل",
+      "locked": "مقفل",
+      "unverified": "غير مؤكَّد"
+    },
+    "detail": {
+      "account": "الحساب",
+      "created": "تاريخ الإنشاء",
+      "lastLogin": "آخر دخول",
+      "lockedUntil": "مقفل حتى",
+      "disabledAt": "عُطّل في",
+      "locale": "اللغة والمنطقة الزمنية",
+      "workspaces": "مساحات العمل",
+      "noWorkspaces": "ليس عضوًا في أي مساحة عمل.",
+      "owner": "المالك"
+    },
+    "actions": {
+      "sign-out": "تسجيل الخروج من كل الأجهزة",
+      "unlock": "فتح القفل",
+      "verify-email": "تأكيد البريد",
+      "password-reset": "إرسال إعادة تعيين كلمة المرور",
+      "disable": "تعطيل الحساب",
+      "enable": "تفعيل الحساب",
+      "confirm": {
+        "sign-out": "تسجيل خروج {name} من كل الأجهزة؟",
+        "disable": "تعطيل {name}؟ سيتم تسجيل خروجه ولن يتمكن من الدخول حتى يُفعَّل."
+      },
+      "done": {
+        "sign-out": "تم تسجيل الخروج من كل الأجهزة",
+        "unlock": "تم فتح قفل الحساب",
+        "verify-email": "تم تأكيد البريد",
+        "password-reset": "أُرسل رابط إعادة التعيين إلى {email}",
+        "disable": "تم تعطيل الحساب",
+        "enable": "تم تفعيل الحساب"
+      }
+    }
+  },
+  "usage": {
+    "title": "نظرة عامة على المنصة",
+    "updated": "حُدّثت بيانات الاستخدام {time}",
+    "neverUpdated": "لم تُجمع بيانات الاستخدام بعد: تُجمع كل ساعة، أو اضغط تحديث.",
+    "range": "الفترة",
+    "days": "{days} يومًا",
+    "refresh": "تحديث الآن",
+    "featuresUsed": "الميزات المستخدمة",
+    "used": "مستخدمة",
+    "notUsed": "لم تُستخدم بعد",
+    "kpis": {
+      "workspaces": "مساحات العمل النشطة",
+      "workspacesFooter": "{suspended} موقوفة · {created} جديدة في الفترة",
+      "users": "المستخدمون",
+      "usersFooter": "{created} جدد في الفترة",
+      "activeToday": "نشطون اليوم",
+      "activeFooter": "{wau} هذا الأسبوع · {mau} هذا الشهر",
+      "postsPublished": "المنشورات المنشورة",
+      "postsFooter": "{failed} فاشلة · نجاح {rate}",
+      "postsFooterNone": "لم يُنشر شيء في الفترة"
+    },
+    "charts": {
+      "activeUsers": "المستخدمون النشطون يوميًا",
+      "activeUsersSeries": "مستخدمون نشطون",
+      "growth": "التسجيلات",
+      "newUsers": "مستخدمون جدد",
+      "newTenants": "مساحات عمل جديدة",
+      "published": "المنشورات المنشورة يوميًا",
+      "publishedSeries": "منشورة",
+      "posts": "المنشورات يوميًا",
+      "postsCreated": "أُنشئت",
+      "byPlatform": "المنشور حسب المنصة",
+      "noPosts": "لم يُنشر شيء في هذه الفترة.",
+      "adoption": "استخدام الميزات في {count} مساحة عمل",
+      "noSnapshot": "لا توجد لقطة استخدام بعد."
+    },
+    "lists": {
+      "topTitle": "أنشط مساحات العمل",
+      "topHint": "حسب المنشورات في هذه الفترة.",
+      "topEmpty": "لم يُنشر شيء في هذه الفترة.",
+      "posts": "{count} منشور",
+      "riskTitle": "معرّضة للتوقف",
+      "riskHint": "مساحات نشطة لم يدخلها أي عضو منذ 14 يومًا.",
+      "riskEmpty": "كل مساحات العمل نشطة مؤخرًا.",
+      "lastActive": "آخر نشاط {day}",
+      "neverActive": "لم تُستخدم · أُنشئت {created}"
+    },
+    "table": {
+      "title": "الاستخدام",
+      "description": "ما فعلته كل مساحة عمل في الفترة المختارة.",
+      "search": "ابحث في مساحات العمل",
+      "sortBy": "الترتيب حسب",
+      "export": "تصدير CSV",
+      "empty": "لا توجد مساحات عمل بعد",
+      "emptyFiltered": "لا توجد نتائج",
+      "workspace": "مساحة العمل",
+      "postsPublished": "منشورة",
+      "postsFailed": "فاشلة",
+      "activeUsers": "مستخدمون نشطون",
+      "members": "الأعضاء",
+      "accounts": "الحسابات",
+      "features": "الميزات",
+      "lastActive": "آخر نشاط",
+      "never": "أبدًا",
+      "sorts": {
+        "postsPublished": "الأكثر نشرًا",
+        "activeUsers": "الأكثر نشاطًا",
+        "lastActiveDay": "الأحدث نشاطًا",
+        "name": "الاسم"
+      }
+    },
+    "features": {
+      "scheduling": "جدولة المنشورات",
+      "reelsAndStories": "ريلز وقصص وشورتس",
+      "firstComment": "التعليق الأول",
+      "recurringPosts": "المنشورات المتكررة",
+      "postingSlots": "أوقات النشر",
+      "captionLibrary": "مكتبة النصوص",
+      "approvals": "موافقات العملاء",
+      "sharedReports": "التقارير المشتركة",
+      "scheduledReports": "التقارير بالبريد",
+      "analyticsGoals": "أهداف التحليلات",
+      "tasks": "المهام",
+      "sprints": "السبرنتات",
+      "taskAutomation": "أتمتة المهام",
+      "prospectAudits": "تدقيق العملاء المحتملين",
+      "clientConnectLinks": "روابط ربط العملاء"
+    },
+    "dayColumn": "اليوم",
+    "refreshQueued": "بدأ التحديث: تتحدث الأرقام خلال ثوانٍ.",
+    "refreshRunning": "هناك تحديث قيد التشغيل بالفعل."
+  },
+  "health": {
+    "title": "حالة النظام",
+    "description": "الخدمات والمهام الخلفية والنشر والصيانة.",
+    "checked": "فُحصت عند {time} · بيانات الاستخدام من {snapshot} · تتحدث كل 30 ثانية",
+    "never": "أبدًا",
+    "status": {
+      "database": "قاعدة البيانات",
+      "redis": "Redis",
+      "storage": "تخزين الملفات",
+      "worker": "المعالج الخلفي",
+      "up": "يعمل",
+      "down": "متوقف",
+      "workersOnline": "{count} متصل",
+      "noWorker": "لا يعمل"
+    },
+    "queues": {
+      "title": "المهام الخلفية",
+      "queue": "الطابور",
+      "waiting": "بالانتظار",
+      "active": "قيد التنفيذ",
+      "delayed": "مجدولة",
+      "failed": "فاشلة",
+      "workers": "المعالجات",
+      "noWorker": "لا يوجد",
+      "viewFailed": "{count} فاشلة",
+      "empty": "لا توجد طوابير",
+      "names": {
+        "post-publishing": "النشر",
+        "social-token-refresh": "تجديد صلاحية الحسابات",
+        "analytics-sync": "مزامنة التحليلات",
+        "analytics-report-emails": "رسائل التقارير",
+        "notifications": "الإشعارات",
+        "task-automations": "أتمتة المهام",
+        "usage": "لقطات الاستخدام",
+        "platform-maintenance": "الصيانة"
+      },
+      "unavailable": "غير متاح"
+    },
+    "failedJobs": {
+      "title": "المهام الفاشلة: {queue}",
+      "empty": "لا توجد مهام فاشلة.",
+      "noReason": "لا توجد رسالة خطأ.",
+      "attempts": "{count} محاولات",
+      "workspace": "مساحة العمل",
+      "retry": "إعادة المحاولة",
+      "remove": "حذف",
+      "retried": "أُعيدت المهمة إلى الطابور",
+      "removed": "حُذفت المهمة",
+      "removeTitle": "حذف هذه المهمة الفاشلة؟",
+      "removeWarning": "ستُحذف نهائيًا ولن تُشغّل مرة أخرى. أعد المحاولة بدلًا من ذلك إذا حُلّت المشكلة."
+    },
+    "publishing": {
+      "title": "النشر",
+      "window": "الفترة",
+      "today": "اليوم",
+      "week": "7 أيام",
+      "platform": "المنصة",
+      "published": "منشورة",
+      "failed": "فاشلة",
+      "successRate": "النجاح",
+      "empty": "لم يُنشر أو يفشل شيء في هذه الفترة.",
+      "topReasons": "أكثر أسباب الفشل (7 أيام)",
+      "noFailures": "لا توجد أخطاء في آخر 7 أيام.",
+      "noMessage": "لا توجد رسالة خطأ"
+    },
+    "accounts": {
+      "title": "حسابات تحتاج انتباهًا",
+      "summary": "{reconnect} بحاجة لإعادة الربط · {expiring} تنتهي خلال 7 أيام",
+      "row": "{reconnect} إعادة ربط · {expiring} تنتهي",
+      "empty": "كل الحسابات المرتبطة سليمة."
+    },
+    "migrations": {
+      "title": "تحديثات قاعدة البيانات",
+      "upToDate": "كل مساحات العمل لديها التحديثات الـ{count}.",
+      "behindSummary": "{count} مساحات عمل تنقصها تحديثات.",
+      "run": "تشغيل التحديثات المعلّقة",
+      "progress": "{applied} من {expected}",
+      "confirmTitle": "تشغيل تحديثات قاعدة البيانات المعلّقة؟",
+      "confirmBody": "يحدّث {count} مساحات عمل في الخلفية. يحدث هذا عادةً أثناء النشر؛ استخدمه إذا فشلت خطوة النشر.",
+      "queued": "بدأت التحديثات في الخلفية.",
+      "alreadyRunning": "التحديثات قيد التشغيل بالفعل.",
+      "noTable": "لا يوجد سجل تحديثات"
+    },
+    "unavailable": "تعذّرت قراءته الآن. ستُعاد المحاولة في التحديث التالي."
+  },
+  "plan": {
+    "featuresTitle": "الميزات",
+    "featuresHint": "تختفي الوحدات المعطّلة من قائمة مساحة العمل وتُرفض صفحاتها.",
+    "limitsTitle": "الحدود",
+    "limitsHint": "اتركه فارغًا لعدم التقييد. خفض الحد لا يحذف شيئًا؛ بل يمنع إضافة المزيد فقط.",
+    "features": {
+      "tasks": "المهام",
+      "analytics": "التحليلات والتقارير",
+      "clientConnectLinks": "روابط ربط العملاء",
+      "prospectAudits": "تدقيق العملاء المحتملين"
+    },
+    "limits": {
+      "members": "الأعضاء (مع الدعوات المعلّقة)",
+      "clients": "العملاء النشطون",
+      "socialAccounts": "حسابات التواصل",
+      "storageMb": "مساحة الوسائط (ميغابايت)"
+    },
+    "inUse": "{count} مستخدم الآن",
+    "unlimited": "غير محدود",
+    "save": "حفظ الخطة",
+    "saved": "تم حفظ الخطة",
+    "readOnly": "يمكن للمسؤول الأعلى فقط تغيير خطة مساحة العمل."
+  },
+  "announcements": {
+    "title": "الإعلانات",
+    "description": "لافتات تظهر داخل مساحات عمل الوكالات: صيانة وأخبار وتغييرات.",
+    "create": "إعلان جديد",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "empty": "لا توجد إعلانات بعد",
+    "actionsFor": "إجراءات {title}",
+    "deleted": "تم حذف الإعلان",
+    "deleteTitle": "حذف هذا الإعلان؟",
+    "deleteWarning": "سيختفي من كل مساحات العمل فورًا.",
+    "noEnd": "حتى الحذف",
+    "audienceAll": "كل مساحات العمل",
+    "audienceCount": "{count} مساحات عمل",
+    "columns": {
+      "announcement": "الإعلان",
+      "audience": "يظهر لـ",
+      "window": "الموعد",
+      "state": "الحالة"
+    },
+    "states": {
+      "scheduled": "مجدول",
+      "live": "منشور",
+      "ended": "منتهٍ"
+    },
+    "form": {
+      "createTitle": "إعلان جديد",
+      "editTitle": "تعديل الإعلان",
+      "save": "حفظ",
+      "created": "تم نشر الإعلان",
+      "updated": "تم تحديث الإعلان",
+      "title": "العنوان",
+      "body": "الرسالة",
+      "severity": "النوع",
+      "severities": {
+        "info": "معلومة",
+        "warning": "تحذير"
+      },
+      "audience": "يظهر لـ",
+      "audienceAll": "كل مساحات العمل",
+      "audienceSelected": "مساحات عمل مختارة",
+      "tenants": "مساحات العمل",
+      "tenantsPlaceholder": "ابحث بالاسم أو الرابط أو بريد المالك",
+      "window": "الموعد",
+      "windowHint": "اتركه فارغًا ليبدأ الآن ويبقى حتى تحذفه."
+    }
+  }
+}

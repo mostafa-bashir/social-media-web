@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { type ReactNode, Suspense } from "react";
 
+import FeatureGate from "@/components/ui/FeatureGate";
 import PageHeader from "@/components/ui/PageHeader";
+import { Feature } from "@/config/features";
 import { AnalyticsShell, ExportMenu } from "@/features/analytics";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -17,7 +19,7 @@ export default async function AnalyticsLayout({
 }) {
   const t = await getTranslations("analytics");
   return (
-    <>
+    <FeatureGate feature={Feature.Analytics}>
       <PageHeader
         title={t("title")}
         description={t("description")}
@@ -31,6 +33,6 @@ export default async function AnalyticsLayout({
       <Suspense>
         <AnalyticsShell>{children}</AnalyticsShell>
       </Suspense>
-    </>
+    </FeatureGate>
   );
 }

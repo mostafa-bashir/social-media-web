@@ -10,5 +10,6 @@
   "roleNameMax": "Use at most 64 characters.",
   "codeFormat": "Enter the 6-digit code.",
   "slugLength": "Use 3–48 characters.",
-  "slugFormat": "Use lowercase letters, numbers and single hyphens."
+  "slugFormat": "Use lowercase letters, numbers and single hyphens.",
+  "adminPasswordMin": "Use at least 12 characters."
 }

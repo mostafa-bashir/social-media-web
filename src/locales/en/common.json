@@ -1,5 +1,5 @@
 {
-  "appName": "Social Media Manager",
+  "appName": "Skroulz",
   "openMenu": "Open menu",
   "locales": {
     "label": "Language",
@@ -63,5 +63,17 @@
   "linkedTasks": {
     "empty": "No tasks are linked to this post.",
     "done": "Done"
+  },
+  "impersonation": {
+    "title": "Support session: you're acting as {name}",
+    "description": "Opened by {admin}. Ends automatically at {time}. Everything you do is recorded.",
+    "end": "End session"
+  },
+  "announcements": {
+    "dismiss": "Dismiss announcement"
+  },
+  "featureGate": {
+    "title": "Not available for this workspace",
+    "description": "This part of the app is switched off for your workspace. Contact the platform team if you need it."
   }
 }

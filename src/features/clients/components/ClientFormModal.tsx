@@ -5,7 +5,9 @@ import type { Color } from "antd/es/color-picker";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo } from "react";
 
+import { Feature } from "@/config/features";
 import { useErrorMessage } from "@/hooks/use-error-message";
+import { usePermissions } from "@/hooks/use-permissions";
 import { nameSchema } from "@/lib/forms/common-schemas";
 import { zodRule } from "@/lib/forms/zod-rule";
 
@@ -52,6 +54,8 @@ export default function ClientFormModal({
   const create = useCreateClient();
   const update = useUpdateClient();
   const mutation = client ? update : create;
+  const { featureEnabled } = usePermissions();
+  const canMarkProspect = !client && featureEnabled(Feature.ProspectAudits);
   const timezoneOptions = useMemo(
     () =>
       Intl.supportedValuesOf("timeZone").map((zone) => ({
@@ -131,7 +135,7 @@ export default function ClientFormModal({
             >
               <Input autoFocus />
             </Form.Item>
-            {client ? null : (
+            {canMarkProspect ? (
               <Form.Item
                 name="isProspect"
                 label={t("isProspect")}
@@ -140,7 +144,7 @@ export default function ClientFormModal({
               >
                 <Switch />
               </Form.Item>
-            )}
+            ) : null}
             <Form.Item
               name="timezone"
               label={t("timezone")}

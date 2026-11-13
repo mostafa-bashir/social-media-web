@@ -12,6 +12,7 @@ import {
 } from "@ant-design/icons";
 import type { ReactNode } from "react";
 
+import { Feature, type FeatureKey } from "./features";
 import { Permission, type PermissionSlug } from "./permissions";
 
 import { routes } from "./routes";
@@ -24,6 +25,8 @@ export interface NavItem {
   href: (slug: string) => string;
   /** Hidden unless the member holds this permission */
   permission?: PermissionSlug;
+  /** Hidden when a platform admin switched this module off for the workspace */
+  feature?: FeatureKey;
 }
 
 /** Workspace sidebar. Add new features here (social, analytics, tasks…). */
@@ -68,6 +71,7 @@ export const WORKSPACE_NAV: NavItem[] = [
     icon: <CarryOutOutlined />,
     href: (slug) => routes.workspace(slug).tasks,
     permission: Permission.TasksView,
+    feature: Feature.Tasks,
   },
   {
     key: "analytics",
@@ -75,6 +79,7 @@ export const WORKSPACE_NAV: NavItem[] = [
     icon: <BarChartOutlined />,
     href: (slug) => routes.workspace(slug).analytics,
     permission: Permission.AnalyticsView,
+    feature: Feature.Analytics,
   },
   {
     key: "members",

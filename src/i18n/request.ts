@@ -22,6 +22,7 @@ const NAMESPACES = [
   "tasks",
   "notifications",
   "landing",
+  "admin",
 ] as const;
 
 export default getRequestConfig(async ({ requestLocale }) => {
